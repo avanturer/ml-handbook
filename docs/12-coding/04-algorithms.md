@@ -1326,8 +1326,8 @@ $(\max(x_1^a, x_1^b), \max(y_1^a, y_1^b))$ и $(\min(x_2^a,x_2^b), \min(y_2^a,y_
 - [Документация модуля `heapq`](https://docs.python.org/3/library/heapq.html) — в конце
   страницы разобраны приёмы с приоритетной очередью, tie-breaker'ами и «ленивым удалением».
   Ровно то, о чём спрашивают в задачах на top-k.
-- [NeetCode: roadmap по паттернам](https://neetcode.io/roadmap) — бесплатная карта задач,
-  сгруппированных по паттернам, а не по темам. Для MLE достаточно веток «Arrays & Hashing»,
+- [NeetCode](https://neetcode.io) — бесплатная подборка задач, сгруппированных по паттернам
+  (раздел Roadmap), а не по темам. Для MLE достаточно веток «Arrays & Hashing»,
   «Two Pointers», «Sliding Window», «Binary Search», «Heap», «Graphs (базовые)».
 - **Gayle Laakmann McDowell. «Cracking the Coding Interview»** — не про алгоритмы,
   а про поведение на секции: как задавать вопросы, как думать вслух, как оценивать

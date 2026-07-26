@@ -2072,8 +2072,9 @@ $\exp(\text{jll} - \mathrm{logsumexp}(\text{jll}))$.
 - [Vaswani et al. «Attention Is All You Need» (2017)](https://arxiv.org/abs/1706.03762) —
   оригинальная статья про attention; раздел 3.2.1 — это ровно те три строки кода из §13,
   включая объяснение $\sqrt{d_k}$.
-- [Arthur, Vassilvitskii. «k-means++: The Advantages of Careful Seeding» (2007)](https://theory.stanford.edu/~sergei/papers/kMeansPP-soda.pdf) —
-  доказательство оценки $O(\log k)$ для инициализации из §6.
+- **David Arthur, Sergei Vassilvitskii. «k-means++: The Advantages of Careful Seeding»
+  (SODA 2007)** — доказательство оценки $O(\log k)$ для инициализации из §6; PDF легко
+  находится по названию на страницах авторов.
 - [Документация NumPy: broadcasting](https://numpy.org/doc/stable/user/basics.broadcasting.html) —
   если хоть раз сомневались, почему `a[:, None] - b[None, :]` даёт матрицу,
   прочитайте страницу целиком; это окупается на каждой второй задаче.
