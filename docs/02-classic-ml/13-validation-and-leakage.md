@@ -1146,13 +1146,27 @@ def adversarial_validation(X_train: pd.DataFrame, X_test: pd.DataFrame, seed=0):
    это не починит; надо разбираться с данными.
 
 ```python
+# Порядок важен: сначала убираем технические артефакты (сценарий 1), иначе на шаге 2
+# вся «похожесть на тест» сведётся к row_id и подвыборка получится бессмысленной.
+tech = ["row_id", "created_at"]
+auc, culprits, oof = adversarial_validation(X_train.drop(columns=tech, errors="ignore"),
+                                            X_test.drop(columns=tech, errors="ignore"))
+print(f"AUC отличимости после чистки: {auc:.3f}")
+print(culprits.round(4).to_string())
+
 # Сценарий 2(а): собираем валидацию из train-объектов, максимально похожих на test
-auc, culprits, oof = adversarial_validation(X_train, X_test)
-p_train = oof[:len(X_train)]                       # «похожесть на тест» для train-объектов
+p_train = oof[:len(X_train)]                        # «похожесть на тест» для train-объектов
 val_idx = np.argsort(-p_train)[:len(X_train) // 5]  # верхние 20% — самые «тестоподобные»
 mask = np.zeros(len(X_train), dtype=bool)
 mask[val_idx] = True
-X_val_like_test, X_fit = X_train[mask], X_train[~mask]
+X_val_like_test, X_fit = X_train.loc[mask], X_train.loc[~mask]
+
+# Проверка, что подвыборка действительно сдвинута в сторону теста:
+# среднее «виноватого» признака в ней должно быть ближе к тестовому, чем в остатке.
+guilty = culprits.index[0]
+print(f"{guilty}: valid-подвыборка {X_train.loc[mask, guilty].mean():.3f} | "
+      f"остаток train {X_train.loc[~mask, guilty].mean():.3f} | "
+      f"test {X_test[guilty].mean():.3f}")
 ```
 
 > 🧠 **Middle+.** Adversarial validation ловит и утечки, которых вы не искали. Если в датасете
