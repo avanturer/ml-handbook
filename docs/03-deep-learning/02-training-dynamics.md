@@ -63,6 +63,13 @@
 
 Дальше — по порядку, каждый инструмент через проблему, которую он закрывает.
 
+> 🌱 **База: короткий маршрут.** Если вы читаете главу впервые и вам нужен рабочий результат
+> сегодня, прочитайте §2.1 (почему не нули), §3.2 (BatchNorm: train против eval),
+> §4.7 (AdamW), §5.2–5.3 (warmup + cosine) и §9 (таблица диагностики) — и переходите
+> к §10, где всё это собрано в готовый рецепт. Выводы дисперсий в §2.3–2.4 и §4.6 нужны,
+> когда рецепт не сработает и надо понять почему; на собеседовании их спрашивают именно
+> в таком порядке — сначала «что сделаешь», потом «а почему это работает».
+
 ---
 
 ## 2. Инициализация
@@ -255,16 +262,24 @@ $\sqrt{2/(1+\alpha^2)}$ для LeakyReLU с наклоном $\alpha$. В PyTorc
 Практический вывод: если сеть глубокая и без нормализаций, инициализацию задают явно.
 
 ```python
+import torch
 import torch.nn as nn
 
-def init_he(module):
+
+def init_he(module: nn.Module) -> None:
     """He-инициализация под ReLU; смещения — нулями."""
     if isinstance(module, (nn.Linear, nn.Conv2d)):
         nn.init.kaiming_normal_(module.weight, mode="fan_in", nonlinearity="relu")
         if module.bias is not None:
             nn.init.zeros_(module.bias)
 
-model.apply(init_he)   # apply рекурсивно обходит все подмодули
+
+model = nn.Sequential(nn.Linear(256, 256), nn.ReLU(), nn.Linear(256, 10))
+model.apply(init_he)          # apply рекурсивно обходит все подмодули
+
+w = model[0].weight
+# проверяем, что получилось именно sqrt(2/fan_in): fan_in = 256 -> std ≈ 0.0884
+print(f"std весов: {w.std().item():.4f}, ожидаем {(2 / 256) ** 0.5:.4f}")
 ```
 
 Отдельно про **современную практику в трансформерах**: там инициализация обычно
@@ -655,7 +670,8 @@ if __name__ == "__main__":
     opt = AdamW([x], lr=0.05)
     for _ in range(300):
         opt.step([A @ x])               # градиент 0.5 x^T A x равен A x
-    print(np.round(x, 8), 0.5 * x @ A @ x)   # [ 0. -0.] 0.0
+    print(x, 0.5 * x @ A @ x)
+    # [-9.00e-08 -9.00e-08]  3.70e-13  — сошлись, хотя обусловленность 100
 ```
 
 **Ключевое свойство Adam**, которое стоит понимать: отношение $\hat m / \sqrt{\hat v}$
@@ -664,6 +680,18 @@ if __name__ == "__main__":
 Отсюда и хорошее, и плохое: устойчивость к плохой обусловленности и к разномасштабным
 градиентам (хорошее); полное игнорирование информации о том, что градиент маленький,
 и склонность к более «острым» решениям (спорное).
+
+> 🧠 **Middle+.** Доведите это свойство до предела: при $\beta_1 = \beta_2 = 0$ Adam
+> вырождается в $\theta \leftarrow \theta - \eta\,\operatorname{sign}(g)$ — чистый sign-SGD.
+> Стандартные $\beta$ — это сглаженная версия того же самого. Отсюда сразу два практических
+> следствия. Первое: Adam **устойчив к линейному масштабированию функции потерь** —
+> умножьте лосс на 1000, и траектория почти не изменится (у SGD она изменится в 1000 раз),
+> поэтому в Adam гораздо меньше боли с масштабом лосса и с loss scaling в mixed precision.
+> Второе: Adam почти не различает «градиент маленький, потому что мы в минимуме»
+> и «градиент маленький, потому что направление плоское» — он делает шаг длины $\eta$
+> в обоих случаях. Именно поэтому расписание $\eta$ для Adam обязательно, а не желательно:
+> без затухания $\eta$ модель не «садится» в минимум, а бесконечно ходит вокруг него
+> шагами фиксированной длины.
 
 ### 4.7 AdamW: почему weight decay ≠ L2 в Adam
 
@@ -710,14 +738,16 @@ $$
 
 ```python
 import torch
+import torch.nn as nn
 
-def param_groups(model, weight_decay=0.1):
-    """Веса матриц — с decay; смещения и параметры норм — без."""
+
+def param_groups(model: nn.Module, weight_decay: float = 0.1) -> list[dict]:
+    """Веса матриц — с decay; смещения и параметры нормализаций — без."""
     decay, no_decay = [], []
     for name, p in model.named_parameters():
         if not p.requires_grad:
             continue
-        # у смещений и у gamma/beta нормализаций размерность 1
+        # у смещений и у gamma/beta нормализаций размерность 1 — их не давим
         if p.ndim < 2 or name.endswith(".bias"):
             no_decay.append(p)
         else:
@@ -725,7 +755,13 @@ def param_groups(model, weight_decay=0.1):
     return [{"params": decay, "weight_decay": weight_decay},
             {"params": no_decay, "weight_decay": 0.0}]
 
-optimizer = torch.optim.AdamW(param_groups(model, 0.1), lr=3e-4, betas=(0.9, 0.95))
+
+model = nn.Sequential(nn.Linear(256, 256), nn.LayerNorm(256), nn.GELU(), nn.Linear(256, 10))
+groups = param_groups(model, weight_decay=0.1)
+optimizer = torch.optim.AdamW(groups, lr=3e-4, betas=(0.9, 0.95))
+
+print([len(g["params"]) for g in groups])
+# [2, 4] — две матрицы Linear под decay; два их смещения и gamma/beta слоя LayerNorm — без
 ```
 
 `betas=(0.9, 0.95)` — не опечатка: для языковых моделей $\beta_2 = 0{,}95$ вместо 0,999
@@ -840,6 +876,13 @@ $\eta$ от $10^{-7}$ до $10$ за несколько сотен шагов, �
 взрыв. Берут $\eta_{\max}$ примерно на порядок меньше точки взрыва — там, где падение
 самое крутое. Тест стоит 2–3 минуты и экономит часы перебора.
 
+> ⌨️ **Руками.** Реализуйте LR range test за 20 минут, не подглядывая: обёртка вокруг
+> обучающего цикла, которая на каждом шаге умножает `optimizer.param_groups[0]['lr']`
+> на постоянный множитель $(\eta_{\text{end}}/\eta_{\text{start}})^{1/N}$ и пишет пару
+> `(lr, loss)` в список; останов, когда лосс превысил стартовый вчетверо. Это самый
+> окупаемый из всех инструментов в этой главе: 30 строк кода экономят часы перебора
+> на каждой новой задаче.
+
 Типичные значения для ориентира: AdamW для трансформеров — $10^{-4}\dots5\cdot10^{-4}$
 при батче в тысячи токенов; AdamW для дообучения предобученной модели — $10^{-5}\dots5\cdot10^{-5}$
 (на порядок меньше, чем при обучении с нуля); SGD+momentum для CNN — $0{,}1$ при батче 256.
@@ -937,12 +980,23 @@ $$
 ограничить каждую координату.
 
 ```python
-# порядок вызовов критичен
-optimizer.zero_grad(set_to_none=True)
-loss.backward()
-grad_norm = torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
-optimizer.step()
-# grad_norm — норма ДО обрезки; это лучший из дешёвых индикаторов здоровья обучения
+import torch
+
+
+def train_step(model, batch, targets, loss_fn, optimizer, scheduler, max_norm=1.0):
+    """Один шаг обучения. Порядок вызовов здесь критичен — см. комментарии."""
+    model.train()
+    optimizer.zero_grad(set_to_none=True)          # градиенты накапливаются, их надо обнулить
+
+    loss = loss_fn(model(batch), targets)
+    loss.backward()
+
+    # clip_grad_norm_ возвращает норму ДО обрезки — лучший дешёвый индикатор здоровья обучения
+    grad_norm = torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=max_norm)
+
+    optimizer.step()                               # шаг оптимизатора — после обрезки
+    scheduler.step()                               # расписание — после оптимизатора
+    return loss.item(), grad_norm.item()
 ```
 
 Практика:
