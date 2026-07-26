@@ -428,7 +428,7 @@ print(f"padding='max_length':  {50_000 * 512 / 1e6:6.1f} млн токенов")
 print(f"динамический паддинг:  {tok_rand / 1e6:6.1f} млн, впустую {w_rand:.0%}")
 print(f"bucketing:             {tok_buck / 1e6:6.1f} млн, впустую {w_buck:.0%}")
 # padding='max_length':   25.6 млн токенов
-# динамический паддинг:   12.6 млн, впустую 78%
+# динамический паддинг:   12.7 млн, впустую 79%
 # bucketing:               3.0 млн, впустую 10%
 ```
 
@@ -602,7 +602,7 @@ def head_tail_truncate(token_ids, max_len, head=128, cls_id=101, sep_id=102):
 
 ids = list(range(1000))
 out = head_tail_truncate(ids, max_len=192, head=64)
-print(len(out), out[:3], out[-3:])   # 192 [101, 0, 1] [997, 998, 102]
+print(len(out), out[:3], out[-3:])   # 192 [101, 0, 1] [998, 999, 102]
 ```
 
 Чанкинг устроен сложнее: текст режется на окна длины $T$ с перекрытием (stride), каждое окно
