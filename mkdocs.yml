@@ -109,6 +109,8 @@ nav:
       - "Дисбаланс классов и калибровка": 02-classic-ml/12-imbalance-and-calibration.md
       - "Валидация и утечки": 02-classic-ml/13-validation-and-leakage.md
       - "Работа с признаками": 02-classic-ml/14-feature-engineering.md
+      - "Интерпретируемость": 02-classic-ml/15-interpretability.md
+      - "Временные ряды": 02-classic-ml/16-time-series.md
   - Deep Learning:
       - 03-deep-learning/index.md
       - "Нейросети и обратное распространение": 03-deep-learning/01-neural-nets-and-backprop.md
@@ -120,6 +122,7 @@ nav:
   - NLP:
       - 04-nlp/index.md
       - "Текст как данные": 04-nlp/01-text-representation.md
+      - "Эмбеддинги": 04-nlp/02-embeddings.md
       - "BERT и семейство энкодеров": 04-nlp/04-bert-and-encoders.md
       - "Задачи NLP и их метрики": 04-nlp/05-nlp-tasks-and-metrics.md
   - LLM:
@@ -143,7 +146,9 @@ nav:
       - "Графовые рекомендации": 06-recsys/10-graph-recsys.md
       - "LLM в рекомендациях": 06-recsys/11-llm-recsys.md
       - "Холодный старт и смещения": 06-recsys/12-cold-start-and-bias.md
+      - "Эксплорация и бандиты": 06-recsys/13-exploration-and-bandits.md
       - "Рекомендации в продакшене": 06-recsys/14-recsys-in-production.md
+      - "Онлайн-оценка рекомендаций": 06-recsys/15-recsys-online-evaluation.md
   - Выкатка в прод / MLOps:
       - 07-mlops/index.md
       - "Жизненный цикл ML-системы": 07-mlops/01-ml-lifecycle.md
@@ -153,6 +158,7 @@ nav:
       - "Архитектуры сервинга": 07-mlops/05-serving-architectures.md
       - "Docker и Kubernetes для MLE": 07-mlops/06-docker-and-k8s.md
       - "CI/CD для ML": 07-mlops/07-ci-cd-for-ml.md
+      - "Стратегии выкатки": 07-mlops/08-deployment-strategies.md
   - Big Data:
       - 08-big-data/index.md
       - "Хранение данных": 08-big-data/01-storage-and-formats.md
@@ -171,6 +177,10 @@ nav:
       - "Кейс: поиск и ранжирование": 11-system-design/03-case-search.md
       - "Кейс: антифрод": 11-system-design/04-case-fraud-detection.md
       - "Кейс: ассистент с RAG": 11-system-design/05-case-rag-assistant.md
+      - "Кейс: персонализация в реальном времени": 11-system-design/06-case-realtime-recsys.md
       - "Кейс: отток и удержание": 11-system-design/07-case-churn-uplift.md
       - "Кейс: предсказание CTR в рекламе": 11-system-design/08-case-ads-ctr.md
+  - Практика кода:
+      - 12-coding/index.md
+      - "Python, который спрашивают": 12-coding/01-python-for-mle.md
 # <<< конец сгенерированной навигации
