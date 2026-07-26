@@ -966,9 +966,10 @@ recall@20/NDCG@20. Третий — бейзлайны: значительная
 - [Steck H. «Embarrassingly Shallow Autoencoders for Sparse Data» (2019)](https://arxiv.org/abs/1905.03375) —
   EASE. Обязательный бейзлайн: замкнутое решение без обучения, которое на многих датасетах
   стоит вплотную к графовым моделям. Прочитайте до того, как начнёте внедрять LightGCN.
-- [Wu J. et al. «Self-supervised Graph Learning for Recommendation» (2020)](https://arxiv.org/abs/2010.10683) —
+- **Wu J. et al. «Self-supervised Graph Learning for Recommendation» (SIGIR 2021)** —
   SGL: контрастивная регуляризация поверх LightGCN, один из немногих приростов, который
-  устойчиво воспроизводится.
+  устойчиво воспроизводится. Ищите по названию: точный arXiv-идентификатор мы не смогли
+  подтвердить, а ссылка наугад хуже её отсутствия.
 - [Документация DGL](https://www.dgl.ai/) и [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/) —
   рабочие инструменты: сэмплеры соседей, разбиения графа, распределённое обучение.
   Начинать с их примеров, а не со своей реализации, если граф больше десятка миллионов рёбер.
