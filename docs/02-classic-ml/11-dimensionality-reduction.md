@@ -578,7 +578,8 @@ ref = PCA(n_components=k, svd_solver="full").fit(X)
 print("макс. расхождение компонент:", np.abs(mine.components_ - ref.components_).max())
 print("макс. расхождение долей дисперсии:",
       np.abs(mine.explained_variance_ratio_ - ref.explained_variance_ratio_).max())
-# оба числа порядка 1e-13 — это машинная точность, реализации совпадают
+# оба расхождения на уровне машинной точности (0 или ~1e-16): реализации совпадают,
+# включая соглашение о знаке — sklearn фиксирует его так же, по строкам Vt
 
 Z = mine.transform(X)
 X_rec = mine.inverse_transform(Z)
