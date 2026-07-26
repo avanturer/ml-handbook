@@ -276,7 +276,7 @@ y = torch.randint(0, n_classes, (4,))
 loss = nn.functional.cross_entropy(model(x), y)
 loss.backward()
 opt.step()
-print(float(loss))
+print(float(loss.detach()))
 ```
 
 Отдельный вопрос — **какой чекпоинт брать**. ImageNet-предобучение хорошо для «естественных»
