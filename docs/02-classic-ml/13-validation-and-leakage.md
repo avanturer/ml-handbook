@@ -750,24 +750,43 @@ KFold заметно выше, чем на временном сплите.
 
 ```python
 import numpy as np
-import pandas as pd
 from sklearn.model_selection import KFold, TimeSeriesSplit, cross_val_score
 from sklearn.ensemble import HistGradientBoostingClassifier
 
 rng = np.random.default_rng(0)
 n, d = 20_000, 10
-t = np.sort(rng.uniform(0, 1, n))                    # «время», отсортировано
-X = rng.normal(size=(n, d))
-# Зависимость дрейфует во времени: знак связи меняется на середине периода
-w = np.where(t[:, None] < 0.5, 1.0, -1.0) * np.array([2.0] + [0.0] * (d - 1))
-y = (rng.uniform(size=n) < 1 / (1 + np.exp(-(X * w).sum(1)))).astype(int)
+t = np.sort(rng.uniform(0, 1, n))                 # «время», данные отсортированы
+Z = rng.normal(size=(n, d))
+
+# Зависимость разворачивается на середине периода: до 0.5 признак 0 связан с таргетом
+# положительно, после — отрицательно. Это модель смены режима: сменился алгоритм выдачи,
+# поменялась ценовая политика, пришла новая аудитория.
+sign = np.where(t < 0.5, 1.0, -1.0)
+y = (rng.uniform(size=n) < 1 / (1 + np.exp(-2.0 * sign * Z[:, 0]))).astype(int)
+X = np.column_stack([Z, t])                       # время доступно модели как признак
 
 model = HistGradientBoostingClassifier(random_state=0)
-rand_cv = cross_val_score(model, X, y, cv=KFold(5, shuffle=True, random_state=0), scoring="roc_auc")
+rand_cv = cross_val_score(model, X, y, cv=KFold(5, shuffle=True, random_state=0),
+                          scoring="roc_auc")
 time_cv = cross_val_score(model, X, y, cv=TimeSeriesSplit(5), scoring="roc_auc")
-print(f"случайный KFold : {rand_cv.mean():.3f}")     # высоко: видит обе эпохи
-print(f"TimeSeriesSplit : {time_cv.mean():.3f}")     # ниже: честно предсказывает будущее
+
+print(f"случайный KFold : {rand_cv.mean():.3f}  по фолдам {np.round(rand_cv, 3)}")
+print(f"TimeSeriesSplit : {time_cv.mean():.3f}  по фолдам {np.round(time_cv, 3)}")
+# случайный KFold : 0.850  по фолдам [0.844 0.844 0.860 0.848 0.853]
+# TimeSeriesSplit : 0.787  по фолдам [0.824 0.823 0.574 0.859 0.857]
 ```
+
+Смотрите не на средние, а на разбивку по фолдам — она и есть главный результат.
+Случайный KFold даёт идеально ровные 0.85 ± 0.006: каждый его валидационный фолд содержит
+объекты из обоих режимов, и модель, обученная на перемешанных данных, знает про оба.
+Смена режима полностью замаскирована.
+
+Временной сплит показывает провал ровно на третьем фолде — том, который валидируется сразу
+после разворота зависимости (0.574 против 0.85). На четвёртом и пятом качество
+восстанавливается: расширяющееся окно уже включает данные нового режима, и модель
+переучилась. Это точная симуляция того, что произойдёт в проде: неделя-две плохих
+предсказаний после каждого изменения, пока не подоспеет переобучение. Случайная
+кросс-валидация не показывает этого события вообще — ни средним, ни разбросом.
 
 **Как лечить.** `TimeSeriesSplit` / rolling window; все агрегаты — только по прошлому
 (expanding/rolling с закрытым правым краем); сортировка данных по времени как инвариант,
