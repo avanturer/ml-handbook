@@ -1747,7 +1747,8 @@ def train(
     model: nn.Module,
     train_loader,
     val_loader,
-    criterion,
+    criterion,          # с reduction='mean' — для обучения
+    criterion_sum,      # тот же лосс с reduction='sum' — для честного среднего на валидации
     optimizer,
     scheduler,
     device: str,
@@ -1808,7 +1809,7 @@ def train(
                 with torch.amp.autocast(device, dtype=amp_dtype, enabled=use_amp):
                     # reduction='sum' + деление на общее число объектов: иначе последний
                     # неполный батч получит завышенный вес в среднем по батчам
-                    val_loss_sum += criterion(model(x), y, reduction="sum")
+                    val_loss_sum += criterion_sum(model(x), y)
                 val_count += y.numel()
         val_loss = (val_loss_sum / max(val_count, 1)).item()
         print(f"epoch {epoch}: val_loss {val_loss:.4f}")
