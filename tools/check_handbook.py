@@ -25,7 +25,9 @@ DOCS = ROOT / "docs"
 
 # Ссылки вида [текст](путь) — исключаем картинки ![...] и внешние протоколы.
 LINK_RE = re.compile(r"(?<!\!)\[[^\]]*\]\(([^)]+)\)")
-FENCE_RE = re.compile(r"^([`~]{3,})\s*(\S*)", re.MULTILINE)
+# Язык блока ищем ТОЛЬКО на той же строке: `\s*` съедал перевод строки и утаскивал
+# первое слово следующего абзаца, из-за чего две подряд идущие ограды склеивались в одну.
+FENCE_RE = re.compile(r"^([`~]{3,})[ \t]*(\S*)[ \t]*$", re.MULTILINE)
 HEADING_RE = re.compile(r"^#{1,6}\s+(.*)$", re.MULTILINE)
 PLACEHOLDER_RE = re.compile(r"\b(TODO|FIXME|XXX|lorem ipsum|допишу|дописать)\b", re.IGNORECASE)
 

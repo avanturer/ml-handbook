@@ -104,6 +104,8 @@ nav:
       - "Градиентный бустинг": 02-classic-ml/07-gradient-boosting.md
       - "XGBoost, LightGBM, CatBoost": 02-classic-ml/08-boosting-in-practice.md
       - "SVM, kNN и наивный Байес": 02-classic-ml/09-svm-knn-bayes.md
+      - "Кластеризация": 02-classic-ml/10-clustering.md
+      - "Снижение размерности": 02-classic-ml/11-dimensionality-reduction.md
       - "Дисбаланс классов и калибровка": 02-classic-ml/12-imbalance-and-calibration.md
   - Deep Learning:
       - 03-deep-learning/index.md
@@ -134,8 +136,10 @@ nav:
       - "Факторизационные машины и гибриды": 06-recsys/05-factorization-machines.md
       - "Двухбашенные модели и ANN-поиск": 06-recsys/06-two-tower-and-ann.md
       - "Обучение ранжированию": 06-recsys/07-learning-to-rank.md
+      - "Нейронное ранжирование": 06-recsys/08-neural-ranking.md
       - "Последовательные рекомендации": 06-recsys/09-sequential-recsys.md
       - "Графовые рекомендации": 06-recsys/10-graph-recsys.md
+      - "LLM в рекомендациях": 06-recsys/11-llm-recsys.md
   - Выкатка в прод / MLOps:
       - 07-mlops/index.md
       - "Жизненный цикл ML-системы": 07-mlops/01-ml-lifecycle.md
@@ -151,7 +155,9 @@ nav:
   - A/B-тесты:
       - 10-ab-testing/index.md
       - "Дизайн эксперимента": 10-ab-testing/01-experiment-design.md
+      - "Статистические критерии на практике": 10-ab-testing/02-statistical-criteria.md
       - "Снижение дисперсии": 10-ab-testing/03-variance-reduction.md
+      - "Ловушки A/B-тестов": 10-ab-testing/04-pitfalls.md
   - ML System Design:
       - 11-system-design/index.md
       - "Как проходить ML System Design": 11-system-design/01-framework.md
