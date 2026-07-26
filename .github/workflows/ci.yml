@@ -19,6 +19,9 @@ jobs:
       - name: Проверить структуру глав и внутренние ссылки
         run: python tools/check_handbook.py
 
+      - name: Проверить покрытие обязательных тем
+        run: python tools/check_coverage.py
+
       - name: Проверить, что навигация не разошлась с файлами
         run: |
           python tools/build_nav.py > /dev/null
