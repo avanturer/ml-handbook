@@ -218,6 +218,30 @@ def write_mkdocs_nav(sections: dict[str, list[Chapter]]) -> None:
     print(f"mkdocs.yml: навигация обновлена ({len(sections)} разделов).")
 
 
+def update_readme_badges(sections: dict[str, list[Chapter]]) -> None:
+    """Держит счётчики в шапке README в согласии с реальным числом файлов.
+
+    Цифры в витрине — первое, что читатель может проверить. Если они врут,
+    доверие к остальному тексту падает сразу, поэтому проставляем их автоматически.
+    """
+    path = ROOT / "README.md"
+    text = path.read_text(encoding="utf-8")
+    total = sum(len(v) for v in sections.values())
+
+    text = re.sub(
+        r'(<img alt="Разделов" src="https://img\.shields\.io/badge/разделов-)\d+',
+        rf"\g<1>{len(sections)}",
+        text,
+    )
+    text = re.sub(
+        r'(<img alt="Глав" src="https://img\.shields\.io/badge/глав-)\d+',
+        rf"\g<1>{total}",
+        text,
+    )
+    path.write_text(text, encoding="utf-8")
+    print(f"README: счётчики обновлены ({len(sections)} разделов, {total} глав).")
+
+
 def main() -> int:
     sections = collect()
     if not sections:
@@ -227,6 +251,7 @@ def main() -> int:
         write_section_index(slug, chapters)
     write_root_index(sections)
     write_mkdocs_nav(sections)
+    update_readme_badges(sections)
     total = sum(len(v) for v in sections.values())
     print(f"Собрано: {len(sections)} разделов, {total} глав.")
     for slug, chapters in sections.items():

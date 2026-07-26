@@ -111,6 +111,8 @@ nav:
       - "Работа с признаками": 02-classic-ml/14-feature-engineering.md
       - "Интерпретируемость": 02-classic-ml/15-interpretability.md
       - "Временные ряды": 02-classic-ml/16-time-series.md
+      - "Uplift и причинность": 02-classic-ml/17-uplift-and-causal.md
+      - "Поиск аномалий": 02-classic-ml/18-anomaly-detection.md
   - Deep Learning:
       - 03-deep-learning/index.md
       - "Нейросети и обратное распространение": 03-deep-learning/01-neural-nets-and-backprop.md
@@ -123,6 +125,7 @@ nav:
       - 04-nlp/index.md
       - "Текст как данные": 04-nlp/01-text-representation.md
       - "Эмбеддинги": 04-nlp/02-embeddings.md
+      - "Seq2seq и машинный перевод": 04-nlp/03-seq2seq-and-attention.md
       - "BERT и семейство энкодеров": 04-nlp/04-bert-and-encoders.md
       - "Задачи NLP и их метрики": 04-nlp/05-nlp-tasks-and-metrics.md
   - LLM:
@@ -159,9 +162,13 @@ nav:
       - "Docker и Kubernetes для MLE": 07-mlops/06-docker-and-k8s.md
       - "CI/CD для ML": 07-mlops/07-ci-cd-for-ml.md
       - "Стратегии выкатки": 07-mlops/08-deployment-strategies.md
+      - "Оптимизация инференса": 07-mlops/09-inference-optimization.md
+      - "Стоимость и ёмкость": 07-mlops/10-cost-and-capacity.md
   - Big Data:
       - 08-big-data/index.md
       - "Хранение данных": 08-big-data/01-storage-and-formats.md
+      - "SQL для MLE": 08-big-data/02-sql-for-mle.md
+      - "Spark: как он работает": 08-big-data/03-spark-fundamentals.md
   - A/B-тесты:
       - 10-ab-testing/index.md
       - "Дизайн эксперимента": 10-ab-testing/01-experiment-design.md
@@ -183,4 +190,7 @@ nav:
   - Практика кода:
       - 12-coding/index.md
       - "Python, который спрашивают": 12-coding/01-python-for-mle.md
+      - "NumPy и pandas на скорость": 12-coding/02-numpy-pandas.md
+      - "Реализуем ML руками": 12-coding/03-ml-from-scratch.md
+      - "SQL: тренировка": 12-coding/05-sql-drills.md
 # <<< конец сгенерированной навигации
