@@ -599,7 +599,7 @@ spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 10001
-      # Растаскиваем реплики по узлам: падение одного узла не должно унести半 сервиса.
+      # Растаскиваем реплики по узлам: падение одного узла не должно унести половину сервиса.
       topologySpreadConstraints:
         - maxSkew: 1
           topologyKey: kubernetes.io/hostname
