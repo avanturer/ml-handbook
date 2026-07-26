@@ -1417,9 +1417,10 @@ CTR за час на 10% трафика этого не поймал бы.*
 - [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) —
   правила 29–32 про train/serve skew и про логирование фич в момент предсказания
   напрямую относятся к сценариям §6 и §9.
-- [Google. «The ML Test Score»](https://research.google/pubs/pub46555/) — чек-лист
-  готовности ML-системы к продакшену; раздел про мониторинг и про тесты инфраструктуры
-  можно использовать как аудит перед тем, как заводить дежурство.
+- **Breck et al. «The ML Test Score: A Rubric for ML Production Readiness and Technical
+  Debt Reduction» (IEEE Big Data, 2017)** — чек-лист готовности ML-системы к продакшену;
+  раздел про мониторинг и про тесты инфраструктуры можно использовать как аудит перед тем,
+  как заводить дежурство. Ищите по названию в публикациях Google Research.
 - [Sculley et al. «Hidden Technical Debt in Machine Learning Systems» (NeurIPS 2015)](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) —
   почему ML-системы ломаются способами, которых нет у обычного софта: связанность
   через данные, петли обратной связи, undeclared consumers.
