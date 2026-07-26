@@ -418,8 +418,8 @@ mixed = np.where(rng.random(100_000) < 0.5, rng.poisson(5, 100_000), rng.poisson
 
 for name, s in (("чистый Пуассон", pure_poisson), ("смесь режимов", mixed)):
     print(f"{name:16s} mean={s.mean():6.3f}  var={s.var():6.3f}  var/mean={s.var()/s.mean():.2f}")
-# чистый Пуассон   mean=10.005  var=10.014  var/mean=1.00
-# смесь режимов    mean= 9.997  var=34.986  var/mean=3.50   <- сверхдисперсия
+# чистый Пуассон   mean= 9.988  var= 9.986  var/mean=1.00
+# смесь режимов    mean= 9.990  var=34.925  var/mean=3.50   <- сверхдисперсия
 ```
 
 ---
@@ -588,18 +588,19 @@ $\operatorname{Cov}(X,Y) = 0 - 0\cdot\mathbb{E}[X^2] = 0$, и $\rho = 0$.
 
 ```python
 import numpy as np
+from scipy import stats
 from sklearn.feature_selection import mutual_info_regression
 
 rng = np.random.default_rng(0)
 X = rng.uniform(-1, 1, 20_000)
 Y = X ** 2
 
-print("корреляция Пирсона :", round(np.corrcoef(X, Y)[0, 1], 4))               # -0.0027
-print("корреляция Спирмена:", round(__import__("scipy.stats", fromlist=["x"]).spearmanr(X, Y).statistic, 4))
+print("корреляция Пирсона :", round(np.corrcoef(X, Y)[0, 1], 4))
+print("корреляция Спирмена:", round(stats.spearmanr(X, Y).statistic, 4))
 print("взаимная информация:", round(mutual_info_regression(X.reshape(-1, 1), Y, random_state=0)[0], 3))
-# корреляция Пирсона : -0.0027   <- «связи нет»
-# корреляция Спирмена: -0.0026   <- ранговая тоже не спасает: зависимость немонотонна
-# взаимная информация: 3.014     <- а связь есть, и она сильнейшая
+# корреляция Пирсона : -0.0026   <- «связи нет»
+# корреляция Спирмена:  0.0084   <- ранговая тоже не спасает: зависимость немонотонна
+# взаимная информация:  7.271    <- а связь есть, и она функциональная
 ```
 
 Обратное утверждение верно: **независимость влечёт нулевую корреляцию** (так как
