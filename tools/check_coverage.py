@@ -129,6 +129,18 @@ COVERAGE: list[tuple[str, str, list[str]]] = [
      [r"Симпсон"]),
     ("Switchback и сетевые эффекты", "10-ab-testing/05-complex-designs.md",
      [r"switchback|свитчбэк", r"сетев\w+ эффект"]),
+    ("Что на самом деле проверяет Манн — Уитни", "10-ab-testing/02-statistical-criteria.md",
+     [r"Манн\w*\s*[—-]\s*Уитни", r"Mann\s*[—-]?\s*Whitney"]),
+    ("Тест Уэлча как разумный дефолт", "10-ab-testing/02-statistical-criteria.md",
+     [r"Уэлч"]),
+    ("Тяжёлые хвосты: винзоризация и бутстрап", "10-ab-testing/02-statistical-criteria.md",
+     [r"винзориз", r"тяж\w+ хвост"]),
+    ("Novelty и primacy: как детектировать", "10-ab-testing/04-pitfalls.md",
+     [r"новизн", r"novelty"]),
+    ("Guardrail-метрики и решение при их просадке", "10-ab-testing/01-experiment-design.md",
+     [r"guardrail|гардрейл"]),
+    ("Выбросы фильтруются по предэкспериментальному периоду", "10-ab-testing/04-pitfalls.md",
+     [r"выброс"]),
 
     # --- system design и код ---
     ("Каркас ответа: уточнения до модели", "11-system-design/01-framework.md",
