@@ -128,6 +128,7 @@ nav:
       - "Seq2seq и машинный перевод": 04-nlp/03-seq2seq-and-attention.md
       - "BERT и семейство энкодеров": 04-nlp/04-bert-and-encoders.md
       - "Задачи NLP и их метрики": 04-nlp/05-nlp-tasks-and-metrics.md
+      - "NLP в продакшене": 04-nlp/06-nlp-in-production.md
   - LLM:
       - 05-llm/index.md
       - "Устройство современной LLM": 05-llm/01-llm-architecture.md
@@ -135,6 +136,7 @@ nav:
       - "SFT и выравнивание": 05-llm/03-sft-and-alignment.md
       - "PEFT и квантизация": 05-llm/04-peft-and-quantization.md
       - "Инференс LLM": 05-llm/05-inference-and-serving.md
+      - "RAG": 05-llm/07-rag.md
   - Рекомендательные системы:
       - 06-recsys/index.md
       - "Постановка задачи рекомендаций": 06-recsys/01-recsys-foundations.md
@@ -169,6 +171,13 @@ nav:
       - "Хранение данных": 08-big-data/01-storage-and-formats.md
       - "SQL для MLE": 08-big-data/02-sql-for-mle.md
       - "Spark: как он работает": 08-big-data/03-spark-fundamentals.md
+      - "Spark: производительность": 08-big-data/04-spark-tuning.md
+      - "Потоковая обработка": 08-big-data/05-streaming.md
+      - "Оркестрация пайплайнов": 08-big-data/06-orchestration.md
+  - Мониторинг:
+      - 09-monitoring/index.md
+      - "Что мониторить в ML-системе": 09-monitoring/01-what-to-monitor.md
+      - "Дрифт данных": 09-monitoring/03-drift-detection.md
   - A/B-тесты:
       - 10-ab-testing/index.md
       - "Дизайн эксперимента": 10-ab-testing/01-experiment-design.md
@@ -192,5 +201,11 @@ nav:
       - "Python, который спрашивают": 12-coding/01-python-for-mle.md
       - "NumPy и pandas на скорость": 12-coding/02-numpy-pandas.md
       - "Реализуем ML руками": 12-coding/03-ml-from-scratch.md
+      - "Алгоритмы для MLE-собеса": 12-coding/04-algorithms.md
       - "SQL: тренировка": 12-coding/05-sql-drills.md
+      - "PyTorch: тренировка": 12-coding/06-pytorch-drills.md
+  - CV, звук, мультимодальность:
+      - 13-optional/index.md
+      - "Computer Vision: необходимый минимум": 13-optional/01-computer-vision.md
+      - "Звук и речь: необходимый минимум": 13-optional/02-audio-and-speech.md
 # <<< конец сгенерированной навигации

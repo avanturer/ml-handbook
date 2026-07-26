@@ -3,7 +3,7 @@
 > Собран автоматически из блоков «Что читать дальше» всех глав (`python tools/build_bibliography.py`).
 > Это не список «прочитать всё» — это карта: у каждого источника указано, зачем его читать и после какой главы.
 
-**Источников:** 657 · **глав с библиографией:** 77
+**Источников:** 844 · **глав с библиографией:** 98
 
 ## Как этим пользоваться
 
@@ -270,6 +270,33 @@
 - [Zeng A. et al. «Are Transformers Effective for Time Series Forecasting?» (2022)](https://arxiv.org/abs/2205.13504) — отрезвляющая работа: простая линейная модель бьёт трансформеры на стандартных бенчмарках. Читать ради критики протоколов сравнения — это же умение пригодится на собеседовании.
 - **Makridakis S. et al., отчёты о соревнованиях M4 (2020) и M5 (2022), International Journal of Forecasting** — эмпирическая база для утверждений «что реально работает»: победа комбинаций статистики и ML на M4 и доминирование градиентного бустинга на M5.
 
+### [Uplift и причинность](../docs/02-classic-ml/17-uplift-and-causal.md)
+
+- [Künzel S. et al. «Metalearners for estimating heterogeneous treatment effects using machine learning» (2017)](https://arxiv.org/abs/1706.03461) — первоисточник X-learner с аккуратным сравнением S/T/X; читать раздел про несбалансированные группы — там объяснение весов, которое мы разобрали в §5.
+- [Athey S., Imbens G. «Recursive Partitioning for Heterogeneous Causal Effects» (2015)](https://arxiv.org/abs/1504.01132) — causal tree и идея honest splitting. Ключевое место — объяснение, почему без разделения выборки оценка эффекта в листе смещена.
+- [Wager S., Athey S. «Estimation and Inference of Heterogeneous Treatment Effects using Random Forests» (2015)](https://arxiv.org/abs/1510.04342) — causal forest и доверительные интервалы для CATE. Единственный из перечисленных методов, дающий корректный статистический вывод.
+- [Nie X., Wager S. «Quasi-Oracle Estimation of Heterogeneous Treatment Effects» (2017)](https://arxiv.org/abs/1712.04912) — R-learner и разложение Робинсона; читать, если нужно понимать, откуда берутся современные DML-подходы.
+- [Chernozhukov V. et al. «Double/Debiased Machine Learning for Treatment and Structural Parameters» (2016)](https://arxiv.org/abs/1608.00060) — теоретическая база для cross-fitting и ортогонализации. Тяжёлая статья; минимум — понять, зачем нужен cross-fitting.
+- [Hernán M., Robins J. «Causal Inference: What If»](https://miguelhernan.org/whatifbook) — бесплатная книга, лучший источник по допущениям, DAG, конфаундерам, коллайдерам и IV. Первая часть читается без специальной подготовки и вправляет интуицию про то, что можно и чего нельзя контролировать.
+- [causalml (Uber)](https://github.com/uber/causalml) — метаобучатели, uplift-деревья и леса, метрики Qini/AUUC в одном месте; хорошая отправная точка для продовой реализации.
+- [EconML (Microsoft / PyWhy)](https://github.com/py-why/EconML) — DML, DR-learner, causal forest, IV; сильнее в статистическом выводе, чем causalml.
+- [scikit-uplift](https://github.com/maks-sh/scikit-uplift) — API в стиле sklearn, метрики и визуализации uplift-кривых; удобен для быстрых экспериментов и для обучения.
+- **Radcliffe N. «Using control groups to target on predicted lift» (2007)** — работа, откуда происходит кривая Qini; полезна как исторический первоисточник терминологии.
+- **Rzepakowski P., Jaworski S. «Decision trees for uplift modeling with single and multiple treatments» (Knowledge and Information Systems, 2012)** — критерии расщепления uplift-деревьев, разобранные в §6.
+
+### [Поиск аномалий](../docs/02-classic-ml/18-anomaly-detection.md)
+
+- [Документация scikit-learn: Novelty and Outlier Detection](https://scikit-learn.org/stable/modules/outlier_detection.html) — сжатое сравнение Isolation Forest, LOF, One-Class SVM и Elliptic Envelope с картинками границ решения на разных структурах данных. Лучший способ увидеть, где какой метод ломается.
+- [PyOD: библиотека детекторов аномалий](https://github.com/yzhao062/pyod) — более 40 реализованных методов с единым API, включая ансамблирование и глубокие модели. Полезна не только как код, но и как каталог: по списку методов удобно понять ландшафт задачи.
+- **Liu F.T., Ting K.M., Zhou Z.-H. «Isolation Forest» (ICDM 2008)** — первоисточник; читать ради вывода нормировки $c(n)$ и раздела про swamping/masking, который объясняет выбор `max_samples=256`.
+- **Breunig M. et al. «LOF: Identifying Density-Based Local Outliers» (SIGMOD 2000)** — первоисточник LOF; ключевое место — обоснование reachability distance как способа стабилизировать оценку плотности.
+- **Schölkopf B. et al. «Estimating the Support of a High-Dimensional Distribution» (2001)** — вывод One-Class SVM и обеих интерпретаций параметра $\nu$.
+- **Chandola V., Banerjee A., Kumar V. «Anomaly Detection: A Survey» (ACM Computing Surveys, 2009)** — классический обзор; лучшая систематизация постановок и типов аномалий, из которой взята таксономия §2.
+- **Ruff L. et al. «A Unifying Review of Deep and Shallow Anomaly Detection» (Proceedings of the IEEE, 2021)** — современный обзор, связывающий классические методы и глубокие; полезен, чтобы понять, что автоэнкодер и Deep SVDD решают одну задачу разными средствами.
+- **Wu R., Keogh E. «Current Time Series Anomaly Detection Benchmarks are Flawed» (IEEE TKDE, 2022)** — критика стандартных бенчмарков и протокола point-adjust. Читать перед тем, как поверить любому опубликованному F1 на рядах.
+- [Google SRE Book: Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/) и [SRE Workbook: Alerting on SLOs](https://sre.google/workbook/alerting-on-slos/) — не про ML, но именно здесь лучше всего сформулированы принципы «алертить на симптомы» и работа с частотой ложных срабатываний. Раздел 10 этой главы во многом опирается на них.
+- [ruptures: детекция точек разладки](https://github.com/deepcharles/ruptures) и [stumpy: matrix profile](https://github.com/TDAmeritrade/stumpy) — рабочие инструменты для двух задач из §9, которых нет в scikit-learn.
+
 ## Deep Learning
 
 ### [Нейросети и обратное распространение](../docs/03-deep-learning/01-neural-nets-and-backprop.md)
@@ -388,6 +415,20 @@
 - [Документация gensim](https://radimrehurek.com/gensim/) и [sentence-transformers](https://www.sbert.net/) — рабочие инструменты. У второго особенно полезен раздел Training Overview: там перечислены функции потерь и то, под какие данные каждая подходит.
 - [RusVectores](https://rusvectores.org/) — предобученные word2vec и fastText для русского на разных корпусах, с онлайн-демо ближайших соседей. Удобно, чтобы быстро проверить гипотезу до того, как что-то обучать.
 
+### [Seq2seq и машинный перевод](../docs/04-nlp/03-seq2seq-and-attention.md)
+
+- [Sutskever, Vinyals, Le «Sequence to Sequence Learning with Neural Networks» (2014)](https://arxiv.org/abs/1409.3215) — первая работающая seq2seq-модель. Читать ради постановки и ради трюка с разворотом входа: это лучшая иллюстрация того, чем плох бутылочный вектор.
+- [Cho et al. «Learning Phrase Representations using RNN Encoder-Decoder» (2014)](https://arxiv.org/abs/1406.1078) — параллельная работа, здесь же впервые появляется GRU.
+- [Bahdanau, Cho, Bengio «Neural Machine Translation by Jointly Learning to Align and Translate» (2014)](https://arxiv.org/abs/1409.0473) — статья, с которой началось внимание. Обязательна: разделы 3.1 и приложение с формулами, плюс графики BLEU по длине предложения и тепловые карты выравнивания.
+- [Luong, Pham, Manning «Effective Approaches to Attention-based Neural Machine Translation» (2015)](https://arxiv.org/abs/1508.04025) — систематическое сравнение вариантов скоринга, input feeding, локальное внимание. Короткая и очень плотная.
+- [Vaswani et al. «Attention Is All You Need» (2017)](https://arxiv.org/abs/1706.03762) — следующий шаг: внимание без рекуррентности. Читать сразу после Luong, чтобы увидеть преемственность; разбор — в [главе о трансформере](../docs/03-deep-learning/04-attention-and-transformer.md).
+- [Papineni et al. «BLEU: a Method for Automatic Evaluation of Machine Translation» (2002)](https://aclanthology.org/P02-1040/) — первоисточник метрики. Восемь страниц, читаются за час, и после них формула из §7 перестаёт быть магией.
+- [Post M. «A Call for Clarity in Reporting BLEU Scores» (2018)](https://arxiv.org/abs/1804.08771) — почему числа BLEU из разных статей несравнимы и что с этим делает sacreBLEU. Прочитать до того, как сравнивать свою модель с чьей-то опубликованной.
+- [Wu et al. «Google's Neural Machine Translation System» (2016)](https://arxiv.org/abs/1609.08144) — инженерная статья: length penalty, coverage penalty, квантизация, обучение на восьми GPU. Формула $\mathrm{lp}(y)$ из §6.3 отсюда.
+- [Holtzman et al. «The Curious Case of Neural Text Degeneration» (2019)](https://arxiv.org/abs/1904.09751) — почему поиск моды разрушает открытую генерацию и откуда взялся nucleus sampling.
+- [Bengio et al. «Scheduled Sampling for Sequence Prediction with RNN» (2015)](https://arxiv.org/abs/1506.03099) — каноническая попытка починить exposure bias; полезно прочитать вместе с критикой метода.
+- **Koehn P., Knowles R. «Six Challenges for Neural Machine Translation» (2017)** — честный список того, где нейронный перевод ломается: домен, редкие слова, длинные предложения, ширина луча. Ищется по названию.
+
 ### [BERT и семейство энкодеров](../docs/04-nlp/04-bert-and-encoders.md)
 
 - [Devlin et al. «BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding» (2018)](https://arxiv.org/abs/1810.04805) — первоисточник. Читать ради раздела 3.1 (постановка MLM и обоснование 80/10/10) и приложения C.2 с абляциями; там же рекомендованные гиперпараметры дообучения.
@@ -416,6 +457,22 @@
 - [Rei et al. «COMET: A Neural Framework for MT Evaluation» (2020)](https://arxiv.org/abs/2009.09022) — обучаемая метрика, предсказывающая человеческую оценку; текущий стандарт в оценке перевода.
 - [Artstein & Poesio «Inter-Coder Agreement for Computational Linguistics» (2008)](https://aclanthology.org/J08-4004/) — исчерпывающий разбор каппы Коэна, каппы Фляйсса и альфы Криппендорфа с обсуждением, когда какую брать. Лучший источник по теме разметки.
 - [seqeval](https://github.com/chakki-works/seqeval) — референсная реализация entity-level метрик, совместимая со скриптом CoNLL. Прочитайте исходник обработки некорректных цепочек: это объясняет расхождения в числах между командами.
+
+### [NLP в продакшене](../docs/04-nlp/06-nlp-in-production.md)
+
+- [DistilBERT, a distilled version of BERT (Sanh et al., 2019)](https://arxiv.org/abs/1910.01108) — каноническая рецептура дистилляции энкодера: инициализация слоями учителя, тройная функция потерь, честные замеры. Читать перед тем, как дистиллировать своё.
+- [Distilling the Knowledge in a Neural Network (Hinton et al., 2015)](https://arxiv.org/abs/1503.02531) — первоисточник температуры и множителя $\tau^2$. Короткая статья, стоит прочесть целиком: почти все последующие схемы — её вариации.
+- [TinyBERT (Jiao et al., 2019)](https://arxiv.org/abs/1909.10351) и [MiniLM (Wang et al., 2020)](https://arxiv.org/abs/2002.10957) — согласование не только логитов, но и внутренних представлений и матриц внимания. Отсюда берут идеи, когда двух слоёв мало.
+- [Well-Read Students Learn Better (Turc et al., 2019)](https://arxiv.org/abs/1908.08962) — набор маленьких BERT-ов и разбор, что важнее: предобучение ученика или дистилляция. Полезно, когда выбираете размер ученика.
+- [How to Fine-Tune BERT for Text Classification? (Sun et al., 2019)](https://arxiv.org/abs/1905.05583) — систематическое сравнение стратегий усечения (head, tail, head+tail) и режимов дообучения на длинных документах. Именно отсюда рекомендация head+tail.
+- [Q8BERT: Quantized 8Bit BERT (Zafrir et al., 2019)](https://arxiv.org/abs/1910.06188) — что происходит с качеством энкодера при 8 битах и где нужен quantization-aware training.
+- [Sentence-BERT (Reimers, Gurevych, 2019)](https://arxiv.org/abs/1908.10084) и [Making Monolingual Sentence Embeddings Multilingual (Reimers, Gurevych, 2020)](https://arxiv.org/abs/2004.09813) — как получать эмбеддинги предложений, которые имеет смысл кэшировать, и как перенести качественную английскую модель на русский дистилляцией.
+- [Документация ONNX Runtime](https://onnxruntime.ai/docs/) и [Hugging Face Optimum](https://huggingface.co/docs/optimum/index) — практические рецепты экспорта, оптимизации графа и квантизации. Читать как справочник во время работы.
+- [Padding and truncation в документации Transformers](https://huggingface.co/docs/transformers/pad_truncation) — точная семантика `padding`, `truncation`, `only_second`, `stride`. Стоит прочитать один раз внимательно: половина ошибок с длинами берётся из непонимания этих флагов.
+- [UAX #15: Unicode Normalization Forms](https://www.unicode.org/reports/tr15/) и [UTS #39: Unicode Security Mechanisms](https://www.unicode.org/reports/tr39/) — чем NFC отличается от NFKC и как устроены таблицы визуально неразличимых символов. Первое читать перед выбором нормализации, второе — если делаете фильтр контента.
+- [fastText: определение языка](https://fasttext.cc/docs/en/language-identification.html) — модель `lid.176`, 176 языков, микросекунды на текст. Базовый инструмент для детекции языкового дрифта.
+- [Gretton et al. «A Kernel Two-Sample Test» (JMLR, 2012)](https://www.jmlr.org/papers/v13/gretton12a.html) — строгая версия того, что в §8 сделано эвристикой: как корректно проверять, что две выборки векторов пришли из разных распределений. Читать, если строите серьёзный детектор дрифта эмбеддингов.
+- **Sculley et al., «Hidden Technical Debt in Machine Learning Systems» (NeurIPS, 2015)** — классическая работа Google про то, что код модели составляет малую долю системы. Разделы про glue code и про entanglement объясняют, почему препроцессинг ломается чаще модели.
 
 ## LLM
 
@@ -488,6 +545,24 @@
 - [Holtzman et al. «The Curious Case of Neural Text Degeneration» (2019)](https://arxiv.org/abs/1904.09751) — введение nucleus sampling и лучшее объяснение, почему greedy и beam search вырождаются на открытой генерации.
 - [Документация vLLM](https://docs.vllm.ai/) — первоисточник по `enable_chunked_prefill`, `enable_prefix_caching`, `kv_cache_dtype`, спекулятивному декодированию и встроенному бенчмарку. API меняется быстро — всегда сверяйтесь с версией, которую поднимаете.
 - [Документация HuggingFace Transformers: генерация](https://huggingface.co/docs/transformers/main/en/llm_tutorial) — параметры `generate`, `GenerationConfig`, стратегии декодирования и статический KV-кэш. Полезно, чтобы понимать, что именно движки делают за вас.
+
+### [RAG](../docs/05-llm/07-rag.md)
+
+- [Lewis et al. «Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks» (2020)](https://arxiv.org/abs/2005.11401) — первоисточник термина. Читать ради постановки задачи и понимания, чем исходный RAG (обучаемый ретривер, маргинализация по документам) отличается от того, что сегодня строят в проде.
+- [Karpukhin et al. «Dense Passage Retrieval for Open-Domain QA» (2020)](https://arxiv.org/abs/2004.04906) — как обучают би-энкодер для поиска: in-batch negatives, hard negatives. Основа для дообучения своего эмбеддера, а это самый выгодный рычаг качества.
+- [Thakur et al. «BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation of IR Models» (2021)](https://arxiv.org/abs/2104.08663) — та самая работа, где BM25 обошёл многие обученные dense-ретриверы при переносе на новый домен. Обязательна, если хотите аргументированно защищать гибридный поиск.
+- [Liu et al. «Lost in the Middle: How Language Models Use Long Contexts» (2023)](https://arxiv.org/abs/2307.03172) — U-образная кривая по позиции. Читать раздел с экспериментами: там видно, при каком числе документов эффект становится заметным.
+- [Gao et al. «Precise Zero-Shot Dense Retrieval without Relevance Labels» (HyDE, 2022)](https://arxiv.org/abs/2212.10496) — короткая и изящная работа; полезна как пример того, что асимметрия «запрос против документа» бывает важнее качества энкодера.
+- [Es et al. «Ragas: Automated Evaluation of Retrieval Augmented Generation» (2023)](https://arxiv.org/abs/2309.15217) и [документация Ragas](https://docs.ragas.io/) — определения faithfulness, answer relevance, context precision/recall и, что важнее, то, как именно их считают. Берите как готовый каркас оценки, но валидируйте судью на своих данных.
+- [Asai et al. «Self-RAG» (2023)](https://arxiv.org/abs/2310.11511) и [Yan et al. «Corrective Retrieval Augmented Generation» (2024)](https://arxiv.org/abs/2401.15884) — две схемы адаптивного поиска. Читать вместе: они решают одну задачу разной ценой, и сравнение этой цены — хороший материал для секции system design.
+- [Edge et al. «From Local to Global: A Graph RAG Approach to Query-Focused Summarization» (2024)](https://arxiv.org/abs/2404.16130) — GraphRAG от Microsoft. Смотреть на раздел про стоимость индексации: там честно написано, сколько LLM-вызовов это стоит.
+- [Sarthi et al. «RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval» (2024)](https://arxiv.org/abs/2401.18059) — иерархическая суммаризация как компромисс между обычным RAG и GraphRAG.
+- [Anthropic. «Introducing Contextual Retrieval» (2024)](https://www.anthropic.com/news/contextual-retrieval) — инженерный разбор с числами: насколько снижается доля провалов поиска от контекстного обогащения чанков, обогащённого BM25 и реранкера. Хороший пример того, как надо измерять улучшения RAG.
+- [Khattab, Zaharia. «ColBERT» (2020)](https://arxiv.org/abs/2004.12832) — late interaction, промежуточное звено между би-энкодером и cross-encoder. Читать ради понимания шкалы «когда происходит взаимодействие запроса с документом».
+- **Manning, Raghavan, Schütze. «Introduction to Information Retrieval»** ([свободно доступна на сайте Стэнфорда](https://nlp.stanford.edu/IR-book/)) — главы про инвертированный индекс, оценку ранжирования и BM25. Всё, что сегодня называют «продвинутым RAG», стоит на этом фундаменте; глава про оценку особенно полезна.
+- [Malkov, Yashunin. «Efficient and robust approximate nearest neighbor search using HNSW graphs» (2016)](https://arxiv.org/abs/1603.09320) — устройство основного индекса векторных БД. Разбор с параметрами `M` и `efSearch` — в главе про [ANN-поиск](../docs/06-recsys/06-two-tower-and-ann.md).
+- [RAG Techniques (NirDiamant)](https://github.com/NirDiamant/RAG_Techniques) — каталог приёмов с исполняемыми ноутбуками: реранкинг, query rewriting, гибридный поиск, self-RAG. Полезен как справочник реализаций, а не как источник методологии.
+- [Разборы ruMTEB и русскоязычных эмбеддингов от SberDevices](https://habr.com/ru/companies/sberdevices/articles/831150/) — как устроен бенчмарк для русского языка и что смотреть при выборе энкодера под русский RAG. Вопрос «какую модель эмбеддингов возьмёте для русского» на собеседованиях звучит регулярно.
 
 ## Рекомендательные системы
 
@@ -752,6 +827,27 @@
 - [Martin Fowler. «BlueGreenDeployment»](https://martinfowler.com/bliki/BlueGreenDeployment.html) — короткая заметка-первоисточник термина; полезна разбором проблемы с состоянием и миграциями БД.
 - **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022), глава про деплой и мониторинг** — та же лестница выкатки, но с уклоном в связь с мониторингом качества.
 
+### [Оптимизация инференса](../docs/07-mlops/09-inference-optimization.md)
+
+- [Документация ONNX Runtime](https://onnxruntime.ai/docs/) — разделы Performance (граф-оптимизации, настройки числа потоков) и Quantization. Практический стандарт для CPU-инференса; настройки `intra_op_num_threads` там объяснены лучше, чем где-либо.
+- [Документация NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/) — когда решите, что экономия оправдывает недели работы. Начинать с раздела про построение engine и про калибровку int8.
+- [PyTorch: `torch.compile`](https://pytorch.org/docs/stable/generated/torch.compile.html) и [`torch.profiler`](https://pytorch.org/docs/stable/profiler.html) — режимы компиляции, причины рекомпиляций и как читать таблицу операторов в профайлере.
+- [Hinton, Vinyals, Dean. «Distilling the Knowledge in a Neural Network» (2015)](https://arxiv.org/abs/1503.02531) — первоисточник дистилляции; там же вывод множителя $T^2$.
+- [Sanh et al. «DistilBERT» (2019)](https://arxiv.org/abs/1910.01108) — рабочий рецепт дистилляции энкодера с числами по скорости и качеству; полезен как ориентир для своей задачи.
+- [Dettmers et al. «LLM.int8()» (2022)](https://arxiv.org/abs/2208.07339) — про выбросы в активациях трансформеров и почему наивная int8-квантизация ломается на больших моделях.
+- [Michel, Levy, Neubig. «Are Sixteen Heads Really Better than One?» (2019)](https://arxiv.org/abs/1905.10650) — сколько голов внимания можно удалить без потери качества; хорошая калибровка ожиданий от структурированного прунинга.
+- [py-spy](https://github.com/benfred/py-spy) — сэмплирующий профайлер, который можно запустить на живом прод-процессе. Инструмент, который стоит освоить до всего остального.
+- **Dean, Barroso. «The Tail at Scale», Communications of the ACM, 2013** — классическая статья про природу хвостов в распределённых системах и про hedged requests.
+
+### [Стоимость и ёмкость](../docs/07-mlops/10-cost-and-capacity.md)
+
+- [Kubernetes: Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) — как именно считается желаемое число реплик и что делают окна стабилизации; читать перед настройкой асимметричных политик из §6.
+- [KEDA: документация](https://keda.sh/docs/) — скейлинг по произвольным метрикам, включая Prometheus и длину очереди Kafka. Именно то, что нужно ML-сервису вместо скейлинга по CPU.
+- [FinOps Foundation](https://www.finops.org/) — фреймворк управления облачными затратами: аллокация расходов по командам, юнит-экономика, практики резервирования. Полезно, когда ваш сервис перестал быть единственным в компании.
+- [Hoffmann et al. «Training Compute-Optimal Large Language Models» (Chinchilla, 2022)](https://arxiv.org/abs/2203.15556) — откуда берётся оценка $6ND$ и как соотносить бюджет обучения с размером модели и объёмом данных.
+- [Sculley et al. «Hidden Technical Debt in Machine Learning Systems» (NeurIPS 2015)](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) — про стоимость владения, которая не видна в смете на инфраструктуру.
+- **Документация по ценам вашего облака** — скучный, но обязательный источник: соотношения цен между типами инстансов, условия committed-скидок и правила тарификации egress меняются, и считать надо по актуальному прайсу, а не по числам из учебника.
+
 ## Big Data
 
 ### [Хранение данных](../docs/08-big-data/01-storage-and-formats.md)
@@ -766,6 +862,84 @@
 - **Melnik et al. «Dremel: Interactive Analysis of Web-Scale Datasets» (VLDB 2010)** — статья, из которой выросла схема definition/repetition levels. Читать, если работаете с вложенными данными.
 - **Armbrust et al. «Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores» (VLDB 2020)** — инженерная мотивация табличных форматов от первого лица: что именно ломалось в озере из Parquet-файлов.
 - **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)**, глава про данные — связывает форматы хранения с задачами ML: почему выбор формата влияет на скорость итераций дата-сайентиста.
+
+### [SQL для MLE](../docs/08-big-data/02-sql-for-mle.md)
+
+- [PostgreSQL: Using EXPLAIN](https://www.postgresql.org/docs/current/using-explain.html) — официальный разбор узлов плана и единиц стоимости. Читать целиком один раз, потом держать как справочник; после этого чужие планы перестают быть шифром.
+- [PostgreSQL: Window Functions Tutorial](https://www.postgresql.org/docs/current/tutorial-window.html) и [Window Function Calls](https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS) — единственное место, где правила рамок и дефолтов написаны точно, а не «примерно как обычно».
+- **Markus Winand. «SQL Performance Explained»** и его сайт [use-the-index-luke.com](https://use-the-index-luke.com/) — как индексы работают физически и почему предикат перестаёт быть sargable. Лучший источник по §9.
+- [modern-sql.com](https://modern-sql.com/) — того же автора, про то, что появилось в стандарте после SQL-92: оконные функции, `FILTER`, `LATERAL`, рекурсивные CTE, с матрицей поддержки по СУБД. Полезно, чтобы не писать в Spark то, что есть только в Postgres.
+- [Spark SQL Performance Tuning](https://spark.apache.org/docs/latest/sql-performance-tuning.html) — официальный список параметров: бродкаст-порог, AQE, skew join. Значения оттуда стоит помнить наизусть для собеседования.
+- [ClickHouse SQL Reference](https://clickhouse.com/docs/en/sql-reference) — если работаете с аналитикой в реальном времени: `argMax`, `LIMIT 1 BY`, `uniqState`/`uniqMerge`, `windowFunnel` закрывают половину задач из §11 одной функцией.
+
+### [Spark: как он работает](../docs/08-big-data/03-spark-fundamentals.md)
+
+- [Официальная документация: Spark Configuration](https://spark.apache.org/docs/latest/configuration.html) — единственный источник актуальных значений по умолчанию. Прочитайте разделы Application Properties, Execution Behavior, Memory Management и Shuffle Behavior целиком: половина вопросов по производительности закрывается знанием дефолтов.
+- [Официальная документация: SQL Performance Tuning](https://spark.apache.org/docs/latest/sql-performance-tuning.html) — бродкаст-порог, AQE, хинты джойнов, кэширование. Короткая страница, которую стоит помнить наизусть.
+- [Официальная документация: Tuning Spark](https://spark.apache.org/docs/latest/tuning.html) — про сериализацию, память и уровень параллелизма; именно отсюда берётся правило «2–3 задачи на ядро» и рекомендации по GC.
+- [Официальная документация: Web UI](https://spark.apache.org/docs/latest/web-ui.html) — что означает каждая колонка на вкладках Jobs, Stages, Storage, SQL. Обязательно к прочтению перед следующей главой.
+- [PySpark User Guide: Apache Arrow in PySpark](https://spark.apache.org/docs/latest/api/python/user_guide/sql/arrow_pandas.html) — все формы pandas UDF с примерами, настройки Arrow и список ограничений по типам.
+- **Zaharia et al. «Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing» (NSDI 2012)** — исходная статья про RDD. Читать ради понимания, почему линидж выбран вместо репликации и что такое narrow/wide зависимости в оригинальной формулировке.
+- **Armbrust et al. «Spark SQL: Relational Data Processing in Spark» (SIGMOD 2015)** — статья про Catalyst: как устроены правила переписывания дерева и почему оптимизатор сделали расширяемым.
+- **Chambers, Zaharia. «Spark: The Definitive Guide» (O'Reilly, 2018)** — самая полная книга по API и модели исполнения; части II и III закрывают всё содержание этой главы с примерами.
+- **Karau, Warren. «High Performance Spark» (O'Reilly, 2017)** — про то, чего нет в документации: как думать о джойнах, перекосе и памяти. Местами устарела по версиям, но модель мышления верная.
+
+### [Spark: производительность](../docs/08-big-data/04-spark-tuning.md)
+
+- [Официальная документация: SQL Performance Tuning](https://spark.apache.org/docs/latest/sql-performance-tuning.html) — раздел про AQE с полным списком параметров и их дефолтов. Первоисточник для всего §9; значения оттуда стоит помнить.
+- [Официальная документация: Spark Configuration](https://spark.apache.org/docs/latest/configuration.html) — разделы Memory Management, Shuffle Behavior, Dynamic Allocation, Scheduling. Все параметры из §13 описаны здесь с актуальными дефолтами.
+- [Официальная документация: Tuning Spark](https://spark.apache.org/docs/latest/tuning.html) — память, сериализация, уровень параллелизма, настройка сборщика мусора.
+- [Официальная документация: Web UI](https://spark.apache.org/docs/latest/web-ui.html) — описание каждой метрики на всех вкладках. Читать параллельно с §2, с открытым UI своей джобы.
+- [Официальная документация: Running Spark on Kubernetes](https://spark.apache.org/docs/latest/running-on-kubernetes.html) — если у вас k8s: специфика памяти пода, `shuffleTracking`, локальные тома под shuffle.
+- **Karau, Warren. «High Performance Spark» (O'Reilly, 2017)** — главы про джойны и про перекос остаются лучшим разбором приёмов salting и разделения ключей, несмотря на возраст.
+- **Damji et al. «Learning Spark, 2nd Edition» (O'Reilly, 2020)** — главы 7 и 8: оптимизация, кэширование, чтение UI; написана под Spark 3.x, поэтому AQE там уже есть.
+- **Chambers, Zaharia. «Spark: The Definitive Guide» (O'Reilly, 2018)** — часть про developer/production-настройки: полезна как справочник по параметрам с объяснениями.
+
+### [Потоковая обработка](../docs/08-big-data/05-streaming.md)
+
+- [Официальная документация Apache Kafka](https://kafka.apache.org/documentation/) — раздел Design объясняет устройство лога, репликацию и ISR; раздел Configuration — единственный надёжный источник значений по умолчанию, которые меняются от версии к версии.
+- **Gwen Shapira, Todd Palino, Rajini Sivaram, Krit Petty. «Kafka: The Definitive Guide», 2-е издание (O'Reilly, 2021)** — главы про продюсера, консьюмера и exactly-once закрывают §3–§6 этой главы с большей глубиной; лучшая книга по Kafka на сегодня.
+- [Jay Kreps. «Questioning the Lambda Architecture» (O'Reilly Radar, 2014)](https://www.oreilly.com/radar/questioning-the-lambda-architecture/) — первоисточник каппа-архитектуры. Читать ради аргументации, а не ради схемы: там ровно тот довод про дублирование логики, который нужно уметь воспроизвести на собеседовании.
+- [Документация Spark Structured Streaming](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) — разделы про watermark, output modes и восстановление из чекпоинта; читайте с оглядкой на версию своего кластера, поведение watermark менялось.
+- [Документация Apache Flink: Event Time и Watermarks](https://nightlies.apache.org/flink/flink-docs-stable/docs/concepts/time/) — самое внятное объяснение event time, watermark и idleness во всей экосистеме, полезно даже если вы работаете на Spark.
+- **Martin Kleppmann. «Designing Data-Intensive Applications» (O'Reilly, 2017)**, глава 11 «Stream Processing» — концептуальная рамка: логи, change data capture, время в стриминге, отказоустойчивость. Читать до всего остального, если хочется понимать, а не настраивать.
+
+### [Оркестрация пайплайнов](../docs/08-big-data/06-orchestration.md)
+
+- [Официальная документация Apache Airflow](https://airflow.apache.org/docs/apache-airflow/stable/index.html) — разделы DAG Runs (модель интервалов), Best Practices и Params. Читать обязательно с оглядкой на версию: между 2.x и 3.x поменялись `execution_date`, SLA и Datasets/Assets.
+- [Airflow: Best Practices](https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html) — короткий официальный документ, из которого выросла половина §11; там же — про верхний уровень DAG-файла и про тестирование DAG'ов.
+- **Bas Harenslak, Julian de Ruiter. «Data Pipelines with Apache Airflow» (Manning, 2021)** — единственная толковая книга по Airflow; главы про идемпотентность, backfill и про то, как встроить обучение модели в пайплайн, ложатся ровно на §7–§12.
+- [Документация Dagster: Assets](https://docs.dagster.io/) — стоит прочитать, даже если работаете на Airflow: модель «пайплайн описывает не задачи, а данные, которые он производит» меняет взгляд на проектирование и напрямую отвечает на вопрос из §16 про свежесть данных.
+- [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — правила про инфраструктуру и переобучение: полезно как аргументация того, почему автоматизировать обучение стоит, а автоматически продвигать модель в прод — нет.
+
+## Мониторинг
+
+### [Что мониторить в ML-системе](../docs/09-monitoring/01-what-to-monitor.md)
+
+- [Google SRE Book — «Monitoring Distributed Systems»](https://sre.google/sre-book/monitoring-distributed-systems/) — первоисточник разделения «симптомы против причин» и четырёх золотых сигналов. Читать первым, это 40 минут и ровно та база, на которой стоит вся глава.
+- [Google SRE Workbook — «Alerting on SLOs»](https://sre.google/workbook/alerting-on-slos/) — подробный разбор multi-window multi-burn-rate с готовыми таблицами окон и коэффициентов. Отсюда взяты числа 14.4 / 6 / 1 из §3.
+- [Prometheus: типы метрик](https://prometheus.io/docs/concepts/metric_types/) и [практика работы с гистограммами](https://prometheus.io/docs/practices/histograms/) — почему `histogram_quantile` даёт приближение и как выбирать бакеты под свой SLA.
+- [Prometheus: практика инструментирования](https://prometheus.io/docs/practices/instrumentation/) и [практика алертинга](https://prometheus.io/docs/practices/alerting/) — что именно измерять в сервисе и как не завести шумное правило.
+- [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — правила 8, 14 и особенно блок про мониторинг свежести данных и train/serve skew; короткий и очень прикладной текст.
+- **Google. «The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction» (2017)** — рубрика из 28 тестов, четыре из них полностью про мониторинг. Полезно пройти по ней своим сервисом и получить честную оценку в баллах; ищется по названию.
+- **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)** — глава «Data Distribution Shifts and Monitoring»: систематизация того, что мониторить, и разбор задержки обратной связи.
+- **Google. «Hidden Technical Debt in Machine Learning Systems» (NeurIPS 2015)** — откуда вообще берётся мысль, что ML-система деградирует сама по себе; читать вместе с [главой про жизненный цикл](../docs/07-mlops/01-ml-lifecycle.md).
+
+### [Дрифт данных](../docs/09-monitoring/03-drift-detection.md)
+
+- **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)**, глава «Data Distribution Shifts and Monitoring» — лучшая систематизация видов сдвига с продуктовой точки зрения. Читать первой, если хочется общей картины до формул.
+- **«Dataset Shift in Machine Learning» под ред. Quiñonero-Candela, Sugiyama, Schwaighofer, Lawrence (MIT Press, 2009)** — академический первоисточник терминологии covariate shift / prior shift. Читать главы 1–3, если нужна строгость; остальное сильно устарело по инструментам, но не по постановкам.
+- [S. Rabanser, S. Günnemann, Z. Lipton. «Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift» (arXiv:1810.11953)](https://arxiv.org/abs/1810.11953) — честное экспериментальное сравнение детекторов сдвига, включая покомпонентные тесты с поправками и классификаторные тесты. Главный вывод, ради которого стоит читать: многомерные подходы систематически выигрывают у покомпонентных.
+- [D. Lopez-Paz, M. Oquab. «Revisiting Classifier Two-Sample Tests» (arXiv:1610.06545)](https://arxiv.org/abs/1610.06545) — теория за детектором-классификатором из §12: почему точность классификатора является состоятельной статистикой критерия.
+- [A. Gretton et al. «A Kernel Two-Sample Test», JMLR 13 (2012)](https://jmlr.org/papers/v13/gretton12a.html) — первоисточник по MMD. Читать введение и раздел про оценки статистики; остальное нужно, только если вы собираетесь реализовывать тест сами.
+- [Z. Lipton, Y.-X. Wang, A. Smola. «Detecting and Correcting for Label Shift with Black Box Predictors» (arXiv:1802.03916)](https://arxiv.org/abs/1802.03916) — метод BBSE из §4: оценка нового распределения классов без меток. Один из немногих способов измерить сдвиг приоров в проде, где меток нет.
+- **Naeem Siddiqi. «Credit Risk Scorecards» (Wiley)** — источник конвенции PSI 0.1/0.25. Полезно прочитать раздел про мониторинг скоркарт, чтобы понять контекст, в котором эти пороги имели смысл, и не переносить их вслепую.
+- [Great Expectations — документация](https://docs.greatexpectations.io/) — проверки контрактов данных, тот самый «шаг 0» протокола из §16. Дрифт-мониторинг без проверок качества данных даёт в основном ложные тревоги.
+- [Prometheus: практика работы с гистограммами](https://prometheus.io/docs/practices/histograms/) — если метрики дрифта складываются в Prometheus, читать обязательно: выбор бакетов определяет, что вы вообще увидите на графике.
+- [Evidently — документация](https://docs.evidentlyai.com/) — открытая библиотека отчётов о дрифте: полезна как каталог реализованных метрик и как быстрый способ получить первый дашборд. Смотреть на то, какие тесты по умолчанию выбираются для разных типов признаков и размеров выборки.
+- [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — правила про train/serve skew и про логирование признаков в момент предсказания напрямую относятся к тому, чтобы дрифт вообще было чем измерять.
+- **Breck et al. «The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction» (Google, IEEE Big Data 2017)** — раздел про мониторинг данных содержит чек-лист проверок, который стоит просто взять и внедрить. Ищется по названию.
+- **J. Lu et al. «Learning under Concept Drift: A Review»** — обзор по терминологии форм концепт-дрифта (sudden / gradual / incremental / recurring) и по методам адаптации. Читать выборочно: разделы с таксономией.
 
 ## A/B-тесты
 
@@ -922,6 +1096,86 @@
 - [Документация `dataclasses`](https://docs.python.org/3/library/dataclasses.html) и [PEP 484 (type hints)](https://peps.python.org/pep-0484/) — для §8; дальше стоит посмотреть `typing.Protocol` и настройку mypy в CI.
 - [Документация `cProfile`/`pstats`](https://docs.python.org/3/library/profile.html), [`tracemalloc`](https://docs.python.org/3/library/tracemalloc.html), [`line_profiler`](https://github.com/pyutils/line_profiler) — рабочий набор для §10.
 - [Документация pytest](https://docs.pytest.org/) — фикстуры и параметризация; продолжение темы §12 — в главе [Тесты и качество кода в ML](../docs/12-coding/07-testing-and-code-quality.md).
+
+### [NumPy и pandas на скорость](../docs/12-coding/02-numpy-pandas.md)
+
+- [NumPy: Broadcasting](https://numpy.org/doc/stable/user/basics.broadcasting.html) — официальные правила из первоисточника, с картинками растяжения осей. Пять минут чтения, которые закрывают §3 навсегда.
+- [NumPy: Copies and views](https://numpy.org/doc/stable/user/basics.copies.html) — точный ответ на вопрос «что вернёт эта индексация», с разбором механизма strides.
+- [NumPy: Indexing on ndarrays](https://numpy.org/doc/stable/user/basics.indexing.html) — полный разбор basic vs advanced indexing, включая случаи, которые в главе не поместились (`np.ix_`, комбинации срезов и массивов).
+- [Harris et al. «Array programming with NumPy» (Nature, 2020)](https://www.nature.com/articles/s41586-020-2649-2) — обзорная статья от разработчиков: устройство ndarray, история и архитектурные решения. Читать, если хочется понимать инструмент, а не только пользоваться им.
+- [pandas: Copy-on-Write](https://pandas.pydata.org/docs/user_guide/copy_on_write.html) — главный документ по §16: что изменилось, как мигрировать, какие паттерны сломаются. Обязательно к прочтению перед переходом на pandas 3.0.
+- [pandas: Scaling to large datasets](https://pandas.pydata.org/docs/user_guide/scale.html) — официальная лестница приёмов для §15, включая честный раздел «когда пора уходить из pandas».
+- [pandas: Enhancing performance](https://pandas.pydata.org/docs/user_guide/enhancingperf.html) — `eval`/`query`, Numba и Cython для тех мест, где векторизация невозможна.
+- **Wes McKinney. «Python for Data Analysis», 3-е изд.** — доступна бесплатно онлайн на сайте автора (wesmckinney.com/book). Книга создателя pandas; главы про groupby, reshape и временные ряды — самое подробное изложение §10–§14 на русском рынке отсутствует, читайте оригинал.
+- [DuckDB](https://duckdb.org/) и [Polars](https://pola.rs/) — если после §17 захотелось попробовать. Начните с DuckDB: он читает те же parquet-файлы и говорит на SQL, так что порог входа минимальный.
+
+### [Реализуем ML руками](../docs/12-coding/03-ml-from-scratch.md)
+
+- **[Исходники scikit-learn](https://github.com/scikit-learn/scikit-learn)** — лучший учебник по промышленным реализациям. Начните с `sklearn/linear_model/_logistic.py` и `sklearn/metrics/_ranking.py`: там видно, сколько кода уходит на краевые случаи, которых нет в учебной версии.
+- **Trevor Hastie, Robert Tibshirani, Jerome Friedman. «The Elements of Statistical Learning»** — главы 3 (линейные модели), 9 (деревья) и 10 (бустинг) содержат ровно те выводы, по которым писался код выше. Доступна бесплатно на сайте Стэнфорда.
+- **Kevin Murphy. «Probabilistic Machine Learning: An Introduction» (MIT Press, 2022)** — для наивного Байеса, PCA и вероятностного взгляда на логистическую регрессию; выкладки подробнее, чем в ESL.
+- [Vaswani et al. «Attention Is All You Need» (2017)](https://arxiv.org/abs/1706.03762) — оригинальная статья про attention; раздел 3.2.1 — это ровно те три строки кода из §13, включая объяснение $\sqrt{d_k}$.
+- **David Arthur, Sergei Vassilvitskii. «k-means++: The Advantages of Careful Seeding» (SODA 2007)** — доказательство оценки $O(\log k)$ для инициализации из §6; PDF легко находится по названию на страницах авторов.
+- [Документация NumPy: broadcasting](https://numpy.org/doc/stable/user/basics.broadcasting.html) — если хоть раз сомневались, почему `a[:, None] - b[None, :]` даёт матрицу, прочитайте страницу целиком; это окупается на каждой второй задаче.
+- **Тренажёр [`code/README.md`](../code/README.md)** — скелеты и тесты ко всему, что разобрано выше.
+
+### [Алгоритмы для MLE-собеса](../docs/12-coding/04-algorithms.md)
+
+- [Python Wiki: TimeComplexity](https://wiki.python.org/moin/TimeComplexity) — официальная таблица сложности операций для `list`, `dict`, `set`, `deque`. Одна страница, которую стоит держать в закладках и просмотреть перед собеседованием.
+- [Документация модуля `heapq`](https://docs.python.org/3/library/heapq.html) — в конце страницы разобраны приёмы с приоритетной очередью, tie-breaker'ами и «ленивым удалением». Ровно то, о чём спрашивают в задачах на top-k.
+- [NeetCode](https://neetcode.io) — бесплатная подборка задач, сгруппированных по паттернам (раздел Roadmap), а не по темам. Для MLE достаточно веток «Arrays & Hashing», «Two Pointers», «Sliding Window», «Binary Search», «Heap», «Graphs (базовые)».
+- **Gayle Laakmann McDowell. «Cracking the Coding Interview»** — не про алгоритмы, а про поведение на секции: как задавать вопросы, как думать вслух, как оценивать сложность. Главы про подход полезнее, чем задачник.
+- **Кормен, Лейзерсон, Ривест, Штайн. «Алгоритмы: построение и анализ»** — справочник для случая, когда нужно разобраться в алгоритме по-настоящему, а не выучить шаблон. Читать целиком для MLE-собеса не нужно.
+- [LeetCode](https://leetcode.com) — если целитесь в международный бигтех, готовьтесь по темам-паттернам, а не подряд; для российского рынка достаточно уверенного easy/medium.
+
+### [SQL: тренировка](../docs/12-coding/05-sql-drills.md)
+
+- [Документация PostgreSQL: оконные функции — учебник](https://www.postgresql.org/docs/current/tutorial-window.html) и [полный список функций и синтаксис рамок](https://www.postgresql.org/docs/current/functions-window.html) — самое точное описание семантики `ROWS`/`RANGE`/`GROUPS` и рамки по умолчанию. Раздел про рамки стоит прочитать целиком: там ровно те ловушки, что разобраны в задачах 15, 17 и 19.
+- [Документация PostgreSQL: сравнения и `NULL`](https://www.postgresql.org/docs/current/functions-comparison.html) — формальные правила трёхзначной логики и `IS DISTINCT FROM`. Короткая страница, снимает большинство вопросов блока C.
+- **Cathy Tanimura. «SQL for Data Analysis» (O'Reilly, 2021)** — лучшая книга именно про аналитический SQL: когорты, retention, воронки, текстовый анализ. Главы про когортный анализ и про временные ряды закрывают блоки E и H глубже, чем эта глава.
+- **Itzik Ben-Gan. «T-SQL Window Functions»** — исчерпывающе про оконные функции, включая gaps-and-islands во всех вариантах. Синтаксис T-SQL, но идеи переносятся один в один.
+- [Use The Index, Luke!](https://use-the-index-luke.com/) — про индексы и планы запросов для разработчиков, бесплатно и по делу. Читать, если задача 6 из практики вызвала затруднение.
+- [pgexercises.com](https://pgexercises.com/) — интерактивные упражнения на PostgreSQL с проверкой; хороши как разминка на синтаксис.
+- [LeetCode Database](https://leetcode.com/problemset/database/) — задачи в формате, близком к скринингу; уровень Medium/Hard соответствует реальной секции.
+- [Документация ClickHouse](https://clickhouse.com/docs) — если целитесь в компании с аналитикой на ClickHouse (Яндекс, Авито, VK): почитайте про `QUALIFY`, комбинаторы агрегатов (`-If`, `-Merge`), `ReplacingMergeTree` и `uniqHLL12`; на собесе это часто спрашивают отдельно.
+
+### [PyTorch: тренировка](../docs/12-coding/06-pytorch-drills.md)
+
+- [Официальный туториал PyTorch: `torch.autograd`](https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html) — как строится и уничтожается граф; читать перед задачей об утечках памяти.
+- [Документация: `torch.amp` и рецепты смешанной точности](https://pytorch.org/docs/stable/amp.html) — список операций, которые autocast оставляет в fp32, и правила использования `GradScaler`. Самая полезная страница по задаче 10.
+- [Документация: воспроизводимость](https://pytorch.org/docs/stable/notes/randomness.html) — исчерпывающий список источников недетерминизма и способов их подавить.
+- [Документация: управление CUDA-памятью](https://pytorch.org/docs/stable/notes/cuda.html#memory-management) — кэширующий аллокатор, `PYTORCH_CUDA_ALLOC_CONF`, разница allocated/reserved.
+- [`torch.profiler`: рецепт](https://pytorch.org/tutorials/recipes/recipes/profiler_recipe.html) — как читать вывод профайлера и находить узкое место.
+- [Lin et al. «Focal Loss for Dense Object Detection» (ICCV 2017)](https://arxiv.org/abs/1708.02002) — оригинал focal loss с обоснованием выбора $\gamma$ и $\alpha$ и с разбором, почему инициализация смещения последнего слоя важна при сильном дисбалансе.
+- [Vaswani et al. «Attention Is All You Need» (NeurIPS 2017)](https://arxiv.org/abs/1706.03762) — первоисточник attention; сверяйте свою реализацию с формулами из §3.2.
+- [Zhang & Sennrich. «Root Mean Square Layer Normalization» (NeurIPS 2019)](https://arxiv.org/abs/1910.07467) — RMSNorm из задачи 1, с экспериментальным обоснованием отказа от центрирования.
+- [Micikevicius et al. «Mixed Precision Training» (ICLR 2018)](https://arxiv.org/abs/1710.03740) — откуда взялся loss scaling и почему нужна мастер-копия весов в fp32.
+- [Andrej Karpathy. «A Recipe for Training Neural Networks»](https://karpathy.github.io/2019/04/25/recipe/) — лучший текст про методику отладки обучения; тест «переобучись на одном батче» и порядок действий взяты оттуда.
+
+## CV, звук, мультимодальность
+
+### [Computer Vision: необходимый минимум](../docs/13-optional/01-computer-vision.md)
+
+- [He et al. «Deep Residual Learning for Image Recognition» (2015)](https://arxiv.org/abs/1512.03385) — оригинал ResNet. Читать ради раздела про деградацию глубоких сетей: там формулировка проблемы, из которой всё выросло.
+- [Dosovitskiy et al. «An Image Is Worth 16x16 Words» (2020)](https://arxiv.org/abs/2010.11929) — ViT. Ключевая для собеседования часть — эксперименты про зависимость качества от объёма предобучения.
+- [Tan, Le. «EfficientNet» (2019)](https://arxiv.org/abs/1905.11946) — про compound scaling и про то, почему FLOPs не равны латентности.
+- [Ronneberger et al. «U-Net» (2015)](https://arxiv.org/abs/1505.04597) — короткая статья, читается за полчаса, объясняет skip-соединения лучше любого пересказа.
+- [Lin et al. «Focal Loss for Dense Object Detection» (2017)](https://arxiv.org/abs/1708.02002) — почему одностадийные детекторы догнали двухстадийные.
+- [Liu et al. «A ConvNet for the 2020s» (ConvNeXt, 2022)](https://arxiv.org/abs/2201.03545) — отрезвляющий разбор того, сколько выигрыша ViT приходилось на рецепт обучения.
+- [Документация torchvision: модели и предобученные веса](https://pytorch.org/vision/stable/models.html) — практический справочник: какие веса есть, какие у них трансформации и метрики.
+- [Документация Albumentations](https://albumentations.ai/docs/) — стандартная библиотека аугментаций; полезна разделом про синхронную аугментацию картинки, боксов и масок.
+- [Протокол оценки COCO](https://cocodataset.org/#detection-eval) — первоисточник по mAP, описывает ровно ту процедуру, которую спрашивают на собеседовании.
+
+### [Звук и речь: необходимый минимум](../docs/13-optional/02-audio-and-speech.md)
+
+- [Awni Hannun. «Sequence Modeling with CTC» (Distill, 2017)](https://distill.pub/2017/ctc/) — лучшее объяснение CTC на свете, с интерактивными иллюстрациями выравниваний и разбором алгоритма вперёд-назад. Если читать по теме одну вещь — то эту.
+- [Radford et al. «Robust Speech Recognition via Large-Scale Weak Supervision» (Whisper, 2022)](https://arxiv.org/abs/2212.04356) — читать ради раздела про данные и про мультизадачный формат с управляющими токенами.
+- [Graves. «Sequence Transduction with Recurrent Neural Networks» (2012)](https://arxiv.org/abs/1211.3711) — оригинал RNN-T, объясняет, как снимается условная независимость CTC при сохранении потоковости.
+- [Baevski et al. «wav2vec 2.0» (2020)](https://arxiv.org/abs/2006.11477) — self-supervised предобучение на сырой волне; полезно понять, почему предобучение в аудио дало такой же эффект, как в NLP.
+- [Park et al. «SpecAugment» (2019)](https://arxiv.org/abs/1904.08779) — короткая статья про аугментацию прямо на спектрограмме, стандарт де-факто.
+- [Gulati et al. «Conformer» (2020)](https://arxiv.org/abs/2005.08100) — типовой энкодер современных ASR: свёртки для локальных зависимостей плюс self-attention для глобальных.
+- [Документация torchaudio](https://pytorch.org/audio/stable/index.html) — практический справочник: загрузка, ресемплинг, готовые спектрограммы, CTC-декодер с языковой моделью.
+- [Документация librosa](https://librosa.org/doc/latest/index.html) — то же для анализа и визуализации; раздел про STFT и мел-фильтры полезно прочитать вместе с §2–3 этой главы.
 
 ---
 
