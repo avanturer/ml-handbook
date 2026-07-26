@@ -274,9 +274,9 @@ def keep_top_m(S: sparse.csr_matrix, top_m: int = 100) -> sparse.csr_matrix:
 def recommend(R: sparse.csr_matrix, S: sparse.csr_matrix, u: int, k: int = 10) -> np.ndarray:
     """top-k рекомендаций для пользователя u; уже виденное вырезаем."""
     scores = np.asarray((R[u] @ S).todense()).ravel()
-    seen = R[u].indices
-    scores[seen] = -np.inf                              # не рекомендуем то, что уже было
-    return np.argpartition(-scores, k)[:k][np.argsort(-scores[np.argpartition(-scores, k)[:k]])]
+    scores[R[u].indices] = -np.inf                      # не рекомендуем то, что уже было
+    top = np.argpartition(-scores, k)[:k]               # k лучших без полной сортировки
+    return top[np.argsort(-scores[top])]                # и уже их упорядочиваем
 ```
 
 > ⌨️ **Руками.** Возьмите MovieLens-100k, постройте `S` этим кодом и посмотрите глазами на
@@ -633,9 +633,10 @@ def rmse(a, b):
 base = np.full(n_test, rr[tr].mean())
 print("глобальное среднее :", round(rmse(rr[te], base), 4))
 
-# 2. Только смещения (k = 0 по сути: отключаем факторы нулевой размерностью влияния)
-m_bias = FunkSVD(k=1, lr=0.01, reg=0.05, n_epochs=25).fit(uu[tr], ii[tr], rr[tr], n_users, n_items)
-print("смещения + k=1     :", round(rmse(rr[te], m_bias.predict(uu[te], ii[te])), 4))
+# 2. Только смещения: k=0 даёт пустые матрицы P и Q, скалярное произведение тождественно 0,
+#    поэтому модель вырождается ровно в mu + b_u + b_i
+m_bias = FunkSVD(k=0, lr=0.01, reg=0.05, n_epochs=25).fit(uu[tr], ii[tr], rr[tr], n_users, n_items)
+print("только смещения    :", round(rmse(rr[te], m_bias.predict(uu[te], ii[te])), 4))
 
 # 3. Полная модель
 m_full = FunkSVD(k=16, lr=0.01, reg=0.05, n_epochs=25).fit(uu[tr], ii[tr], rr[tr], n_users, n_items)
