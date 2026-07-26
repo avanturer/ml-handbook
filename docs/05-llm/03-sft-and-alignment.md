@@ -792,13 +792,20 @@ def dpo_loss(policy_logps_chosen, policy_logps_rejected,
     return loss, metrics
 
 
-# Санитарная проверка: в начале обучения policy == ref, значит все награды равны нулю,
-# логиты равны нулю, а лосс должен быть ровно -log(0.5) = 0.6931
+# Санитарная проверка: в начале обучения policy == ref, значит обе неявные награды
+# равны нулю, логит равен нулю, а лосс — ровно -log(0.5) = 0.6931.
+# reward_accuracy при этом вырожденно равна 0: строгое неравенство на равных наградах ложно.
 lp_c = torch.tensor([-12.0, -30.0])
 lp_r = torch.tensor([-15.0, -25.0])
 loss0, m0 = dpo_loss(lp_c, lp_r, lp_c.clone(), lp_r.clone(), beta=0.1)
-print(f"старт: loss={loss0.item():.4f} (ожидаем 0.6931), acc={m0['reward_accuracy']}")
-assert abs(loss0.item() - 0.6931) < 1e-3
+print(f"старт: loss={loss0.item():.4f} (ожидаем 0.6931), margin={m0['reward_margin']:.4f}")
+assert abs(loss0.item() - 0.6931) < 1e-3 and abs(m0["reward_margin"]) < 1e-6
+
+# А теперь имитируем обученную политику: она подняла chosen и опустила rejected
+loss1, m1 = dpo_loss(lp_c + 0.5, lp_r - 0.5, lp_c, lp_r, beta=0.1)
+print(f"после: loss={loss1.item():.4f}, acc={m1['reward_accuracy']:.2f}, "
+      f"margin={m1['reward_margin']:.4f}")
+assert loss1 < loss0 and m1["reward_accuracy"] == 1.0
 ```
 
 Эта проверка — первое, что нужно сделать при запуске DPO. Если на нулевом шаге лосс не равен 0,693,

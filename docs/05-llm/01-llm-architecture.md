@@ -504,6 +504,15 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
+def balance_loss(probs: torch.Tensor, top_i: torch.Tensor, n_experts: int, k: int):
+    """probs: (T, E) — распределение роутера; top_i: (T, k) — индексы выбранных экспертов."""
+    # f_i — доля токенов, ушедших к эксперту i (делим на k, чтобы f суммировалась в 1)
+    assign = F.one_hot(top_i, n_experts).sum(1).float()      # (T, E)
+    f = assign.mean(0) / k
+    P = probs.mean(0)                                        # средняя вероятность эксперта
+    return n_experts * torch.sum(f * P)   # 1.0 при идеальном балансе, E при полном коллапсе
+
+
 class TopKRouter(nn.Module):
     def __init__(self, d_model: int, n_experts: int, k: int = 2):
         super().__init__()
@@ -512,34 +521,35 @@ class TopKRouter(nn.Module):
 
     def forward(self, x: torch.Tensor):
         """x: (T, d) — все токены батча одним списком."""
-        logits = self.gate(x)                                  # (T, E)
-        probs = F.softmax(logits.float(), dim=-1)
-        top_p, top_i = probs.topk(self.k, dim=-1)              # (T, k)
-        top_p = top_p / top_p.sum(-1, keepdim=True)            # веса выбранных -> сумма 1
+        logits = self.gate(x).float()                        # (T, E), softmax роутера — в fp32
+        probs = F.softmax(logits, dim=-1)
+        top_p, top_i = probs.topk(self.k, dim=-1)            # (T, k)
+        top_p = top_p / top_p.sum(-1, keepdim=True)          # веса выбранных -> сумма 1
 
-        # f_i: доля токенов, попавших к эксперту i (делим на k, чтобы f суммировалась в 1)
-        assign = F.one_hot(top_i, self.n_experts).sum(1).float()   # (T, E)
-        f = assign.mean(0) / self.k
-        P = probs.mean(0)                                          # средняя вероятность
-        aux = self.n_experts * torch.sum(f * P)                    # 1.0 при идеальном балансе
-        z_loss = torch.logsumexp(logits.float(), dim=-1).pow(2).mean()
+        aux = balance_loss(probs, top_i, self.n_experts, self.k)
+        # z-loss держит логиты маленькими: без него softmax роутера переполняется в bf16
+        z_loss = torch.logsumexp(logits, dim=-1).pow(2).mean()
         return top_i, top_p, aux, z_loss
 
 
 if __name__ == "__main__":
     torch.manual_seed(0)
-    router = TopKRouter(d_model=64, n_experts=8, k=2)
-    x = torch.randn(4096, 64)
-    _, _, aux, z = router(x)
-    print(f"случайный роутер (почти равномерный): aux = {aux:.3f}")
+    E, K, T = 8, 2, 4096
+    router = TopKRouter(d_model=64, n_experts=E, k=K)
+    _, _, aux, z_loss = router(torch.randn(T, 64))
+    print(f"необученный роутер: aux = {aux:.3f}   (идеальный баланс = 1.0)")
 
-    # смоделируем коллапс: роутер уверенно шлёт всё к эксперту 0
-    with torch.no_grad():
-        router.gate.weight.zero_()
-        router.gate.weight[0] = 10.0
-    _, _, aux_bad, _ = router(x)
-    print(f"коллапс на одного эксперта:          aux = {aux_bad:.3f}  (максимум = E = 8)")
+    # полный коллапс: вся вероятностная масса и оба слота top-k — на эксперта 0
+    probs = torch.zeros(T, E)
+    probs[:, 0] = 1.0
+    top_i = torch.zeros(T, K, dtype=torch.long)
+    print(f"коллапс на одного:  aux = {balance_loss(probs, top_i, E, K):.3f}   (максимум = E = {E})")
 ```
+
+У необученного роутера значение близко к единице — распределение почти равномерно; при полном
+вырождении оно равно ровно $E$. Это удобно на практике: `aux` логируется как есть и читается
+как «во сколько раз загрузка хуже идеальной», отдельная гистограмма по экспертам для дежурного
+мониторинга не нужна.
 
 ### Что это стоит на практике
 

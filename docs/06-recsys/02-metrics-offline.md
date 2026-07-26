@@ -561,6 +561,9 @@ AP@5 = (1/2)/2 = 0.25, а NDCG@5 = $\frac{7 \cdot 0.6309}{7 + 1 \cdot 0.6309} = 
 Метрики за пределами точности считаются так же прямолинейно:
 
 ```python
+import numpy as np
+
+
 def intra_list_diversity(recommended, emb, k):
     """emb — матрица эмбеддингов айтемов (n_items, d); recommended — индексы."""
     idx = recommended[:k]

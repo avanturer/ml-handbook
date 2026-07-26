@@ -522,22 +522,50 @@ def dequantize_nf4(idx, absmax, shape):
     return blocks.ravel()[: int(np.prod(shape))].reshape(shape)
 
 
+def quantize_uniform(w, block=64):
+    """То же самое, но с РАВНОМЕРНОЙ сеткой из 16 уровней — для сравнения."""
+    levels = np.linspace(-1, 1, 16)
+    n_blocks = int(np.ceil(w.size / block))
+    padded = np.zeros(n_blocks * block, dtype=np.float32)
+    padded[:w.size] = w.ravel()
+    blocks = padded.reshape(n_blocks, block)
+    absmax = np.abs(blocks).max(axis=1, keepdims=True)
+    absmax[absmax == 0] = 1.0
+    q = levels[np.abs((blocks / absmax)[..., None] - levels).argmin(-1)] * absmax
+    return q.ravel()[: w.size].reshape(w.shape)
+
+
 rng = np.random.default_rng(0)
-w = rng.normal(0, 0.02, size=(4096, 4096)).astype(np.float32)   # веса ~ нормальные
-idx, absmax, shape = quantize_nf4(w)
-w_hat = dequantize_nf4(idx, absmax, shape)
+w = rng.normal(0, 0.02, size=(1024, 1024)).astype(np.float32)   # веса ~ нормальные
+w_out = w.copy()                                                # + редкие выбросы, как в реальности
+mask = rng.random(w.shape) < 0.001
+w_out[mask] *= 15
 
-rel_err = np.linalg.norm(w - w_hat) / np.linalg.norm(w)
-print(f"относительная ошибка NF4: {rel_err:.4f}")   # порядка 0.03–0.05
+def rel_err(a, b):
+    return np.linalg.norm(a - b) / np.linalg.norm(a)
 
-# Сравним с равномерной 4-битной сеткой на тех же блоках
-uniform = np.linspace(-1, 1, 16)
-blocks = w.ravel().reshape(-1, 64)
-am = np.abs(blocks).max(axis=1, keepdims=True)
-u_hat = (uniform[np.abs((blocks / am)[..., None] - uniform).argmin(-1)] * am).ravel().reshape(w.shape)
-print(f"относительная ошибка uniform4: {np.linalg.norm(w - u_hat) / np.linalg.norm(w):.4f}")
-# NF4 заметно точнее — потому что распределение весов нормальное, а не равномерное
+for name, weights in [("гаусс", w), ("гаусс + выбросы", w_out)]:
+    for block in (weights.size, 64):
+        idx, absmax, shape = quantize_nf4(weights, block)
+        e_nf4 = rel_err(weights, dequantize_nf4(idx, absmax, shape))
+        e_uni = rel_err(weights, quantize_uniform(weights, block))
+        scope = "весь тензор" if block == weights.size else f"блок {block}"
+        print(f"{name:>16} | {scope:>12} | uniform {e_uni:.3f} | NF4 {e_nf4:.3f}")
 ```
+
+Вывод этого кода стоит разобрать — он объясняет, почему в QLoRA **обе** идеи нужны вместе:
+
+| Распределение весов | Гранулярность | Равномерная сетка | NF4 |
+|---|---|---|---|
+| Гаусс | весь тензор | 0,192 | **0,133** |
+| Гаусс | блок 64 | 0,101 | **0,092** |
+| Гаусс + выбросы | весь тензор | 2,407 | **0,858** |
+| Гаусс + выбросы | блок 64 | 0,170 | **0,116** |
+
+Читается так. **Поблочность даёт основной выигрыш**: на гауссовых весах она вдвое снижает ошибку,
+а при наличии выбросов — на порядок, потому что выброс портит только свой блок из 64, а не весь
+тензор. **NF4 даёт дополнительные 10–30%** поверх этого, и её вклад тем больше, чем грубее
+гранулярность и тяжелее хвосты. Ни одна из двух идей по отдельности не спасает.
 
 ### 6.2 Двойная квантизация
 
