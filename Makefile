@@ -10,7 +10,8 @@ build:  ## Пересобрать навигацию (оглавления, inde
 	$(PY) tools/build_nav.py
 	$(PY) tools/build_bibliography.py
 
-check-fast:  ## Быстрые проверки: структура глав, внутренние ссылки, покрытие тем
+check-fast:  ## Быстрые проверки: состав, структура глав, внутренние ссылки, покрытие тем
+	$(PY) tools/check_manifest.py
 	$(PY) tools/check_handbook.py
 	$(PY) tools/check_coverage.py
 

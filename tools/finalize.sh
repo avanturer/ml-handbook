@@ -14,16 +14,19 @@ step "1. Пересборка навигации и библиографии"
 python3 tools/build_nav.py || fail=1
 python3 tools/build_bibliography.py || fail=1
 
-step "2. Структура глав, внутренние ссылки, формулы"
+step "2. Состав: docs/ против манифеста"
+python3 tools/check_manifest.py || fail=1
+
+step "3. Структура глав, внутренние ссылки, формулы"
 python3 tools/check_handbook.py || fail=1
 
-step "3. Покрытие обязательных тем из чек-листа пробелов"
+step "4. Покрытие обязательных тем из чек-листа пробелов"
 python3 tools/check_coverage.py || fail=1
 
-step "4. Тренажёр: эталонные решения должны проходить"
+step "5. Тренажёр: эталонные решения должны проходить"
 HANDBOOK_CHECK_SOLUTIONS=1 python3 -m pytest code/tests -q || fail=1
 
-step "5. Тренажёр: скелеты должны падать"
+step "6. Тренажёр: скелеты должны падать"
 if python3 -m pytest code/tests -q > /dev/null 2>&1; then
   echo "ОШИБКА: тесты проходят на пустых скелетах — задание решено за читателя"
   fail=1
@@ -31,7 +34,7 @@ else
   echo "Скелеты падают, как и задумано."
 fi
 
-step "6. Статистика"
+step "7. Статистика"
 python3 tools/stats.py
 
 step "ИТОГ"
