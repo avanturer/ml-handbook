@@ -25,9 +25,9 @@ jobs:
       - name: Проверить, что навигация не разошлась с файлами
         run: |
           python tools/build_nav.py > /dev/null
-          if ! git diff --quiet -- docs; then
+          if ! git diff --quiet -- docs mkdocs.yml; then
             echo "::error::Навигация устарела. Запустите: python tools/build_nav.py"
-            git diff --stat -- docs
+            git diff --stat -- docs mkdocs.yml
             exit 1
           fi
 

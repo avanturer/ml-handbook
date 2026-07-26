@@ -174,16 +174,39 @@ def write_root_index(sections: dict[str, list[Chapter]]) -> None:
     (DOCS / "index.md").write_text("\n".join(lines), encoding="utf-8")
 
 
-def print_mkdocs_nav(sections: dict[str, list[Chapter]]) -> None:
-    print("\n# --- вставьте этот блок в mkdocs.yml ---")
-    print("nav:")
-    print("  - Оглавление: index.md")
+NAV_START = "# >>> nav: сгенерировано tools/build_nav.py — не редактировать вручную"
+NAV_END = "# <<< конец сгенерированной навигации"
+
+
+def render_nav(sections: dict[str, list[Chapter]]) -> str:
+    lines = [NAV_START, "nav:", "  - Оглавление: index.md"]
     for slug, chapters in sections.items():
         title, _ = SECTION_TITLES[slug]
-        print(f"  - {title}:")
-        print(f"      - {slug}/index.md")
+        lines.append(f"  - {title}:")
+        lines.append(f"      - {slug}/index.md")
         for chapter in chapters:
-            print(f"      - {chapter.title}: {slug}/{chapter.filename}")
+            # двоеточие в заголовке ломает YAML — заголовок берём в кавычки
+            safe_title = chapter.title.replace('"', "'")
+            lines.append(f'      - "{safe_title}": {slug}/{chapter.filename}')
+    lines.append(NAV_END)
+    return "\n".join(lines)
+
+
+def write_mkdocs_nav(sections: dict[str, list[Chapter]]) -> None:
+    """Вписывает блок nav в mkdocs.yml между маркерами, заменяя прежний."""
+    path = ROOT / "mkdocs.yml"
+    text = path.read_text(encoding="utf-8")
+    nav = render_nav(sections)
+
+    if NAV_START in text and NAV_END in text:
+        start = text.index(NAV_START)
+        end = text.index(NAV_END) + len(NAV_END)
+        text = text[:start] + nav + text[end:]
+    else:
+        text = text.rstrip() + "\n\n" + nav + "\n"
+
+    path.write_text(text, encoding="utf-8")
+    print(f"mkdocs.yml: навигация обновлена ({len(sections)} разделов).")
 
 
 def main() -> int:
@@ -194,11 +217,11 @@ def main() -> int:
     for slug, chapters in sections.items():
         write_section_index(slug, chapters)
     write_root_index(sections)
+    write_mkdocs_nav(sections)
     total = sum(len(v) for v in sections.values())
     print(f"Собрано: {len(sections)} разделов, {total} глав.")
     for slug, chapters in sections.items():
         print(f"  {slug}: {len(chapters)}")
-    print_mkdocs_nav(sections)
     return 0
 
 
