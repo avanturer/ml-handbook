@@ -3,7 +3,7 @@
 > Собран автоматически из блоков «Что читать дальше» всех глав (`python tools/build_bibliography.py`).
 > Это не список «прочитать всё» — это карта: у каждого источника указано, зачем его читать и после какой главы.
 
-**Источников:** 334 · **глав с библиографией:** 41
+**Источников:** 420 · **глав с библиографией:** 49
 
 ## Как этим пользоваться
 
@@ -13,26 +13,6 @@
 
 ## Старт
 
-### [Как пользоваться хендбуком](../docs/00-start/01-how-to-use.md)
-
-- [Треки обучения](02-tracks.md) — выберите маршрут под свою ситуацию. **Начните отсюда.**
-- [Карта собеседования MLE](03-interview-map.md) — из чего состоит воронка и что спрашивают на каждом грейде.
-- [Как учить, чтобы осталось в голове](04-study-method.md) — обоснование протокола из §5 и подробный разбор методики.
-- [Глоссарий](05-glossary.md) — если по ходу встретился незнакомый термин.
-
-### [Треки обучения](../docs/00-start/02-tracks.md)
-
-- [Карта собеседования MLE](03-interview-map.md) — что именно спрашивают на каждой секции и каждом грейде.
-- [Как учить, чтобы осталось в голове](04-study-method.md) — методика, на которой построены правила выше.
-- [Оглавление](../index.md) — полная карта хендбука, если хотите собрать свой маршрут.
-
-### [Карта собеседования MLE](../docs/00-start/03-interview-map.md)
-
-- [Треки обучения](02-tracks.md) — выберите маршрут под свою ситуацию и приступайте.
-- [Как учить, чтобы осталось в голове](04-study-method.md) — протокол работы с материалом.
-- [Каркас ответа на ML System Design](../11-system-design/01-framework.md) — секция с наибольшим весом на middle+.
-- [Процесс найма изнутри](../14-career/01-interview-process.md) — резюме, проекты, что делать между этапами и после отказа.
-
 ### [Как учить, чтобы осталось в голове](../docs/00-start/04-study-method.md)
 
 - **Brown, Roediger, McDaniel. «Make It Stick: The Science of Successful Learning» (2014)** — лучшее популярное изложение всего, что описано в этой главе, от самих исследователей. Если читать одну книгу об обучении — эту.
@@ -40,11 +20,6 @@
 - **Sweller, Ayres, Kalyuga. «Cognitive Load Theory» (2011)** — академическое изложение теории когнитивной нагрузки, включая эффект обращения экспертизы. Для тех, кому нужна строгость.
 - **Работы Роберта Бьорка о desirable difficulties** (лаборатория Bjork Learning and Forgetting Lab, UCLA) — первоисточник по разнесению, перемешиванию и различию между обучением и сиюминутной продуктивностью.
 - [Документация Anki](https://docs.ankiweb.net/) — если решите настроить систему повторений; достаточно раздела о колодах и о параметрах интервалов.
-
-### [Глоссарий](../docs/00-start/05-glossary.md)
-
-- [Оглавление](../index.md) — полная карта хендбука.
-- [Треки обучения](02-tracks.md) — если непонятно, с какой стороны подступиться.
 
 ## Математика
 
@@ -62,7 +37,7 @@
 
 - **Blitzstein J., Hwang J. «Introduction to Probability»** и сопровождающий её бесплатный курс Гарварда **Stat 110** (лекции и задачники выложены в открытый доступ, ищутся по названию курса). Лучший баланс строгости и интуиции; глава про условную вероятность и раздел с задачами-тизерами закрывают половину математической секции собеседования.
 - **Bertsekas D., Tsitsiklis J. «Introduction to Probability»** (курс MIT 6.041) — более инженерный стиль, много про пуассоновские и марковские процессы. Брать, если нужна прикладная сторона: очереди, потоки событий, времена ожидания.
-- **Wasserman L. «All of Statistics»** — компактно и плотно; главы 1–5 покрывают эту главу, дальше идёт [статистика](03-statistics.md). Подходит тем, кто уже знает основы и хочет систематизации, а не введения.
+- **Wasserman L. «All of Statistics»** — компактно и плотно; главы 1–5 покрывают эту главу, дальше идёт [статистика](../docs/01-math/03-statistics.md). Подходит тем, кто уже знает основы и хочет систематизации, а не введения.
 - [Документация `scipy.stats`](https://docs.scipy.org/doc/scipy/reference/stats.html) — прочитайте раздел про интерфейс `rv_continuous`/`rv_discrete` и список распределений. Пятнадцать минут, после которых вы перестанете писать руками формулы плотностей и квантилей.
 - **Kohavi R., Tang D., Xu Y. «Trustworthy Online Controlled Experiments» (2020)** — книга про A/B-тесты от людей, запускавших их в Microsoft и Amazon. Для этой главы важны разделы про зависимость наблюдений, про тяжёлые хвосты и про то, почему единица рандомизации и единица анализа должны совпадать.
 - **Gigerenzer G. о натуральных частотах** — серия работ о том, что задачи вида «тест на редкую болезнь» решаются людьми в разы точнее, если переформулировать их в частотах вместо вероятностей. Полезно не как математика, а как приём коммуникации: так вы объясните продукту, почему у модели низкая precision.
@@ -79,6 +54,30 @@
 - **Benjamini Y., Hochberg Y. «Controlling the False Discovery Rate», *JRSS Series B*, 1995** — оригинальная статья про FDR. Стоит прочитать введение, чтобы понять, зачем вообще понадобилась величина, отличная от FWER.
 - [Документация `scipy.stats`](https://docs.scipy.org/doc/scipy/reference/stats.html) — список критериев с точными формулировками нулевых гипотез. Читать не как справочник функций, а как справочник **гипотез**: в описании каждой функции написано, что именно она проверяет.
 - [Документация `statsmodels`: статистические тесты и поправки](https://www.statsmodels.org/stable/stats.html) — здесь живут `multipletests` (все поправки на множественность), тесты пропорций и расчёты мощности, которых нет в scipy.
+
+### [Оптимизация](../docs/01-math/04-optimization.md)
+
+- [Boyd S., Vandenberghe L. «Convex Optimization» (Cambridge University Press, 2004)](https://web.stanford.edu/~boyd/cvxbook/) — бесплатный PDF на сайте Стэнфорда. Каноничный источник по выпуклости, лагранжиану, двойственности и KKT. Главы 3 (выпуклые функции), 5 (двойственность) и 9 (методы спуска) покрывают §2 и §9 этой главы полностью.
+- **Nocedal J., Wright S. «Numerical Optimization» (2nd ed., Springer, 2006)** — стандартный учебник по численной оптимизации: линейный поиск, методы второго порядка, квази-Ньютон (L-BFGS), trust region. Читать, если нужно понять, что происходит за пределами методов первого порядка.
+- [Bottou L., Curtis F., Nocedal J. «Optimization Methods for Large-Scale Machine Learning» (2016)](https://arxiv.org/abs/1606.04838) — обзор ровно про то, чем оптимизация в ML отличается от классической: стохастика, компромисс батча, скорости сходимости SGD. Лучший единственный источник по §5.
+- [Kingma D., Ba J. «Adam: A Method for Stochastic Optimization» (2014)](https://arxiv.org/abs/1412.6980) — оригинальная статья. Раздел 3 содержит ровно тот вывод коррекции смещения, что в §7.4.
+- [Loshchilov I., Hutter F. «Decoupled Weight Decay Regularization» (2017)](https://arxiv.org/abs/1711.05101) — статья про AdamW. Читать ради раздела с сравнением L2 и weight decay: там же графики, показывающие, насколько по-разному ведут себя оптимальные $\lambda$.
+- [Duchi J., Hazan E., Singer Y. «Adaptive Subgradient Methods for Online Learning and Stochastic Optimization», JMLR 2011](https://jmlr.org/papers/v12/duchi11a.html) — AdaGrad. Полезен, чтобы понять, откуда вообще взялась идея покоординатного адаптивного шага и почему она так хороша для разреженных данных.
+- [Reddi S., Kale S., Kumar S. «On the Convergence of Adam and Beyond» (2019)](https://arxiv.org/abs/1904.09237) — контрпример, на котором Adam расходится, и AMSGrad как починка. Читать ради понимания границ метода.
+- [Dauphin Y. et al. «Identifying and Attacking the Saddle Point Problem in High-dimensional Non-convex Optimization» (2014)](https://arxiv.org/abs/1406.2572) — источник картины «сёдла, а не локальные минимумы» из §10.
+- [Smith L. «Cyclical Learning Rates for Training Neural Networks» (2015)](https://arxiv.org/abs/1506.01186) — здесь описан LR range test. Короткая практическая статья, читается за полчаса.
+- [Ruder S. «An Overview of Gradient Descent Optimization Algorithms» (2016)](https://arxiv.org/abs/1609.04747) — компактный обзор всех методов из §6–8 в одной нотации; удобно как шпаргалка перед собеседованием.
+- [Goodfellow I., Bengio Y., Courville A. «Deep Learning», глава 8](https://www.deeplearningbook.org/) — оптимизация именно в контексте обучения сетей: плохая обусловленность, плато, выбор батча, инициализация. Бесплатная онлайн-версия.
+
+### [Теория информации](../docs/01-math/05-information-theory.md)
+
+- **Cover T., Thomas J. «Elements of Information Theory»** — стандартный учебник. Для этой главы достаточно глав 2 (энтропия, взаимная информация) и 5 (кодирование); там же строгие доказательства всего, что здесь выведено на пальцах. Ищется по названию, PDF широко доступен.
+- **Shannon C. E. «A Mathematical Theory of Communication», Bell System Technical Journal, 1948** — оригинальная статья, из которой выросло всё. Читается на удивление легко; первые десять страниц дают интуицию лучше любого пересказа.
+- **MacKay D. «Information Theory, Inference, and Learning Algorithms»** — книга бесплатно выложена автором (ищется по названию). Единственный источник, где теория информации, байесовский вывод и машинное обучение изложены как одна дисциплина, а не три.
+- [Hinton G., Vinyals O., Dean J. «Distilling the Knowledge in a Neural Network» (2015)](https://arxiv.org/abs/1503.02531) — первоисточник дистилляции. Читать разделы 2 и 3: там и про температуру, и про множитель $T^2$, и про «тёмное знание».
+- [Kingma D., Welling M. «Auto-Encoding Variational Bayes» (2013)](https://arxiv.org/abs/1312.6114) — VAE и вывод ELBO; раздел 2 — ровно то, что в §8.2, но подробнее, плюс репараметризационный трюк.
+- [van den Oord A., Li Y., Vinyals O. «Representation Learning with Contrastive Predictive Coding» (2018)](https://arxiv.org/abs/1807.03748) — статья, где введён InfoNCE и доказана граница $I \ge \log N - \mathcal{L}$. Читать ради приложения с выводом границы: именно оно объясняет, почему в контрастивном обучении так важен размер батча.
+- [Документация `scipy.stats.entropy` и `scipy.spatial.distance.jensenshannon`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.entropy.html) — короткие страницы, но прочитайте внимательно: `entropy(p, q)` считает KL, а не энтропию, а `jensenshannon` возвращает корень из дивергенции. Обе детали регулярно приводят к ошибкам в мониторинге.
 
 ## Классический ML
 
@@ -133,6 +132,16 @@
 - [Документация scikit-learn: Permutation feature importance](https://scikit-learn.org/stable/modules/permutation_importance.html) — короткий текст с честным разбором того, где permutation importance тоже ломается (коррелированные признаки). Читать сразу после раздела 8 этой главы.
 - [Открытый курс ODS (mlcourse.ai)](https://mlcourse.ai/book/index.html), тема 3 — русскоязычное изложение деревьев и kNN с кодом и визуализациями разделяющих поверхностей; хорошо заходит как второй проход для тех, кому не хватает картинок.
 
+### [Бэггинг и случайный лес](../docs/02-classic-ml/06-bagging-random-forest.md)
+
+- [Breiman L. «Random Forests», Machine Learning 45(1), 2001](https://link.springer.com/article/10.1023/A:1010933404324) — первоисточник. Читать ради двух вещей: теоремы о сходимости ошибки обобщения при $B\to\infty$ (это и есть строгий ответ на «переобучается ли лес от числа деревьев») и оценки обобщающей способности через «силу» деревьев и их корреляцию — прямой формальный аналог формулы из §4.
+- **Breiman L. «Bagging Predictors», Machine Learning 24(2), 1996** — работа, где бэггинг и появился. Главное в ней — раздел про нестабильность: там прямо сказано, для каких базовых моделей бэггинг бесполезен и почему.
+- **Hastie, Tibshirani, Friedman. «The Elements of Statistical Learning», гл. 15** — лучшее компактное изложение: формула $\rho\sigma^2 + \frac{1-\rho}{B}\sigma^2$, разбор `max_features`, OOB, и честное обсуждение того, где лес проигрывает бустингу. Раздел 15.4.2 отдельно про то, как лес ведёт себя при большом числе шумовых признаков.
+- **Geurts P., Ernst D., Wehenkel L. «Extremely Randomized Trees», Machine Learning 63(1), 2006** — здесь есть то, чего нет в блогах: разбор, почему случайный порог не разрушает качество, и эксперименты по зависимости от степени рандомизации.
+- **Strobl C. et al. «Bias in random forest variable importance measures», BMC Bioinformatics, 2007** — почему `feature_importances_` леса нельзя показывать бизнесу без оговорок; разбор вклада бутстрапа в это смещение.
+- [Документация scikit-learn: Ensemble methods](https://scikit-learn.org/stable/modules/ensemble.html) — разделы про `RandomForest`, `ExtraTrees` и `Bagging`: точная семантика всех параметров и практические заметки о том, что sklearn делает не так, как в оригинальных статьях (в частности, усреднение вероятностей вместо голосования большинством).
+- [Открытый курс ODS (mlcourse.ai)](https://mlcourse.ai/book/index.html), тема 5 — русскоязычный разбор бэггинга и случайного леса с визуализациями и кодом; хороший второй проход после этой главы.
+
 ### [Градиентный бустинг](../docs/02-classic-ml/07-gradient-boosting.md)
 
 - [Friedman J. «Greedy Function Approximation: A Gradient Boosting Machine» (2001)](https://jerryfriedman.su.domains/ftp/trebst.pdf) — первоисточник. Читать ради разделов с выводом общей схемы и с частными случаями функций потерь; там же — обоснование shrinkage.
@@ -141,6 +150,17 @@
 - **Hastie, Tibshirani, Friedman. «The Elements of Statistical Learning», гл. 10** — наиболее аккуратное изложение бустинга как forward stagewise additive modeling и связи с AdaBoost через экспоненциальную потерю.
 - [Документация LightGBM: Parameters Tuning](https://lightgbm.readthedocs.io/en/latest/Parameters-Tuning.html) — практический разбор, какие параметры на что влияют; полезно как чек-лист перед тюнингом.
 - [Разбор бустинга в открытом курсе ODS (mlcourse.ai), тема 10](https://mlcourse.ai/book/topic10/topic10_gradient_boosting.html) — русскоязычное изложение с кодом; хорошо заходит как второй проход после этой главы.
+
+### [Дисбаланс классов и калибровка](../docs/02-classic-ml/12-imbalance-and-calibration.md)
+
+- [Chawla N. et al. «SMOTE: Synthetic Minority Over-sampling Technique» (2002), JAIR 16](https://arxiv.org/abs/1106.1813) — первоисточник. Читать ради точной формулировки алгоритма и, что важнее, ради условий экспериментов: станет видно, на каких данных метод проверяли и почему результаты не переносятся.
+- **Elor Y., Averbuch-Elor H. «To SMOTE, or not to SMOTE?» (2022)** — систематическое сравнение балансировки на десятках датасетов с сильными и слабыми моделями. Главный вывод: для сильных классификаторов после правильной настройки порога прирост исчезает. Лучший аргумент в споре «а давайте сделаем SMOTE».
+- **van den Goorbergh R. et al. «The harm of class imbalance corrections for risk prediction models» (2022), JAMIA 29(9)** — та же тема со стороны медицинского прогнозирования, с акцентом на разрушение калибровки. Читать, если модель используется для оценки риска, а не только для сортировки.
+- [Lin T.-Y. et al. «Focal Loss for Dense Object Detection» (2017)](https://arxiv.org/abs/1708.02002) — оригинальная статья про focal loss. Раздел 3 объясняет, почему проблема именно в лёгких примерах, а не в соотношении классов; там же — эксперименты по $\gamma$ и $\alpha$.
+- **Niculescu-Mizil A., Caruana R. «Predicting Good Probabilities With Supervised Learning» (ICML 2005)** — работа, откуда пошла практика «бустинг + Платт». Содержит калибровочные кривые для десятка семейств моделей: наглядно видно, кто переуверен, кто недоуверен и почему.
+- **Kull M., Silva Filho T., Flach P. «Beta calibration» (AISTATS 2017)** — про то, почему сигмоида Платта не всегда подходит по форме, и про трёхпараметрическую альтернативу. Полезно, когда Платт недокалибровывает края, а изотоническая переобучается.
+- [Guo C. et al. «On Calibration of Modern Neural Networks» (2017)](https://arxiv.org/abs/1706.04599) — про то же самое в мире нейросетей: почему современные сети систематически переуверены и почему temperature scaling с одним параметром часто достаточно. Читать перед тем, как калибровать выход нейросети.
+- [scikit-learn: Probability calibration](https://scikit-learn.org/stable/modules/calibration.html) — практический справочник: `CalibratedClassifierCV`, `calibration_curve`, схемы с out-of-fold и с замороженной моделью. Держать открытым при реализации.
 
 ## Deep Learning
 
@@ -155,7 +175,6 @@
 - [Hendrycks D., Gimpel K. «Gaussian Error Linear Units (GELUs)» (2016)](https://arxiv.org/abs/1606.08415) — откуда взялась GELU и почему её интерпретируют как стохастический вентиль.
 - [Ramachandran et al. «Searching for Activation Functions» (2017)](https://arxiv.org/abs/1710.05941) — Swish/SiLU, найденная автоматическим поиском; полезно как пример честного сравнения активаций.
 - [Документация PyTorch: Autograd mechanics](https://pytorch.org/docs/stable/notes/autograd.html) — как устроен граф, что такое `requires_grad`, `detach`, in-place операции и почему они ломают обратный проход. Читать перед первым серьёзным проектом.
-- Rumelhart D., Hinton G., Williams R. «Learning representations by back-propagating errors» (Nature, 1986) — статья, с которой backprop вошёл в обиход. Историческая ценность; математика там ровно та же, что в §5.
 
 ### [Как на самом деле обучается сеть](../docs/03-deep-learning/02-training-dynamics.md)
 
@@ -190,7 +209,6 @@
 - [Bai et al. «An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling» (2018)](https://arxiv.org/abs/1803.01271) — временные свёрточные сети (TCN); полезно как напоминание, что свёртка — полноценная альтернатива рекуррентности для последовательностей.
 - [Gu & Dao. «Mamba: Linear-Time Sequence Modeling with Selective State Spaces» (2023)](https://arxiv.org/abs/2312.00752) — куда ушла рекуррентная идея. Читать после того, как разберётесь с §9 и §12.
 - [Karpathy A. «The Unreasonable Effectiveness of Recurrent Neural Networks» (2015)](https://karpathy.github.io/2015/05/21/rnn-effectiveness/) — классический пост с интуицией и примерами генерации. Хорошее «мягкое» дополнение к формулам.
-- Оригинальная статья Hochreiter & Schmidhuber «Long Short-Term Memory» (Neural Computation, 1997) и LeCun et al. «Gradient-Based Learning Applied to Document Recognition» (Proceedings of the IEEE, 1998) — первоисточники LSTM и свёрточных сетей соответственно; ищите по названию, читать необязательно, но полезно понимать, насколько давно всё это придумано.
 
 ### [Внимание и трансформер](../docs/03-deep-learning/04-attention-and-transformer.md)
 
@@ -234,6 +252,19 @@
 
 ## NLP
 
+### [Текст как данные](../docs/04-nlp/01-text-representation.md)
+
+- [Sennrich et al. «Neural Machine Translation of Rare Words with Subword Units» (2015)](https://arxiv.org/abs/1508.07909) — первоисточник BPE в NLP. Читать ради алгоритма в разделе 3.2: он занимает полстраницы и объясняет всё.
+- [Kudo «Subword Regularization: Improving NMT Models with Multiple Subword Candidates» (2018)](https://arxiv.org/abs/1804.10959) — Unigram LM и идея сэмплирования сегментаций. Раздел про EM и обрезание словаря — то, чего нет в популярных пересказах.
+- [Kudo & Richardson «SentencePiece: A simple and language independent subword tokenizer» (2018)](https://arxiv.org/abs/1808.06226) — короткая инженерная статья про то, почему обратимость и отсутствие пре-токенизации важны.
+- [Wu et al. «Google's Neural Machine Translation System» (2016)](https://arxiv.org/abs/1609.08144) — здесь описан WordPiece в том виде, в каком он попал в BERT (раздел 4.1), а заодно length penalty для beam search, к которой мы вернёмся в [главе про seq2seq](../docs/04-nlp/03-seq2seq-and-attention.md).
+- [Provilkov et al. «BPE-Dropout: Simple and Effective Subword Regularization» (2019)](https://arxiv.org/abs/1910.13267) — как получить регуляризацию сегментации, не уходя с BPE. Полезно, если у вас мало данных.
+- [Документация HuggingFace Tokenizers](https://huggingface.co/docs/tokenizers/index) и [обзор токенизаторов в Transformers](https://huggingface.co/docs/transformers/tokenizer_summary) — практика: как собрать токенизатор из нормализатора, пре-токенизатора, модели и декодера. Читать перед тем, как обучать свой.
+- [Karpathy A. «minbpe»](https://github.com/karpathy/minbpe) — референсная реализация BPE и byte-level BPE на несколько сотен строк, с разбором регулярки GPT-2. Лучший способ проверить свою реализацию из задачи 2.
+- [Jurafsky & Martin «Speech and Language Processing», 3rd ed.](https://web.stanford.edu/~jurafsky/slp3/) — главы 2 (регулярки, нормализация, BPE) и 6 (векторные представления, TF-IDF, PPMI). Бесплатный черновик, лучший академический учебник по классическому NLP.
+- [Документация pymorphy2](https://pymorphy2.readthedocs.io/) и [проект Natasha](https://github.com/natasha/natasha) — рабочие инструменты для русской морфологии и NER. Natasha полезна как готовый пайплайн: сегментация, морфология, синтаксис, NER на одном корпусе.
+- [Snowball](https://snowballstem.org/) — описание стеммеров, включая русский, с исходными правилами. Полезно посмотреть, чтобы понять, насколько это грубый инструмент.
+
 ### [BERT и семейство энкодеров](../docs/04-nlp/04-bert-and-encoders.md)
 
 - [Devlin et al. «BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding» (2018)](https://arxiv.org/abs/1810.04805) — первоисточник. Читать ради раздела 3.1 (постановка MLM и обоснование 80/10/10) и приложения C.2 с абляциями; там же рекомендованные гиперпараметры дообучения.
@@ -248,6 +279,20 @@
 - [Kuratov & Arkhipov «Adaptation of Deep Bidirectional Multilingual Transformers for Russian Language» (2019)](https://arxiv.org/abs/1905.07213) — как делали ruBERT: перенос из mBERT, пересборка словаря под русский.
 - [Документация sentence-transformers](https://www.sbert.net/) — практический референс по лоссам (MultipleNegativesRankingLoss, TripletLoss), pooling-стратегиям и обучению своей модели. Начинать с раздела Training Overview.
 - [Документация HuggingFace Transformers](https://huggingface.co/docs/transformers) — разделы про `AutoModelFor*`, `Trainer` и `DataCollatorForLanguageModeling` (в нём как раз реализована схема 80/10/10 — полезно сравнить со своей реализацией из задачи 1).
+
+### [Задачи NLP и их метрики](../docs/04-nlp/05-nlp-tasks-and-metrics.md)
+
+- [Rajpurkar et al. «SQuAD: 100,000+ Questions for Machine Comprehension of Text» (2016)](https://arxiv.org/abs/1606.05250) — постановка extractive QA и определение EM/F1 вместе с процедурой нормализации ответов.
+- [Rajpurkar et al. «Know What You Don't Know: Unanswerable Questions for SQuAD» (2018)](https://arxiv.org/abs/1806.03822) — почему умение отказаться от ответа надо мерить отдельно; прямо применимо к RAG.
+- [Papineni et al. «BLEU: a Method for Automatic Evaluation of Machine Translation» (2002)](https://aclanthology.org/P02-1040/) — первоисточник. Читать ради определения модифицированной точности с клиппингом и вывода BP.
+- [Lin «ROUGE: A Package for Automatic Evaluation of Summaries» (2004)](https://aclanthology.org/W04-1013/) — определения ROUGE-N, ROUGE-L, ROUGE-W и ROUGE-S. Короткая и точная статья.
+- [Banerjee & Lavie «METEOR: An Automatic Metric for MT Evaluation» (2005)](https://aclanthology.org/W05-0909/) — сопоставление со стеммингом и синонимами, штраф за фрагментацию.
+- [Zhang et al. «BERTScore: Evaluating Text Generation with BERT» (2019)](https://arxiv.org/abs/1904.09675) — метрика на эмбеддингах, а также честный раздел про её ограничения и про baseline rescaling.
+- [Post «A Call for Clarity in Reporting BLEU Scores» (2018)](https://arxiv.org/abs/1804.08771) — почему BLEU из разных статей несопоставимы и что делает sacreBLEU. Читать перед публикацией любых чисел BLEU.
+- [Mathur et al. «Tangled up in BLEU» (2020)](https://arxiv.org/abs/2006.06264) — систематический разбор того, как метрики вводят в заблуждение при сравнении сильных систем.
+- [Rei et al. «COMET: A Neural Framework for MT Evaluation» (2020)](https://arxiv.org/abs/2009.09022) — обучаемая метрика, предсказывающая человеческую оценку; текущий стандарт в оценке перевода.
+- [Artstein & Poesio «Inter-Coder Agreement for Computational Linguistics» (2008)](https://aclanthology.org/J08-4004/) — исчерпывающий разбор каппы Коэна, каппы Фляйсса и альфы Криппендорфа с обсуждением, когда какую брать. Лучший источник по теме разметки.
+- [seqeval](https://github.com/chakki-works/seqeval) — референсная реализация entity-level метрик, совместимая со скриптом CoNLL. Прочитайте исходник обработки некорректных цепочек: это объясняет расхождения в числах между командами.
 
 ## LLM
 
@@ -310,6 +355,17 @@
 - [Документация vLLM](https://docs.vllm.ai/) — поддержка GPTQ/AWQ, мультиадаптерный LoRA-сервинг, квантизация KV-кэша. Первоисточник по тому, что реально работает в проде.
 - [llama.cpp (репозиторий)](https://github.com/ggml-org/llama.cpp) — GGUF и k-quants; в документации репозитория есть таблицы «размер против перплексии» для всех схем, полезные для выбора.
 
+### [Инференс LLM](../docs/05-llm/05-inference-and-serving.md)
+
+- [Kwon et al. «Efficient Memory Management for Large Language Model Serving with PagedAttention» (2023)](https://arxiv.org/abs/2309.06180) — статья про vLLM. Читать ради разделов про фрагментацию и про copy-on-write разделение блоков; там же измерения, откуда берутся числа «20–40% полезного использования памяти».
+- [Leviathan et al. «Fast Inference from Transformers via Speculative Decoding» (2022)](https://arxiv.org/abs/2211.17192) — первоисточник спекулятивного декодирования с выводом формулы ожидаемого числа принятых токенов.
+- [Chen et al. «Accelerating Large Language Model Decoding with Speculative Sampling» (2023)](https://arxiv.org/abs/2302.01318) — параллельная работа DeepMind; полезна доказательством, что распределение выходов сохраняется.
+- [Dao et al. «FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness» (2022)](https://arxiv.org/abs/2205.14135) и [«FlashAttention-2» (2023)](https://arxiv.org/abs/2307.08691) — почему память важнее FLOPs. Обязательно, если планируете читать профили и понимать, куда уходит время.
+- [Ainslie et al. «GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints» (2023)](https://arxiv.org/abs/2305.13245) и [Shazeer «Fast Transformer Decoding: One Write-Head is All You Need» (2019)](https://arxiv.org/abs/1911.02150) — откуда взялись MQA и GQA и какой ценой они уменьшают кэш.
+- [Holtzman et al. «The Curious Case of Neural Text Degeneration» (2019)](https://arxiv.org/abs/1904.09751) — введение nucleus sampling и лучшее объяснение, почему greedy и beam search вырождаются на открытой генерации.
+- [Документация vLLM](https://docs.vllm.ai/) — первоисточник по `enable_chunked_prefill`, `enable_prefix_caching`, `kv_cache_dtype`, спекулятивному декодированию и встроенному бенчмарку. API меняется быстро — всегда сверяйтесь с версией, которую поднимаете.
+- [Документация HuggingFace Transformers: генерация](https://huggingface.co/docs/transformers/main/en/llm_tutorial) — параметры `generate`, `GenerationConfig`, стратегии декодирования и статический KV-кэш. Полезно, чтобы понимать, что именно движки делают за вас.
+
 ## Рекомендательные системы
 
 ### [Постановка задачи рекомендаций](../docs/06-recsys/01-recsys-foundations.md)
@@ -363,6 +419,31 @@
 - [Naumov M. et al. «Deep Learning Recommendation Model for Personalization and Recommendation Systems» (2019)](https://arxiv.org/abs/1906.00091) — DLRM от Meta: как та же идея (эмбеддинги категорий + явные попарные взаимодействия + MLP) выглядит в промышленном масштабе, включая обсуждение памяти под таблицы эмбеддингов.
 - [Kula M. «Metadata Embeddings for User and Item Cold-start Recommendations» (2015)](https://arxiv.org/abs/1507.08439) и [документация LightFM](https://making.lyst.com/lightfm/docs/home.html) — модель из §7 и её реализация; в документации есть готовый пример эксперимента на холодный старт.
 
+### [Двухбашенные модели и ANN-поиск](../docs/06-recsys/06-two-tower-and-ann.md)
+
+- [Malkov Yu., Yashunin D. «Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs» (2016)](https://arxiv.org/abs/1603.09320) — первоисточник HNSW. Читать разделы про выбор соседей и про роль $m_L$: там объяснено, почему граф остаётся связным и откуда логарифмическая сложность.
+- [Johnson J., Douze M., Jégou H. «Billion-scale similarity search with GPUs» (2017)](https://arxiv.org/abs/1702.08734) — инженерия FAISS: как IVF-PQ ложится на GPU и почему k-selection был узким местом.
+- [Douze M. et al. «The Faiss library» (2024)](https://arxiv.org/abs/2401.08281) — свежий обзор всей библиотеки от авторов; лучший источник, чтобы понять логику `index_factory` и что в какой комбинации имеет смысл.
+- [Guo R. et al. «Accelerating Large-Scale Inference with Anisotropic Vector Quantization» (2020)](https://arxiv.org/abs/1908.10396) — ScaNN. Ключевая идея: для скалярного произведения ошибку квантования надо штрафовать анизотропно — вдоль направления вектора она важнее, чем поперёк.
+- **Jégou H., Douze M., Schmid C. «Product Quantization for Nearest Neighbor Search» (IEEE TPAMI, 2011)** — оригинал PQ. Читать ради вывода ADC и анализа ошибки квантования; статья доступна на страницах авторов и в цифровой библиотеке IEEE.
+- **Yi X. et al. «Sampling-Bias-Corrected Neural Modeling for Large Corpus Item Recommendations» (RecSys 2019, Google)** — та самая работа про logQ-коррекцию в two-tower и потоковую оценку частот айтемов. Ищите по названию в публикациях Google Research.
+- **Yang J. et al. «Mixed Negative Sampling for Learning Two-tower Neural Networks in Recommendations» (Google, 2020)** — про смесь in-batch и равномерных негативов; короткая и практичная.
+- [Документация FAISS (wiki репозитория)](https://github.com/facebookresearch/faiss/wiki) — разделы «Guidelines to choose an index» и «Faiss indexes» стоит прочитать целиком перед тем, как выбирать индекс: там есть готовое дерево решений по размеру данных и памяти.
+- [hnswlib](https://github.com/nmslib/hnswlib) — референсная реализация HNSW с понятным API; читать README ради семантики `max_elements`, `ef` и пометки удалённых элементов.
+- [Документация implicit](https://benfred.github.io/implicit/) — если нужно быстро получить бейзлайн-эмбеддинги айтемов через iALS перед тем, как обучать нейросетевые башни.
+
+### [Последовательные рекомендации](../docs/06-recsys/09-sequential-recsys.md)
+
+- [Hidasi B. et al. «Session-based Recommendations with Recurrent Neural Networks» (2016)](https://arxiv.org/abs/1511.06939) — GRU4Rec, первоисточник. Читать ради постановки сессионной задачи, session-parallel мини-батчей и лоссов BPR/TOP1: это разделы 3.1–3.2.
+- [Hidasi B., Karatzoglou A. «Recurrent Neural Networks with Top-k Gains for Session-based Recommendations» (2018)](https://arxiv.org/abs/1706.03847) — продолжение: разбор затухания градиента при большом числе негативов и вывод BPR-max. Полезно всем, кто настраивает ранжирующие лоссы, а не только в сессионных задачах.
+- [Kang W.-C., McAuley J. «Self-Attentive Sequential Recommendation» (2018)](https://arxiv.org/abs/1808.09781) — SASRec. Компактная статья; смотреть раздел с архитектурой и таблицу абляций по числу блоков и длине последовательности — оттуда берутся дефолтные гиперпараметры.
+- [Sun F. et al. «BERT4Rec: Sequential Recommendation with Bidirectional Encoder Representations from Transformer» (2019)](https://arxiv.org/abs/1904.06690) — BERT4Rec и задача Cloze. Читать вместе со следующим пунктом, иначе картина будет неполной.
+- [Ferrari Dacrema M., Cremonesi P., Jannach D. «Are We Really Making Much Progress? A Worrying Analysis of Recent Neural Recommendation Approaches» (2019)](https://arxiv.org/abs/1907.06902) — обязательное чтение. Методология сравнения, разбор конкретных провалов, список сильных бейзлайнов, которые надо настраивать.
+- **Petrov A., Macdonald C. «A Systematic Review and Replicability Study of BERT4Rec for Sequential Recommendation», RecSys 2022** — честная попытка воспроизвести BERT4Rec: сколько эпох реально нужно и что получается при равном бюджете обучения.
+- **Klenitskiy A., Vasilev A. «Turning Dross Into Gold Loss: Is BERT4Rec Really Better Than SASRec?», RecSys 2023** — короткая работа с сильным выводом: замена лосса SASRec на полную кросс-энтропию убирает разрыв. Полезно как пример того, как «архитектурное» преимущество оказывается преимуществом функции потерь.
+- **Krichene W., Rendle S. «On Sampled Metrics for Item Recommendation», KDD 2020** — почему нельзя оценивать на 100 негативах. Читать ради раздела с контрпримерами, где порядок моделей переворачивается.
+- [Документация RecBole](https://recbole.io/) — фреймворк с реализациями GRU4Rec, SASRec, BERT4Rec и единым протоколом оценки. Удобен именно тем, что даёт одинаковые условия для всех моделей — то, чего не хватает в статьях.
+
 ## Выкатка в прод / MLOps
 
 ### [Жизненный цикл ML-системы](../docs/07-mlops/01-ml-lifecycle.md)
@@ -370,9 +451,9 @@
 - [Sculley et al. «Hidden Technical Debt in Machine Learning Systems» (NeurIPS 2015)](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) — первоисточник §4. Короткая (9 страниц) и её реально спрашивают. Читать целиком, особенно разделы про CACE, glue code и configuration debt.
 - [Google Cloud. «MLOps: Continuous delivery and automation pipelines in machine learning»](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning) — первоисточник классификации уровней 0/1/2 из §5, со схемами компонентов каждого уровня.
 - [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — 43 правила из практики. Для этой главы особенно правила 1–8 (не делайте ML, пока не нужно; сначала инфраструктура, потом модель) и 29–32 (про train/serve skew).
-- **Breck et al. «The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction» (IEEE Big Data, 2017)** — 28 конкретных проверок готовности ML-системы к проду, сгруппированных по данным, модели, инфраструктуре и мониторингу. Отличный чек-лист для аудита из задачи 1; используется в главе [CI/CD для ML](07-ci-cd-for-ml.md).
+- **Breck et al. «The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction» (IEEE Big Data, 2017)** — 28 конкретных проверок готовности ML-системы к проду, сгруппированных по данным, модели, инфраструктуре и мониторингу. Отличный чек-лист для аудита из задачи 1; используется в главе [CI/CD для ML](../docs/07-mlops/07-ci-cd-for-ml.md).
 - **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)** — главы 1–2 и 8–9 закрывают жизненный цикл и эксплуатацию с большим количеством практических деталей.
-- **Martin Kleppmann. «Designing Data-Intensive Applications»** — не про ML, но глава про эволюцию схем и совместимость данных — обязательное чтение перед [следующей главой](02-reproducibility-and-tracking.md) и главой про [контракты данных](03-data-and-feature-store.md).
+- **Martin Kleppmann. «Designing Data-Intensive Applications»** — не про ML, но глава про эволюцию схем и совместимость данных — обязательное чтение перед [следующей главой](../docs/07-mlops/02-reproducibility-and-tracking.md) и главой про [контракты данных](../docs/07-mlops/03-data-and-feature-store.md).
 
 ### [Воспроизводимость и трекинг](../docs/07-mlops/02-reproducibility-and-tracking.md)
 
@@ -382,7 +463,7 @@
 - [Hydra. Документация](https://hydra.cc/docs/intro/) — композиция конфигураций, `--multirun`, структурированные конфиги. Раздел про structured configs полезен вместе с pydantic.
 - [Sculley et al. «Hidden Technical Debt in Machine Learning Systems» (NeurIPS 2015)](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) — раздел про configuration debt прямо описывает требования из §7.
 - **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)** — глава 6 (Model Development and Offline Evaluation), раздел про эксперимент-трекинг и версионирование, с обсуждением того, почему версионирование данных сложнее версионирования кода.
-- [Great Expectations. Документация](https://docs.greatexpectations.io/) — пригодится для задачи 5 предыдущей главы и для [качества данных](../09-monitoring/02-data-quality.md): ассерты на данные как код, версионируемые вместе с пайплайном.
+- [Great Expectations. Документация](https://docs.greatexpectations.io/) — пригодится для задачи 5 предыдущей главы и для [качества данных](../docs/09-monitoring/02-data-quality.md): ассерты на данные как код, версионируемые вместе с пайплайном.
 
 ### [Данные и feature store](../docs/07-mlops/03-data-and-feature-store.md)
 
@@ -392,8 +473,8 @@
 - [Uber Engineering. «Michelangelo: Uber's Machine Learning Platform»](https://www.uber.com/blog/michelangelo-machine-learning-platform/) — описание первой широко известной production-платформы с feature store; полезно как источник архитектурных решений и чисел.
 - [Airbnb. Chronon (ранее Zipline) — открытый feature engineering framework](https://github.com/airbnb/chronon) — особенно материалы про backfill и про согласование батчевых и стриминговых определений одной фичи; это самая сложная часть темы.
 - **Martin Kleppmann. «Designing Data-Intensive Applications»** — глава 4 (Encoding and Evolution) — первоисточник по режимам совместимости схем из §2, разобранный гораздо подробнее.
-- [Apache Iceberg. Документация](https://iceberg.apache.org/docs/latest/) — раздел про снапшоты и time travel: механика того, как версионируется таблица, о которой шла речь в [предыдущей главе](02-reproducibility-and-tracking.md).
-- [Great Expectations. Документация](https://docs.greatexpectations.io/) — практическая реализация проверок контракта данных как кода; см. также [качество данных](../09-monitoring/02-data-quality.md).
+- [Apache Iceberg. Документация](https://iceberg.apache.org/docs/latest/) — раздел про снапшоты и time travel: механика того, как версионируется таблица, о которой шла речь в [предыдущей главе](../docs/07-mlops/02-reproducibility-and-tracking.md).
+- [Great Expectations. Документация](https://docs.greatexpectations.io/) — практическая реализация проверок контракта данных как кода; см. также [качество данных](../docs/09-monitoring/02-data-quality.md).
 
 ### [Упаковка модели](../docs/07-mlops/04-model-packaging.md)
 
@@ -434,6 +515,31 @@
 - [KEDA](https://keda.sh/) — скейлинг по внешним метрикам (лаг Kafka, длина очереди), включая scale-to-zero. Полезно для стримингового и батчевого инференса.
 - **Kubernetes Patterns (Ibryam, Huß, O'Reilly)** — паттерны Health Probe, Managed Lifecycle, Predictable Demands изложены ровно на том уровне абстракции, который нужен прикладному инженеру.
 
+### [CI/CD для ML](../docs/07-mlops/07-ci-cd-for-ml.md)
+
+- **Breck, Cai, Nielsen, Salib, Sculley. «The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction» (IEEE Big Data, 2017)** — первоисточник рубрики из §7. Искать по названию в публикациях Google Research. Читать целиком: там на каждый из 28 пунктов есть объяснение, зачем он и что ломается без него.
+- [Sculley et al. «Hidden Technical Debt in Machine Learning Systems» (NeurIPS 2015)](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) — почему ML-код составляет малую часть системы и откуда берётся стоимость поддержки. Раздел про configuration debt и про «pipeline jungles» объясняет, зачем вообще нужен структурированный CI.
+- [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — правила 1–10 про инфраструктуру и метрики, правило 29 («лучший способ убедиться, что вы обучаете так же, как сервите — логировать признаки в момент предсказания») — прямо про §4.
+- [Документация GitHub Actions](https://docs.github.com/en/actions) — разделы про `concurrency`, reusable workflows, environments с required reviewers и OIDC. Это ровно те механизмы, на которых держится пайплайн из §9.
+- [Документация MLflow](https://mlflow.org/docs/latest/index.html) — Model Registry, стадии и алиасы, `infer_signature`. Нужна для шага регистрации из §9.
+- [pytest](https://docs.pytest.org/) — фикстуры, параметризация, маркеры. Всё в §4–5 держится на них; см. также [тесты и качество кода в ML](../docs/12-coding/07-testing-and-code-quality.md).
+- **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)** — главы про тестирование в продакшене и про continual learning; там же хороший разбор частоты переобучения.
+
+## Big Data
+
+### [Хранение данных](../docs/08-big-data/01-storage-and-formats.md)
+
+- [Apache Parquet — официальная документация](https://parquet.apache.org/docs/) — раздел «File Format» описывает ровно ту иерархию, что в §3, а «Encodings» — все кодировки с точными правилами. Читать после этой главы, чтобы уточнить детали.
+- [Спецификация формата Parquet (репозиторий `apache/parquet-format`)](https://github.com/apache/parquet-format) — первоисточник: thrift-схема метаданных, описание column index и bloom-фильтров. Нужен, когда вы отлаживаете реальную проблему со статистиками.
+- [Apache Iceberg — спецификация таблицы](https://iceberg.apache.org/spec/) — лучший текст, чтобы понять, как устроен слой метаданных: metadata.json → manifest list → manifests. После него Delta и Hudi читаются по аналогии.
+- [Delta Lake — документация](https://docs.delta.io/latest/index.html) — разделы про `OPTIMIZE`, `ZORDER`, `VACUUM` и time travel; там же явно описаны параметры retention, на которых обжигаются.
+- [Apache Hudi — документация](https://hudi.apache.org/docs/overview) — читать ради раздела про copy-on-write и merge-on-read: там это объяснено подробнее, чем в конкурентах, потому что это ядро продукта.
+- [Apache ORC — документация](https://orc.apache.org/docs/) и [Apache Avro — документация](https://avro.apache.org/docs/) — по разделу про эволюцию схемы в Avro стоит пройтись отдельно: правила совместимости пригодятся при работе со Schema Registry.
+- [Spark SQL: работа с Parquet](https://spark.apache.org/docs/latest/sql-data-sources-parquet.html) — все опции чтения/записи, включая `mergeSchema`, pushdown и настройки компрессии.
+- **Melnik et al. «Dremel: Interactive Analysis of Web-Scale Datasets» (VLDB 2010)** — статья, из которой выросла схема definition/repetition levels. Читать, если работаете с вложенными данными.
+- **Armbrust et al. «Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores» (VLDB 2020)** — инженерная мотивация табличных форматов от первого лица: что именно ломалось в озере из Parquet-файлов.
+- **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)**, глава про данные — связывает форматы хранения с задачами ML: почему выбор формата влияет на скорость итераций дата-сайентиста.
+
 ## ML System Design
 
 ### [Как проходить ML System Design](../docs/11-system-design/01-framework.md)
@@ -442,7 +548,7 @@
 - [Google. «Rules of Machine Learning: Best Practices for ML Engineering»](https://developers.google.com/machine-learning/guides/rules-of-ml) — 43 правила, выведенных из практики. Правила 1–10 стоит выучить: они ровно про то, что проверяется на этой секции.
 - [Sculley et al. «Hidden Technical Debt in Machine Learning Systems» (NeurIPS 2015)](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) — почему ML-система дороже в поддержке, чем кажется. Аргументы отсюда очень уместны в шаге 8.
 - [Eugene Yan. «Applied ML» (подборка инженерных разборов от компаний)](https://github.com/eugeneyan/applied-ml) — сотни реальных описаний production-систем. Лучший источник конкретных чисел и архитектур.
-- **Kohavi, Tang, Xu. «Trustworthy Online Controlled Experiments»** — для шага 7; см. также [раздел про A/B](../10-ab-testing/01-experiment-design.md).
+- **Kohavi, Tang, Xu. «Trustworthy Online Controlled Experiments»** — для шага 7; см. также [раздел про A/B](../docs/10-ab-testing/01-experiment-design.md).
 
 ### [Кейс: лента рекомендаций](../docs/11-system-design/02-case-feed-ranking.md)
 
@@ -452,7 +558,6 @@
 - [Kang, McAuley. «Self-Attentive Sequential Recommendation» (SASRec, 2018)](https://arxiv.org/abs/1808.09781) — сессионная модель, которая закрывает холодный старт пользователя и реактивность ленты.
 - [Malkov, Yashunin. «Efficient and robust approximate nearest neighbor search using HNSW» (2016)](https://arxiv.org/abs/1603.09320) — устройство индекса, от параметров которого зависят те самые 12–18 мс из бюджета.
 - [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — правила 1–16 почти дословно описывают лестницу усложнения из §4.
-- Смежные главы хендбука: [холодный старт и смещения](../06-recsys/12-cold-start-and-bias.md), [эксплорация и бандиты](../06-recsys/13-exploration-and-bandits.md), [рекомендации в продакшене](../06-recsys/14-recsys-in-production.md), [онлайн-оценка рекомендаций](../06-recsys/15-recsys-online-evaluation.md).
 
 ### [Кейс: поиск и ранжирование](../docs/11-system-design/03-case-search.md)
 
@@ -463,7 +568,6 @@
 - [Khattab, Zaharia. «ColBERT» (2020)](https://arxiv.org/abs/2004.12832) — компромисс между двухбашенкой и кросс-энкодером; полезно, когда встанет вопрос «а можно ли качество кросс-энкодера за приемлемые деньги».
 - **Joachims, Swaminathan, Schnabel. «Unbiased Learning-to-Rank with Biased Feedback» (WSDM 2017)** — формальная постановка IPS для ранжирования и оценка propensity; основа §10.4.
 - **Chapelle, Chang. «Yahoo! Learning to Rank Challenge Overview» (2011)** — про то, как устроены промышленные датасеты LTR и почему LambdaMART так долго держит первое место.
-- Смежные главы: [обучение ранжированию](../06-recsys/07-learning-to-rank.md), [двухбашенные модели и ANN](../06-recsys/06-two-tower-and-ann.md), [RAG](../05-llm/07-rag.md) — там же разбирается гибридный поиск, но под задачу генерации.
 
 ### [Кейс: антифрод](../docs/11-system-design/04-case-fraud-detection.md)
 
@@ -473,7 +577,6 @@
 - [Соревнование IEEE-CIS Fraud Detection на Kaggle](https://www.kaggle.com/c/ieee-fraud-detection) — реальный анонимизированный набор транзакций; публичные решения — хороший каталог признаков (velocity, устройственные, «псевдо-идентификаторы» клиента) и наглядная демонстрация того, как участники ловили временную утечку.
 - [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — правила про приоритет простых эвристик и про то, почему обучение на собственных решениях системы порождает петлю, здесь особенно уместны.
 - **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)** — главы про degenerate feedback loops и про мониторинг закрывают шаги 3 и 7 этого кейса.
-- Для внутренней математики: [дисбаланс и калибровка](../02-classic-ml/12-imbalance-and-calibration.md), [валидация и утечки](../02-classic-ml/13-validation-and-leakage.md), [интерпретируемость](../02-classic-ml/15-interpretability.md), [деградация модели](../09-monitoring/04-model-degradation.md).
 
 ### [Кейс: отток и удержание](../docs/11-system-design/07-case-churn-uplift.md)
 
@@ -484,7 +587,16 @@
 - [CausalML — библиотека Uber для uplift и CATE](https://github.com/uber/causalml) — реализации метаобучателей, uplift-деревьев и метрик, включая Qini; хорошая отправная точка для практики.
 - [scikit-uplift — библиотека с метриками и моделями uplift](https://github.com/maks-sh/scikit-uplift) — русскоязычное сообщество, привычный sklearn-интерфейс, реализованы Qini, uplift@k и преобразование класса.
 - **Diemert et al. «A Large Scale Benchmark for Uplift Modeling» (AdKDD, 2018)** — описание открытого датасета Criteo-UPLIFT с рандомизированным воздействием; редкий случай, когда можно потренироваться на настоящих экспериментальных данных.
-- Для внутренней теории: [uplift и причинность](../02-classic-ml/17-uplift-and-causal.md), [дизайн эксперимента](../10-ab-testing/01-experiment-design.md), [снижение дисперсии](../10-ab-testing/03-variance-reduction.md), [сложные схемы экспериментов](../10-ab-testing/05-complex-designs.md).
+
+### [Кейс: предсказание CTR в рекламе](../docs/11-system-design/08-case-ads-ctr.md)
+
+- **McMahan et al. «Ad Click Prediction: a View from the Trenches» (KDD 2013)** — обязательное чтение по этому кейсу. FTRL-Proximal, хеширование, прореживание негативов, калибровка, экономия памяти, метрики. Почти всё, что описано в §5–§6 этой главы, взято оттуда. Искать по названию — работа свободно доступна на сайте исследовательской группы Google.
+- **He et al. «Practical Lessons from Predicting Clicks on Ads at Facebook» (ADKDD 2014)** — схема GBDT + логрег, формула коррекции прореживания негативов, влияние свежести данных. Короткая и очень плотная работа.
+- **Chapelle. «Modeling Delayed Feedback in Display Advertising» (KDD 2014)** — формальная модель отложенной конверсии из §10.3, включая вывод правдоподобия.
+- [Naumov et al. «Deep Learning Recommendation Model» (DLRM, 2019)](https://arxiv.org/abs/1906.00091) — устройство промышленной нейросети для CTR: таблицы эмбеддингов, взаимодействия, что упирается в память.
+- [Guo et al. «DeepFM» (2017)](https://arxiv.org/abs/1703.04247) и [Wang et al. «Deep & Cross Network» (2017)](https://arxiv.org/abs/1708.05123) — два способа автоматически ловить взаимодействия признаков, часто спрашиваемые по названию.
+- [Cheng et al. «Wide & Deep Learning for Recommender Systems» (2016)](https://arxiv.org/abs/1606.07792) — классическая гибридная схема «запоминание + обобщение», предшественник всего перечисленного.
+- **Edelman, Ostrovsky, Schwarz. «Internet Advertising and the Generalized Second-Price Auction» (2007)** — экономика GSP: почему он не является стимулосовместимым в строгом смысле и как это влияет на поведение рекламодателей. Полезно для §10.6.
 
 ---
 

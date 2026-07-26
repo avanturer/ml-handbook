@@ -98,7 +98,8 @@ def collect() -> dict[str, list[tuple[str, str, list[str]]]]:
             if not (h1 and block):
                 continue
             items = [normalize(i) for i in ITEM_RE.findall(block.group(1))]
-            items = [i for i in items if len(i) > 20]
+            items = [i for i in items if len(i) > 20 and is_bibliography_item(i)]
+            items = [rewrite_relative_links(i, path) for i in items]
             if items:
                 result[section.name].append((h1.group(1).strip(), path.name, items))
     return result
