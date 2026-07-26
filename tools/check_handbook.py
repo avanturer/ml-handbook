@@ -116,10 +116,13 @@ def check_fences(path: Path, text: str, report: Report) -> None:
             depth = 0
     if depth != 0:
         report.error(path, "незакрытый блок кода (```)")
-    for lang in opened_lang:
-        if not lang:
-            report.warn(path, "блок кода без указания языка — не будет подсветки")
-            break
+
+    # Блок без языка — это обычно вывод программы, и это нормально.
+    # А вот слишком длинный листинг стандарт (AUTHORING §6) просит выносить в файл.
+    for match in re.finditer(r"^```python[ \t]*$(.*?)^```", text, re.DOTALL | re.MULTILINE):
+        lines = match.group(1).count("\n")
+        if lines > 90:
+            report.warn(path, f"листинг на {lines} строк — стандарт просит выносить в code/")
 
 
 def check_math(path: Path, text: str, report: Report) -> None:
