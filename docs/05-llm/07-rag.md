@@ -1135,7 +1135,7 @@ retrieved = [7, 12, 45, 3, 9]
 relevant = {3, 12}
 print(recall_at_k(retrieved, relevant, 5),   # 1.0  — оба нашлись
       round(mrr_at_k(retrieved, relevant, 5), 3),    # 0.5 — первое попадание на 2-й позиции
-      round(ndcg_at_k(retrieved, relevant, 5), 3))   # 0.7… — учтены обе позиции
+      round(ndcg_at_k(retrieved, relevant, 5), 3))   # 0.651 — учтены обе позиции
 ```
 
 Отдельно стоит знать про **context precision** и **context recall** в формулировке фреймворка
