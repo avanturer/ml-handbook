@@ -3,7 +3,7 @@
 > Собран автоматически из блоков «Что читать дальше» всех глав (`python tools/build_bibliography.py`).
 > Это не список «прочитать всё» — это карта: у каждого источника указано, зачем его читать и после какой главы.
 
-**Источников:** 844 · **глав с библиографией:** 98
+**Источников:** 982 · **глав с библиографией:** 114
 
 ## Как этим пользоваться
 
@@ -546,6 +546,25 @@
 - [Документация vLLM](https://docs.vllm.ai/) — первоисточник по `enable_chunked_prefill`, `enable_prefix_caching`, `kv_cache_dtype`, спекулятивному декодированию и встроенному бенчмарку. API меняется быстро — всегда сверяйтесь с версией, которую поднимаете.
 - [Документация HuggingFace Transformers: генерация](https://huggingface.co/docs/transformers/main/en/llm_tutorial) — параметры `generate`, `GenerationConfig`, стратегии декодирования и статический KV-кэш. Полезно, чтобы понимать, что именно движки делают за вас.
 
+### [Промптинг и структурированный вывод](../docs/05-llm/06-prompting-and-structured-output.md)
+
+- [Brown et al. «Language Models are Few-Shot Learners» (2020)](https://arxiv.org/abs/2005.14165) — работа, где in-context learning впервые показан как явление; читать разделы про зависимость качества от числа демонстраций и размера модели.
+- [Wei et al. «Chain-of-Thought Prompting Elicits Reasoning in Large Language Models» (2022)](https://arxiv.org/abs/2201.11903) — первоисточник CoT. Важна не сама идея, а графики зависимости эффекта от размера модели.
+- [Kojima et al. «Large Language Models are Zero-Shot Reasoners» (2022)](https://arxiv.org/abs/2205.11916) — zero-shot CoT; полезно как пример того, насколько результат чувствителен к одной фразе.
+- [Wang et al. «Self-Consistency Improves Chain of Thought Reasoning» (2022)](https://arxiv.org/abs/2203.11171) — вывод через маргинализацию и замеры зависимости качества от числа сэмплов.
+- [Min et al. «Rethinking the Role of Demonstrations» (2022)](https://arxiv.org/abs/2202.12837) — эксперимент со случайными метками; обязательно к прочтению перед проектированием few-shot.
+- [Lu et al. «Fantastically Ordered Prompts and Where to Find Them» (2021)](https://arxiv.org/abs/2104.08786) и [Zhao et al. «Calibrate Before Use» (2021)](https://arxiv.org/abs/2102.09690) — пара работ про чувствительность к порядку примеров и про смещения; вторая содержит метод калибровки из раздела 3.1.
+- [Sclar et al. «Quantifying Language Models' Sensitivity to Spurious Features in Prompt Design» (2023)](https://arxiv.org/abs/2310.11324) — методология измерения устойчивости; берите оттуда протокол, а не выводы.
+- [Turpin et al. «Language Models Don't Always Say What They Think» (2023)](https://arxiv.org/abs/2305.04388) и [Huang et al. «Large Language Models Cannot Self-Correct Reasoning Yet» (2023)](https://arxiv.org/abs/2310.01798) — две отрезвляющие работы: цепочка не является объяснением, а самокоррекция без внешнего сигнала вредит.
+- [Liu et al. «Lost in the Middle: How Language Models Use Long Contexts» (2023)](https://arxiv.org/abs/2307.03172) — почему длинный промпт не бесплатен; напрямую влияет на выбор числа few-shot-примеров.
+- [Willard, Louf. «Efficient Guided Generation for Large Language Models» (2023)](https://arxiv.org/abs/2307.09702) — математика и инженерия constrained decoding: построение автомата и индексация по словарю. Основа библиотеки Outlines.
+- [Zhou et al. «Least-to-Most Prompting» (2022)](https://arxiv.org/abs/2205.10625) — декомпозиция как приём; читать ради постановки, а не ради конкретных промптов.
+- [Khattab et al. «DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines» (2023)](https://arxiv.org/abs/2310.03714) — взгляд на промпты как на компилируемые программы с автоматической оптимизацией; полезно даже если не будете использовать фреймворк.
+- **Tam et al. «Let Me Speak Freely? A Study on the Impact of Format Restrictions on Performance of Large Language Models» (EMNLP 2024, Industry Track)** — измерение просадки качества от жёсткого формата; найдите по названию, это прямое эмпирическое дополнение к разделу 6.3.
+- [Prompt Engineering Guide (dair-ai)](https://www.promptingguide.ai/) — справочник приёмов со ссылками на первоисточники. Использовать как каталог, а не как методологию.
+- [Документация OpenAI: function calling](https://platform.openai.com/docs/guides/function-calling) и [structured outputs](https://platform.openai.com/docs/guides/structured-outputs), [документация Anthropic: tool use](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview) — форматы объявления инструментов и режимы строгих схем. Сверяйтесь с версией API: детали меняются.
+- [promptfoo](https://www.promptfoo.dev/) — открытый инструмент для регрессионного тестирования и A/B промптов; полезен как готовая реализация идей раздела 8.
+
 ### [RAG](../docs/05-llm/07-rag.md)
 
 - [Lewis et al. «Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks» (2020)](https://arxiv.org/abs/2005.11401) — первоисточник термина. Читать ради постановки задачи и понимания, чем исходный RAG (обучаемый ретривер, маргинализация по документам) отличается от того, что сегодня строят в проде.
@@ -563,6 +582,65 @@
 - [Malkov, Yashunin. «Efficient and robust approximate nearest neighbor search using HNSW graphs» (2016)](https://arxiv.org/abs/1603.09320) — устройство основного индекса векторных БД. Разбор с параметрами `M` и `efSearch` — в главе про [ANN-поиск](../docs/06-recsys/06-two-tower-and-ann.md).
 - [RAG Techniques (NirDiamant)](https://github.com/NirDiamant/RAG_Techniques) — каталог приёмов с исполняемыми ноутбуками: реранкинг, query rewriting, гибридный поиск, self-RAG. Полезен как справочник реализаций, а не как источник методологии.
 - [Разборы ruMTEB и русскоязычных эмбеддингов от SberDevices](https://habr.com/ru/companies/sberdevices/articles/831150/) — как устроен бенчмарк для русского языка и что смотреть при выборе энкодера под русский RAG. Вопрос «какую модель эмбеддингов возьмёте для русского» на собеседованиях звучит регулярно.
+
+### [Агенты и вызов инструментов](../docs/05-llm/08-agents-and-tools.md)
+
+- [Yao et al. «ReAct: Synergizing Reasoning and Acting in Language Models» (2022)](https://arxiv.org/abs/2210.03629) — первоисточник схемы; читать ради постановки и ради разбора, почему по отдельности рассуждение и действие работают хуже.
+- [Anthropic. «Building Effective Agents» (2024)](https://www.anthropic.com/engineering/building-effective-agents) — лучший короткий инженерный текст по теме: разделение workflow и агентов, каталог паттернов (chaining, routing, orchestrator-workers, evaluator-optimizer) и настойчивый совет начинать с простейшего решения.
+- [Anthropic. «How we built our multi-agent research system» (2025)](https://www.anthropic.com/engineering/multi-agent-research-system) — разбор реальной мультиагентной системы с числами по расходу токенов и списком того, что ломалось. Читать вместе с предыдущим: один текст говорит «не усложняйте», другой показывает цену усложнения.
+- [Shinn et al. «Reflexion: Language Agents with Verbal Reinforcement Learning» (2023)](https://arxiv.org/abs/2303.11366) и [Huang et al. «Large Language Models Cannot Self-Correct Reasoning Yet» (2023)](https://arxiv.org/abs/2310.01798) — обязательная пара: первая показывает, как рефлексия работает с внешним сигналом, вторая — как она не работает без него.
+- [Yao et al. «Tree of Thoughts» (2023)](https://arxiv.org/abs/2305.10601) — поиск по дереву рассуждений; полезно понимать, чтобы осознанно от него отказываться в продуктовых задачах.
+- [Schick et al. «Toolformer» (2023)](https://arxiv.org/abs/2302.04761) — как модель обучают вызывать инструменты самонадзором; объясняет, откуда вообще берётся способность к function calling.
+- [Patil et al. «Gorilla: Large Language Model Connected with Massive APIs» (2023)](https://arxiv.org/abs/2305.15334) — про выбор из большого числа API и про галлюцинации в сигнатурах вызовов. Прямо относится к проблеме «50 инструментов».
+- [Packer et al. «MemGPT» (2023)](https://arxiv.org/abs/2310.08560) и [Park et al. «Generative Agents» (2023)](https://arxiv.org/abs/2304.03442) — две рамочные работы по памяти агентов: иерархия контекста и ранжирование воспоминаний.
+- [Wu et al. «AutoGen» (2023)](https://arxiv.org/abs/2308.08155) — мультиагентные конверсационные паттерны; читать ради систематики топологий, а не ради фреймворка.
+- [Jimenez et al. «SWE-bench» (2023)](https://arxiv.org/abs/2310.06770) — образец правильной оценки агентов: критерий успеха программируемый (прохождение тестов), задачи взяты из реальных репозиториев.
+- [Zhou et al. «WebArena» (2023)](https://arxiv.org/abs/2307.13854), [Liu et al. «AgentBench» (2023)](https://arxiv.org/abs/2308.03688), [Mialon et al. «GAIA» (2023)](https://arxiv.org/abs/2311.12983) — три разных подхода к бенчмаркингу агентов; смотреть на устройство критериев успеха.
+- **τ-bench (Sierra AI, 2024)** — бенчмарк на взаимодействие «агент — пользователь — инструменты» с проверкой соблюдения доменных политик; найдите по названию, это редкий пример оценки, близкой к продуктовым требованиям.
+- [Lilian Weng. «LLM Powered Autonomous Agents» (2023)](https://lilianweng.github.io/posts/2023-06-23-agent/) — обзорный конспект с хорошей структурой (планирование, память, инструменты); удобен как карта области перед чтением первоисточников.
+- [Model Context Protocol](https://modelcontextprotocol.io/) — открытый протокол подключения инструментов и источников данных к LLM-приложениям. Полезно понимать как способ стандартизовать реестр инструментов и не писать интеграции руками под каждого провайдера.
+- [Документация OpenAI: function calling](https://platform.openai.com/docs/guides/function-calling) и [документация Anthropic: tool use](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview) — точные форматы объявления инструментов, параллельные вызовы, режимы принуждения к вызову. Сверяйтесь с версией API.
+
+### [Оценка LLM](../docs/05-llm/09-llm-evaluation.md)
+
+- [Zheng L. et al. «Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena» (2023)](https://arxiv.org/abs/2306.05685) — базовая работа по LLM-as-a-judge: измерение позиционного смещения, verbosity bias и self-enhancement bias, а также сопоставление вердиктов судьи с человеческими предпочтениями. Обязательно к прочтению перед тем, как строить судью.
+- [Chiang W.-L. et al. «Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference» (2024)](https://arxiv.org/abs/2403.04132) — как устроена краудсорсинговая арена: схема выбора пар, переход от Elo к Bradley–Terry, доверительные интервалы бутстрапом. Читать ради инженерной части, а не ради таблицы результатов.
+- [Wang P. et al. «Large Language Models are not Fair Evaluators» (2023)](https://arxiv.org/abs/2305.17926) — прицельно про позиционное смещение и приёмы его калибровки; короткая и полезная.
+- [Zhou et al. «Don't Make Your LLM an Evaluation Benchmark Cheater» / Yang S. et al. «Rethinking Benchmark and Contamination for Language Models with Rephrased Samples» (2023)](https://arxiv.org/abs/2311.04850) — про перефразированную протечку, которую не ловит n-граммная дедупликация.
+- [Zhang H. et al. «A Careful Examination of Large Language Model Performance on Grade School Arithmetic» (2024)](https://arxiv.org/abs/2405.00332) — GSM1k: как собирают свежий параллельный набор и что он показывает про запоминание. Лучший пример методики «проверь бенчмарк новым бенчмарком».
+- [Dubois Y. et al. «Length-Controlled AlpacaEval» (2024)](https://arxiv.org/abs/2404.04475) — количественная поправка на смещение к длине в лидербордах на основе судей; полезно, даже если вы не используете AlpacaEval, как образец того, как формализуют поправку на смещение.
+- [Liang P. et al. «Holistic Evaluation of Language Models (HELM)» (2022)](https://arxiv.org/abs/2211.09110) — манифест многомерной оценки: почему одну модель нельзя описать одним числом. Читать введение и раздел про сценарии.
+- [Chen M. et al. «Evaluating Large Language Models Trained on Code» (2021)](https://arxiv.org/abs/2107.03374) — первоисточник `pass@k` с выводом несмещённой оценки (раздел 2).
+- [Es S. et al. «RAGAS: Automated Evaluation of Retrieval Augmented Generation» (2023)](https://arxiv.org/abs/2309.15217) — разложение оценки RAG на компоненты: faithfulness, answer relevance, context relevance.
+- [EleutherAI lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) — де-факто стандартный инструмент прогона академических бенчмарков; полезно посмотреть, как устроены сами задачи и насколько результат зависит от деталей формата промпта.
+
+### [Безопасность и ограничители](../docs/05-llm/10-llm-safety-and-guardrails.md)
+
+- [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — отраслевой чек-лист рисков LLM-приложений: инъекции, небезопасная обработка вывода, чрезмерные привилегии, утечки. Лучшая отправная точка для построения своей модели угроз; читать целиком.
+- [Greshake K. et al. «Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection» (2023)](https://arxiv.org/abs/2302.12173) — первая систематическая работа по косвенной инъекции с рабочими сценариями атак на реальные интеграции. Обязательно, если у вас RAG или агент с доступом к внешнему контенту.
+- [Perez F., Ribeiro I. «Ignore Previous Prompt: Attack Techniques For Language Models» (2022)](https://arxiv.org/abs/2211.09527) — ранняя работа по прямой инъекции и извлечению промпта; короткая, задаёт базовую терминологию.
+- [Wei A. et al. «Jailbroken: How Does LLM Safety Training Fail?» (2023)](https://arxiv.org/abs/2307.02483) — та самая рамка «конкуренция целей + несовпадение обобщения» из §5.2. Лучшее объяснение, *почему* выравнивание пробивается, а не просто каталог атак.
+- [Zou A. et al. «Universal and Transferable Adversarial Attacks on Aligned Language Models» (2023)](https://arxiv.org/abs/2307.15043) — оптимизированные суффиксы и их переносимость между моделями; важно для понимания, что это не проблема конкретного вендора.
+- [Carlini N. et al. «Extracting Training Data from Large Language Models» (2021)](https://arxiv.org/abs/2012.07805) и [Nasr M. et al. «Scalable Extraction of Training Data from (Production) Language Models» (2023)](https://arxiv.org/abs/2311.17035) — про запоминание обучающих данных; читать перед тем, как дообучать модель на реальных диалогах.
+- [Inan H. et al. «Llama Guard: LLM-based Input-Output Safeguard for Human-AI Conversations» (2023)](https://arxiv.org/abs/2312.06674) — как устроен специализированный guard-классификатор и его таксономия категорий; полезно как образец для своего фильтра.
+- [Bai Y. et al. «Constitutional AI: Harmlessness from AI Feedback» (2022)](https://arxiv.org/abs/2212.08073) — подход к выравниванию через явный набор принципов; полезно понимать, что именно делает провайдер вашей модели и где границы этой защиты.
+- [Ji Z. et al. «Survey of Hallucination in Natural Language Generation» (2022)](https://arxiv.org/abs/2202.03629) — систематизация типов галлюцинаций и методов их измерения.
+- [Microsoft Presidio](https://github.com/microsoft/presidio) — открытый инструмент детекции и анонимизации PII с расширяемыми распознавателями; удобно взять как основу вместо самописных регулярок.
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — формальная рамка управления рисками ИИ; нужна, когда безопасность приходится не только делать, но и защищать перед комплаенсом.
+- [Simon Willison, метка «prompt injection»](https://simonwillison.net/tags/prompt-injection/) — многолетняя подборка разборов реальных атак и паттернов защиты (включая dual-LLM); лучший источник, чтобы держать руку на пульсе.
+
+### [LLM в продакшене](../docs/05-llm/11-llm-in-production.md)
+
+- [Kwon W. et al. «Efficient Memory Management for Large Language Model Serving with PagedAttention» (2023)](https://arxiv.org/abs/2309.06180) — статья vLLM: почему память под KV-кэш определяет пропускную способность и как непрерывный батчинг её поднимает. Основа для оценки $s$ в формуле безубыточности.
+- [Zheng L. et al. «SGLang: Efficient Execution of Structured Language Model Programs» (2023)](https://arxiv.org/abs/2312.07104) — RadixAttention: как устроено автоматическое переиспользование префиксов на стороне сервера. Читать, если хостите модель сами.
+- [Leviathan Y. et al. «Fast Inference from Transformers via Speculative Decoding» (2022)](https://arxiv.org/abs/2211.17192) — спекулятивное декодирование: как ускорить генерацию без потери качества распределения.
+- [Chen L. et al. «FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance» (2023)](https://arxiv.org/abs/2305.05176) — каскады и роутинг с явной оптимизацией стоимости; полезно как формализация §5.
+- [Ong I. et al. «RouteLLM: Learning to Route LLMs with Preference Data» (2024)](https://arxiv.org/abs/2406.18665) — обучение роутера на данных предпочтений, с оценкой компромисса «стоимость–качество».
+- [Hinton G., Vinyals O., Dean J. «Distilling the Knowledge in a Neural Network» (2015)](https://arxiv.org/abs/1503.02531) — первоисточник дистилляции; полезно понимать исходную идею мягких целей, даже если для LLM чаще используют дистилляцию по последовательностям.
+- [Документация Anthropic по кэшированию промптов](https://platform.claude.com/docs/en/build-with-claude/prompt-caching) — практические детали префиксного кэша: минимальная длина, TTL, точки останова, счётчики в ответе. Механика у разных провайдеров близка, читать полезно в любом случае.
+- [Документация vLLM](https://docs.vllm.ai/) — разделы про непрерывный батчинг, автоматическое префиксное кэширование и метрики; практический ориентир при замере $s$ и $u$.
+- [Amazon Builders' Library: Timeouts, retries and backoff with jitter](https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/) — каноническое изложение стратегий ретраев и джиттера; читать перед тем, как писать свой retry-слой.
+- [GPTCache](https://github.com/zilliztech/GPTCache) — открытая реализация семантического кэша; полезно посмотреть на устройство и на то, какие предохранители там предусмотрены (и каких нет).
 
 ## Рекомендательные системы
 
@@ -912,6 +990,16 @@
 - [Документация Dagster: Assets](https://docs.dagster.io/) — стоит прочитать, даже если работаете на Airflow: модель «пайплайн описывает не задачи, а данные, которые он производит» меняет взгляд на проектирование и напрямую отвечает на вопрос из §16 про свежесть данных.
 - [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — правила про инфраструктуру и переобучение: полезно как аргументация того, почему автоматизировать обучение стоит, а автоматически продвигать модель в прод — нет.
 
+### [Распределённое обучение](../docs/08-big-data/07-distributed-training.md)
+
+- [PyTorch: Distributed Data Parallel — заметки о дизайне](https://pytorch.org/docs/stable/notes/ddp.html) — официальное описание того, что происходит внутри DDP: хуки на градиенты, бакеты, перекрытие. Первоисточник для §3.
+- [PyTorch: Getting Started with Distributed Data Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html) — рабочий минимальный пример; с него стоит начинать первый запуск.
+- [Goyal et al. «Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour» (2017)](https://arxiv.org/abs/1706.02677) — первоисточник линейного правила масштабирования LR и warmup. Читать ради §2–§3 статьи: там ровно то рассуждение, которое нужно уметь воспроизвести на собеседовании.
+- [Rajbhandari et al. «ZeRO: Memory Optimizations Toward Training Trillion Parameter Models» (2019)](https://arxiv.org/abs/1910.02054) — стадии ZeRO с расчётом памяти и коммуникации для каждой. Таблицы из статьи — лучший способ запомнить, что шардируется на каждой стадии.
+- [Stas Bekman. «Machine Learning Engineering Open Book»](https://github.com/stas00/ml-engineering) — практические заметки человека, который эксплуатировал большие обучающие кластеры: диагностика NCCL, отладка зависаний, реальные цифры пропускной способности, отказы железа. Самый полезный источник для §4, §10 и §12.
+- [Документация NCCL](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/index.html) — раздел про переменные окружения (`NCCL_DEBUG`, `NCCL_IB_HCA`, `NCCL_SOCKET_IFNAME`); без него отладка межузлового обучения превращается в гадание.
+- **Технический отчёт Meta «The Llama 3 Herd of Models» (2024)**, раздел про инфраструктуру обучения — редкий случай, когда опубликованы реальные цифры по отказам кластера, времени восстановления и эффективности использования GPU на масштабе 16 тысяч устройств.
+
 ## Мониторинг
 
 ### [Что мониторить в ML-системе](../docs/09-monitoring/01-what-to-monitor.md)
@@ -924,6 +1012,16 @@
 - **Google. «The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction» (2017)** — рубрика из 28 тестов, четыре из них полностью про мониторинг. Полезно пройти по ней своим сервисом и получить честную оценку в баллах; ищется по названию.
 - **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)** — глава «Data Distribution Shifts and Monitoring»: систематизация того, что мониторить, и разбор задержки обратной связи.
 - **Google. «Hidden Technical Debt in Machine Learning Systems» (NeurIPS 2015)** — откуда вообще берётся мысль, что ML-система деградирует сама по себе; читать вместе с [главой про жизненный цикл](../docs/07-mlops/01-ml-lifecycle.md).
+
+### [Качество данных](../docs/09-monitoring/02-data-quality.md)
+
+- [Great Expectations — документация](https://docs.greatexpectations.io/) — начните с Core concepts и списка встроенных ожиданий: он сам по себе хороший чек-лист того, что вообще стоит проверять. Обязательно смотрите на версию, API 0.18 и 1.x различаются.
+- [pandera — документация](https://pandera.readthedocs.io/) — типизированные схемы датафреймов, которые естественно ложатся на pytest. Хороший выбор, когда фреймворк уровня GX избыточен.
+- [dbt — тесты данных](https://docs.getdbt.com/docs/build/data-tests) — `unique`, `not_null`, `accepted_values`, `relationships` одной строкой YAML и выполнение в базе. Если трансформации в dbt, проверки должны быть там же.
+- [PyDeequ / Deequ (AWS Labs)](https://github.com/awslabs/deequ) — проверки качества на Spark для больших объёмов, с профилированием и детекцией аномалий в метриках данных. Читать вместе со статьёй авторов «Automating Large-Scale Data Quality Verification» (VLDB 2018).
+- [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — правила про мониторинг свежести данных и про train/serve skew прямо относятся к этой главе; текст короткий и очень прикладной.
+- **Google. «The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction» (2017)** — блок Data Tests из семи пунктов можно взять как готовый аудит своего пайплайна; ищется по названию.
+- **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)** — главы Training Data и Data Distribution Shifts and Monitoring: систематизация проблем данных и их последствий для модели.
 
 ### [Дрифт данных](../docs/09-monitoring/03-drift-detection.md)
 
@@ -940,6 +1038,54 @@
 - [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — правила про train/serve skew и про логирование признаков в момент предсказания напрямую относятся к тому, чтобы дрифт вообще было чем измерять.
 - **Breck et al. «The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction» (Google, IEEE Big Data 2017)** — раздел про мониторинг данных содержит чек-лист проверок, который стоит просто взять и внедрить. Ищется по названию.
 - **J. Lu et al. «Learning under Concept Drift: A Review»** — обзор по терминологии форм концепт-дрифта (sudden / gradual / incremental / recurring) и по методам адаптации. Читать выборочно: разделы с таксономией.
+
+### [Деградация модели](../docs/09-monitoring/04-model-degradation.md)
+
+- **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)**, главы про мониторинг и про continual learning — лучший разбор жизни с отложенной разметкой и natural labels. Читать первой.
+- [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — правила про логирование признаков в момент предсказания, про train/serve skew и про измерение того, что модель на самом деле делает, напрямую относятся к этой главе. Короткий текст, который стоит перечитывать раз в год.
+- **Breck et al. «The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction» (Google, IEEE Big Data 2017)** — раздел «Monitoring Tests» содержит готовый чек-лист: от проверки, что модель не устарела, до проверки инвариантов предсказаний. Ищется по названию.
+- **Sculley et al. «Hidden Technical Debt in Machine Learning Systems» (NeurIPS 2015)** — первоисточник про петли обратной связи (direct и hidden feedback loops) и про то, почему ML-системы деградируют без единого изменения кода. Разбирается также в [жизненном цикле ML-системы](../docs/07-mlops/01-ml-lifecycle.md).
+- [C. Guo et al. «On Calibration of Modern Neural Networks» (arXiv:1706.04599)](https://arxiv.org/abs/1706.04599) — откуда взялся ECE в его нынешнем виде и почему современные глубокие сети систематически переуверены. Читать раздел про измерение калибровки.
+- [Prometheus: типы метрик](https://prometheus.io/docs/concepts/metric_types/) и [практика работы с гистограммами](https://prometheus.io/docs/practices/histograms/) — как складывать прокси-метрики так, чтобы потом можно было честно считать квантили.
+- [Great Expectations — документация](https://docs.greatexpectations.io/) — проверки данных как первый пункт чек-листа диагностики из §8. Половина «деградаций модели» — это непройденная проверка данных.
+- **Литература по reject inference в кредитном скоринге** (главы в книгах по скоркартам, например у Naeem Siddiqi) — если работаете с задачей, где у отклонённых нет меток. Читать критически: все методы опираются на непроверяемые допущения, и случайный холдаут остаётся честнее любого из них.
+
+### [Стек наблюдаемости](../docs/09-monitoring/05-observability-stack.md)
+
+- [Prometheus: типы метрик](https://prometheus.io/docs/concepts/metric_types/) — короткая страница, которую надо прочитать целиком до того, как писать первую метрику.
+- [Prometheus: практика работы с гистограммами и summary](https://prometheus.io/docs/practices/histograms/) — ровно про то, почему `histogram_quantile` приближённый и как выбирать бакеты. Это первоисточник ответа на вопрос «почему у меня неправильный p99».
+- [Prometheus: правила именования метрик](https://prometheus.io/docs/practices/naming/) — конвенции про единицы, суффикс `_total` и что должно быть меткой, а что именем.
+- [Prometheus: основы PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) и [функции](https://prometheus.io/docs/prometheus/latest/querying/functions/) — читать выборочно: `rate`, `increase`, `histogram_quantile`, `offset`, `absent`, `topk`.
+- [Prometheus: алертинг и правила](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) и [конфигурация Alertmanager](https://prometheus.io/docs/alerting/latest/configuration/) — разделы про `for`, группировку и `inhibit_rules`.
+- [Grafana: документация](https://grafana.com/docs/grafana/latest/) — разделы про аннотации, переменные дашборда и exemplars: три вещи, которые превращают набор графиков в инструмент.
+- [OpenTelemetry: документация](https://opentelemetry.io/docs/) — концепции спанов и контекста, а также разделы про Collector и процессоры семплирования.
+- **Google SRE Book, глава «Practical Alerting»** и **SRE Workbook, глава «Alerting on SLOs»** — первоисточник по бюджету ошибок и multi-window multi-burn-rate. Читается за вечер и меняет отношение к порогам навсегда.
+- [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — правила про логирование фич в момент предсказания и про train/serve skew относятся к §11 напрямую.
+- **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)** — глава Monitoring and Observability: систематизация того же материала с другой стороны, полезна как второй взгляд.
+- [Документация Great Expectations](https://docs.greatexpectations.io/) — если проверки качества данных из [главы 02](../docs/09-monitoring/02-data-quality.md) нужно связать с метриками и алертами этой главы.
+
+### [Инциденты](../docs/09-monitoring/06-incidents-and-runbooks.md)
+
+- **Google SRE Book, главы «Managing Incidents», «Effective Troubleshooting» и «Postmortem Culture: Learning from Failure»** — первоисточник по ролям в инциденте, по структуре разбора и по blameless-подходу. Читается за вечер, применимо целиком.
+- **Google SRE Workbook, глава «On-Call»** — практическая часть про ротацию, нагрузку на дежурного и что делать с шумными алертами.
+- [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — правила 29–32 про train/serve skew и про логирование фич в момент предсказания напрямую относятся к сценариям §6 и §9.
+- [Google. «The ML Test Score»](https://research.google/pubs/pub46555/) — чек-лист готовности ML-системы к продакшену; раздел про мониторинг и про тесты инфраструктуры можно использовать как аудит перед тем, как заводить дежурство.
+- [Sculley et al. «Hidden Technical Debt in Machine Learning Systems» (NeurIPS 2015)](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) — почему ML-системы ломаются способами, которых нет у обычного софта: связанность через данные, петли обратной связи, undeclared consumers.
+- **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)** — главы Monitoring and Observability и Continual Learning: тот же материал с продуктовой стороны, полезно как второй взгляд.
+- [Документация Prometheus по правилам алертов](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) и [конфигурации Alertmanager](https://prometheus.io/docs/alerting/latest/configuration/) — разделы про `for`, silence и inhibit-правила, на которые опираются §10 и §13.
+- [Документация Great Expectations](https://docs.greatexpectations.io/) — если по итогам постмортема нужно закрыть класс инцидентов проверками данных на входе.
+
+### [Переобучение моделей](../docs/09-monitoring/07-retraining.md)
+
+- [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — правила про train/serve skew, про свежесть данных и про то, что модель надо переобучать не потому, что «пора». Короткий и очень плотный текст, читать целиком.
+- [Google. «The ML Test Score»](https://research.google/pubs/pub46555/) — чек-лист готовности; разделы про тестирование инфраструктуры и мониторинга напрямую описывают, что должно быть проверено в конвейере переобучения.
+- [Sculley et al. «Hidden Technical Debt in Machine Learning Systems» (NeurIPS 2015)](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) — разделы про петли обратной связи и про связанность через данные объясняют, почему более частое переобучение усиливает вырождение выдачи.
+- **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)** — глава Continual Learning and Test in Production: систематизация режимов переобучения и стадий валидации в проде, ближайший к этой главе материал.
+- [Gama et al. «A Survey on Concept Drift Adaptation» (ACM Computing Surveys, 2014)](https://dl.acm.org/doi/10.1145/2523813) — академический обзор методов адаптации к дрейфу: скользящие окна, взвешивание, ансамбли с забыванием. Полезен, чтобы увидеть, что практические приёмы этой главы имеют теоретическое основание.
+- [Документация LightGBM](https://lightgbm.readthedocs.io/) — разделы про `sample_weight` и про продолжение обучения (`init_model`): практическая база для §6.
+- [Документация MLflow](https://mlflow.org/docs/latest/index.html) — реестр моделей, стадии и алиасы: механика, без которой откат за минуты невозможен.
+- [Документация Great Expectations](https://docs.greatexpectations.io/) — проверки данных как блокирующий шаг конвейера переобучения (§8).
+- **Google SRE Workbook, глава «Canarying Releases»** — про выдержку, ступени и автоматические критерии продвижения; всё применимо к моделям, если добавить расчёт мощности из §10.
 
 ## A/B-тесты
 
@@ -1152,6 +1298,20 @@
 - [Micikevicius et al. «Mixed Precision Training» (ICLR 2018)](https://arxiv.org/abs/1710.03740) — откуда взялся loss scaling и почему нужна мастер-копия весов в fp32.
 - [Andrej Karpathy. «A Recipe for Training Neural Networks»](https://karpathy.github.io/2019/04/25/recipe/) — лучший текст про методику отладки обучения; тест «переобучись на одном батче» и порядок действий взяты оттуда.
 
+### [Тесты и качество кода в ML](../docs/12-coding/07-testing-and-code-quality.md)
+
+- [Документация pytest](https://docs.pytest.org/) — разделы про фикстуры, параметризацию и маркеры покрывают 90% того, что нужно в ML-проекте. Начните с «How-to guides → Fixtures».
+- **Brian Okken. «Python Testing with pytest» (Pragmatic Bookshelf)** — лучшая книга по pytest; главы про фикстуры и про организацию тестового набора отвечают на вопрос «как не утонуть, когда тестов станет двести».
+- [Документация Hypothesis](https://hypothesis.readthedocs.io/) — property-based тестирование; смотрите `hypothesis.extra.numpy` и `hypothesis.extra.pandas`, они специально про наши структуры данных.
+- [Документация Ruff](https://docs.astral.sh/ruff/) — список правил с примерами; наборы `PD` (pandas-vet) и `NPY` стоят отдельного прочтения, они ловят именно ML-специфичные грабли.
+- [Документация mypy](https://mypy.readthedocs.io/) — раздел «Existing code» про постепенное внедрение типов в живой проект.
+- [pre-commit.com](https://pre-commit.com/) — как устроены хуки и как их писать свои.
+- [Документация pandera](https://pandera.readthedocs.io/) — декларативные схемы для DataFrame; самый простой способ поставить контракт данных в пайплайн, а не только в тесты.
+- **Breck, Cai, Nielsen, Salib, Sculley. «The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction» (IEEE Big Data, 2017)** — 28 конкретных проверок по четырём категориям (данные, модель, инфраструктура, мониторинг) и способ измерить зрелость проекта числом. Лучший чек-лист по теме; ищется по названию в публикациях Google Research.
+- [Ribeiro et al. «Beyond Accuracy: Behavioral Testing of NLP Models with CheckList» (ACL 2020)](https://arxiv.org/abs/2005.04118) — откуда взялись инвариантность, направленное ожидание и минимальный функциональный тест; написано про NLP, но применимо к любой модели.
+- [Sculley et al. «Hidden Technical Debt in Machine Learning Systems» (NeurIPS 2015)](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) — почему ML-система дороже в поддержке и откуда берутся все обсуждённые здесь проблемы.
+- [Made With ML: Testing](https://madewithml.com/courses/mlops/testing/) — практический разбор с кодом: тесты на код, на данные и на модель в одном проекте.
+
 ## CV, звук, мультимодальность
 
 ### [Computer Vision: необходимый минимум](../docs/13-optional/01-computer-vision.md)
@@ -1176,6 +1336,34 @@
 - [Gulati et al. «Conformer» (2020)](https://arxiv.org/abs/2005.08100) — типовой энкодер современных ASR: свёртки для локальных зависимостей плюс self-attention для глобальных.
 - [Документация torchaudio](https://pytorch.org/audio/stable/index.html) — практический справочник: загрузка, ресемплинг, готовые спектрограммы, CTC-декодер с языковой моделью.
 - [Документация librosa](https://librosa.org/doc/latest/index.html) — то же для анализа и визуализации; раздел про STFT и мел-фильтры полезно прочитать вместе с §2–3 этой главы.
+
+### [Мультимодальность](../docs/13-optional/03-multimodal.md)
+
+- [Radford et al. «Learning Transferable Visual Models From Natural Language Supervision» (CLIP, 2021)](https://arxiv.org/abs/2103.00020) — первоисточник. Читать разделы про функцию потерь, про инженерию подсказок и, обязательно, про ограничения — там честный разбор того, чего модель не умеет.
+- [van den Oord et al. «Representation Learning with Contrastive Predictive Coding» (2018)](https://arxiv.org/abs/1807.03748) — откуда взялся InfoNCE и его связь с оценкой взаимной информации.
+- [Zhai et al. «Sigmoid Loss for Language Image Pre-Training» (SigLIP, 2023)](https://arxiv.org/abs/2303.15343) — почему от softmax по батчу можно отказаться и что это даёт при обучении.
+- [Li et al. «BLIP-2» (2023)](https://arxiv.org/abs/2301.12597) — Q-Former как способ соединить замороженный визуальный энкодер с замороженной LLM малой кровью.
+- [Liu et al. «Visual Instruction Tuning» (LLaVA, 2023)](https://arxiv.org/abs/2304.08485) — самый простой работающий рецепт VLM: линейный проектор плюс двухстадийное обучение. Хорошая точка входа, если строите своё.
+- [Alayrac et al. «Flamingo» (2022)](https://arxiv.org/abs/2204.14198) — вариант с cross-attention внутрь LLM; полезно для понимания, почему подходы различаются по расходу контекста.
+- [open_clip](https://github.com/mlfoundations/open_clip) — открытые реализации и десятки чекпоинтов CLIP-подобных моделей с воспроизводимыми метриками; практический старт для любой задачи из этой главы.
+
+## Карьера
+
+### [Процесс найма изнутри](../docs/14-career/01-interview-process.md)
+
+- **Публичные описания процесса найма от компаний.** Часть компаний публикует устройство своих секций и правила повторных попыток: репозитории `avito-tech/playbook` и `Tinkoff/career` на GitHub. Если вы идёте в конкретную компанию, первым делом проверьте, нет ли у неё такого документа, — он точнее любого пересказа.
+- **Chip Huyen, «Machine Learning Interviews»** (открытая книга, репозиторий `chiphuyen/ml-interviews-book` на GitHub) — англоязычный взгляд на ту же воронку: как читают резюме, как устроены секции, что происходит на дебрифе. Полезна для международных процессов.
+
+### [Поведенческая секция](../docs/14-career/02-behavioral.md)
+
+- **Публичные принципы найма компаний.** Часть работодателей публикует, какие качества они оценивают на поведенческих секциях: например, Amazon открыто описывает свои Leadership Principles на карьерном сайте, а российские компании — в открытых репозиториях с матрицами компетенций (`avito-tech/playbook`, `Tinkoff/career` на GitHub). Если идёте в конкретную компанию, посмотрите её формулировки и подберите истории под них.
+
+### [Рост и переговоры](../docs/14-career/03-growth-and-negotiation.md)
+
+- **Patrick McKenzie, «Salary Negotiation: Make More Money, Be More Valued»** (эссе на kalzumeus.com) — классический разбор того, почему обсуждение компенсации не является конфликтом и как к нему готовиться.
+- **Haseeb Qureshi, «Ten Rules for Negotiating a Job Offer»** (haseebq.com) — подробные скрипты переговоров в инженерном найме; учитывайте, что примеры американские, а механика универсальна.
+- **Обзоры зарплат и площадки с открытыми вилками** — единственный способ говорить о рынке числами, а не ощущениями: полугодовые обзоры Хабр Карьеры, агрегаторы вилок в вакансиях, для международных позиций — levels.fyi. Смотрите медиану по своему грейду и городу, а не максимум.
+- **Определение выгорания в МКБ-11 (ВОЗ)** — если хотите свериться с формулировкой из первоисточника, а не с популярными пересказами: там оно описано именно как связанное с работой явление, а не как медицинский диагноз общего характера.
 
 ---
 

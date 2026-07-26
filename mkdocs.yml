@@ -136,7 +136,12 @@ nav:
       - "SFT и выравнивание": 05-llm/03-sft-and-alignment.md
       - "PEFT и квантизация": 05-llm/04-peft-and-quantization.md
       - "Инференс LLM": 05-llm/05-inference-and-serving.md
+      - "Промптинг и структурированный вывод": 05-llm/06-prompting-and-structured-output.md
       - "RAG": 05-llm/07-rag.md
+      - "Агенты и вызов инструментов": 05-llm/08-agents-and-tools.md
+      - "Оценка LLM": 05-llm/09-llm-evaluation.md
+      - "Безопасность и ограничители": 05-llm/10-llm-safety-and-guardrails.md
+      - "LLM в продакшене": 05-llm/11-llm-in-production.md
   - Рекомендательные системы:
       - 06-recsys/index.md
       - "Постановка задачи рекомендаций": 06-recsys/01-recsys-foundations.md
@@ -174,10 +179,16 @@ nav:
       - "Spark: производительность": 08-big-data/04-spark-tuning.md
       - "Потоковая обработка": 08-big-data/05-streaming.md
       - "Оркестрация пайплайнов": 08-big-data/06-orchestration.md
+      - "Распределённое обучение": 08-big-data/07-distributed-training.md
   - Мониторинг:
       - 09-monitoring/index.md
       - "Что мониторить в ML-системе": 09-monitoring/01-what-to-monitor.md
+      - "Качество данных": 09-monitoring/02-data-quality.md
       - "Дрифт данных": 09-monitoring/03-drift-detection.md
+      - "Деградация модели": 09-monitoring/04-model-degradation.md
+      - "Стек наблюдаемости": 09-monitoring/05-observability-stack.md
+      - "Инциденты": 09-monitoring/06-incidents-and-runbooks.md
+      - "Переобучение моделей": 09-monitoring/07-retraining.md
   - A/B-тесты:
       - 10-ab-testing/index.md
       - "Дизайн эксперимента": 10-ab-testing/01-experiment-design.md
@@ -204,8 +215,15 @@ nav:
       - "Алгоритмы для MLE-собеса": 12-coding/04-algorithms.md
       - "SQL: тренировка": 12-coding/05-sql-drills.md
       - "PyTorch: тренировка": 12-coding/06-pytorch-drills.md
+      - "Тесты и качество кода в ML": 12-coding/07-testing-and-code-quality.md
   - CV, звук, мультимодальность:
       - 13-optional/index.md
       - "Computer Vision: необходимый минимум": 13-optional/01-computer-vision.md
       - "Звук и речь: необходимый минимум": 13-optional/02-audio-and-speech.md
+      - "Мультимодальность": 13-optional/03-multimodal.md
+  - Карьера:
+      - 14-career/index.md
+      - "Процесс найма изнутри": 14-career/01-interview-process.md
+      - "Поведенческая секция": 14-career/02-behavioral.md
+      - "Рост и переговоры": 14-career/03-growth-and-negotiation.md
 # <<< конец сгенерированной навигации
