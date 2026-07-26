@@ -999,16 +999,27 @@ $$
 from sklearn.preprocessing import TargetEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
+from sklearn.model_selection import StratifiedKFold
 from sklearn.ensemble import HistGradientBoostingClassifier
 
 pre = ColumnTransformer([
-    # TargetEncoder внутри fit_transform использует внутреннюю кросс-валидацию,
-    # а в transform (на valid/test) — кодировку, обученную на всём train.
-    ("cat", TargetEncoder(target_type="binary", cv=5, random_state=0), ["city", "device", "utm"]),
+    # Асимметрия, ради которой всё затевалось:
+    #   fit_transform (на train) считает кодировку ПО ВНУТРЕННИМ ФОЛДАМ — метка объекта
+    #     не участвует в его собственной кодировке, это защита от тонкого уровня лика;
+    #   transform (на valid/test) применяет кодировку, обученную на всём train.
+    # Отдельный random_state у TargetEncoder объявлен устаревшим в sklearn 1.9:
+    # порядок перемешивания задаётся передачей самого сплиттера в cv.
+    ("cat", TargetEncoder(target_type="binary",
+                          cv=StratifiedKFold(5, shuffle=True, random_state=0)),
+     ["city", "device", "utm"]),
 ], remainder="passthrough")
 
 pipe = Pipeline([("pre", pre), ("clf", HistGradientBoostingClassifier(random_state=0))])
 ```
+
+Параметр `smooth` у `TargetEncoder` — это в точности $\alpha$ из формулы выше; значение по
+умолчанию `"auto"` подбирает его эмпирической байесовской оценкой, исходя из дисперсии таргета
+внутри категорий и между ними.
 
 Альтернатива — CatBoost с ordered target statistics: он решает ту же задачу на уровне алгоритма
 (см. [главу о бустинге на практике](08-boosting-in-practice.md)).
@@ -1207,7 +1218,7 @@ preprocess = ColumnTransformer([
     ("num", numeric, num_cols),
     ("ohe", OneHotEncoder(handle_unknown="ignore", min_frequency=20), low_card_cat),
     # TargetEncoder использует y — именно поэтому он ОБЯЗАН быть внутри пайплайна
-    ("te", TargetEncoder(target_type="binary", cv=5, random_state=0), high_card_cat),
+    ("te", TargetEncoder(target_type="binary", cv=5), high_card_cat),
 ], remainder="drop")   # drop, а не passthrough: явный белый список колонок
 
 pipe = Pipeline([
@@ -1690,9 +1701,10 @@ train-объектов, наиболее похожих на тест, либо 
 идентичность сущности, и оценка будет завышена.
 
 `StratifiedGroupKFold` (sklearn ≥ 0.24) решает задачу приближённо — точное решение
-NP-трудно, поэтому баланс классов соблюдается не идеально. Важно: `GroupKFold` в sklearn
-детерминирован и не имеет `shuffle`/`random_state`; если нужна рандомизация,
-берите `GroupShuffleSplit` или `StratifiedGroupKFold(shuffle=True)`.
+NP-трудно, поэтому баланс классов соблюдается не идеально. Деталь про API: исторически
+`GroupKFold` был полностью детерминированным и не имел `shuffle`/`random_state` — их добавили
+только в sklearn 1.6, и по умолчанию `shuffle=False`. Если вы работаете со старой версией
+и вам нужна рандомизация групп, берите `GroupShuffleSplit`.
 
 Отдельный практический момент: если групп мало (скажем, 8 магазинов), `GroupKFold` с $K=5$
 даст фолды очень разного размера, и оценка будет крайне шумной. В такой ситуации честнее
