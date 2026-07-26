@@ -174,16 +174,18 @@ class HybridEmbedding(nn.Module):
         nn.init.normal_(self.tail.weight, std=0.01)   # эмбеддинги входят в скор мультипликативно
 
     def forward(self, ids: torch.Tensor) -> torch.Tensor:
-        safe = torch.clamp(ids, max=self.head_index.numel() - 1)
-        head_pos = self.head_index[safe]
+        # id больше словаря головы (новый товар) обязан уйти в хвост, а не схлопнуться
+        # на последнюю строку: clamp без этой проверки — тихий баг, который ловится месяцами
+        in_range = ids < self.head_index.numel()
+        head_pos = torch.where(in_range,
+                               self.head_index[ids.clamp(max=self.head_index.numel() - 1)],
+                               torch.full_like(ids, -1))
         in_head = head_pos >= 0
-        # хеш вычисляем для всех, но используем только для хвоста: так нет ветвлений на GPU
+        # хеш считаем для всех, но используем только там, где головы нет: без ветвлений на GPU
         bucket = (ids * 2654435761) % self.n_hash_buckets   # множитель Кнута, дешёвый хеш
-        out = self.tail(bucket)
-        if in_head.any():
-            out = torch.where(in_head.unsqueeze(-1),
-                              self.head(head_pos.clamp(min=0)),
-                              out)
+        out = torch.where(in_head.unsqueeze(-1),
+                          self.head(head_pos.clamp(min=0)),
+                          self.tail(bucket))
         return out
 ```
 
