@@ -39,6 +39,14 @@ REQUIRED_MARKERS = {
 # Файлы-оглавления и служебные страницы проверяем мягче: у них нет упражнений.
 INDEX_NAMES = {"index.md", "README.md"}
 
+# Навигационные страницы раздела «Старт»: это путеводители, а не учебные главы,
+# блок «Проверь себя» им не нужен по смыслу.
+NAVIGATIONAL = {
+    "00-start/01-how-to-use.md",
+    "00-start/02-tracks.md",
+    "00-start/05-glossary.md",
+}
+
 
 @dataclass
 class Report:
@@ -53,10 +61,18 @@ class Report:
 
 
 def slugify(heading: str) -> str:
-    """Приблизительный аналог якорей GitHub: нижний регистр, пробелы -> дефисы."""
-    text = re.sub(r"[`*_]", "", heading).strip().lower()
+    """Аналог якорей GitHub: нижний регистр, пунктуация удаляется, каждый пробел -> дефис.
+
+    Важно: пробелы НЕ схлопываются. «Трек 1. Junior → Middle» даёт
+    `трек-1-junior--middle` с двойным дефисом там, где была стрелка, — потому что
+    после удаления `.` и `→` остаются два пробела подряд, и каждый становится дефисом.
+    Схлопывание здесь — классическая причина ложных «битых якорей».
+    """
+    # Снимаем только markdown-подсветку: backtick и звёздочку.
+    # Подчёркивание НЕ трогаем — в якорях GitHub оно сохраняется («d_k» → «d_k», не «dk»).
+    text = re.sub(r"[`*]", "", heading).strip().lower()
     text = re.sub(r"[^\w\s-]", "", text, flags=re.UNICODE)
-    return re.sub(r"\s+", "-", text)
+    return text.replace(" ", "-")
 
 
 def anchors_of(path: Path) -> set[str]:
@@ -114,11 +130,17 @@ def check_math(path: Path, text: str, report: Report) -> None:
 def check_structure(path: Path, text: str, report: Report) -> None:
     if path.name in INDEX_NAMES:
         return
+    rel = path.relative_to(DOCS).as_posix() if DOCS in path.parents else path.name
     for name, pattern in REQUIRED_MARKERS.items():
+        if name == "Проверь себя" and rel in NAVIGATIONAL:
+            continue
         if not pattern.search(text):
             report.warn(path, f"нет обязательного блока: {name}")
-    if text.count("\n# ") + text.startswith("# ") > 1:
-        report.warn(path, "больше одного заголовка H1")
+    # Считаем H1 только вне блоков кода: в Python комментарии тоже начинаются с «# »
+    without_code = re.sub(r"^```.*?^```", "", text, flags=re.DOTALL | re.MULTILINE)
+    h1_count = len(re.findall(r"^#\s+\S", without_code, re.MULTILINE))
+    if h1_count > 1:
+        report.warn(path, f"больше одного заголовка H1 (найдено {h1_count})")
     words = len(text.split())
     if words < 400:
         report.warn(path, f"подозрительно короткая глава: {words} слов")
