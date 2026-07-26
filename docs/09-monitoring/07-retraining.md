@@ -1633,9 +1633,10 @@ $T \in \{1, 2, 7, 14, 30, 90\}$.
 - [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) —
   правила про train/serve skew, про свежесть данных и про то, что модель надо
   переобучать не потому, что «пора». Короткий и очень плотный текст, читать целиком.
-- [Google. «The ML Test Score»](https://research.google/pubs/pub46555/) — чек-лист
-  готовности; разделы про тестирование инфраструктуры и мониторинга напрямую
-  описывают, что должно быть проверено в конвейере переобучения.
+- **Breck et al. «The ML Test Score: A Rubric for ML Production Readiness and Technical
+  Debt Reduction» (IEEE Big Data, 2017)** — чек-лист готовности; разделы про тестирование
+  инфраструктуры и мониторинга напрямую описывают, что должно быть проверено в конвейере
+  переобучения. Ищите по названию в публикациях Google Research.
 - [Sculley et al. «Hidden Technical Debt in Machine Learning Systems» (NeurIPS 2015)](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) —
   разделы про петли обратной связи и про связанность через данные объясняют,
   почему более частое переобучение усиливает вырождение выдачи.

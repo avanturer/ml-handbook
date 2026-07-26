@@ -93,8 +93,22 @@ def anchors_of(path: Path) -> set[str]:
     return {slugify(h) for h in HEADING_RE.findall(text)}
 
 
+MATH_RE = re.compile(r"\$\$.*?\$\$|\$[^$\n]+\$", re.DOTALL)
+CODE_RE = re.compile(r"```.*?```|`[^`\n]+`", re.DOTALL)
+
+
+def strip_non_prose(text: str) -> str:
+    """Убирает формулы и код: там встречаются последовательности, неотличимые от ссылок.
+
+    Пример из главы про Adam: `$\\mathbb{E}[g](1-\\beta_1^t)$` — для markdown-парсера
+    это выглядит как ссылка `[g](1-\\beta_1^t)`, хотя это математика.
+    """
+    text = CODE_RE.sub(" ", text)
+    return MATH_RE.sub(" ", text)
+
+
 def check_links(path: Path, text: str, report: Report) -> None:
-    for target in LINK_RE.findall(text):
+    for target in LINK_RE.findall(strip_non_prose(text)):
         target = target.strip()
         if target.startswith(("http://", "https://", "mailto:", "#")):
             if target.startswith("#"):
