@@ -113,6 +113,8 @@ nav:
       - "Временные ряды": 02-classic-ml/16-time-series.md
       - "Uplift и причинность": 02-classic-ml/17-uplift-and-causal.md
       - "Поиск аномалий": 02-classic-ml/18-anomaly-detection.md
+      - "Стекинг и блендинг": 02-classic-ml/19-stacking-and-blending.md
+      - "Разбор ошибок модели": 02-classic-ml/20-error-analysis.md
   - Deep Learning:
       - 03-deep-learning/index.md
       - "Нейросети и обратное распространение": 03-deep-learning/01-neural-nets-and-backprop.md
@@ -121,6 +123,8 @@ nav:
       - "Внимание и трансформер": 03-deep-learning/04-attention-and-transformer.md
       - "PyTorch на практике": 03-deep-learning/05-pytorch-in-practice.md
       - "Масштабирование обучения": 03-deep-learning/06-scaling-and-efficiency.md
+      - "Обучение с подкреплением: необходимый минимум": 03-deep-learning/07-rl-foundations.md
+      - "Генеративные модели": 03-deep-learning/08-generative-models.md
   - NLP:
       - 04-nlp/index.md
       - "Текст как данные": 04-nlp/01-text-representation.md
@@ -197,6 +201,7 @@ nav:
       - "Ловушки A/B-тестов": 10-ab-testing/04-pitfalls.md
       - "Сложные схемы": 10-ab-testing/05-complex-designs.md
       - "Бандиты против A/B": 10-ab-testing/06-bandits-vs-ab.md
+      - "Платформа экспериментов": 10-ab-testing/07-experiment-platform.md
   - ML System Design:
       - 11-system-design/index.md
       - "Как проходить ML System Design": 11-system-design/01-framework.md

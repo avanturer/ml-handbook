@@ -8,7 +8,7 @@
 
 <p align="center">
   <img alt="Разделов" src="https://img.shields.io/badge/разделов-15-4c6ef5"/>
-  <img alt="Глав" src="https://img.shields.io/badge/глав-117-4c6ef5"/>
+  <img alt="Глав" src="https://img.shields.io/badge/глав-122-4c6ef5"/>
   <img alt="Уровень" src="https://img.shields.io/badge/уровень-junior%20→%20middle%2B-2f9e44"/>
   <img alt="Язык" src="https://img.shields.io/badge/язык-русский-f08c00"/>
   <img alt="Лицензия" src="https://img.shields.io/badge/лицензия-CC%20BY%204.0-868e96"/>
