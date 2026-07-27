@@ -7,8 +7,14 @@
 
 Как работает. В главе берутся все блоки ```python по порядку и склеиваются в один
 скрипт (в наших главах код почти всегда наращивается: следующий блок пользуется
-переменными предыдущего). Скрипт запускается. Затем каждый блок без указания языка —
-а это у нас и есть «вывод программы» — сверяется со СТРОКАМИ настоящего stdout.
+переменными предыдущего). Скрипт запускается. Затем блоки без указания языка,
+ВПЛОТНУЮ следующие за кодом, сверяются со СТРОКАМИ настоящего stdout.
+
+Слово «вплотную» здесь несёт всю нагрузку. Блок без языка — это не обязательно вывод:
+им же оформлены разметка BIO, шаблон промпта, протокол ReAct и схемы псевдографикой.
+Отличает их расстояние до кода: настоящий вывод стоит сразу под ним, максимум через
+короткую подводку вроде «получаем:». Если между кодом и блоком целый абзац, заголовок
+или врезка — блок относится не к коду, и сверять его не с чем.
 
 Что считается ошибкой, а что нет:
   * код упал или не запустился     -> НЕ ошибка, а сообщение. Блоки бывают фрагментами,
@@ -46,21 +52,34 @@ MAX_SECONDS = 900
 NOISE_RE = re.compile(r"^[\s.…\-=_*|+~<>^]*$")
 
 
-def blocks_of(text: str) -> list[tuple[str, str, int]]:
+def blocks_of(text: str) -> list[tuple[str, str, int, int, int]]:
+    """(язык, тело, номер строки, начало, конец) для каждой ограды."""
     out = []
     for match in FENCE_RE.finditer(text):
         line_no = text.count("\n", 0, match.start()) + 1
-        out.append((match.group(1), match.group(2), line_no))
+        out.append((match.group(1), match.group(2), line_no, match.start(), match.end()))
     return out
 
 
-def claimed_outputs(blocks: list[tuple[str, str, int]]) -> list[tuple[str, int]]:
-    """Блоки без языка, стоящие непосредственно после блока python."""
+# Между кодом и его выводом бывает максимум короткая подводка вроде «получаем:».
+# Если между ними абзац текста, заголовок или врезка — значит, блок без языка
+# относится не к коду, а к чему-то другому: это разметка BIO, шаблон промпта,
+# протокол ReAct или схема псевдографикой. Такие блоки сверять не с чем.
+MAX_GAP_CHARS = 220
+GAP_BREAK_RE = re.compile(r"^\s*(#{1,6}\s|>\s|\||\d+\.\s|[-*]\s)", re.MULTILINE)
+
+
+def claimed_outputs(text: str, blocks: list[tuple[str, str, int, int, int]]) -> list[tuple[str, int]]:
+    """Блоки без языка, вплотную следующие за блоком python."""
     result = []
-    for index, (lang, body, line_no) in enumerate(blocks):
-        if lang:
+    for index, (lang, body, line_no, start, _end) in enumerate(blocks):
+        if lang or index == 0:
             continue
-        if index == 0 or blocks[index - 1][0] != "python":
+        prev_lang, _, _, _, prev_end = blocks[index - 1]
+        if prev_lang != "python":
+            continue
+        gap = text[prev_end:start]
+        if len(gap) > MAX_GAP_CHARS or GAP_BREAK_RE.search(gap):
             continue
         result.append((body, line_no))
     return result
@@ -70,8 +89,8 @@ def check_file(path: Path, verbose: bool) -> tuple[list[str], list[str], bool]:
     """Возвращает (ошибки, сообщения, был ли файл вообще пригоден к проверке)."""
     text = path.read_text(encoding="utf-8")
     blocks = blocks_of(text)
-    python_blocks = [body for lang, body, _ in blocks if lang == "python"]
-    expected = claimed_outputs(blocks)
+    python_blocks = [body for lang, body, *_ in blocks if lang == "python"]
+    expected = claimed_outputs(text, blocks)
 
     if not python_blocks or not expected:
         return [], [], False
