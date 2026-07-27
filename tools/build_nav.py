@@ -238,8 +238,32 @@ def update_readme_badges(sections: dict[str, list[Chapter]]) -> None:
         rf"\g<1>{total}",
         text,
     )
+
+    # Счётчики в «Карте хендбука» тоже врут при добавлении главы, и заметить это
+    # труднее, чем расхождение в шапке: там пятнадцать чисел, и глазами их не сверяют.
+    # Проставляем каждое из числа реальных файлов раздела.
+    fixed = 0
+
+    def fix_section_count(match: re.Match[str]) -> str:
+        nonlocal fixed
+        slug_prefix, tail, claimed = match.group(1), match.group(2), int(match.group(3))
+        slug = next((s for s in sections if s.startswith(slug_prefix)), None)
+        if slug is None:
+            return match.group(0)
+        real = len(sections[slug])
+        if real != claimed:
+            fixed += 1
+        return f"{slug_prefix}{tail}{real} глав"
+
+    text = re.sub(
+        r"(\d\d)( · [^\]]+\]\([^)]+\)\*\* — )(\d+) глав",
+        fix_section_count,
+        text,
+    )
+
     path.write_text(text, encoding="utf-8")
-    print(f"README: счётчики обновлены ({len(sections)} разделов, {total} глав).")
+    note = f", исправлено счётчиков по разделам: {fixed}" if fixed else ""
+    print(f"README: счётчики обновлены ({len(sections)} разделов, {total} глав){note}.")
 
 
 def main() -> int:
