@@ -175,6 +175,8 @@ nav:
       - "Стратегии выкатки": 07-mlops/08-deployment-strategies.md
       - "Оптимизация инференса": 07-mlops/09-inference-optimization.md
       - "Стоимость и ёмкость": 07-mlops/10-cost-and-capacity.md
+      - "Данные и разметка": 07-mlops/11-data-and-labeling.md
+      - "Безопасность ML-систем": 07-mlops/12-ml-security.md
   - Big Data:
       - 08-big-data/index.md
       - "Хранение данных": 08-big-data/01-storage-and-formats.md
@@ -193,6 +195,7 @@ nav:
       - "Стек наблюдаемости": 09-monitoring/05-observability-stack.md
       - "Инциденты": 09-monitoring/06-incidents-and-runbooks.md
       - "Переобучение моделей": 09-monitoring/07-retraining.md
+      - "Справедливость и систематические смещения": 09-monitoring/08-fairness.md
   - A/B-тесты:
       - 10-ab-testing/index.md
       - "Дизайн эксперимента": 10-ab-testing/01-experiment-design.md
