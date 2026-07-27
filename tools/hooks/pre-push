@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Локальная замена CI: проверки прогоняются перед пушем, на вашей машине.
+#
+# Установка (один раз):
+#     git config core.hooksPath tools/hooks
+#
+# Отключить для одного пуша:
+#     git push --no-verify
+#
+# Проверяется то же, что раньше проверял CI: состав глав против манифеста,
+# структура и внутренние ссылки, покрытие обязательных тем, тренажёр.
+
+set -uo pipefail
+cd "$(git rev-parse --show-toplevel)" || exit 1
+
+echo "→ Локальные проверки перед пушем"
+
+fail=0
+python3 tools/check_manifest.py || fail=1
+python3 tools/check_handbook.py || fail=1
+python3 tools/check_coverage.py || fail=1
+
+if command -v pytest >/dev/null 2>&1 || python3 -c "import pytest" 2>/dev/null; then
+  HANDBOOK_CHECK_SOLUTIONS=1 python3 -m pytest code/tests -q || fail=1
+else
+  echo "  (pytest не установлен — тренажёр пропущен; pip install -r code/requirements.txt)"
+fi
+
+if [ "$fail" -ne 0 ]; then
+  echo
+  echo "Проверки не пройдены. Пуш остановлен."
+  echo "Если это осознанно — повторите с git push --no-verify"
+  exit 1
+fi
+
+echo "→ Всё чисто, пушим"

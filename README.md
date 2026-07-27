@@ -192,11 +192,17 @@ pip install mkdocs-material
 mkdocs serve          # http://127.0.0.1:8000
 ```
 
-Проверка целостности (битые ссылки, незакрытые формулы, структура глав):
+Проверки целостности — локальные, одной командой:
 
 ```bash
-python tools/check_handbook.py
+make check           # состав глав, структура, внутренние ссылки, покрытие тем
+make test-solutions  # тренажёр: эталонные решения проходят 35/35
+make stats           # сводка по объёму и наполнению
+
+bash tools/finalize.sh   # всё сразу, включая пересборку навигации
 ```
+
+Чтобы это запускалось само перед `git push`: `git config core.hooksPath tools/hooks`.
 
 ---
 
