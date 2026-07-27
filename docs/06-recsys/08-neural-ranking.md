@@ -10,7 +10,7 @@
 **Уровень:** 🎯 middle → 🧠 middle+
 **Предварительно нужно:** [обучение ранжированию](07-learning-to-rank.md), [факторизационные машины](05-factorization-machines.md), [двухбашенные модели и ANN](06-two-tower-and-ann.md), [дисбаланс и калибровка](../02-classic-ml/12-imbalance-and-calibration.md), [внимание и трансформер](../03-deep-learning/04-attention-and-transformer.md)
 
-**Время на проработку:** ~6 часов (чтение + сборка DLRM и DIN на torch + расчёт памяти)
+**Как проработать:** чтение + сборка DLRM и DIN на torch + расчёт памяти
 
 ---
 

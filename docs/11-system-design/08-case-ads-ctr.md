@@ -8,7 +8,7 @@
 
 **Уровень:** 🎯 middle → 🧠 middle+
 **Предварительно нужно:** [каркас ответа](01-framework.md), [дисбаланс и калибровка](../02-classic-ml/12-imbalance-and-calibration.md), [метрики качества](../02-classic-ml/04-metrics.md), [нейронное ранжирование](../06-recsys/08-neural-ranking.md), [работа с признаками](../02-classic-ml/14-feature-engineering.md)
-**Время на проработку:** ~2.5 часа
+**Как проработать:** чтение + упражнения
 
 ---
 

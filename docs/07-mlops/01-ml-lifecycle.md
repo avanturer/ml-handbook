@@ -9,7 +9,7 @@
 
 **Уровень:** 🎯 middle → 🧠 middle+
 **Предварительно нужно:** [валидация и утечки](../02-classic-ml/13-validation-and-leakage.md), [метрики](../02-classic-ml/04-metrics.md), [ML System Design](../11-system-design/01-framework.md)
-**Время на проработку:** ~3 часа
+**Как проработать:** чтение + упражнения
 
 ---
 

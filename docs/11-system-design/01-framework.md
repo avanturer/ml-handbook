@@ -7,7 +7,7 @@
 
 **Уровень:** 🎯 middle → 🧠 middle+
 **Предварительно нужно:** [метрики](../02-classic-ml/04-metrics.md), [валидация](../02-classic-ml/13-validation-and-leakage.md), [сервинг](../07-mlops/05-serving-architectures.md), [мониторинг](../09-monitoring/01-what-to-monitor.md), [A/B-тесты](../10-ab-testing/01-experiment-design.md)
-**Время на проработку:** ~4 часа на главу + по 1 часу на каждый кейс
+**Как проработать:** чтение + упражнения
 
 ---
 

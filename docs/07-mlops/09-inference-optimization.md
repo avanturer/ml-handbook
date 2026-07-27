@@ -10,7 +10,7 @@
 
 **Уровень:** 🎯 middle → 🧠 middle+
 **Предварительно нужно:** [архитектуры сервинга](05-serving-architectures.md), [упаковка модели](04-model-packaging.md), [PyTorch на практике](../03-deep-learning/05-pytorch-in-practice.md), [Docker и Kubernetes](06-docker-and-k8s.md)
-**Время на проработку:** ~5 часов (чтение + профилирование своего сервиса)
+**Как проработать:** чтение + профилирование своего сервиса
 
 ---
 

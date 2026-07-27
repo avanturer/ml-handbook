@@ -8,7 +8,7 @@
 
 **Уровень:** 🎯 middle → 🧠 middle+
 **Предварительно нужно:** [жизненный цикл](01-ml-lifecycle.md), [валидация и утечки](../02-classic-ml/13-validation-and-leakage.md), [PyTorch на практике](../03-deep-learning/05-pytorch-in-practice.md)
-**Время на проработку:** ~3.5 часа
+**Как проработать:** чтение + упражнения
 
 ---
 

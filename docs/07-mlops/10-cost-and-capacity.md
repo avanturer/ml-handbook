@@ -10,7 +10,7 @@
 
 **Уровень:** 🎯 middle → 🧠 middle+
 **Предварительно нужно:** [архитектуры сервинга](05-serving-architectures.md), [оптимизация инференса](09-inference-optimization.md), [Docker и Kubernetes](06-docker-and-k8s.md), [масштабирование обучения](../03-deep-learning/06-scaling-and-efficiency.md)
-**Время на проработку:** ~3 часа (чтение + расчёт по своему сервису)
+**Как проработать:** чтение + расчёт по своему сервису
 
 ---
 

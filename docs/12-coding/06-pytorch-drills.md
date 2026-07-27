@@ -10,7 +10,7 @@
 **Предварительно нужно:** [PyTorch на практике](../03-deep-learning/05-pytorch-in-practice.md),
 [Внимание и трансформер](../03-deep-learning/04-attention-and-transformer.md),
 [Масштабирование обучения](../03-deep-learning/06-scaling-and-efficiency.md)
-**Время на проработку:** ~10 часов (сначала решить самому, потом сверяться и запускать)
+**Как проработать:** сначала решить самому, потом сверяться и запускать
 
 > **О версиях.** Код написан под **PyTorch 2.4+** и Python 3.11. Где API менялся
 > (`torch.cuda.amp` → `torch.amp`, `weights_only` в `torch.load`), это отмечено явно.

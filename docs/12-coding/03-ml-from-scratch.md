@@ -15,7 +15,7 @@
 [бустинг](../02-classic-ml/07-gradient-boosting.md), [кластеризация](../02-classic-ml/10-clustering.md),
 [снижение размерности](../02-classic-ml/11-dimensionality-reduction.md),
 [внимание и трансформер](../03-deep-learning/04-attention-and-transformer.md)
-**Время на проработку:** ~10 часов (чтение — 3, набивание руками — 7)
+**Как проработать:** чтение + все задачи с чистого листа, на время
 
 ---
 

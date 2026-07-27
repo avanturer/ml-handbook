@@ -9,7 +9,7 @@
 
 **Уровень:** 🎯 middle → 🧠 middle+
 **Предварительно нужно:** [масштабирование обучения](../03-deep-learning/06-scaling-and-efficiency.md) — там разобраны память, mixed precision, ring all-reduce и стадии ZeRO; [PyTorch на практике](../03-deep-learning/05-pytorch-in-practice.md); [хранение данных](01-storage-and-formats.md)
-**Время на проработку:** ~4 часа
+**Как проработать:** чтение + упражнения
 
 ---
 
