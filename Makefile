@@ -11,7 +11,11 @@ build:  ## Пересобрать навигацию (оглавления, inde
 	$(PY) tools/build_nav.py
 	$(PY) tools/build_bibliography.py
 
-diagrams:  ## Отрендерить все mermaid-схемы и убедиться, что они рисуются (нужен npm install)
+render:  ## Отрендерить все формулы и схемы по-настоящему (нужен npm install katex @mermaid-js/mermaid-cli)
+	$(PY) tools/check_katex.py
+	$(PY) tools/check_mermaid.py
+
+diagrams:  ## Только схемы: отрендерить mermaid и убедиться, что они рисуются
 	$(PY) tools/check_mermaid.py
 
 check-fast:  ## Быстрые проверки: состав, структура глав, внутренние ссылки, покрытие тем

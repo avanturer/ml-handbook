@@ -27,7 +27,10 @@ python3 tools/check_coverage.py || fail=1
 step "4a. Рендеринг формул на GitHub"
 python3 tools/check_math.py || fail=1
 
-step "4b. Рендеринг mermaid-схем (пропускается без mermaid-cli)"
+step "4b. Рендеринг формул в KaTeX (пропускается без katex)"
+python3 tools/check_katex.py || fail=1
+
+step "4c. Рендеринг mermaid-схем (пропускается без mermaid-cli)"
 python3 tools/check_mermaid.py || fail=1
 
 step "5. Тренажёр: эталонные решения должны проходить"

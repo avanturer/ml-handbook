@@ -11,6 +11,10 @@ GitHub умеет `$...$` и `$$...$$`, но у него есть узкие м�
 3. **`\\\\` внутри `$$` без окружения** aligned/array/cases — переносить строку негде.
 4. **Неэкранированная `|` внутри формулы в таблице** — разрывает ячейку.
    (Экранированная `\\|` — не ошибка: она рендерится как двойная черта нормы.)
+5. **`\\color{}` вместо `\\textcolor{}`.** Это не опечатка, а разное поведение: `\\color`
+   красит всё до конца группы, а не свой аргумент. В `\\color{blue}{G} = \\sum g_i`
+   синим станет вся формула, включая сумму. Проверено рендерингом в KaTeX — том самом,
+   которым GitHub рисует математику. В исходнике разница не видна совсем.
 
 Запуск: python tools/check_math.py
 """
@@ -78,6 +82,11 @@ def check_file(path: Path) -> list[tuple[int, str]]:
         if "\\\\" in body and not ENVIRONMENT_RE.search(body):
             problems.append((raw.count("\n", 0, match.start()) + 1,
                              r"`\\` внутри $$ без \begin{aligned}/{array}/{cases}"))
+
+    # 5. `\color` вместо `\textcolor`: красит до конца группы, а не свой аргумент.
+    for match in re.finditer(r"(?<!\\text)\\color\{", raw):
+        problems.append((raw.count("\n", 0, match.start()) + 1,
+                         r"`\color{` красит формулу до конца группы — нужен `\textcolor{`"))
 
     # 4. Неэкранированная `|` внутри формулы в строке таблицы
     for lineno, line in enumerate(masked.split("\n"), start=1):
