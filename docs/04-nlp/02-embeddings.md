@@ -301,8 +301,7 @@ $$
 
 ### 4.3 Градиенты
 
-Понадобится производная $\frac{d}{dx}\log\sigma(x) = \frac{\sigma'(x)}{\sigma(x)}
-= \frac{\sigma(x)(1-\sigma(x))}{\sigma(x)} = 1 - \sigma(x) = \sigma(-x)$.
+Понадобится производная $\frac{d}{dx}\log\sigma(x) = \frac{\sigma'(x)}{\sigma(x)} = \frac{\sigma(x)(1-\sigma(x))}{\sigma(x)} = 1 - \sigma(x) = \sigma(-x)$.
 
 Обозначим $x_o = u_o^\top v_w$ и $x_j = u_{o_j}^\top v_w$. Тогда:
 

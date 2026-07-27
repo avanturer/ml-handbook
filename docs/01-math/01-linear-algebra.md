@@ -550,8 +550,7 @@ $$
 векторы $AA^\top$.
 
 **Отсюда — PCA.** Берём центрированную матрицу $X_c$, делаем её SVD: $X_c = U\Sigma V^\top$.
-Тогда ковариационная матрица $\Sigma_{\text{cov}} = \frac{1}{n-1}X_c^\top X_c
-= V\frac{\Sigma^\top\Sigma}{n-1}V^\top$. Следовательно:
+Тогда ковариационная матрица $\Sigma_{\text{cov}} = \frac{1}{n-1}X_c^\top X_c = V\frac{\Sigma^\top\Sigma}{n-1}V^\top$. Следовательно:
 
 - **главные направления** (principal directions) — это столбцы $V$;
 - **объяснённая дисперсия** $i$-й компоненты равна $\dfrac{\sigma_i^2}{n-1}$;
@@ -632,8 +631,7 @@ print("‖A−A_k‖_2  =", round(np.linalg.norm(A - A_k, 2), 6),
       "  теория σ_{k+1}:", round(S[k], 6))                # 1.856326 == 1.856326
 ```
 
-**Следствие 1: LoRA.** При дообучении LLM полное обновление весов слоя $\Delta W \in
-\mathbb{R}^{d_{\text{out}}\times d_{\text{in}}}$ содержит $d_{\text{out}}\,d_{\text{in}}$
+**Следствие 1: LoRA.** При дообучении LLM полное обновление весов слоя $\Delta W \in \mathbb{R}^{d_{\text{out}}\times d_{\text{in}}}$ содержит $d_{\text{out}}\,d_{\text{in}}$
 параметров — для матрицы $4096\times4096$ это 16.8 млн на один слой. LoRA параметризует
 обновление как произведение двух узких матриц:
 
@@ -723,8 +721,7 @@ $$
 
 - $H^2 = X(X^\top X)^{-1}\underbrace{X^\top X (X^\top X)^{-1}}_{I}X^\top = H$ — идемпотентность.
   Спроецировали дважды — ничего не изменилось, как и должно быть у проекции.
-- $\operatorname{tr}(H) = \operatorname{tr}\big(X(X^\top X)^{-1}X^\top\big)
-  = \operatorname{tr}\big((X^\top X)^{-1}X^\top X\big) = \operatorname{tr}(I_d) = d$
+- $\operatorname{tr}(H) = \operatorname{tr}\big(X(X^\top X)^{-1}X^\top\big) = \operatorname{tr}\big((X^\top X)^{-1}X^\top X\big) = \operatorname{tr}(I_d) = d$
   (здесь использовано $\operatorname{tr}(BC) = \operatorname{tr}(CB)$). Это **число степеней
   свободы** модели. Диагональные элементы $h_{ii}$ — «рычаг» (leverage) объекта $i$: насколько
   сильно он тянет предсказание на себя. Объекты с $h_{ii}$ близким к 1 — кандидаты в выбросы,
@@ -1157,14 +1154,12 @@ $\sum_{i\le k}\sigma_i^2 / \sum_i\sigma_i^2$, сжатие слоёв нейро
 <summary><b>🎯 Вопрос.</b> Выведите нормальное уравнение линейной регрессии двумя способами.</summary>
 
 **Короткий ответ.** Геометрически: вектор ошибки ортогонален подпространству столбцов $X$,
-откуда $X^\top(y - X\theta) = 0$. Аналитически: $\nabla_\theta\|X\theta-y\|_2^2 =
-2X^\top(X\theta-y) = 0$. Оба дают $X^\top X\theta = X^\top y$.
+откуда $X^\top(y - X\theta) = 0$. Аналитически: $\nabla_\theta\|X\theta-y\|_2^2 = 2X^\top(X\theta-y) = 0$. Оба дают $X^\top X\theta = X^\top y$.
 
 **Развёрнуто.** Геометрический вывод: предсказания $X\theta$ пробегают всё подпространство,
 натянутое на столбцы $X$; ближайшая к $y$ точка этого подпространства — ортогональная проекция;
 условие ортогональности остатка каждому столбцу и есть $X^\top(y - X\theta) = 0$.
-Аналитический: раскрываем $\|X\theta - y\|^2 = \theta^\top X^\top X\theta - 2(X^\top y)^\top\theta
-+ y^\top y$ (средние два члена схлопываются, потому что скаляр равен своему транспонированному),
+Аналитический: раскрываем $\|X\theta - y\|^2 = \theta^\top X^\top X\theta - 2(X^\top y)^\top\theta + y^\top y$ (средние два члена схлопываются, потому что скаляр равен своему транспонированному),
 применяем $\partial(x^\top Ax)/\partial x = 2Ax$ для симметричной $A = X^\top X$ и
 $\partial(a^\top x)/\partial x = a$. Проекционная матрица $H = X(X^\top X)^{-1}X^\top$
 идемпотентна ($H^2 = H$), а её след равен $d$ — числу параметров, то есть числу степеней
@@ -1360,8 +1355,7 @@ $\frac{k(n+d+1)}{nd}$. Нарисуйте спектр в логарифмиче
 (а) $\partial\|X\theta - y\|_2^2/\partial\theta$;
 (б) $\partial\big(\|X\theta-y\|_2^2 + \lambda\|\theta\|_2^2\big)/\partial\theta$ и решение
 Ridge в замкнутом виде;
-(в) градиент логистической потери $\sum_i\big[-y_i\log\sigma(x_i^\top\theta)
-- (1-y_i)\log(1-\sigma(x_i^\top\theta))\big]$ по $\theta$;
+(в) градиент логистической потери $\sum_i\big[-y_i\log\sigma(x_i^\top\theta) - (1-y_i)\log(1-\sigma(x_i^\top\theta))\big]$ по $\theta$;
 (г) $\partial L/\partial W$ и $\partial L/\partial X$ для $Z = XW$, если известен
 $\partial L/\partial Z$.
 *Критерий: все четыре совпали с численной проверкой при `atol=1e-6`; для (в) у вас получилось

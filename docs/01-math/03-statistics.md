@@ -361,8 +361,7 @@ $$
 
 Функция строго вогнута — точка единственная и это максимум.
 
-Информация Фишера для одного наблюдения: $I_1(\theta) = -\mathbb{E}[d^2 \log p / d\theta^2]
-= \frac{\theta}{\theta^2} + \frac{1-\theta}{(1-\theta)^2} = \frac{1}{\theta(1-\theta)}$.
+Информация Фишера для одного наблюдения: $I_1(\theta) = -\mathbb{E}[d^2 \log p / d\theta^2] = \frac{\theta}{\theta^2} + \frac{1-\theta}{(1-\theta)^2} = \frac{1}{\theta(1-\theta)}$.
 Тогда граница Крамера–Рао равна $\frac{\theta(1-\theta)}{n}$ — и это в точности
 $\mathrm{Var}(k/n)$. Оценка эффективна.
 
@@ -540,8 +539,7 @@ $$
 
 ### 5.2 Гауссов приор → L2-регуляризация: вывод
 
-Возьмём линейную регрессию: $y_i = \theta^\top x_i + \varepsilon_i$, $\varepsilon_i \sim
-\mathcal{N}(0,\sigma^2)$, и независимый гауссов приор на каждый вес:
+Возьмём линейную регрессию: $y_i = \theta^\top x_i + \varepsilon_i$, $\varepsilon_i \sim \mathcal{N}(0,\sigma^2)$, и независимый гауссов приор на каждый вес:
 $\theta_j \sim \mathcal{N}(0, \tau^2)$, $j = 1,\dots,d$.
 
 Логарифм приора:

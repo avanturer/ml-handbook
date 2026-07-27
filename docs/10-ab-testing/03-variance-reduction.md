@@ -843,8 +843,7 @@ $\hat{\Delta}^{\text{cuped}} = (\bar{Y}_1-\bar{Y}_0) - \theta(\bar{X}_1-\bar{X}_
 дисперсия становится $\operatorname{Var}(Y)(1-\rho^2)$.
 
 **Развёрнуто.**
-$\operatorname{Var}(Y - \theta X) = \operatorname{Var}(Y) + \theta^2\operatorname{Var}(X)
-- 2\theta\operatorname{Cov}(X,Y)$ — парабола по $\theta$ с минимумом в точке, где производная
+$\operatorname{Var}(Y - \theta X) = \operatorname{Var}(Y) + \theta^2\operatorname{Var}(X) - 2\theta\operatorname{Cov}(X,Y)$ — парабола по $\theta$ с минимумом в точке, где производная
 $2\theta\operatorname{Var}(X) - 2\operatorname{Cov}(X,Y)$ равна нулю, откуда
 $\theta^{*} = \operatorname{Cov}(X,Y)/\operatorname{Var}(X)$. Подстановка даёт
 $\operatorname{Var}(Y) - \operatorname{Cov}^2(X,Y)/\operatorname{Var}(X)$, а так как

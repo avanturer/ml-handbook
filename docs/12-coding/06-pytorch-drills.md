@@ -2078,8 +2078,7 @@ allocated/reserved.
 лосса на число шагов накопления). Отличия — в слоях со статистикой батча (BatchNorm),
 в in-batch negatives, и в том, что скорости накопление не даёт: экономится только память.
 
-**Развёрнуто.** Равенство $\frac{1}{N}\sum \nabla \ell_i = \frac{1}{k}\sum_j
-\left(\frac{1}{m}\sum_{i \in B_j}\nabla \ell_i\right)$ выполняется при $N = km$ и равных
+**Развёрнуто.** Равенство $\frac{1}{N}\sum \nabla \ell_i = \frac{1}{k}\sum_j \left(\frac{1}{m}\sum_{i \in B_j}\nabla \ell_i\right)$ выполняется при $N = km$ и равных
 микробатчах, отсюда `drop_last=True` и деление `loss / accum_steps` (без деления
 эффективный LR вырастет в $k$ раз). BatchNorm считает статистику по микробатчу — результат
 отличается; лечится заменой на LayerNorm/GroupNorm. Для контрастивного обучения негативы

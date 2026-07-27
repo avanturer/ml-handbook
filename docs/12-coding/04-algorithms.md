@@ -93,7 +93,7 @@
 | `lst.insert(0, x)`, `lst.pop(0)` | $O(n)$ | вставка в начало списка в цикле → $O(n^2)$ |
 | `x in lst` | $O(n)$ | внутри цикла — квадрат; берите `set` |
 | `x in set/dict`, `d[k] = v` | $O(1)$ в среднем | худший случай $O(n)$ при коллизиях; на практике не встречается |
-| `set(a) & set(b)` | $O(\min(|a|,|b|))$ | построение множеств — $O(|a| + |b|)$ |
+| `set(a) & set(b)` | $O(\min(\vert a\vert,\vert b\vert))$ | построение множеств — $O(\vert a\vert + \vert b\vert)$ |
 | `sorted(x)` | $O(n\log n)$ | Timsort, стабильная сортировка |
 | `heapq.heappush/heappop` | $O(\log n)$ | `heapify` — $O(n)$, не $O(n\log n)$ |
 | `heapq.nlargest(k, it)` | $O(n\log k)$ | при $k \approx n$ внутри переключается на сортировку |

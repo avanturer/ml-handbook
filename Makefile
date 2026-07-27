@@ -14,6 +14,7 @@ check-fast:  ## Быстрые проверки: состав, структур�
 	$(PY) tools/check_manifest.py
 	$(PY) tools/check_handbook.py
 	$(PY) tools/check_coverage.py
+	$(PY) tools/check_math.py
 
 check: build check-fast  ## Пересобрать и проверить всё, кроме внешних ссылок
 	@git diff --quiet -- docs mkdocs.yml resources || { \

@@ -949,8 +949,7 @@ $\gamma\sigma_{\max}>1$.
 
 **Короткий ответ.** Выход $(B, 64, 112, 112)$; параметров $64\cdot(3\cdot7\cdot7 + 1) = 9472$.
 
-**Развёрнуто.** По формуле $H_{\text{out}} = \lfloor (224 + 2\cdot3 - 1\cdot(7-1) - 1)/2\rfloor + 1
-= \lfloor 223/2 \rfloor + 1 = 111 + 1 = 112$. Параметры: ядро
+**Развёрнуто.** По формуле $H_{\text{out}} = \lfloor (224 + 2\cdot3 - 1\cdot(7-1) - 1)/2\rfloor + 1 = \lfloor 223/2 \rfloor + 1 = 111 + 1 = 112$. Параметры: ядро
 $C_{\text{out}}\times C_{\text{in}} \times k \times k = 64\times3\times7\times7 = 9408$
 плюс 64 смещения. Полезно сразу назвать и стоимость: $112^2\cdot64\cdot3\cdot49 \approx 118$ M MAC.
 

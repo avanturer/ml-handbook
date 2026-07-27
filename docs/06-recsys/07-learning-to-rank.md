@@ -951,8 +951,7 @@ $C_{ij} = \frac{1}{2}(1-S_{ij})\sigma(s_i-s_j) + \log(1+e^{-\sigma(s_i-s_j)})$.
 **Развёрнуто.** $S_{ij} \in \{-1,0,1\}$ кодирует, кто релевантнее. При $S_{ij}=1$ лосс сводится к
 softplus $\log(1+e^{-\sigma\Delta s})$: он почти нулевой при правильном порядке и растёт линейно
 при нарушении. Градиент
-$\partial C/\partial s_i = \sigma\left[\frac{1}{2}(1-S_{ij}) - \frac{1}{1+e^{\sigma\Delta s}}\right]
-= -\partial C/\partial s_j$; антисимметрия позволяет считать одну величину на пару. Для $S_{ij}=1$
+$\partial C/\partial s_i = \sigma\left[\frac{1}{2}(1-S_{ij}) - \frac{1}{1+e^{\sigma\Delta s}}\right] = -\partial C/\partial s_j$; антисимметрия позволяет считать одну величину на пару. Для $S_{ij}=1$
 это $-\sigma/(1+e^{\sigma \Delta s})$ — та самая сила, которую LambdaRank потом домножает
 на $|\Delta\mathrm{NDCG}|$.
 
