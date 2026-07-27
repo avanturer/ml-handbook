@@ -621,6 +621,7 @@ n = 300_000
 risky = rng.random(n) < 0.03                             # 3% «подозрительного» сегмента
 proba = np.where(risky, rng.beta(3.0, 8.0, n), rng.beta(0.4, 200.0, n))
 y_true = (rng.random(n) < proba).astype(int)             # метки согласованы с вероятностями
+print("доля фрода:", round(y_true.mean(), 4))            # 0.0099
 
 grid = np.linspace(0.002, 0.6, 600)
 costs = np.array([expected_cost(y_true, proba, t, C_TP, C_FP, C_FN, C_TN) for t in grid])

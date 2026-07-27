@@ -42,9 +42,14 @@ PLACEHOLDER_RE = re.compile(
 
 # Блоки, без которых глава не соответствует стандарту (.handbook/AUTHORING.md §2).
 REQUIRED_MARKERS = {
-    "Проверь себя": re.compile(r"##\s*.*Проверь себя", re.IGNORECASE),
-    "источники": re.compile(r"##\s*.*(Что читать дальше|Источники|Материалы)", re.IGNORECASE),
+    "Карта главы": re.compile(r"^##\s*Карта главы", re.IGNORECASE | re.MULTILINE),
+    "Подводные камни": re.compile(r"^##\s*.*Подводные камни", re.IGNORECASE | re.MULTILINE),
+    "Проверь себя": re.compile(r"^##\s*.*Проверь себя", re.IGNORECASE | re.MULTILINE),
+    "Практика": re.compile(r"^##\s*.*Практика", re.IGNORECASE | re.MULTILINE),
+    "источники": re.compile(r"^##\s*.*(Что читать дальше|Источники|Материалы)",
+                            re.IGNORECASE | re.MULTILINE),
     "навигация": re.compile(r"(⬅️|➡️|🏠)"),
+    "врезка на собеседовании": re.compile(r"💬"),
 }
 
 # Файлы-оглавления и служебные страницы проверяем мягче: у них нет упражнений.
@@ -55,8 +60,14 @@ INDEX_NAMES = {"index.md", "README.md"}
 NAVIGATIONAL = {
     "00-start/01-how-to-use.md",
     "00-start/02-tracks.md",
+    "00-start/03-interview-map.md",
     "00-start/05-glossary.md",
 }
+
+# Блоки, которых навигационные страницы не обязаны иметь: у путеводителя нет
+# ни грабель из продакшена, ни задач на код, ни вопросов с собеседования.
+NAVIGATIONAL_EXEMPT = {"Проверь себя", "Подводные камни", "Практика",
+                       "врезка на собеседовании", "Карта главы"}
 
 
 @dataclass
@@ -160,7 +171,7 @@ def check_structure(path: Path, text: str, report: Report) -> None:
         return
     rel = path.relative_to(DOCS).as_posix() if DOCS in path.parents else path.name
     for name, pattern in REQUIRED_MARKERS.items():
-        if name == "Проверь себя" and rel in NAVIGATIONAL:
+        if name in NAVIGATIONAL_EXEMPT and rel in NAVIGATIONAL:
             continue
         if not pattern.search(text):
             report.warn(path, f"нет обязательного блока: {name}")
