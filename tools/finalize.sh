@@ -10,7 +10,8 @@ cd "$(dirname "$0")/.." || exit 1
 fail=0
 step() { printf '\n=== %s ===\n' "$1"; }
 
-step "1. Пересборка навигации и библиографии"
+step "1. Пересборка навигации, ссылок на разделы и библиографии"
+python3 tools/link_sections.py || fail=1
 python3 tools/build_nav.py || fail=1
 python3 tools/build_bibliography.py || fail=1
 

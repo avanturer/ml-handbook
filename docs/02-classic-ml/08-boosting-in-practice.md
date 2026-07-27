@@ -112,7 +112,7 @@ def best_split_exact(x, g, h, lam=1.0, gamma=0.0):
 обычных квантилей значений признака. XGBoost даёт более точный ответ, и он выводится из уже
 знакомой формулы.
 
-Вспомним целевую функцию шага после разложения Тейлора (глава 07, §5.1):
+Вспомним целевую функцию шага после разложения Тейлора ([глава 07, §5.1](07-gradient-boosting.md#51-разложение-тейлора)):
 
 $$
 \tilde{\mathcal{L}}^{(m)} = \sum_{i=1}^{n}\Big[ g_i f_m(x_i) + \tfrac12 h_i f_m(x_i)^2 \Big] + \Omega(f_m)
@@ -1317,14 +1317,14 @@ LOO-признака.*
 ## 10. Что читать дальше
 
 - [Chen T., Guestrin C. «XGBoost: A Scalable Tree Boosting System» (2016)](https://arxiv.org/abs/1603.02754) —
-  раздел 3 содержит ровно то, что разобрано в §2: приближённый алгоритм, weighted quantile sketch
+  раздел 3 содержит ровно то, что разобрано в [§2](#2-xgboost-поиск-сплита-в-масштабе): приближённый алгоритм, weighted quantile sketch
   с доказательством и sparsity-aware split finding. Раздел 4 — про блоки, кэш и out-of-core;
   полезен, если вас спрашивают про инженерию, а не только про математику.
 - **Ke G. et al. «LightGBM: A Highly Efficient Gradient Boosting Decision Tree», NeurIPS 2017** —
   оригинальная статья с выводом оценки Gain для GOSS и с формулировкой EFB как задачи раскраски
   графа. Доступна в открытых материалах конференции NeurIPS 2017; ищите по названию.
 - [Prokhorenkova L. et al. «CatBoost: unbiased boosting with categorical features» (2017/2018)](https://arxiv.org/abs/1706.09516) —
-  главный источник по §4. Разделы про target statistics (включая контрпример с leave-one-out) и
+  главный источник по [§4](#4-catboost-борьба-с-утечкой-через-таргет). Разделы про target statistics (включая контрпример с leave-one-out) и
   про prediction shift с оценкой порядка $O(1/n)$ — обязательное чтение для middle+.
 - [Dorogush A.V., Ershov V., Gulin A. «CatBoost: gradient boosting with categorical features support» (2018)](https://arxiv.org/abs/1810.11363) —
   короткая инженерная статья: комбинации признаков, oblivious-деревья, устройство GPU-реализации
@@ -1333,7 +1333,7 @@ LOO-признака.*
   сжатое описание histogram-подхода, leaf-wise, EFB и режимов распределённого обучения от авторов.
 - [Документация LightGBM: Parameters Tuning](https://lightgbm.readthedocs.io/en/latest/Parameters-Tuning.html) —
   официальный чек-лист «что крутить против переобучения / за скорость»; хорошо ложится на
-  протокол из §6.2.
+  протокол из [§6.2](#62-lightgbm).
 - [Документация XGBoost: Categorical Data](https://xgboost.readthedocs.io/en/stable/tutorials/categorical.html) —
   как устроены нативные категории, что делает `max_cat_to_onehot` и какие ограничения остались.
 - [Документация CatBoost](https://catboost.ai/docs/) — читайте разделы про параметры

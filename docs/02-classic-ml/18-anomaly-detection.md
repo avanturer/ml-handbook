@@ -972,7 +972,7 @@ $\lceil\log_2\psi\rceil$, подсчёт $h(x)$ с поправкой $c(\cdot)$
   вывод One-Class SVM и обеих интерпретаций параметра $\nu$.
 - **Chandola V., Banerjee A., Kumar V. «Anomaly Detection: A Survey» (ACM Computing Surveys, 2009)** —
   классический обзор; лучшая систематизация постановок и типов аномалий, из которой взята
-  таксономия §2.
+  таксономия [§2](#2-что-вообще-считать-аномалией).
 - **Ruff L. et al. «A Unifying Review of Deep and Shallow Anomaly Detection»
   (Proceedings of the IEEE, 2021)** — современный обзор, связывающий классические методы
   и глубокие; полезен, чтобы понять, что автоэнкодер и Deep SVDD решают одну задачу разными
@@ -986,8 +986,8 @@ $\lceil\log_2\psi\rceil$, подсчёт $h(x)$ с поправкой $c(\cdot)$
   и работа с частотой ложных срабатываний. Раздел 10 этой главы во многом опирается на них.
 - [ruptures: детекция точек разладки](https://github.com/deepcharles/ruptures) и
   [stumpy: matrix profile](https://github.com/TDAmeritrade/stumpy) — рабочие инструменты
-  для двух задач из §9, которых нет в scikit-learn.
+  для двух задач из [§9](#9-аномалии-во-временных-рядах), которых нет в scikit-learn.
 
 ---
 
-⬅️ [Uplift и причинность](17-uplift-and-causal.md) | 🏠 [Оглавление](../index.md) | ➡️ [Нейросети и обратное распространение](../03-deep-learning/01-neural-nets-and-backprop.md)
+⬅️ [Uplift и причинность](17-uplift-and-causal.md) | 🏠 [Оглавление](../index.md) | ➡️ [Стекинг и блендинг](19-stacking-and-blending.md)

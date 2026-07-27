@@ -998,7 +998,7 @@ $(m, n)$ и между $(m+5, n+5)$ должен совпадать с точн�
 
 - [Vaswani et al. «Attention Is All You Need» (2017)](https://arxiv.org/abs/1706.03762) —
   первоисточник. Читать ради разделов 3.2 (attention) и 3.5 (позиционные кодировки);
-  сноска про $\sqrt{d_k}$ — ровно то, что разобрано в §4.
+  сноска про $\sqrt{d_k}$ — ровно то, что разобрано в [§4](#4-почему-делим-на-корень-из-d_k).
 - [Su et al. «RoFormer: Enhanced Transformer with Rotary Position Embedding» (2021)](https://arxiv.org/abs/2104.09864) —
   вывод RoPE. Раздел с доказательством свойства относительности стоит прочитать целиком.
 - [Press et al. «Train Short, Test Long: Attention with Linear Biases» (2021)](https://arxiv.org/abs/2108.12409) —

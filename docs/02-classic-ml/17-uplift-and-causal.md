@@ -1099,7 +1099,7 @@ $c = 50$. Постройте кривую «доля обработанных �
 
 - [Künzel S. et al. «Metalearners for estimating heterogeneous treatment effects using machine learning» (2017)](https://arxiv.org/abs/1706.03461) —
   первоисточник X-learner с аккуратным сравнением S/T/X; читать раздел про несбалансированные
-  группы — там объяснение весов, которое мы разобрали в §5.
+  группы — там объяснение весов, которое мы разобрали в [§5](#5-метаобучатели-s-t-x).
 - [Athey S., Imbens G. «Recursive Partitioning for Heterogeneous Causal Effects» (2015)](https://arxiv.org/abs/1504.01132) —
   causal tree и идея honest splitting. Ключевое место — объяснение, почему без разделения выборки
   оценка эффекта в листе смещена.
@@ -1126,7 +1126,7 @@ $c = 50$. Постройте кривую «доля обработанных �
   происходит кривая Qini; полезна как исторический первоисточник терминологии.
 - **Rzepakowski P., Jaworski S. «Decision trees for uplift modeling with single and multiple
   treatments» (Knowledge and Information Systems, 2012)** — критерии расщепления uplift-деревьев,
-  разобранные в §6.
+  разобранные в [§6](#6-uplift-деревья-критерий-расщепления).
 
 ---
 

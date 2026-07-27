@@ -974,7 +974,7 @@ $L = e^{F} - y F$; (в) квантильной потери с квантиле�
 - [Friedman J. «Stochastic Gradient Boosting» (1999)](https://jerryfriedman.su.domains/ftp/stobst.pdf) —
   короткая работа про сабсэмплинг: откуда взялся `subsample` и сколько он реально даёт.
 - [Chen T., Guestrin C. «XGBoost: A Scalable Tree Boosting System» (2016)](https://arxiv.org/abs/1603.02754) —
-  раздел 2 содержит ровно тот вывод, что в §5 этой главы; раздел 3 — про алгоритм поиска сплитов
+  раздел 2 содержит ровно тот вывод, что в [§5](#5-второй-порядок-как-это-делает-xgboost) этой главы; раздел 3 — про алгоритм поиска сплитов
   и обработку разреженности. Обязательно для middle+.
 - **Hastie, Tibshirani, Friedman. «The Elements of Statistical Learning», гл. 10** —
   наиболее аккуратное изложение бустинга как forward stagewise additive modeling и связи
