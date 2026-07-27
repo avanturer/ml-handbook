@@ -27,6 +27,9 @@ python3 tools/check_coverage.py || fail=1
 step "4a. Рендеринг формул на GitHub"
 python3 tools/check_math.py || fail=1
 
+step "4b. Рендеринг mermaid-схем (пропускается без mermaid-cli)"
+python3 tools/check_mermaid.py || fail=1
+
 step "5. Тренажёр: эталонные решения должны проходить"
 HANDBOOK_CHECK_SOLUTIONS=1 python3 -m pytest code/tests -q || fail=1
 

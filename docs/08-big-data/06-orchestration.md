@@ -344,12 +344,12 @@ DAG со `schedule="@daily"` и `start_date=2026-07-26 18:00`. Первый ин
 ```mermaid
 gantt
     dateFormat YYYY-MM-DD HH:mm
-    axisFormat %d.%m %H:%M
-    title Интервал данных и момент запуска (schedule=@daily)
+    axisFormat %d.%m %H
+    title Интервал данных и момент запуска, schedule=@daily
     section Интервал данных
-    logical_date = 26.07 18:00 :done, i1, 2026-07-26 18:00, 24h
+    Сутки, за которые считаем (logical_date — их начало) :done, i1, 2026-07-26 18:00, 24h
     section Выполнение
-    DAG run стартует :active, r1, 2026-07-27 18:00, 2h
+    DAG run стартует, когда интервал закрылся :active, r1, 2026-07-27 18:00, 2h
 ```
 
 Отсюда два практических следствия, которые надо помнить наизусть.

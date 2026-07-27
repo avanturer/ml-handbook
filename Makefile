@@ -1,4 +1,4 @@
-.PHONY: help build check check-fast links test test-solutions serve stats all
+.PHONY: help build check check-fast diagrams links test test-solutions serve stats all
 
 PY ?= python3
 
@@ -7,8 +7,12 @@ help:  ## Показать список команд
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-16s\033[0m %s\n", $$1, $$2}'
 
 build:  ## Пересобрать навигацию (оглавления, index.md, nav в mkdocs.yml) и библиографию
+	$(PY) tools/link_sections.py
 	$(PY) tools/build_nav.py
 	$(PY) tools/build_bibliography.py
+
+diagrams:  ## Отрендерить все mermaid-схемы и убедиться, что они рисуются (нужен npm install)
+	$(PY) tools/check_mermaid.py
 
 check-fast:  ## Быстрые проверки: состав, структура глав, внутренние ссылки, покрытие тем
 	$(PY) tools/check_manifest.py
