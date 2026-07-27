@@ -55,6 +55,19 @@ REQUIRED_MARKERS = {
 # Файлы-оглавления и служебные страницы проверяем мягче: у них нет упражнений.
 INDEX_NAMES = {"index.md", "README.md"}
 
+# Порог в 90 строк существует, чтобы главу не заваливало кодом. Но бывает листинг,
+# который есть ОДИН ЦЕЛЬНЫЙ АРТЕФАКТ: разрезать его — значит показать читателю то,
+# что он не сможет собрать и запустить. Такие случаи разрешены поимённо и с причиной,
+# чтобы решение оставалось осознанным, а не превращалось в вечное предупреждение,
+# которое все привыкают пролистывать.
+LONG_LISTING_OK = {
+    "03-deep-learning/04-attention-and-transformer.md": "трансформер целиком — центр главы",
+    "05-llm/01-llm-architecture.md": "современный decoder-блок целиком",
+    "07-mlops/05-serving-architectures.md": "скелет прод-сервиса, который копируют целиком",
+    "08-big-data/05-streaming.md": "стриминговая джоба целиком",
+    "08-big-data/06-orchestration.md": "DAG переобучения целиком",
+}
+
 # Навигационные страницы раздела «Старт»: это путеводители, а не учебные главы,
 # блок «Проверь себя» им не нужен по смыслу.
 NAVIGATIONAL = {
@@ -153,10 +166,13 @@ def check_fences(path: Path, text: str, report: Report) -> None:
 
     # Блок без языка — это обычно вывод программы, и это нормально.
     # А вот слишком длинный листинг стандарт (AUTHORING §6) просит выносить в файл.
+    rel = path.relative_to(DOCS).as_posix() if DOCS in path.parents else path.name
+    allowed = LONG_LISTING_OK.get(rel)
     for match in re.finditer(r"^```python[ \t]*$(.*?)^```", text, re.DOTALL | re.MULTILINE):
         lines = match.group(1).count("\n")
-        if lines > 90:
-            report.warn(path, f"листинг на {lines} строк — стандарт просит выносить в code/")
+        if lines <= 90 or allowed:
+            continue
+        report.warn(path, f"листинг на {lines} строк — стандарт просит выносить в code/")
 
 
 def check_math(path: Path, text: str, report: Report) -> None:
