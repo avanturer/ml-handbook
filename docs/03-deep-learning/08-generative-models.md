@@ -961,8 +961,14 @@ $(3.93, -0.06)$ и разброс около 2.7; в шар радиуса 2 в�
 $\mathcal{L} = \mathbb{E}_{q_\phi}[\log p_\theta(x\mid z)] - \mathrm{KL}(q_\phi(z\mid x)\|p(z))$:
 реконструкция минус регуляризатор.
 
-**Развёрнуто.** Три шага: $\log p_\theta(x) = \log\int q_\phi \frac{p_\theta(x,z)}{q_\phi}dz
-= \log\mathbb{E}_{q_\phi}\big[\frac{p_\theta(x,z)}{q_\phi}\big] \ge \mathbb{E}_{q_\phi}\big[\log\frac{p_\theta(x,z)}{q_\phi}\big]$,
+**Развёрнуто.** Три шага:
+
+$$
+\log p_\theta(x) = \log\int q_\phi \frac{p_\theta(x,z)}{q_\phi}\,dz
+= \log\mathbb{E}_{q_\phi}\Big[\frac{p_\theta(x,z)}{q_\phi}\Big]
+\;\ge\; \mathbb{E}_{q_\phi}\Big[\log\frac{p_\theta(x,z)}{q_\phi}\Big]
+$$
+
 дальше раскрываем $p_\theta(x,z) = p_\theta(x\mid z)p(z)$. Первый член требует восстанавливать
 объект из кода, второй не даёт кодам разбредаться от априорного распределения — без него
 сэмплировать невозможно (это ровно проблема автоэнкодера). Сильное дополнение: точное тождество
