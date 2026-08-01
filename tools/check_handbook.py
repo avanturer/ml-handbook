@@ -74,7 +74,7 @@ NAVIGATIONAL = {
     "00-start/01-how-to-use.md",
     "00-start/02-tracks.md",
     "00-start/03-interview-map.md",
-    "00-start/05-glossary.md",
+    "00-start/06-glossary.md",
 }
 
 # Блоки, которых навигационные страницы не обязаны иметь: у путеводителя нет

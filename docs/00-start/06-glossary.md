@@ -360,4 +360,4 @@ KV-кэша. → [инференс LLM](../05-llm/05-inference-and-serving.md)
 
 ---
 
-⬅️ [Как учить, чтобы осталось в голове](04-study-method.md) | 🏠 [Оглавление](../index.md) | ➡️ [Линейная алгебра для ML](../01-math/01-linear-algebra.md)
+⬅️ [Сквозные линии книги](05-threads.md) | 🏠 [Оглавление](../index.md) | ➡️ [Линейная алгебра для ML](../01-math/01-linear-algebra.md)

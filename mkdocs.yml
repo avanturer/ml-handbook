@@ -86,7 +86,8 @@ nav:
           - "Короткие маршруты": 00-start/02-tracks.md
           - "Карта собеседования MLE": 00-start/03-interview-map.md
           - "Как учить, чтобы осталось в голове": 00-start/04-study-method.md
-          - "Глоссарий": 00-start/05-glossary.md
+          - "Сквозные линии книги": 00-start/05-threads.md
+          - "Глоссарий": 00-start/06-glossary.md
   - Часть I. Язык:
       - Математика:
           - 01-math/index.md

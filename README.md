@@ -8,7 +8,7 @@
 
 <p align="center">
   <img alt="Разделов" src="https://img.shields.io/badge/разделов-15-4c6ef5"/>
-  <img alt="Глав" src="https://img.shields.io/badge/глав-125-4c6ef5"/>
+  <img alt="Глав" src="https://img.shields.io/badge/глав-126-4c6ef5"/>
   <img alt="Уровень" src="https://img.shields.io/badge/уровень-junior%20→%20middle%2B-2f9e44"/>
   <img alt="Язык" src="https://img.shields.io/badge/язык-русский-f08c00"/>
   <img alt="Лицензия" src="https://img.shields.io/badge/лицензия-CC%20BY%204.0-868e96"/>
@@ -51,7 +51,7 @@
 |---|---|
 | Собеседование близко, полный проход не помещается | [Карта собеседования](docs/00-start/03-interview-map.md), затем [короткие маршруты](docs/00-start/02-tracks.md) |
 | Голова понимает, руки не пишут | [Тренажёр кода](docs/12-coding/index.md) — заходить можно в любой момент |
-| Ищу конкретный термин | [Глоссарий](docs/00-start/05-glossary.md) · [Оглавление](docs/index.md) |
+| Ищу конкретный термин | [Глоссарий](docs/00-start/06-glossary.md) · [Оглавление](docs/index.md) |
 
 Сроков в неделях здесь намеренно нет: время съедают не страницы, а выводы на бумаге
 и код с чистого листа. Вместо срока у каждой части написано, **что конкретно вы должны
