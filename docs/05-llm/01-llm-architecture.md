@@ -1564,6 +1564,9 @@ YaRN формализует: считает $r_i = L_{\text{train}}/\lambda_i$, 
 
 ## 14. Что читать дальше
 
+
+- [Мультимодальность](../13-optional/03-multimodal.md) — как к разобранному здесь
+  decoder-стеку приделывают вход другой модальности, и почему это оказалось так дёшево.
 - [Touvron et al. «LLaMA: Open and Efficient Foundation Language Models» (2023)](https://arxiv.org/abs/2302.13971) —
   раздел 2 читать как чек-лист современного блока: там прямо перечислено, что и у кого
   позаимствовано (RMSNorm из GPT-3-подобных практик, SwiGLU из PaLM, RoPE из GPTNeo).
