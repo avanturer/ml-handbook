@@ -215,6 +215,13 @@ def check_structure(path: Path, text: str, report: Report) -> None:
     if words < 400:
         report.warn(path, f"подозрительно короткая глава: {words} слов")
 
+    # Большая глава без врезки 🌱 — это глава без входа. Читатель, который видит тему
+    # впервые, открывает семь тысяч слов, где всё выглядит одинаково обязательным,
+    # и не понимает, где ему остановиться. Врезка «База» отделяет несущее
+    # от факультативного; в короткой главе она не нужна — там и так видно целиком.
+    if words > 4000 and "🌱" not in text and path.parent.name != "00-start":
+        report.warn(path, f"{words} слов и ни одной врезки 🌱 «База» — нет входа для новичка")
+
 
 def check_placeholders(path: Path, text: str, report: Report) -> None:
     for match in PLACEHOLDER_RE.finditer(text):
