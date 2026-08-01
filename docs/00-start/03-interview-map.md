@@ -165,7 +165,7 @@ flowchart LR
 Эта секция часто проваливается у сильных инженеров: статистика ощущается «не своей» темой,
 а спрашивают её строго.
 
-**Подготовка:** раздел [A/B-тестов](../10-ab-testing/01-experiment-design.md) целиком.
+**Подготовка:** раздел [A/B-тестов](../06-ab-testing/01-experiment-design.md) целиком.
 
 ### 2.7 Поведенческая секция и финал
 
@@ -319,11 +319,11 @@ flowchart LR
 | **ML-теория: математика** | [статистика](../01-math/03-statistics.md), [оптимизация](../01-math/04-optimization.md), [вероятность](../01-math/02-probability.md) | средний |
 | **Deep Learning** | [backprop](../03-deep-learning/01-neural-nets-and-backprop.md), [динамика обучения](../03-deep-learning/02-training-dynamics.md), [трансформер](../03-deep-learning/04-attention-and-transformer.md) | высокий |
 | **NLP / LLM** | разделы [04](../04-nlp/01-text-representation.md) и [05](../05-llm/01-llm-architecture.md) | по профилю |
-| **RecSys** | раздел [06](../06-recsys/01-recsys-foundations.md) | по профилю |
+| **RecSys** | раздел [06](../10-recsys/01-recsys-foundations.md) | по профилю |
 | **System Design** | [каркас](../11-system-design/01-framework.md) + все кейсы | критический на middle+ |
 | **Продакшен** | разделы [07](../07-mlops/01-ml-lifecycle.md) и [09](../09-monitoring/01-what-to-monitor.md) | высокий |
 | **Big Data** | [Spark](../08-big-data/03-spark-fundamentals.md), [форматы](../08-big-data/01-storage-and-formats.md), [стриминг](../08-big-data/05-streaming.md) | средний |
-| **A/B-тесты** | раздел [10](../10-ab-testing/01-experiment-design.md) | высокий |
+| **A/B-тесты** | раздел [10](../06-ab-testing/01-experiment-design.md) | высокий |
 | **Поведенческая** | [поведенческая](../14-career/02-behavioral.md), [процесс найма](../14-career/01-interview-process.md) | средний |
 
 «Критический» здесь означает: провал по этой строке блокирует оффер почти в любой компании.

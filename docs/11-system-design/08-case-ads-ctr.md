@@ -7,7 +7,7 @@
 > [каркасу из восьми шагов](01-framework.md).
 
 **Уровень:** 🎯 middle → 🧠 middle+
-**Предварительно нужно:** [каркас ответа](01-framework.md), [дисбаланс и калибровка](../02-classic-ml/12-imbalance-and-calibration.md), [метрики качества](../02-classic-ml/04-metrics.md), [нейронное ранжирование](../06-recsys/08-neural-ranking.md), [работа с признаками](../02-classic-ml/14-feature-engineering.md)
+**Предварительно нужно:** [каркас ответа](01-framework.md), [дисбаланс и калибровка](../02-classic-ml/12-imbalance-and-calibration.md), [метрики качества](../02-classic-ml/04-metrics.md), [нейронное ранжирование](../10-recsys/08-neural-ranking.md), [работа с признаками](../02-classic-ml/14-feature-engineering.md)
 **Как проработать:** чтение + упражнения
 
 ---
@@ -919,9 +919,9 @@ $P(Y=1\mid x, e) = p(x)(1 - e^{-\lambda(x)e})$, где $e$ — время, пр�
   экономика GSP: почему он не является стимулосовместимым в строгом смысле и как это влияет
   на поведение рекламодателей. Полезно для [§10.6](#106-что-значит-честный-аукцион-и-как-ml-может-его-сломать).
 - Смежные главы: [дисбаланс и калибровка](../02-classic-ml/12-imbalance-and-calibration.md),
-  [нейронное ранжирование](../06-recsys/08-neural-ranking.md),
+  [нейронное ранжирование](../10-recsys/08-neural-ranking.md),
   [оптимизация инференса](../07-mlops/09-inference-optimization.md),
-  [сложные схемы A/B](../10-ab-testing/05-complex-designs.md).
+  [сложные схемы A/B](../06-ab-testing/05-complex-designs.md).
 
 ---
 

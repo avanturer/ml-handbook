@@ -453,7 +453,7 @@
 - [Heusel M. et al. «GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium» (2017)](https://arxiv.org/abs/1706.08500) — статья, где введён FID; полезна тем, что видно, какие допущения в метрику заложены изначально.
 - **Chong M.J., Forsyth D. «Effectively Unbiased FID and Inception Score and where to find them» (CVPR 2020)** — про смещение FID по размеру выборки и способ его экстраполяционно устранить. Читать перед тем, как сравнивать свои числа с опубликованными.
 - **Kynkäänniemi T. et al. «Improved Precision and Recall Metric for Assessing Generative Models» (2019)** — разделение качества и покрытия на две метрики; то, чего не хватает FID.
-- [Rajput S. et al. «Recommender Systems with Generative Retrieval» (2023)](https://arxiv.org/abs/2305.05065) — TIGER: как VQ-подобная квантизация превращается в semantic IDs. Прикладной мостик из [§7](#7-vq-vae-дискретный-латент-который-можно-скормить-трансформеру) в [рекомендации](../docs/06-recsys/11-llm-recsys.md).
+- [Rajput S. et al. «Recommender Systems with Generative Retrieval» (2023)](https://arxiv.org/abs/2305.05065) — TIGER: как VQ-подобная квантизация превращается в semantic IDs. Прикладной мостик из [§7](#7-vq-vae-дискретный-латент-который-можно-скормить-трансформеру) в [рекомендации](../docs/10-recsys/11-llm-recsys.md).
 - [Lilian Weng. «What are Diffusion Models?» (2021)](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/) — разбор диффузии со всеми промежуточными выкладками, которые в статьях опущены; лучший способ довести вывод из [§9](#9-диффузия-сломать-данные-и-научиться-чинить) до конца.
 
 ## NLP
@@ -667,7 +667,7 @@
 - [Anthropic. «Introducing Contextual Retrieval» (2024)](https://www.anthropic.com/news/contextual-retrieval) — инженерный разбор с числами: насколько снижается доля провалов поиска от контекстного обогащения чанков, обогащённого BM25 и реранкера. Хороший пример того, как надо измерять улучшения RAG.
 - [Khattab, Zaharia. «ColBERT» (2020)](https://arxiv.org/abs/2004.12832) — late interaction, промежуточное звено между би-энкодером и cross-encoder. Читать ради понимания шкалы «когда происходит взаимодействие запроса с документом».
 - **Manning, Raghavan, Schütze. «Introduction to Information Retrieval»** ([свободно доступна на сайте Стэнфорда](https://nlp.stanford.edu/IR-book/)) — главы про инвертированный индекс, оценку ранжирования и BM25. Всё, что сегодня называют «продвинутым RAG», стоит на этом фундаменте; глава про оценку особенно полезна.
-- [Malkov, Yashunin. «Efficient and robust approximate nearest neighbor search using HNSW graphs» (2016)](https://arxiv.org/abs/1603.09320) — устройство основного индекса векторных БД. Разбор с параметрами `M` и `efSearch` — в главе про [ANN-поиск](../docs/06-recsys/06-two-tower-and-ann.md).
+- [Malkov, Yashunin. «Efficient and robust approximate nearest neighbor search using HNSW graphs» (2016)](https://arxiv.org/abs/1603.09320) — устройство основного индекса векторных БД. Разбор с параметрами `M` и `efSearch` — в главе про [ANN-поиск](../docs/10-recsys/06-two-tower-and-ann.md).
 - [RAG Techniques (NirDiamant)](https://github.com/NirDiamant/RAG_Techniques) — каталог приёмов с исполняемыми ноутбуками: реранкинг, query rewriting, гибридный поиск, self-RAG. Полезен как справочник реализаций, а не как источник методологии.
 - [Разборы ruMTEB и русскоязычных эмбеддингов от SberDevices](https://habr.com/ru/companies/sberdevices/articles/831150/) — как устроен бенчмарк для русского языка и что смотреть при выборе энкодера под русский RAG. Вопрос «какую модель эмбеддингов возьмёте для русского» на собеседованиях звучит регулярно.
 
@@ -741,7 +741,7 @@
 
 ## Рекомендательные системы
 
-### [Постановка задачи рекомендаций](../docs/06-recsys/01-recsys-foundations.md)
+### [Постановка задачи рекомендаций](../docs/10-recsys/01-recsys-foundations.md)
 
 - **Hu Y., Koren Y., Volinsky C. «Collaborative Filtering for Implicit Feedback Datasets» (ICDM 2008)** — работа, задавшая схему «предпочтение + уверенность» и алгоритм iALS. Читать ради разделов 3–4: там формально показано, почему нельзя просто выбросить ненаблюдённые ячейки. Ищите по названию, PDF доступен на сайте Yifan Hu.
 - [Rendle S. et al. «BPR: Bayesian Personalized Ranking from Implicit Feedback» (2009/2012)](https://arxiv.org/abs/1205.2618) — вторая базовая постановка для implicit: попарное ранжирование вместо поточечной регрессии. В контексте этой главы важна мотивационная часть — разбор, почему поточечная постановка на неявных данных концептуально неверна.
@@ -750,7 +750,7 @@
 - [Документация библиотеки `implicit`](https://implicit.readthedocs.io/) — практический инструмент для iALS/BPR на разреженных матрицах; полезно посмотреть на API, чтобы понять, в каком виде данные вообще подаются в такие модели.
 - **Netflix Technology Blog** (`netflixtechblog.com`) — серия постов про рекомендации, калибровку и переход от предсказания оценок к ранжированию; лучший источник по продуктовой стороне вопроса. Искать по тегу recommendations.
 
-### [Офлайн-метрики рекомендаций](../docs/06-recsys/02-metrics-offline.md)
+### [Офлайн-метрики рекомендаций](../docs/10-recsys/02-metrics-offline.md)
 
 - **Järvelin K., Kekäläinen J. «Cumulated Gain-Based Evaluation of IR Techniques» (ACM TOIS, 2002)** — первоисточник DCG и NDCG. Читать ради мотивации дисконта и обсуждения градуированной релевантности; там же разобрано, почему бинарной релевантности недостаточно. Ищите по названию, статья широко доступна.
 - **Krichene W., Rendle S. «On Sampled Metrics for Item Recommendation» (KDD 2020)** — ключевая работа раздела 8. Содержит доказательство, что сэмплированные метрики несогласованы с полными, и корректирующие оценки. Обязательно, если вы читаете статьи по рекомендациям и сравниваете числа.
@@ -760,7 +760,7 @@
 - **Shani G., Gunawardana A. «Evaluating Recommendation Systems»** (глава в *Recommender Systems Handbook*) — самый полный обзор метрик и протоколов, включая метрики за пределами точности. Полезен как справочник, когда нужно быстро вспомнить формулу.
 - [Документация библиотеки `implicit`](https://implicit.readthedocs.io/) — там же реализованы `precision_at_k`, `ndcg_at_k`, `AUC_at_k` для разреженных матриц; удобно сверять свою реализацию с чужой конвенцией.
 
-### [Коллаборативная фильтрация](../docs/06-recsys/03-collaborative-filtering.md)
+### [Коллаборативная фильтрация](../docs/10-recsys/03-collaborative-filtering.md)
 
 - [Simon Funk. «Netflix Update: Try This at Home» (2006)](https://sifter.org/~simon/journal/20061211.html) — тот самый блог-пост, с которого началась FunkSVD. Читать ради интонации: видно, как метод придумывается из практических соображений, а не выводится из теории. Заодно навсегда запоминается, почему «SVD» в рекомендациях — не SVD.
 - **Koren Y., Bell R., Volinsky C. «Matrix Factorization Techniques for Recommender Systems», IEEE Computer, 2009** — каноническая обзорная статья по MF со смещениями, SVD++ и временной динамике. Если читать что-то одно по этой главе — читайте её.
@@ -770,7 +770,7 @@
 - [Rendle S. et al. «Neural Collaborative Filtering vs. Matrix Factorization Revisited» (2020)](https://arxiv.org/abs/2005.09683) — отрезвляющая работа: аккуратно настроенное скалярное произведение обыгрывает нейросетевые замены. Обязательна, чтобы не переоценивать сложность моделей.
 - [Документация Surprise](https://surprise.readthedocs.io/en/stable/) — библиотека для explicit-CF с готовыми `SVD`, `SVD++`, `KNNBaseline` и опубликованными бенчмарками на MovieLens; удобна, чтобы быстро получить точку отсчёта перед своей реализацией.
 
-### [Неявная обратная связь](../docs/06-recsys/04-implicit-feedback.md)
+### [Неявная обратная связь](../docs/10-recsys/04-implicit-feedback.md)
 
 - **Hu Y., Koren Y., Volinsky C. «Collaborative Filtering for Implicit Feedback Datasets», ICDM 2008** — первоисточник iALS. Раздел с выводом ALS-шага — ровно то, что разобрано в [§3](#3-ials-полный-вывод); читать обязательно, если собираетесь отвечать на вопрос про $Q^\top Q$.
 - [Rendle S. et al. «BPR: Bayesian Personalized Ranking from Implicit Feedback» (2009)](https://arxiv.org/abs/1205.2618) — первоисточник BPR. Ценность не только в функции потерь, но и в общей постановке: там же показано, что BPR — это фреймворк, в который можно подставить любую модель скора, включая kNN и tensor factorization.
@@ -781,7 +781,7 @@
 - [Документация implicit](https://implicit.readthedocs.io/en/latest/) — реализации ALS, BPR и Logistic MF на C++/CUDA, `bm25_weight`, готовые методы `recommend` и `similar_items`. Основной рабочий инструмент для этой главы.
 - [Документация LightFM](https://making.lyst.com/lightfm/docs/home.html) — BPR и WARP с поддержкой признаков; удобна, чтобы сравнить функции потерь на одинаковой модели.
 
-### [Факторизационные машины и гибриды](../docs/06-recsys/05-factorization-machines.md)
+### [Факторизационные машины и гибриды](../docs/10-recsys/05-factorization-machines.md)
 
 - **Rendle S. «Factorization Machines», ICDM 2010** — первоисточник. Раздел с выводом свёртки квадратичного члена — ровно то, что разобрано в [§4](#4-свёртка-квадратичного-члена); там же показано, как MF, SVD++ и ещё несколько моделей получаются выбором структуры признаков.
 - **Rendle S. «Factorization Machines with libFM», ACM TIST, 2012** — практическая версия той же работы: обучение через SGD, ALS и MCMC, разбор гиперпараметров. Полезна, если будете реализовывать FM сами.
@@ -792,7 +792,7 @@
 - [Naumov M. et al. «Deep Learning Recommendation Model for Personalization and Recommendation Systems» (2019)](https://arxiv.org/abs/1906.00091) — DLRM от Meta: как та же идея (эмбеддинги категорий + явные попарные взаимодействия + MLP) выглядит в промышленном масштабе, включая обсуждение памяти под таблицы эмбеддингов.
 - [Kula M. «Metadata Embeddings for User and Item Cold-start Recommendations» (2015)](https://arxiv.org/abs/1507.08439) и [документация LightFM](https://making.lyst.com/lightfm/docs/home.html) — модель из [§7](#7-контентные-признаки-гибриды-и-lightfm) и её реализация; в документации есть готовый пример эксперимента на холодный старт.
 
-### [Двухбашенные модели и ANN-поиск](../docs/06-recsys/06-two-tower-and-ann.md)
+### [Двухбашенные модели и ANN-поиск](../docs/10-recsys/06-two-tower-and-ann.md)
 
 - [Malkov Yu., Yashunin D. «Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs» (2016)](https://arxiv.org/abs/1603.09320) — первоисточник HNSW. Читать разделы про выбор соседей и про роль $m_L$: там объяснено, почему граф остаётся связным и откуда логарифмическая сложность.
 - [Johnson J., Douze M., Jégou H. «Billion-scale similarity search with GPUs» (2017)](https://arxiv.org/abs/1702.08734) — инженерия FAISS: как IVF-PQ ложится на GPU и почему k-selection был узким местом.
@@ -805,7 +805,7 @@
 - [hnswlib](https://github.com/nmslib/hnswlib) — референсная реализация HNSW с понятным API; читать README ради семантики `max_elements`, `ef` и пометки удалённых элементов.
 - [Документация implicit](https://benfred.github.io/implicit/) — если нужно быстро получить бейзлайн-эмбеддинги айтемов через iALS перед тем, как обучать нейросетевые башни.
 
-### [Обучение ранжированию](../docs/06-recsys/07-learning-to-rank.md)
+### [Обучение ранжированию](../docs/10-recsys/07-learning-to-rank.md)
 
 - [Burges C. «From RankNet to LambdaRank to LambdaMART: An Overview» (Microsoft Research, 2010)](https://www.microsoft.com/en-us/research/publication/from-ranknet-to-lambdarank-to-lambdamart-an-overview/) — первоисточник и лучший текст по теме: весь путь от вероятностной модели пары до бустинга, с выводами и с честным разбором того, почему λ работает. Читать целиком, это ~20 страниц.
 - [Joachims T., Swaminathan A., Schnabel T. «Unbiased Learning-to-Rank with Biased Feedback» (WSDM 2017)](https://arxiv.org/abs/1608.04468) — каноническая работа по IPS в ранжировании: постановка, доказательство несмещённости, swap-интервенции для оценки propensity. Раздел про дисперсию особенно полезен на практике.
@@ -817,20 +817,20 @@
 - [allRank](https://github.com/allegro/allRank) — PyTorch-библиотека LTR от Allegro с реализациями ListNet, ListMLE, ApproxNDCG, NeuralNDCG. Полезна, чтобы потрогать listwise-лоссы руками.
 - [TensorFlow Ranking](https://github.com/tensorflow/ranking) — промышленная библиотека Google; ценна документацией по unbiased LTR и готовыми реализациями propensity-взвешенных лоссов.
 
-### [Нейронное ранжирование](../docs/06-recsys/08-neural-ranking.md)
+### [Нейронное ранжирование](../docs/10-recsys/08-neural-ranking.md)
 
 - [Naumov M. et al. «Deep Learning Recommendation Model for Personalization and Recommendation Systems» (2019)](https://arxiv.org/abs/1906.00091) — оригинал DLRM от Meta. Читать ради раздела про параллелизм: там объясняют, почему таблицы шардируют, а MLP реплицируют.
 - [Zhou G. et al. «Deep Interest Network for Click-Through Rate Prediction» (KDD 2018)](https://arxiv.org/abs/1706.06978) — DIN. Кроме внимания, там есть два практичных сюжета: активация Dice и mini-batch-aware регуляризация для гигантских разреженных слоёв.
 - [Zhou G. et al. «Deep Interest Evolution Network for Click-Through Rate Prediction» (AAAI 2019)](https://arxiv.org/abs/1809.03672) — DIEN: вспомогательный лосс и AUGRU. Читать после DIN, ради понимания, что даёт явное моделирование эволюции интереса и сколько это стоит.
 - **Ma J. et al. «Modeling Task Relationships in Multi-task Learning with Multi-gate Mixture-of-Experts» (KDD 2018, Google)** — оригинал MMoE. Ключевой для главы раздел — синтетические эксперименты с регулируемой корреляцией задач; задача 5 из [§13](#13-практика) воспроизводит именно его.
 - **Tang H. et al. «Progressive Layered Extraction (PLE)» (RecSys 2020, Tencent)** — эффект качелей и его лечение. Лучшая работа по многозадачности в рекомендациях за последние годы; ищется по названию в ACM Digital Library.
-- **Zhao Z. et al. «Recommending What Video to Watch Next: A Multitask Ranking System» (RecSys 2019, Google)** — описание продовой системы YouTube: MMoE на несколько целей плюс shallow tower для позиционного биаса из [прошлой главы](../docs/06-recsys/07-learning-to-rank.md). Самый полезный текст, если нужно увидеть, как всё это собирается вместе.
+- **Zhao Z. et al. «Recommending What Video to Watch Next: A Multitask Ranking System» (RecSys 2019, Google)** — описание продовой системы YouTube: MMoE на несколько целей плюс shallow tower для позиционного биаса из [прошлой главы](../docs/10-recsys/07-learning-to-rank.md). Самый полезный текст, если нужно увидеть, как всё это собирается вместе.
 - **He X. et al. «Practical Lessons from Predicting Clicks on Ads at Facebook» (ADKDD 2014)** — откуда взялись нормализованная энтропия и формула поправки после даунсэмплинга негативов. Старая, но по калибровке и по инженерии CTR не устарела.
 - **McMahan H.B. et al. «Ad Click Prediction: a View from the Trenches» (KDD 2013, Google)** — FTRL-Proximal, память под признаки, вероятностное отбрасывание редких признаков, мониторинг калибровки. Читать ради инженерной части, а не ради алгоритма.
 - [TorchRec](https://github.com/pytorch/torchrec) — библиотека PyTorch для рекомендательных моделей с шардированными эмбеддингами. Смотреть `EmbeddingBagCollection` и планировщик шардирования, чтобы понять, как считается размещение таблиц по устройствам.
 - [DeepCTR-Torch](https://github.com/shenweichen/DeepCTR-Torch) — компактные реализации DIN, DIEN, DeepFM, MMoE в одном стиле. Удобно, чтобы за вечер сравнить архитектуры на одних данных.
 
-### [Последовательные рекомендации](../docs/06-recsys/09-sequential-recsys.md)
+### [Последовательные рекомендации](../docs/10-recsys/09-sequential-recsys.md)
 
 - [Hidasi B. et al. «Session-based Recommendations with Recurrent Neural Networks» (2016)](https://arxiv.org/abs/1511.06939) — GRU4Rec, первоисточник. Читать ради постановки сессионной задачи, session-parallel мини-батчей и лоссов BPR/TOP1: это разделы 3.1–3.2.
 - [Hidasi B., Karatzoglou A. «Recurrent Neural Networks with Top-k Gains for Session-based Recommendations» (2018)](https://arxiv.org/abs/1706.03847) — продолжение: разбор затухания градиента при большом числе негативов и вывод BPR-max. Полезно всем, кто настраивает ранжирующие лоссы, а не только в сессионных задачах.
@@ -842,7 +842,7 @@
 - **Krichene W., Rendle S. «On Sampled Metrics for Item Recommendation», KDD 2020** — почему нельзя оценивать на 100 негативах. Читать ради раздела с контрпримерами, где порядок моделей переворачивается.
 - [Документация RecBole](https://recbole.io/) — фреймворк с реализациями GRU4Rec, SASRec, BERT4Rec и единым протоколом оценки. Удобен именно тем, что даёт одинаковые условия для всех моделей — то, чего не хватает в статьях.
 
-### [Графовые рекомендации](../docs/06-recsys/10-graph-recsys.md)
+### [Графовые рекомендации](../docs/10-recsys/10-graph-recsys.md)
 
 - [Kipf T., Welling M. «Semi-Supervised Classification with Graph Convolutional Networks» (2016)](https://arxiv.org/abs/1609.02907) — исходный GCN. Читать ради вывода нормировки $D^{-1/2}AD^{-1/2}$ из спектральной свёртки: это объясняет, откуда взялся корень.
 - [Hamilton W., Ying R., Leskovec J. «Inductive Representation Learning on Large Graphs» (2017)](https://arxiv.org/abs/1706.02216) — GraphSAGE. Ключевые разделы: сэмплирование соседей и сравнение агрегаторов (mean / LSTM / max-pool).
@@ -855,7 +855,7 @@
 - **Wu J. et al. «Self-supervised Graph Learning for Recommendation» (SIGIR 2021)** — SGL: контрастивная регуляризация поверх LightGCN, один из немногих приростов, который устойчиво воспроизводится. Ищите по названию: точный arXiv-идентификатор мы не смогли подтвердить, а ссылка наугад хуже её отсутствия.
 - [Документация DGL](https://www.dgl.ai/) и [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/) — рабочие инструменты: сэмплеры соседей, разбиения графа, распределённое обучение. Начинать с их примеров, а не со своей реализации, если граф больше десятка миллионов рёбер.
 
-### [LLM в рекомендациях](../docs/06-recsys/11-llm-recsys.md)
+### [LLM в рекомендациях](../docs/10-recsys/11-llm-recsys.md)
 
 - [Rajput S. et al. «Recommender Systems with Generative Retrieval» (2023)](https://arxiv.org/abs/2305.05065) — TIGER. Главная статья [§5](#5-генеративный-ретривал-и-semantic-ids). Смотреть раздел про RQ-VAE и про обработку коллизий, а также эксперименты на холодных айтемах.
 - [Lee D. et al. «Autoregressive Image Generation using Residual Quantization» (2022)](https://arxiv.org/abs/2203.01941) — откуда взялась остаточная квантизация. Полезно для понимания, почему уровней несколько и как устроен лосс.
@@ -864,9 +864,9 @@
 - [Geng S. et al. «Recommendation as Language Processing (RLP): A Unified Pretrain, Personalized Prompt & Predict Paradigm (P5)» (2022)](https://arxiv.org/abs/2203.13366) — P5. Читать ради идеи единого интерфейса и ради понимания, почему id-как-токены не масштабируются.
 - [Hou Y. et al. «Towards Universal Sequence Representation Learning for Recommender Systems» (2022)](https://arxiv.org/abs/2206.05941) — UniSRec: как правильно приводить текстовые представления айтемов в пространство рекомендательной модели адаптером. Прямая опора для [§3](#3-llm-эмбеддинги-контента-паттерн-который-работает).
 - **Singh A. et al. «Better Generalization with Semantic IDs: A Case Study in Ranking for Recommendations», RecSys 2024** — кейс Google по использованию semantic IDs как признаков в ранжировании YouTube. Лучший аргумент в пользу «скромной» версии идеи из [§5](#5-генеративный-ретривал-и-semantic-ids).
-- **Ferrari Dacrema M. et al. «Are We Really Making Much Progress?» (2019)** и связанные работы по воспроизводимости — методологический фундамент для критической оценки любых заявленных приростов в этой области; подробнее в [главе про последовательные модели](../docs/06-recsys/09-sequential-recsys.md).
+- **Ferrari Dacrema M. et al. «Are We Really Making Much Progress?» (2019)** и связанные работы по воспроизводимости — методологический фундамент для критической оценки любых заявленных приростов в этой области; подробнее в [главе про последовательные модели](../docs/10-recsys/09-sequential-recsys.md).
 
-### [Холодный старт и смещения](../docs/06-recsys/12-cold-start-and-bias.md)
+### [Холодный старт и смещения](../docs/10-recsys/12-cold-start-and-bias.md)
 
 - [Schnabel T. et al. «Recommendations as Treatments: Debiasing Learning and Evaluation» (ICML 2016)](https://arxiv.org/abs/1602.05352) — фундамент propensity-подхода в рекомендациях: постановка MNAR, IPS-оценка риска, оценка propensity, датасет Coat. Читать вместе с [§8](#8-selection-bias-и-mnar) и [§10](#10-дебиасинг-ips-doubly-robust-случайная-примесь).
 - [Joachims T., Swaminathan A., Schnabel T. «Unbiased Learning-to-Rank with Biased Feedback» (WSDM 2017)](https://arxiv.org/abs/1608.04468) — каноническая работа про позиционный биас и IPS в ранжировании, включая swap-интервенцию для оценки propensity. Продолжение [§7](#7-позиционный-биас-измерение-через-интервенции).
@@ -876,9 +876,9 @@
 - **Abdollahpouri H. et al. — серия работ про popularity bias в рекомендациях (2019–2021)** — метрики перекоса, усиление относительно данных, влияние на группы пользователей. Полезны как источник аккуратных определений метрик из [§6](#6-popularity-bias-механизм-и-как-его-измерить).
 - **Steck H. «Calibrated Recommendations» (RecSys 2018)** — калибровка распределения категорий в выдаче под профиль пользователя; практичный способ бороться с вытеснением редких интересов.
 - **Wang X. et al. «Position Bias Estimation for Unbiased Learning to Rank in Personal Search» (WSDM 2018, Google)** — regression-EM для оценки propensity без интервенций; способ 4 из [§7](#7-позиционный-биас-измерение-через-интервенции).
-- [Eugene Yan. «Counterfactual Evaluation for Recommendation Systems»](https://eugeneyan.com/writing/counterfactual-evaluation/) — инженерный обзор off-policy оценки: что логировать, какие оценщики брать, где ломается. Хороший мост к [следующей главе](../docs/06-recsys/13-exploration-and-bandits.md).
+- [Eugene Yan. «Counterfactual Evaluation for Recommendation Systems»](https://eugeneyan.com/writing/counterfactual-evaluation/) — инженерный обзор off-policy оценки: что логировать, какие оценщики брать, где ломается. Хороший мост к [следующей главе](../docs/10-recsys/13-exploration-and-bandits.md).
 
-### [Эксплорация и бандиты](../docs/06-recsys/13-exploration-and-bandits.md)
+### [Эксплорация и бандиты](../docs/10-recsys/13-exploration-and-bandits.md)
 
 - [Slivkins A. «Introduction to Multi-Armed Bandits»](https://arxiv.org/abs/1904.07272) — если нужен один источник, берите этот: аккуратные доказательства для UCB и Thompson sampling на уровне, который реально читается инженером. Главы 1–2 закрывают [§2](#2-формализация-и-регрет)–[§6](#6-сравнение-на-честной-симуляции) этой главы, глава про контекстные бандиты — [§7](#7-контекстные-бандиты-и-linucb).
 - **Lattimore T., Szepesvári C. «Bandit Algorithms» (Cambridge University Press, 2020)** — полный и более тяжёлый справочник по всем видам бандитов, включая линейные и состязательные; свободно доступен на сайте первого автора. Брать как справочник, а не читать подряд.
@@ -891,7 +891,7 @@
 - [Open Bandit Pipeline (ZOZO)](https://github.com/st-tech/zr-obp) — библиотека и датасет с настоящими залогированными propensity: лучший способ потрогать off-policy оценку на реальных данных, а не на синтетике. Пригодится для задачи 4.
 - [Vowpal Wabbit](https://vowpalwabbit.org/) — производственная реализация контекстных бандитов и off-policy обучения; полезна как референс того, как это устроено инженерно.
 
-### [Рекомендации в продакшене](../docs/06-recsys/14-recsys-in-production.md)
+### [Рекомендации в продакшене](../docs/10-recsys/14-recsys-in-production.md)
 
 - **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)** — главы про feature engineering, батч/онлайн-инференс и мониторинг закрывают [§4](#4-признаки-три-горизонта-свежести)–6 этой главы на более общем материале, не только рекомендациях.
 - [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — правила 29–32 прямо про train/serve skew и логирование признаков в момент предсказания; это ровно [§5](#5-feature-store-онлайн-офлайн-и-point-in-time).
@@ -902,13 +902,13 @@
 - **Covington, Adams, Sargin. «Deep Neural Networks for YouTube Recommendations» (RecSys 2016)** — классика про двухстадийность и про то, как продуктовые ограничения формируют архитектуру; ищите по названию, статья есть в свободном доступе в материалах RecSys.
 - [Eugene Yan. «Applied ML»](https://github.com/eugeneyan/applied-ml) — раздел про рекомендации: десятки инженерных разборов от компаний с реальными числами по латентности, объёмам индексов и каденции обновлений.
 
-### [Онлайн-оценка рекомендаций](../docs/06-recsys/15-recsys-online-evaluation.md)
+### [Онлайн-оценка рекомендаций](../docs/10-recsys/15-recsys-online-evaluation.md)
 
 - **Kohavi, Tang, Xu. «Trustworthy Online Controlled Experiments» (Cambridge University Press, 2020)** — основная книга по онлайн-экспериментам. Главы про метрики, интерференцию и долгосрочные эффекты продолжают [§4](#4-краткосрочные-и-долгосрочные-метрики), [§6](#6-что-ломает-ab-именно-в-рекомендациях) и [§7](#7-holdout-группы-и-долгосрочный-эффект).
 - **Radlinski, Kurup, Joachims. «How Does Clickthrough Data Reflect Retrieval Quality?» (CIKM 2008)** — первоисточник team-draft interleaving; там же разобрано, почему наивное перемешивание даёт смещение.
 - **Chapelle, Joachims, Radlinski, Yue. «Large-Scale Validation and Analysis of Interleaved Search Evaluation» (ACM TOIS, 2012)** — масштабная проверка интерливинга на боевом трафике и количественные оценки выигрыша по чувствительности; ищите по названию.
 - **Dmitriev, Gupta, Kim, Vaz. «A Dirty Dozen: Twelve Common Metric Interpretation Pitfalls in Online Controlled Experiments» (KDD 2017)** — двенадцать разобранных ошибок интерпретации, большая часть из которых встречается именно в рекомендациях.
-- **Deng, Xu, Kohavi, Walker. «Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data» (WSDM 2013)** — оригинальная статья про CUPED; прямое продолжение [§9](#9-диагностика-офлайн-вырос-онлайн-нет), шаг «не хватило мощности». См. также [снижение дисперсии](../docs/10-ab-testing/03-variance-reduction.md).
+- **Deng, Xu, Kohavi, Walker. «Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data» (WSDM 2013)** — оригинальная статья про CUPED; прямое продолжение [§9](#9-диагностика-офлайн-вырос-онлайн-нет), шаг «не хватило мощности». См. также [снижение дисперсии](../docs/06-ab-testing/03-variance-reduction.md).
 - **Gomez-Uribe, Hunt. «The Netflix Recommender System: Algorithms, Business Value, and Innovation» (ACM TMIS, 2015)** — как рекомендательная команда связывает офлайн-оценку, A/B и долгосрочную бизнес-ценность; полезно как образец разговора о деньгах.
 - [Eugene Yan. «Applied ML»](https://github.com/eugeneyan/applied-ml) — раздел про эксперименты и метрики: инженерные разборы от компаний с описанием реальных протоколов онлайн-оценки.
 
@@ -1231,7 +1231,7 @@
 
 ## A/B-тесты
 
-### [Дизайн эксперимента](../docs/10-ab-testing/01-experiment-design.md)
+### [Дизайн эксперимента](../docs/06-ab-testing/01-experiment-design.md)
 
 - **Kohavi, Tang, Xu. «Trustworthy Online Controlled Experiments: A Practical Guide to A/B Testing» (Cambridge University Press, 2020)** — главная книга по теме, написанная людьми, построившими экспериментальную платформу Microsoft. Главы про OEC, единицу рандомизации и институциональные памятки — прямое продолжение этой главы.
 - [exp-platform.com](https://exp-platform.com/) — архив статей команды Microsoft ExP, включая «Online Controlled Experiments at Large Scale» (KDD 2013) и работы про SRM. Ценность в том, что это отчёты о реальных провалах, а не учебные примеры.
@@ -1240,7 +1240,7 @@
 - **Georgi Georgiev. «Statistical Methods in Online A/B Testing» (2019)** — детальный разбор мощности, MDE и последовательных методов с инженерным уклоном.
 - [Google. «Rules of Machine Learning»](https://developers.google.com/machine-learning/guides/rules-of-ml) — правила 1–10 и раздел про метрики хорошо ложатся на [§3](#3-иерархия-метрик) этой главы.
 
-### [Статистические критерии на практике](../docs/10-ab-testing/02-statistical-criteria.md)
+### [Статистические критерии на практике](../docs/06-ab-testing/02-statistical-criteria.md)
 
 - **Kohavi, Tang, Xu. «Trustworthy Online Controlled Experiments» (Cambridge University Press, 2020)** — глава про статистику эксперимента и приложение про дельта-метод; там же приводится правило $355\gamma^2$ и обсуждение тяжёлых хвостов на реальных метриках Bing.
 - **Deng, Knoblich, Lu. «Applying the Delta Method in Metric Analytics» (KDD 2018)** — базовая статья про дельта-метод в A/B: ratio-метрики, кластеризованные данные, квантили. Прямое продолжение [§7](#7-дельта-метод-полный-вывод).
@@ -1252,7 +1252,7 @@
 - **Stucchio, C. «Bayesian A/B Testing at VWO»** — короткий технический документ, из которого в индустрию пришло правило остановки по ожидаемым потерям. Читать ради постановки задачи через функцию потерь, а не ради формул.
 - **Johari, Koomen, Pekelis, Walsh. «Peeking at A/B Tests: Why It Matters, and What to Do About It» (KDD 2017)** — работа команды Optimizely: почему подглядывание ломает и частотное, и байесовское правило и как из смеси отношений правдоподобия (mSPRT) получить процедуру, корректную при произвольной остановке.
 
-### [Снижение дисперсии](../docs/10-ab-testing/03-variance-reduction.md)
+### [Снижение дисперсии](../docs/06-ab-testing/03-variance-reduction.md)
 
 - **Deng, Xu, Kohavi, Walker. «Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data» (WSDM 2013)** — оригинальная статья про CUPED от команды экспериментальной платформы Microsoft. Читать ради вывода и ради раздела про выбор ковариаты; там же приводятся реальные цифры снижения дисперсии на метриках Bing.
 - **Kohavi, Tang, Xu. «Trustworthy Online Controlled Experiments» (Cambridge University Press, 2020)** — глава про снижение дисперсии собирает все методы в одну картину: CUPED, стратификацию, триггеринг, винзоризацию, смену единицы анализа. Лучшее место, чтобы понять, как они сочетаются. Триггерингу там отведена отдельная глава («Triggering for Improved Sensitivity») с разбором уровней триггера и правил доклада разбавленного эффекта — читать сразу после [§10](#10-триггерный-анализ-измерять-там-где-эффект-возможен).
@@ -1260,7 +1260,7 @@
 - **Инженерный блог DoorDash про CUPAC** (Control Using Predictions As Covariates) — практическое описание схемы «предсказание ML-модели как ковариата», с числами по фактическому снижению дисперсии. Ищите по названию метода.
 - **Инженерные блоги Netflix, Booking.com и Airbnb про экспериментальные платформы** — там регулярно публикуют разборы снижения дисперсии на своих метриках; полезны как источник реалистичных диапазонов $\rho$ для разных типов продуктов.
 
-### [Ловушки A/B-тестов](../docs/10-ab-testing/04-pitfalls.md)
+### [Ловушки A/B-тестов](../docs/06-ab-testing/04-pitfalls.md)
 
 - **Kohavi, Tang, Xu. «Trustworthy Online Controlled Experiments: A Practical Guide to A/B Testing» (Cambridge University Press, 2020)** — основная книга по теме. Главы про SRM, про закон Тваймана и про «институциональную память экспериментов» прямо соответствуют этой главе. Если читать одну книгу про A/B — эту.
 - **Armitage, McPherson, Rowe. «Repeated Significance Tests on Accumulating Data» (Journal of the Royal Statistical Society, 1969)** — источник таблицы инфляции $\alpha$ из [§2.2](#22-числа). Полезно увидеть, что проблему подглядывания решили за полвека до A/B-платформ.
@@ -1270,7 +1270,7 @@
 - **Gelman, Stern. «The Difference Between "Significant" and "Not Significant" Is Not Itself Statistically Significant» (The American Statistician, 2006)** — короткая заметка, закрывающая самую частую ошибку в анализе сегментов.
 - **Инженерные блоги Netflix, Booking.com, Airbnb, Spotify про экспериментальные платформы** — публикации про последовательное тестирование, SRM-детекторы и культуру экспериментов. Полезны как источник реальных чисел и архитектурных решений.
 
-### [Сложные схемы](../docs/10-ab-testing/05-complex-designs.md)
+### [Сложные схемы](../docs/06-ab-testing/05-complex-designs.md)
 
 - **Kohavi, Tang, Xu. «Trustworthy Online Controlled Experiments» (Cambridge University Press, 2020)** — базовая книга по A/B; главы про нарушение независимости, интерференцию и долгосрочные эффекты закрывают [§2](#2-формализация-sutva-и-откуда-берётся-смещение), [§3](#3-соцсети-кластерная-рандомизация-и-цена-мощности) и [§8](#8-holdout-группы-и-долгосрочный-эффект) этой главы на уровне, достаточном для собеседования.
 - [Ситимобил: «Switchback-эксперименты. Эпизод 1: Скрытая сила switchback»](https://habr.com/ru/companies/citymobil/articles/560426/) — русскоязычное введение в switchback от сервиса такси: почему обычный A/B нарушает SUTVA и как устроен переход к рандомизации по времени.
@@ -1283,7 +1283,7 @@
 - [Applied Causal Inference / CausalML book](https://causalml-book.org) — современный учебник с кодом; удобен для DiD, synthetic control и разрывного дизайна на практике.
 - [Документация Statsig про holdouts](https://docs.statsig.com/holdouts) — инженерное описание того, как глобальный holdout устроен внутри экспериментальной платформы: размер, срок, изоляция от раскаток, чтение результатов.
 
-### [Бандиты против A/B](../docs/10-ab-testing/06-bandits-vs-ab.md)
+### [Бандиты против A/B](../docs/06-ab-testing/06-bandits-vs-ab.md)
 
 - **Lattimore, Szepesvári. «Bandit Algorithms» (Cambridge University Press, 2020)** — основной современный учебник по теме; свободная электронная версия выложена авторами. Главы про регрет, нижние границы и UCB закрывают [§2](#2-формализация-бандит-и-регрет) и [§3](#3-три-алгоритма-за-три-абзаца) на уровне сильно глубже собеседования.
 - **Lai, Robbins. «Asymptotically Efficient Adaptive Allocation Rules» (Advances in Applied Mathematics, 1985)** — работа, где выведена нижняя граница регрета. Читать ради понимания, почему логарифм и почему совсем без эксплорации нельзя.
@@ -1292,7 +1292,7 @@
 - [Optimizely: Multi-Armed Bandit (глоссарий оптимизации)](https://www.optimizely.com/optimization-glossary/multi-armed-bandit) — короткое продуктовое изложение различия: A/B — период чистой эксплорации с последующей эксплуатацией, бандит чередует их адаптивно. Полезно как формулировка для нетехнической аудитории.
 - **Kohavi, Tang, Xu. «Trustworthy Online Controlled Experiments» (Cambridge University Press, 2020)** — раздел про адаптивные схемы и про то, почему индустриальные платформы экспериментов построены вокруг фиксированных долей, а не вокруг бандитов.
 
-### [Платформа экспериментов](../docs/10-ab-testing/07-experiment-platform.md)
+### [Платформа экспериментов](../docs/06-ab-testing/07-experiment-platform.md)
 
 - **Tang, Agarwal, O'Brien, Meyer. «Overlapping Experiment Infrastructure: More, Better, Faster Experimentation» (KDD 2010)** — первоисточник по слоям, доменам и launch layer. Терминология, которой пользуются все, пришла отсюда; читать ради устройства [§2](#2-слои-и-домены-как-из-одного-трафика-сделать-много) в оригинале.
 - **Kohavi, Tang, Xu. «Trustworthy Online Controlled Experiments» (Cambridge University Press, 2020)** — главы про архитектуру платформы, лестницу зрелости (crawl-walk-run-fly), триггерный анализ и институциональные памятки. Самая близкая к этой главе книга целиком.
@@ -1309,7 +1309,7 @@
 - [Google. «Rules of Machine Learning: Best Practices for ML Engineering»](https://developers.google.com/machine-learning/guides/rules-of-ml) — 43 правила, выведенных из практики. Правила 1–10 стоит выучить: они ровно про то, что проверяется на этой секции.
 - [Sculley et al. «Hidden Technical Debt in Machine Learning Systems» (NeurIPS 2015)](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) — почему ML-система дороже в поддержке, чем кажется. Аргументы отсюда очень уместны в шаге 8.
 - [Eugene Yan. «Applied ML» (подборка инженерных разборов от компаний)](https://github.com/eugeneyan/applied-ml) — сотни реальных описаний production-систем. Лучший источник конкретных чисел и архитектур.
-- **Kohavi, Tang, Xu. «Trustworthy Online Controlled Experiments»** — для шага 7; см. также [раздел про A/B](../docs/10-ab-testing/01-experiment-design.md).
+- **Kohavi, Tang, Xu. «Trustworthy Online Controlled Experiments»** — для шага 7; см. также [раздел про A/B](../docs/06-ab-testing/01-experiment-design.md).
 
 ### [Кейс: лента рекомендаций](../docs/11-system-design/02-case-feed-ranking.md)
 

@@ -110,7 +110,7 @@
 | **Advanced RAG Techniques (NirDiamant)** | https://github.com/NirDiamant/RAG_Techniques | 2024 | Каталог продвинутых RAG-приёмов с кодом: reranking, query rewriting, hybrid search, self-RAG. | **[MUST]** middle_plus |
 | **AI Engineering (Chip Huyen)** | https://www.oreilly.com/library/view/ai-engineering/9781098166298/ · https://github.com/chiphuyen/aie-book | 2025 | Как строить продукты поверх foundation models: оценка, промптинг vs finetuning, RAG vs агенты, инференс-оптимизация, экономика. Самая читаемая книга платформы O'Reilly в 2025. | **[MUST]** middle→middle_plus |
 
-### 4. Рекомендательные системы (глава 06-recsys)
+### 4. Рекомендательные системы (глава 10-recsys)
 
 | Источник | URL | Год | Что брать и кому | Статус |
 |---|---|---|---|---|
@@ -167,7 +167,7 @@
 | **Spark для начинающих (Альфа)** | https://habr.com/ru/companies/alfa/articles/808415/ | 2024 | Разбор архитектуры Spark на русском. | **[OPT]** junior |
 | **Vowpal Wabbit / обучение на гигабайтах (тема 8 ODS)** | https://habr.com/ru/companies/ods/articles/326418/ | 2017 | Hashing trick, online learning, out-of-core — до сих пор актуальные ответы на «что делать, если данные не влезают в память». | **[OPT]** middle |
 
-### 7. A/B-тестирование и эксперименты (глава 10-ab-testing)
+### 7. A/B-тестирование и эксперименты (глава 06-ab-testing)
 
 | Источник | URL | Год | Что брать и кому | Статус |
 |---|---|---|---|---|

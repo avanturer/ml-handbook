@@ -118,7 +118,7 @@ flowchart TD
 23. [Упаковка модели](../07-mlops/04-model-packaging.md)
 24. [Архитектуры сервинга](../07-mlops/05-serving-architectures.md)
 25. [Что мониторить в ML-системе](../09-monitoring/01-what-to-monitor.md)
-26. [Дизайн эксперимента](../10-ab-testing/01-experiment-design.md)
+26. [Дизайн эксперимента](../06-ab-testing/01-experiment-design.md)
 
 ### Этап 6 — нейросети обзорно
 27. [Нейросети и обратное распространение](../03-deep-learning/01-neural-nets-and-backprop.md)
@@ -158,9 +158,9 @@ flowchart TD
 → [переобучение](../09-monitoring/07-retraining.md)
 
 ### Этап 4 — эксперименты
-[Дизайн эксперимента](../10-ab-testing/01-experiment-design.md) → [критерии](../10-ab-testing/02-statistical-criteria.md)
-→ [снижение дисперсии](../10-ab-testing/03-variance-reduction.md) → [ловушки](../10-ab-testing/04-pitfalls.md)
-→ [сложные схемы](../10-ab-testing/05-complex-designs.md)
+[Дизайн эксперимента](../06-ab-testing/01-experiment-design.md) → [критерии](../06-ab-testing/02-statistical-criteria.md)
+→ [снижение дисперсии](../06-ab-testing/03-variance-reduction.md) → [ловушки](../06-ab-testing/04-pitfalls.md)
+→ [сложные схемы](../06-ab-testing/05-complex-designs.md)
 
 ### Этап 5 — данные в масштабе
 [Хранение и форматы](../08-big-data/01-storage-and-formats.md) → [Spark: как он работает](../08-big-data/03-spark-fundamentals.md)
@@ -176,7 +176,7 @@ flowchart TD
 [CTR в рекламе](../11-system-design/08-case-ads-ctr.md)
 
 ### Этап 7 — профильная глубина
-Выберите одно направление и пройдите его целиком: [рекомендации](../06-recsys/01-recsys-foundations.md),
+Выберите одно направление и пройдите его целиком: [рекомендации](../10-recsys/01-recsys-foundations.md),
 [LLM](../05-llm/01-llm-architecture.md) или [NLP](../04-nlp/01-text-representation.md).
 
 **Трек пройден, когда:** вы проводите ML System Design за 45 минут по своей структуре,
@@ -197,7 +197,7 @@ flowchart TD
 [валидация](../02-classic-ml/13-validation-and-leakage.md), [бустинг](../02-classic-ml/07-gradient-boosting.md),
 [внимание и трансформер](../03-deep-learning/04-attention-and-transformer.md),
 [сервинг](../07-mlops/05-serving-architectures.md), [дрифт](../09-monitoring/03-drift-detection.md),
-[дизайн эксперимента](../10-ab-testing/01-experiment-design.md).
+[дизайн эксперимента](../06-ab-testing/01-experiment-design.md).
 Выпишите всё, где ответили неуверенно. Это ваш план.
 
 **Недели 1–2. Ядро теории.** Дыры из диагностики + обязательный минимум:
@@ -211,8 +211,8 @@ flowchart TD
 
 **Неделя 4. Продакшен.** [Сервинг](../07-mlops/05-serving-architectures.md),
 [стратегии выкатки](../07-mlops/08-deployment-strategies.md), [мониторинг](../09-monitoring/01-what-to-monitor.md),
-[дрифт](../09-monitoring/03-drift-detection.md), [A/B](../10-ab-testing/01-experiment-design.md) +
-[ловушки A/B](../10-ab-testing/04-pitfalls.md).
+[дрифт](../09-monitoring/03-drift-detection.md), [A/B](../06-ab-testing/01-experiment-design.md) +
+[ловушки A/B](../06-ab-testing/04-pitfalls.md).
 
 **Неделя 5. System Design.** [Каркас](../11-system-design/01-framework.md) + 4 кейса,
 каждый вслух с таймером, желательно с напарником.
@@ -302,8 +302,8 @@ easy/medium, задачи с упором на хэш-таблицы, два у�
 attention с нуля и проверкой размерностей.
 
 **Блок 5 (1,5 недели). Статистика экспериментов.**
-[Дизайн](../10-ab-testing/01-experiment-design.md) → [критерии](../10-ab-testing/02-statistical-criteria.md)
-→ [снижение дисперсии](../10-ab-testing/03-variance-reduction.md) → [ловушки](../10-ab-testing/04-pitfalls.md).
+[Дизайн](../06-ab-testing/01-experiment-design.md) → [критерии](../06-ab-testing/02-statistical-criteria.md)
+→ [снижение дисперсии](../06-ab-testing/03-variance-reduction.md) → [ловушки](../06-ab-testing/04-pitfalls.md).
 Это та секция, где сильные инженеры чаще всего проваливаются.
 
 **Трек пройден, когда:** вы выводите на доске log-loss из правдоподобия, формулу значения листа
@@ -329,13 +329,13 @@ attention с нуля и проверкой размерностей.
 
 Полностью [классический ML](../02-classic-ml/01-learning-theory.md) (главы 1–15) →
 [математика по пререквизитам](../01-math/03-statistics.md) → [валидация](../02-classic-ml/13-validation-and-leakage.md)
-→ [метрики](../02-classic-ml/04-metrics.md) → [A/B-тесты](../10-ab-testing/01-experiment-design.md)
+→ [метрики](../02-classic-ml/04-metrics.md) → [A/B-тесты](../06-ab-testing/01-experiment-design.md)
 → [нейросети](../03-deep-learning/01-neural-nets-and-backprop.md) →
-профильный раздел ([рекомендации](../06-recsys/01-recsys-foundations.md) или [LLM](../05-llm/01-llm-architecture.md)).
+профильный раздел ([рекомендации](../10-recsys/01-recsys-foundations.md) или [LLM](../05-llm/01-llm-architecture.md)).
 
 ### 6В. Внутри MLE: переход в другой домен
-- **В рекомендации:** весь [раздел 06](../06-recsys/01-recsys-foundations.md) + [бандиты](../06-recsys/13-exploration-and-bandits.md)
-  + [онлайн-оценка](../06-recsys/15-recsys-online-evaluation.md) + кейс [ленты](../11-system-design/02-case-feed-ranking.md). ~6 недель.
+- **В рекомендации:** весь [раздел 06](../10-recsys/01-recsys-foundations.md) + [бандиты](../10-recsys/13-exploration-and-bandits.md)
+  + [онлайн-оценка](../10-recsys/15-recsys-online-evaluation.md) + кейс [ленты](../11-system-design/02-case-feed-ranking.md). ~6 недель.
 - **В LLM:** [трансформер](../03-deep-learning/04-attention-and-transformer.md) → весь
   [раздел 05](../05-llm/01-llm-architecture.md) + кейс [RAG-ассистента](../11-system-design/05-case-rag-assistant.md). ~7 недель.
 - **В NLP:** весь [раздел 04](../04-nlp/01-text-representation.md) + [трансформер](../03-deep-learning/04-attention-and-transformer.md)
@@ -350,9 +350,9 @@ attention с нуля и проверкой размерностей.
 <details>
 <summary><b>RecSys Engineer</b></summary>
 
-Обязательно: весь [раздел 06](../06-recsys/01-recsys-foundations.md) целиком;
+Обязательно: весь [раздел 06](../10-recsys/01-recsys-foundations.md) целиком;
 [метрики ранжирования](../02-classic-ml/04-metrics.md); [бустинг](../02-classic-ml/07-gradient-boosting.md);
-[A/B в рекомендациях](../06-recsys/15-recsys-online-evaluation.md) и [сложные схемы A/B](../10-ab-testing/05-complex-designs.md)
+[A/B в рекомендациях](../10-recsys/15-recsys-online-evaluation.md) и [сложные схемы A/B](../06-ab-testing/05-complex-designs.md)
 (сетевые эффекты и каннибализация — любимая тема);
 [feature store](../07-mlops/03-data-and-feature-store.md); кейсы [лента](../11-system-design/02-case-feed-ranking.md)
 и [realtime-персонализация](../11-system-design/06-case-realtime-recsys.md).
@@ -389,9 +389,9 @@ attention с нуля и проверкой размерностей.
 <details>
 <summary><b>Search / Ranking Engineer</b></summary>
 
-Обязательно: [обучение ранжированию](../06-recsys/07-learning-to-rank.md) и
-[нейронное ранжирование](../06-recsys/08-neural-ranking.md); [двухбашенки и ANN](../06-recsys/06-two-tower-and-ann.md);
-[метрики ранжирования](../02-classic-ml/04-metrics.md) и [офлайн-метрики рекомендаций](../06-recsys/02-metrics-offline.md);
+Обязательно: [обучение ранжированию](../10-recsys/07-learning-to-rank.md) и
+[нейронное ранжирование](../10-recsys/08-neural-ranking.md); [двухбашенки и ANN](../10-recsys/06-two-tower-and-ann.md);
+[метрики ранжирования](../02-classic-ml/04-metrics.md) и [офлайн-метрики рекомендаций](../10-recsys/02-metrics-offline.md);
 [эмбеддинги](../04-nlp/02-embeddings.md); кейс [поиска](../11-system-design/03-case-search.md).
 </details>
 

@@ -652,7 +652,7 @@ Sculley et al., «Hidden Technical Debt in Machine Learning Systems» (NeurIPS 2
 
 Лечение прямой петли: доля случайной эксплорации (1–5% трафика), логирование того, что было
 показано и на какой позиции, IPS-взвешивание. Полностью — в главе
-[холодный старт и смещения](../06-recsys/12-cold-start-and-bias.md).
+[холодный старт и смещения](../10-recsys/12-cold-start-and-bias.md).
 
 ### 4.9. Долг абстракции и «запахи» ML-кода
 
@@ -1250,4 +1250,4 @@ $\pi_{\text{ml}} - \pi_{\text{base}}$ и его долю от зазора до 
 
 ---
 
-⬅️ [Онлайн-оценка рекомендаций](../06-recsys/15-recsys-online-evaluation.md) | 🏠 [Оглавление](../index.md) | ➡️ [Воспроизводимость и трекинг](02-reproducibility-and-tracking.md)
+⬅️ [Онлайн-оценка рекомендаций](../10-recsys/15-recsys-online-evaluation.md) | 🏠 [Оглавление](../index.md) | ➡️ [Воспроизводимость и трекинг](02-reproducibility-and-tracking.md)

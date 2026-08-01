@@ -147,22 +147,22 @@ nav:
       - "Безопасность и ограничители": 05-llm/10-llm-safety-and-guardrails.md
       - "LLM в продакшене": 05-llm/11-llm-in-production.md
   - Рекомендательные системы:
-      - 06-recsys/index.md
-      - "Постановка задачи рекомендаций": 06-recsys/01-recsys-foundations.md
-      - "Офлайн-метрики рекомендаций": 06-recsys/02-metrics-offline.md
-      - "Коллаборативная фильтрация": 06-recsys/03-collaborative-filtering.md
-      - "Неявная обратная связь": 06-recsys/04-implicit-feedback.md
-      - "Факторизационные машины и гибриды": 06-recsys/05-factorization-machines.md
-      - "Двухбашенные модели и ANN-поиск": 06-recsys/06-two-tower-and-ann.md
-      - "Обучение ранжированию": 06-recsys/07-learning-to-rank.md
-      - "Нейронное ранжирование": 06-recsys/08-neural-ranking.md
-      - "Последовательные рекомендации": 06-recsys/09-sequential-recsys.md
-      - "Графовые рекомендации": 06-recsys/10-graph-recsys.md
-      - "LLM в рекомендациях": 06-recsys/11-llm-recsys.md
-      - "Холодный старт и смещения": 06-recsys/12-cold-start-and-bias.md
-      - "Эксплорация и бандиты": 06-recsys/13-exploration-and-bandits.md
-      - "Рекомендации в продакшене": 06-recsys/14-recsys-in-production.md
-      - "Онлайн-оценка рекомендаций": 06-recsys/15-recsys-online-evaluation.md
+      - 10-recsys/index.md
+      - "Постановка задачи рекомендаций": 10-recsys/01-recsys-foundations.md
+      - "Офлайн-метрики рекомендаций": 10-recsys/02-metrics-offline.md
+      - "Коллаборативная фильтрация": 10-recsys/03-collaborative-filtering.md
+      - "Неявная обратная связь": 10-recsys/04-implicit-feedback.md
+      - "Факторизационные машины и гибриды": 10-recsys/05-factorization-machines.md
+      - "Двухбашенные модели и ANN-поиск": 10-recsys/06-two-tower-and-ann.md
+      - "Обучение ранжированию": 10-recsys/07-learning-to-rank.md
+      - "Нейронное ранжирование": 10-recsys/08-neural-ranking.md
+      - "Последовательные рекомендации": 10-recsys/09-sequential-recsys.md
+      - "Графовые рекомендации": 10-recsys/10-graph-recsys.md
+      - "LLM в рекомендациях": 10-recsys/11-llm-recsys.md
+      - "Холодный старт и смещения": 10-recsys/12-cold-start-and-bias.md
+      - "Эксплорация и бандиты": 10-recsys/13-exploration-and-bandits.md
+      - "Рекомендации в продакшене": 10-recsys/14-recsys-in-production.md
+      - "Онлайн-оценка рекомендаций": 10-recsys/15-recsys-online-evaluation.md
   - Выкатка в прод / MLOps:
       - 07-mlops/index.md
       - "Жизненный цикл ML-системы": 07-mlops/01-ml-lifecycle.md
@@ -197,14 +197,14 @@ nav:
       - "Переобучение моделей": 09-monitoring/07-retraining.md
       - "Справедливость и систематические смещения": 09-monitoring/08-fairness.md
   - A/B-тесты:
-      - 10-ab-testing/index.md
-      - "Дизайн эксперимента": 10-ab-testing/01-experiment-design.md
-      - "Статистические критерии на практике": 10-ab-testing/02-statistical-criteria.md
-      - "Снижение дисперсии": 10-ab-testing/03-variance-reduction.md
-      - "Ловушки A/B-тестов": 10-ab-testing/04-pitfalls.md
-      - "Сложные схемы": 10-ab-testing/05-complex-designs.md
-      - "Бандиты против A/B": 10-ab-testing/06-bandits-vs-ab.md
-      - "Платформа экспериментов": 10-ab-testing/07-experiment-platform.md
+      - 06-ab-testing/index.md
+      - "Дизайн эксперимента": 06-ab-testing/01-experiment-design.md
+      - "Статистические критерии на практике": 06-ab-testing/02-statistical-criteria.md
+      - "Снижение дисперсии": 06-ab-testing/03-variance-reduction.md
+      - "Ловушки A/B-тестов": 06-ab-testing/04-pitfalls.md
+      - "Сложные схемы": 06-ab-testing/05-complex-designs.md
+      - "Бандиты против A/B": 06-ab-testing/06-bandits-vs-ab.md
+      - "Платформа экспериментов": 06-ab-testing/07-experiment-platform.md
   - ML System Design:
       - 11-system-design/index.md
       - "Как проходить ML System Design": 11-system-design/01-framework.md

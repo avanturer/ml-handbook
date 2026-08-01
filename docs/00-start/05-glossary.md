@@ -40,7 +40,7 @@
 данных. → [вероятность](../01-math/02-probability.md)
 
 **Бандит** (multi-armed bandit) — задача выбора между вариантами при необходимости одновременно
-исследовать и эксплуатировать. → [бандиты](../06-recsys/13-exploration-and-bandits.md)
+исследовать и эксплуатировать. → [бандиты](../10-recsys/13-exploration-and-bandits.md)
 
 **Бустинг** (boosting) — последовательное построение ансамбля, где каждая следующая модель
 исправляет ошибки предыдущих. → [градиентный бустинг](../02-classic-ml/07-gradient-boosting.md)
@@ -80,7 +80,7 @@
 
 **Двухбашенная модель** (two-tower model) — архитектура, где пользователь и объект кодируются
 раздельно, что позволяет заранее считать эмбеддинги объектов.
-→ [двухбашенки и ANN](../06-recsys/06-two-tower-and-ann.md)
+→ [двухбашенки и ANN](../10-recsys/06-two-tower-and-ann.md)
 
 **Дистилляция** (knowledge distillation) — обучение маленькой модели воспроизводить выходы
 большой. → [LLM в продакшене](../05-llm/11-llm-in-production.md)
@@ -94,7 +94,7 @@
 ## И
 
 **Интерливинг** (interleaving) — метод онлайн-сравнения ранжирований, при котором результаты двух
-алгоритмов смешиваются в одной выдаче. → [онлайн-оценка](../06-recsys/15-recsys-online-evaluation.md)
+алгоритмов смешиваются в одной выдаче. → [онлайн-оценка](../10-recsys/15-recsys-online-evaluation.md)
 
 **Инференс** (inference) — применение обученной модели к новым данным.
 → [архитектуры сервинга](../07-mlops/05-serving-architectures.md)
@@ -130,13 +130,13 @@
 ## М
 
 **Матричная факторизация** (matrix factorization) — приближение матрицы взаимодействий
-произведением двух низкоранговых матриц. → [коллаборативная фильтрация](../06-recsys/03-collaborative-filtering.md)
+произведением двух низкоранговых матриц. → [коллаборативная фильтрация](../10-recsys/03-collaborative-filtering.md)
 
 **Метод максимального правдоподобия** (maximum likelihood estimation, MLE) — выбор параметров,
 максимизирующих вероятность наблюдаемых данных. → [статистика](../01-math/03-statistics.md)
 
 **Мощность критерия** (statistical power) — вероятность обнаружить эффект, если он есть; равна
-$1-\beta$. → [дизайн эксперимента](../10-ab-testing/01-experiment-design.md)
+$1-\beta$. → [дизайн эксперимента](../06-ab-testing/01-experiment-design.md)
 
 **Мультиколлинеарность** (multicollinearity) — сильная линейная зависимость между признаками,
 делающая оценки коэффициентов неустойчивыми. → [линейные модели](../02-classic-ml/02-linear-models.md)
@@ -159,7 +159,7 @@ $1-\beta$. → [дизайн эксперимента](../10-ab-testing/01-exper
 → [оркестрация](../08-big-data/06-orchestration.md)
 
 **Отбор кандидатов** (candidate generation, retrieval) — первая стадия рекомендаций: быстрое
-сужение каталога до сотен объектов. → [основы рекомендаций](../06-recsys/01-recsys-foundations.md)
+сужение каталога до сотен объектов. → [основы рекомендаций](../10-recsys/01-recsys-foundations.md)
 
 ## П
 
@@ -170,7 +170,7 @@ $1-\beta$. → [дизайн эксперимента](../10-ab-testing/01-exper
 текстом. → [теория информации](../01-math/05-information-theory.md)
 
 **Позиционный биас** (position bias) — склонность пользователей кликать по верхним позициям
-независимо от релевантности. → [холодный старт и смещения](../06-recsys/12-cold-start-and-bias.md)
+независимо от релевантности. → [холодный старт и смещения](../10-recsys/12-cold-start-and-bias.md)
 
 **Позиционное кодирование** (positional encoding) — способ внести информацию о порядке токенов
 в трансформер. → [внимание и трансформер](../03-deep-learning/04-attention-and-transformer.md)
@@ -187,10 +187,10 @@ $1-\beta$. → [дизайн эксперимента](../10-ab-testing/01-exper
 ## Р
 
 **Разреженность** (sparsity) — доля незаполненных ячеек; в рекомендациях обычно выше 99%.
-→ [основы рекомендаций](../06-recsys/01-recsys-foundations.md)
+→ [основы рекомендаций](../10-recsys/01-recsys-foundations.md)
 
 **Ранжирование** (ranking) — упорядочивание объектов по релевантности.
-→ [обучение ранжированию](../06-recsys/07-learning-to-rank.md)
+→ [обучение ранжированию](../10-recsys/07-learning-to-rank.md)
 
 **Регуляризация** (regularization) — ограничение сложности модели ради лучшего обобщения.
 → [теория обучения](../02-classic-ml/01-learning-theory.md)
@@ -236,15 +236,15 @@ $1-\beta$. → [дизайн эксперимента](../10-ab-testing/01-exper
 
 **Факторизационная машина** (factorization machine, FM) — модель, учитывающая парные
 взаимодействия признаков через латентные векторы.
-→ [факторизационные машины](../06-recsys/05-factorization-machines.md)
+→ [факторизационные машины](../10-recsys/05-factorization-machines.md)
 
 **Фолбэк** (fallback) — упрощённое решение, отдаваемое при отказе основного.
-→ [рекомендации в продакшене](../06-recsys/14-recsys-in-production.md)
+→ [рекомендации в продакшене](../10-recsys/14-recsys-in-production.md)
 
 ## Х
 
 **Холодный старт** (cold start) — ситуация, когда для пользователя или объекта нет истории
-взаимодействий. → [холодный старт](../06-recsys/12-cold-start-and-bias.md)
+взаимодействий. → [холодный старт](../10-recsys/12-cold-start-and-bias.md)
 
 ## Ц
 
@@ -266,26 +266,26 @@ $1-\beta$. → [дизайн эксперимента](../10-ab-testing/01-exper
 → [теория информации](../01-math/05-information-theory.md)
 
 **Эксплорация** (exploration) — намеренный показ неоптимальных вариантов ради сбора информации
-о них. → [бандиты](../06-recsys/13-exploration-and-bandits.md)
+о них. → [бандиты](../10-recsys/13-exploration-and-bandits.md)
 
 ---
 
 ## Латиница
 
 **A/B-тест** (A/B test) — контролируемый эксперимент со случайным разделением пользователей
-на группы. → [дизайн эксперимента](../10-ab-testing/01-experiment-design.md)
+на группы. → [дизайн эксперимента](../06-ab-testing/01-experiment-design.md)
 
 **ALS** (alternating least squares) — метод обучения матричной факторизации попеременной
-оптимизацией по пользователям и объектам. → [implicit feedback](../06-recsys/04-implicit-feedback.md)
+оптимизацией по пользователям и объектам. → [implicit feedback](../10-recsys/04-implicit-feedback.md)
 
 **ANN** (approximate nearest neighbors) — приближённый поиск ближайших соседей; жертвует полнотой
-ради скорости. → [двухбашенки и ANN](../06-recsys/06-two-tower-and-ann.md)
+ради скорости. → [двухбашенки и ANN](../10-recsys/06-two-tower-and-ann.md)
 
 **BPR** (bayesian personalized ranking) — попарная функция потерь для неявной обратной связи.
-→ [implicit feedback](../06-recsys/04-implicit-feedback.md)
+→ [implicit feedback](../10-recsys/04-implicit-feedback.md)
 
 **CUPED** (controlled experiment using pre-experiment data) — метод снижения дисперсии метрики
-за счёт доэкспериментальной ковариаты. → [снижение дисперсии](../10-ab-testing/03-variance-reduction.md)
+за счёт доэкспериментальной ковариаты. → [снижение дисперсии](../06-ab-testing/03-variance-reduction.md)
 
 **DPO** (direct preference optimization) — выравнивание модели по предпочтениям без обучения
 отдельной reward-модели. → [SFT и выравнивание](../05-llm/03-sft-and-alignment.md)
@@ -303,10 +303,10 @@ $1-\beta$. → [дизайн эксперимента](../10-ab-testing/01-exper
 KV-кэша. → [инференс LLM](../05-llm/05-inference-and-serving.md)
 
 **HNSW** (hierarchical navigable small world) — графовый индекс для приближённого поиска соседей.
-→ [двухбашенки и ANN](../06-recsys/06-two-tower-and-ann.md)
+→ [двухбашенки и ANN](../10-recsys/06-two-tower-and-ann.md)
 
 **IPS** (inverse propensity scoring) — взвешивание наблюдений обратной вероятностью показа
-для устранения смещения. → [обучение ранжированию](../06-recsys/07-learning-to-rank.md)
+для устранения смещения. → [обучение ранжированию](../10-recsys/07-learning-to-rank.md)
 
 **KV-кэш** (key-value cache) — сохранённые ключи и значения предыдущих токенов, избавляющие
 от пересчёта при генерации. → [инференс LLM](../05-llm/05-inference-and-serving.md)
@@ -315,13 +315,13 @@ KV-кэша. → [инференс LLM](../05-llm/05-inference-and-serving.md)
 самих весов. → [PEFT и квантизация](../05-llm/04-peft-and-quantization.md)
 
 **LTR** (learning to rank) — обучение модели упорядочивать список.
-→ [обучение ранжированию](../06-recsys/07-learning-to-rank.md)
+→ [обучение ранжированию](../10-recsys/07-learning-to-rank.md)
 
 **MDE** (minimum detectable effect) — минимальный эффект, который эксперимент способен обнаружить
-при заданной мощности. → [дизайн эксперимента](../10-ab-testing/01-experiment-design.md)
+при заданной мощности. → [дизайн эксперимента](../06-ab-testing/01-experiment-design.md)
 
 **NDCG** (normalized discounted cumulative gain) — метрика качества ранжирования с логарифмическим
-дисконтированием позиций. → [офлайн-метрики рекомендаций](../06-recsys/02-metrics-offline.md)
+дисконтированием позиций. → [офлайн-метрики рекомендаций](../10-recsys/02-metrics-offline.md)
 
 **PSI** (population stability index) — мера расхождения распределений, используемая для
 детекции дрифта. → [дрифт данных](../09-monitoring/03-drift-detection.md)
@@ -343,7 +343,7 @@ KV-кэша. → [инференс LLM](../05-llm/05-inference-and-serving.md)
 значениях Шепли. → [интерпретируемость](../02-classic-ml/15-interpretability.md)
 
 **SRM** (sample ratio mismatch) — расхождение фактического соотношения групп с запланированным;
-признак поломки эксперимента. → [ловушки A/B](../10-ab-testing/04-pitfalls.md)
+признак поломки эксперимента. → [ловушки A/B](../06-ab-testing/04-pitfalls.md)
 
 **SVD** (singular value decomposition) — разложение матрицы на ортогональные множители
 и сингулярные числа. → [линейная алгебра](../01-math/01-linear-algebra.md)

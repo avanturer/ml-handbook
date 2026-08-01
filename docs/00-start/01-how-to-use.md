@@ -248,10 +248,10 @@ flowchart TD
 <summary><b>Материал устареет — что делать?</b></summary>
 
 Разделы [математики](../01-math/01-linear-algebra.md), [классического ML](../02-classic-ml/01-learning-theory.md),
-[A/B-тестов](../10-ab-testing/01-experiment-design.md) и [валидации](../02-classic-ml/13-validation-and-leakage.md)
+[A/B-тестов](../06-ab-testing/01-experiment-design.md) и [валидации](../02-classic-ml/13-validation-and-leakage.md)
 устаревают крайне медленно — там всё написанное будет верно и через десять лет.
 
-Быстро меняются [LLM](../05-llm/01-llm-architecture.md), [LLM в рекомендациях](../06-recsys/11-llm-recsys.md)
+Быстро меняются [LLM](../05-llm/01-llm-architecture.md), [LLM в рекомендациях](../10-recsys/11-llm-recsys.md)
 и [инференс](../07-mlops/09-inference-optimization.md). В этих главах акцент сделан на **принципах**
 (почему декодинг memory-bound, зачем нужен KV-кэш, что даёт низкоранговое приближение), а не на
 названиях библиотек — принципы живут дольше. Конкретные инструменты помечены по состоянию на дату

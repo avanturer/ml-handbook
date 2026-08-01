@@ -257,12 +257,12 @@
 | `02-classic-ml/08-boosting-in-practice` | `02-classic-ml/13-validation-and-leakage` |
 | `03-deep-learning/05-pytorch-in-practice` | `12-coding/01-python-for-mle` |
 | `05-llm/05-inference-and-serving` | `07-mlops/05-serving-architectures` |
-| `06-recsys/13-exploration-and-bandits` | `10-ab-testing/01-experiment-design` |
-| `06-recsys/14-recsys-in-production` | `07-mlops/05-serving-architectures`, `07-mlops/03-data-and-feature-store` |
-| `06-recsys/15-recsys-online-evaluation` | `10-ab-testing/01`, `10-ab-testing/02`, `10-ab-testing/04` |
+| `10-recsys/13-exploration-and-bandits` | `06-ab-testing/01-experiment-design` |
+| `10-recsys/14-recsys-in-production` | `07-mlops/05-serving-architectures`, `07-mlops/03-data-and-feature-store` |
+| `10-recsys/15-recsys-online-evaluation` | `06-ab-testing/01`, `06-ab-testing/02`, `06-ab-testing/04` |
 | `07-mlops/01-ml-lifecycle` | `11-system-design/01-framework` |
 | `07-mlops/04-model-packaging`, `07-mlops/05-serving-architectures` | `12-coding/01-python-for-mle` |
-| `07-mlops/08-deployment-strategies` | `10-ab-testing/01-experiment-design` |
+| `07-mlops/08-deployment-strategies` | `06-ab-testing/01-experiment-design` |
 
 Самый тяжёлый случай — **внутри раздела**: `02-classic-ml/08` требует `02-classic-ml/13`,
 хотя витрина раздела прямо утверждает обратное. Второй по тяжести — весь хвост RecSys
@@ -284,7 +284,7 @@ follow naturally from Chapter 10, and the chapters are probably best read in tha
    валидация — пререквизит для 4 глав раздела, а сама требует только 01, 04 и статистику.
    Треки её и так ставят пятой (`02-tracks.md`, трек 1, этап 1, пункт 5) — то есть
    рекомендованный порядок уже расходится с файловым.
-4. Рассмотреть перенос `10-ab-testing` перед `06-recsys` (сейчас на него ссылаются
+4. Рассмотреть перенос `06-ab-testing` перед `10-recsys` (сейчас на него ссылаются
    вперёд 5 раз из RecSys и MLOps, а обратных зависимостей нет).
 
 ---
@@ -455,7 +455,7 @@ d2l — 98 % разделов), `CHANGELOG.md` по главам (отсутст
 3. **`## Что осталось за рамками`** — 3–5 пунктов с указанием, где это читать. Снимает
    претензию «а почему не написали про X» и честно очерчивает границу.
 4. **`CHANGELOG.md` по главам** (не по коммитам) — возвращающийся читатель видит, что
-   перечитать. Особенно нужен разделам 05-llm и 06-recsys/11, которые сами объявлены
+   перечитать. Особенно нужен разделам 05-llm и 10-recsys/11, которые сами объявлены
    быстро устаревающими (`01-how-to-use §7`).
 5. **Предзаведённые GitHub Discussions на главу** + ссылка в футере. Работает только если
    треды созданы заранее — иначе не будет создан ни один.
@@ -548,7 +548,7 @@ Anki: `resources/anki-deck.csv`, автособираемая из 1228 вопр
 **Симптом (замер).** Частотный анализ ключевых терминов даёт устойчивые кластеры дублирования.
 
 **Кластер A — «X в проде» (4 главы, ~40 000 слов).**
-`04-nlp/06-nlp-in-production` (11 166 слов), `06-recsys/14-recsys-in-production` (10 626),
+`04-nlp/06-nlp-in-production` (11 166 слов), `10-recsys/14-recsys-in-production` (10 626),
 `05-llm/11-llm-in-production` (10 286), плюс `07-mlops/05-serving-architectures` (7 951).
 Термин `p99` серьёзно разбирается в **13 главах**, `батчинг` — в 4, `кэширование` — H2 в 3.
 Каждая из четырёх глав заново вводит бюджет латентности, динамический батчинг, деградацию
@@ -559,10 +559,10 @@ Anki: `resources/anki-deck.csv`, автособираемая из 1228 вопр
 одно и то же трижды.
 
 **Кластер B — бандиты (2 главы, 13 796 слов).**
-`06-recsys/13-exploration-and-bandits` (7 349 слов, 58 вхождений «бандит») и
-`10-ab-testing/06-bandits-vs-ab` (6 447 слов, 97 вхождений). Обе выводят UCB/Thompson
+`10-recsys/13-exploration-and-bandits` (7 349 слов, 58 вхождений «бандит») и
+`06-ab-testing/06-bandits-vs-ab` (6 447 слов, 97 вхождений). Обе выводят UCB/Thompson
 и обсуждают regret.
-→ **Что сделать:** математику бандитов оставить в одном месте (логичнее — 10-ab-testing/06,
+→ **Что сделать:** математику бандитов оставить в одном месте (логичнее — 06-ab-testing/06,
 рядом с A/B), в RecSys оставить контекстные бандиты и петлю обратной связи.
 Экономия ~5 000 слов.
 
@@ -581,7 +581,7 @@ Anki: `resources/anki-deck.csv`, автособираемая из 1228 вопр
 
 **Кластер E — квантизация и дистилляция (5 глав).**
 `05-llm/04-peft-and-quantization` (72 вхождения), `07-mlops/09-inference-optimization` (20),
-`05-llm/05-inference-and-serving` (17), `06-recsys/11-llm-recsys` (16), `04-nlp/06` (9).
+`05-llm/05-inference-and-serving` (17), `10-recsys/11-llm-recsys` (16), `04-nlp/06` (9).
 → **Что сделать:** канонизировать `07-mlops/09` как единственное место, где объясняется
 механика (INT8/INT4, калибровка, KD), остальные — ссылка + доменные числа.
 

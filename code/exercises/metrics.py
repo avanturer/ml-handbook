@@ -10,7 +10,7 @@
     average_precision    — 15 минут
     ndcg_at_k            — 15 минут
 
-Теория: docs/02-classic-ml/04-metrics.md и docs/06-recsys/02-metrics-offline.md
+Теория: docs/02-classic-ml/04-metrics.md и docs/10-recsys/02-metrics-offline.md
 """
 
 from __future__ import annotations
