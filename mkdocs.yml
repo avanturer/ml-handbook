@@ -79,159 +79,169 @@ plugins:
 # >>> nav: сгенерировано tools/build_nav.py — не редактировать вручную
 nav:
   - Оглавление: index.md
-  - Старт:
-      - 00-start/index.md
-      - "Как пользоваться хендбуком": 00-start/01-how-to-use.md
-      - "Треки обучения": 00-start/02-tracks.md
-      - "Карта собеседования MLE": 00-start/03-interview-map.md
-      - "Как учить, чтобы осталось в голове": 00-start/04-study-method.md
-      - "Глоссарий": 00-start/05-glossary.md
-  - Математика:
-      - 01-math/index.md
-      - "Линейная алгебра для ML": 01-math/01-linear-algebra.md
-      - "Теория вероятностей": 01-math/02-probability.md
-      - "Статистика и вывод": 01-math/03-statistics.md
-      - "Оптимизация": 01-math/04-optimization.md
-      - "Теория информации": 01-math/05-information-theory.md
-  - Классический ML:
-      - 02-classic-ml/index.md
-      - "Постановка задачи обучения": 02-classic-ml/01-learning-theory.md
-      - "Линейная регрессия и регуляризация": 02-classic-ml/02-linear-models.md
-      - "Логистическая регрессия": 02-classic-ml/03-logistic-regression.md
-      - "Метрики качества": 02-classic-ml/04-metrics.md
-      - "Валидация и утечки": 02-classic-ml/05-validation-and-leakage.md
-      - "Решающие деревья": 02-classic-ml/06-decision-trees.md
-      - "Бэггинг и случайный лес": 02-classic-ml/07-bagging-random-forest.md
-      - "Градиентный бустинг": 02-classic-ml/08-gradient-boosting.md
-      - "XGBoost, LightGBM, CatBoost": 02-classic-ml/09-boosting-in-practice.md
-      - "SVM, kNN и наивный Байес": 02-classic-ml/10-svm-knn-bayes.md
-      - "Кластеризация": 02-classic-ml/11-clustering.md
-      - "Снижение размерности": 02-classic-ml/12-dimensionality-reduction.md
-      - "Дисбаланс классов и калибровка": 02-classic-ml/13-imbalance-and-calibration.md
-      - "Работа с признаками": 02-classic-ml/14-feature-engineering.md
-      - "Интерпретируемость": 02-classic-ml/15-interpretability.md
-      - "Временные ряды": 02-classic-ml/16-time-series.md
-      - "Uplift и причинность": 02-classic-ml/17-uplift-and-causal.md
-      - "Поиск аномалий": 02-classic-ml/18-anomaly-detection.md
-      - "Стекинг и блендинг": 02-classic-ml/19-stacking-and-blending.md
-      - "Разбор ошибок модели": 02-classic-ml/20-error-analysis.md
-  - Deep Learning:
-      - 03-deep-learning/index.md
-      - "Нейросети и обратное распространение": 03-deep-learning/01-neural-nets-and-backprop.md
-      - "Как на самом деле обучается сеть": 03-deep-learning/02-training-dynamics.md
-      - "Свёрточные и рекуррентные сети": 03-deep-learning/03-cnn-and-rnn.md
-      - "Внимание и трансформер": 03-deep-learning/04-attention-and-transformer.md
-      - "PyTorch на практике": 03-deep-learning/05-pytorch-in-practice.md
-      - "Масштабирование обучения": 03-deep-learning/06-scaling-and-efficiency.md
-      - "Обучение с подкреплением: необходимый минимум": 03-deep-learning/07-rl-foundations.md
-      - "Генеративные модели": 03-deep-learning/08-generative-models.md
-  - NLP:
-      - 04-nlp/index.md
-      - "Текст как данные": 04-nlp/01-text-representation.md
-      - "Эмбеддинги": 04-nlp/02-embeddings.md
-      - "Seq2seq и машинный перевод": 04-nlp/03-seq2seq-and-attention.md
-      - "BERT и семейство энкодеров": 04-nlp/04-bert-and-encoders.md
-      - "Задачи NLP и их метрики": 04-nlp/05-nlp-tasks-and-metrics.md
-      - "NLP в продакшене": 04-nlp/06-nlp-in-production.md
-  - LLM:
-      - 05-llm/index.md
-      - "Устройство современной LLM": 05-llm/01-llm-architecture.md
-      - "Предобучение и законы масштабирования": 05-llm/02-pretraining-and-scaling.md
-      - "SFT и выравнивание": 05-llm/03-sft-and-alignment.md
-      - "PEFT и квантизация": 05-llm/04-peft-and-quantization.md
-      - "Инференс LLM": 05-llm/05-inference-and-serving.md
-      - "Промптинг и структурированный вывод": 05-llm/06-prompting-and-structured-output.md
-      - "RAG": 05-llm/07-rag.md
-      - "Агенты и вызов инструментов": 05-llm/08-agents-and-tools.md
-      - "Оценка LLM": 05-llm/09-llm-evaluation.md
-      - "Безопасность и ограничители": 05-llm/10-llm-safety-and-guardrails.md
-      - "LLM в продакшене": 05-llm/11-llm-in-production.md
-  - A/B-тесты:
-      - 06-ab-testing/index.md
-      - "Дизайн эксперимента": 06-ab-testing/01-experiment-design.md
-      - "Статистические критерии на практике": 06-ab-testing/02-statistical-criteria.md
-      - "Снижение дисперсии": 06-ab-testing/03-variance-reduction.md
-      - "Ловушки A/B-тестов": 06-ab-testing/04-pitfalls.md
-      - "Сложные схемы": 06-ab-testing/05-complex-designs.md
-      - "Бандиты против A/B": 06-ab-testing/06-bandits-vs-ab.md
-      - "Платформа экспериментов": 06-ab-testing/07-experiment-platform.md
-  - Выкатка в прод / MLOps:
-      - 07-mlops/index.md
-      - "Жизненный цикл ML-системы": 07-mlops/01-ml-lifecycle.md
-      - "Воспроизводимость и трекинг": 07-mlops/02-reproducibility-and-tracking.md
-      - "Данные и feature store": 07-mlops/03-data-and-feature-store.md
-      - "Упаковка модели": 07-mlops/04-model-packaging.md
-      - "Архитектуры сервинга": 07-mlops/05-serving-architectures.md
-      - "Docker и Kubernetes для MLE": 07-mlops/06-docker-and-k8s.md
-      - "CI/CD для ML": 07-mlops/07-ci-cd-for-ml.md
-      - "Стратегии выкатки": 07-mlops/08-deployment-strategies.md
-      - "Оптимизация инференса": 07-mlops/09-inference-optimization.md
-      - "Стоимость и ёмкость": 07-mlops/10-cost-and-capacity.md
-      - "Данные и разметка": 07-mlops/11-data-and-labeling.md
-      - "Безопасность ML-систем": 07-mlops/12-ml-security.md
-  - Big Data:
-      - 08-big-data/index.md
-      - "Хранение данных": 08-big-data/01-storage-and-formats.md
-      - "SQL для MLE": 08-big-data/02-sql-for-mle.md
-      - "Spark: как он работает": 08-big-data/03-spark-fundamentals.md
-      - "Spark: производительность": 08-big-data/04-spark-tuning.md
-      - "Потоковая обработка": 08-big-data/05-streaming.md
-      - "Оркестрация пайплайнов": 08-big-data/06-orchestration.md
-      - "Распределённое обучение": 08-big-data/07-distributed-training.md
-  - Мониторинг:
-      - 09-monitoring/index.md
-      - "Что мониторить в ML-системе": 09-monitoring/01-what-to-monitor.md
-      - "Качество данных": 09-monitoring/02-data-quality.md
-      - "Дрифт данных": 09-monitoring/03-drift-detection.md
-      - "Деградация модели": 09-monitoring/04-model-degradation.md
-      - "Стек наблюдаемости": 09-monitoring/05-observability-stack.md
-      - "Инциденты": 09-monitoring/06-incidents-and-runbooks.md
-      - "Переобучение моделей": 09-monitoring/07-retraining.md
-      - "Справедливость и систематические смещения": 09-monitoring/08-fairness.md
-  - Рекомендательные системы:
-      - 10-recsys/index.md
-      - "Постановка задачи рекомендаций": 10-recsys/01-recsys-foundations.md
-      - "Офлайн-метрики рекомендаций": 10-recsys/02-metrics-offline.md
-      - "Коллаборативная фильтрация": 10-recsys/03-collaborative-filtering.md
-      - "Неявная обратная связь": 10-recsys/04-implicit-feedback.md
-      - "Факторизационные машины и гибриды": 10-recsys/05-factorization-machines.md
-      - "Двухбашенные модели и ANN-поиск": 10-recsys/06-two-tower-and-ann.md
-      - "Обучение ранжированию": 10-recsys/07-learning-to-rank.md
-      - "Нейронное ранжирование": 10-recsys/08-neural-ranking.md
-      - "Последовательные рекомендации": 10-recsys/09-sequential-recsys.md
-      - "Графовые рекомендации": 10-recsys/10-graph-recsys.md
-      - "LLM в рекомендациях": 10-recsys/11-llm-recsys.md
-      - "Холодный старт и смещения": 10-recsys/12-cold-start-and-bias.md
-      - "Эксплорация и бандиты": 10-recsys/13-exploration-and-bandits.md
-      - "Рекомендации в продакшене": 10-recsys/14-recsys-in-production.md
-      - "Онлайн-оценка рекомендаций": 10-recsys/15-recsys-online-evaluation.md
-  - ML System Design:
-      - 11-system-design/index.md
-      - "Как проходить ML System Design": 11-system-design/01-framework.md
-      - "Кейс: лента рекомендаций": 11-system-design/02-case-feed-ranking.md
-      - "Кейс: поиск и ранжирование": 11-system-design/03-case-search.md
-      - "Кейс: антифрод": 11-system-design/04-case-fraud-detection.md
-      - "Кейс: ассистент с RAG": 11-system-design/05-case-rag-assistant.md
-      - "Кейс: персонализация в реальном времени": 11-system-design/06-case-realtime-recsys.md
-      - "Кейс: отток и удержание": 11-system-design/07-case-churn-uplift.md
-      - "Кейс: предсказание CTR в рекламе": 11-system-design/08-case-ads-ctr.md
-  - Практика кода:
-      - 12-coding/index.md
-      - "Python, который спрашивают": 12-coding/01-python-for-mle.md
-      - "NumPy и pandas на скорость": 12-coding/02-numpy-pandas.md
-      - "Реализуем ML руками": 12-coding/03-ml-from-scratch.md
-      - "Алгоритмы для MLE-собеса": 12-coding/04-algorithms.md
-      - "SQL: тренировка": 12-coding/05-sql-drills.md
-      - "PyTorch: тренировка": 12-coding/06-pytorch-drills.md
-      - "Тесты и качество кода в ML": 12-coding/07-testing-and-code-quality.md
-  - CV, звук, мультимодальность:
-      - 13-optional/index.md
-      - "Computer Vision: необходимый минимум": 13-optional/01-computer-vision.md
-      - "Звук и речь: необходимый минимум": 13-optional/02-audio-and-speech.md
-      - "Мультимодальность": 13-optional/03-multimodal.md
-  - Карьера:
-      - 14-career/index.md
-      - "Процесс найма изнутри": 14-career/01-interview-process.md
-      - "Поведенческая секция": 14-career/02-behavioral.md
-      - "Рост и переговоры": 14-career/03-growth-and-negotiation.md
+  - Перед началом:
+      - Старт:
+          - 00-start/index.md
+          - "Как пользоваться хендбуком": 00-start/01-how-to-use.md
+          - "Треки обучения": 00-start/02-tracks.md
+          - "Карта собеседования MLE": 00-start/03-interview-map.md
+          - "Как учить, чтобы осталось в голове": 00-start/04-study-method.md
+          - "Глоссарий": 00-start/05-glossary.md
+  - Часть I. Язык:
+      - Математика:
+          - 01-math/index.md
+          - "Линейная алгебра для ML": 01-math/01-linear-algebra.md
+          - "Теория вероятностей": 01-math/02-probability.md
+          - "Статистика и вывод": 01-math/03-statistics.md
+          - "Оптимизация": 01-math/04-optimization.md
+          - "Теория информации": 01-math/05-information-theory.md
+  - Часть II. Ядро:
+      - Классический ML:
+          - 02-classic-ml/index.md
+          - "Постановка задачи обучения": 02-classic-ml/01-learning-theory.md
+          - "Линейная регрессия и регуляризация": 02-classic-ml/02-linear-models.md
+          - "Логистическая регрессия": 02-classic-ml/03-logistic-regression.md
+          - "Метрики качества": 02-classic-ml/04-metrics.md
+          - "Валидация и утечки": 02-classic-ml/05-validation-and-leakage.md
+          - "Решающие деревья": 02-classic-ml/06-decision-trees.md
+          - "Бэггинг и случайный лес": 02-classic-ml/07-bagging-random-forest.md
+          - "Градиентный бустинг": 02-classic-ml/08-gradient-boosting.md
+          - "XGBoost, LightGBM, CatBoost": 02-classic-ml/09-boosting-in-practice.md
+          - "SVM, kNN и наивный Байес": 02-classic-ml/10-svm-knn-bayes.md
+          - "Кластеризация": 02-classic-ml/11-clustering.md
+          - "Снижение размерности": 02-classic-ml/12-dimensionality-reduction.md
+          - "Дисбаланс классов и калибровка": 02-classic-ml/13-imbalance-and-calibration.md
+          - "Работа с признаками": 02-classic-ml/14-feature-engineering.md
+          - "Интерпретируемость": 02-classic-ml/15-interpretability.md
+          - "Временные ряды": 02-classic-ml/16-time-series.md
+          - "Uplift и причинность": 02-classic-ml/17-uplift-and-causal.md
+          - "Поиск аномалий": 02-classic-ml/18-anomaly-detection.md
+          - "Стекинг и блендинг": 02-classic-ml/19-stacking-and-blending.md
+          - "Разбор ошибок модели": 02-classic-ml/20-error-analysis.md
+  - Часть III. Представления:
+      - Deep Learning:
+          - 03-deep-learning/index.md
+          - "Нейросети и обратное распространение": 03-deep-learning/01-neural-nets-and-backprop.md
+          - "Как на самом деле обучается сеть": 03-deep-learning/02-training-dynamics.md
+          - "Свёрточные и рекуррентные сети": 03-deep-learning/03-cnn-and-rnn.md
+          - "Внимание и трансформер": 03-deep-learning/04-attention-and-transformer.md
+          - "PyTorch на практике": 03-deep-learning/05-pytorch-in-practice.md
+          - "Масштабирование обучения": 03-deep-learning/06-scaling-and-efficiency.md
+          - "Обучение с подкреплением: необходимый минимум": 03-deep-learning/07-rl-foundations.md
+          - "Генеративные модели": 03-deep-learning/08-generative-models.md
+      - NLP:
+          - 04-nlp/index.md
+          - "Текст как данные": 04-nlp/01-text-representation.md
+          - "Эмбеддинги": 04-nlp/02-embeddings.md
+          - "Seq2seq и машинный перевод": 04-nlp/03-seq2seq-and-attention.md
+          - "BERT и семейство энкодеров": 04-nlp/04-bert-and-encoders.md
+          - "Задачи NLP и их метрики": 04-nlp/05-nlp-tasks-and-metrics.md
+          - "NLP в продакшене": 04-nlp/06-nlp-in-production.md
+      - LLM:
+          - 05-llm/index.md
+          - "Устройство современной LLM": 05-llm/01-llm-architecture.md
+          - "Предобучение и законы масштабирования": 05-llm/02-pretraining-and-scaling.md
+          - "SFT и выравнивание": 05-llm/03-sft-and-alignment.md
+          - "PEFT и квантизация": 05-llm/04-peft-and-quantization.md
+          - "Инференс LLM": 05-llm/05-inference-and-serving.md
+          - "Промптинг и структурированный вывод": 05-llm/06-prompting-and-structured-output.md
+          - "RAG": 05-llm/07-rag.md
+          - "Агенты и вызов инструментов": 05-llm/08-agents-and-tools.md
+          - "Оценка LLM": 05-llm/09-llm-evaluation.md
+          - "Безопасность и ограничители": 05-llm/10-llm-safety-and-guardrails.md
+          - "LLM в продакшене": 05-llm/11-llm-in-production.md
+  - Часть IV. Доказательства:
+      - A/B-тесты:
+          - 06-ab-testing/index.md
+          - "Дизайн эксперимента": 06-ab-testing/01-experiment-design.md
+          - "Статистические критерии на практике": 06-ab-testing/02-statistical-criteria.md
+          - "Снижение дисперсии": 06-ab-testing/03-variance-reduction.md
+          - "Ловушки A/B-тестов": 06-ab-testing/04-pitfalls.md
+          - "Сложные схемы": 06-ab-testing/05-complex-designs.md
+          - "Бандиты против A/B": 06-ab-testing/06-bandits-vs-ab.md
+          - "Платформа экспериментов": 06-ab-testing/07-experiment-platform.md
+  - Часть V. Инженерия:
+      - Выкатка в прод / MLOps:
+          - 07-mlops/index.md
+          - "Жизненный цикл ML-системы": 07-mlops/01-ml-lifecycle.md
+          - "Воспроизводимость и трекинг": 07-mlops/02-reproducibility-and-tracking.md
+          - "Данные и feature store": 07-mlops/03-data-and-feature-store.md
+          - "Упаковка модели": 07-mlops/04-model-packaging.md
+          - "Архитектуры сервинга": 07-mlops/05-serving-architectures.md
+          - "Docker и Kubernetes для MLE": 07-mlops/06-docker-and-k8s.md
+          - "CI/CD для ML": 07-mlops/07-ci-cd-for-ml.md
+          - "Стратегии выкатки": 07-mlops/08-deployment-strategies.md
+          - "Оптимизация инференса": 07-mlops/09-inference-optimization.md
+          - "Стоимость и ёмкость": 07-mlops/10-cost-and-capacity.md
+          - "Данные и разметка": 07-mlops/11-data-and-labeling.md
+          - "Безопасность ML-систем": 07-mlops/12-ml-security.md
+      - Big Data:
+          - 08-big-data/index.md
+          - "Хранение данных": 08-big-data/01-storage-and-formats.md
+          - "SQL для MLE": 08-big-data/02-sql-for-mle.md
+          - "Spark: как он работает": 08-big-data/03-spark-fundamentals.md
+          - "Spark: производительность": 08-big-data/04-spark-tuning.md
+          - "Потоковая обработка": 08-big-data/05-streaming.md
+          - "Оркестрация пайплайнов": 08-big-data/06-orchestration.md
+          - "Распределённое обучение": 08-big-data/07-distributed-training.md
+      - Мониторинг:
+          - 09-monitoring/index.md
+          - "Что мониторить в ML-системе": 09-monitoring/01-what-to-monitor.md
+          - "Качество данных": 09-monitoring/02-data-quality.md
+          - "Дрифт данных": 09-monitoring/03-drift-detection.md
+          - "Деградация модели": 09-monitoring/04-model-degradation.md
+          - "Стек наблюдаемости": 09-monitoring/05-observability-stack.md
+          - "Инциденты": 09-monitoring/06-incidents-and-runbooks.md
+          - "Переобучение моделей": 09-monitoring/07-retraining.md
+          - "Справедливость и систематические смещения": 09-monitoring/08-fairness.md
+  - Часть VI. Первая полная система:
+      - Рекомендательные системы:
+          - 10-recsys/index.md
+          - "Постановка задачи рекомендаций": 10-recsys/01-recsys-foundations.md
+          - "Офлайн-метрики рекомендаций": 10-recsys/02-metrics-offline.md
+          - "Коллаборативная фильтрация": 10-recsys/03-collaborative-filtering.md
+          - "Неявная обратная связь": 10-recsys/04-implicit-feedback.md
+          - "Факторизационные машины и гибриды": 10-recsys/05-factorization-machines.md
+          - "Двухбашенные модели и ANN-поиск": 10-recsys/06-two-tower-and-ann.md
+          - "Обучение ранжированию": 10-recsys/07-learning-to-rank.md
+          - "Нейронное ранжирование": 10-recsys/08-neural-ranking.md
+          - "Последовательные рекомендации": 10-recsys/09-sequential-recsys.md
+          - "Графовые рекомендации": 10-recsys/10-graph-recsys.md
+          - "LLM в рекомендациях": 10-recsys/11-llm-recsys.md
+          - "Холодный старт и смещения": 10-recsys/12-cold-start-and-bias.md
+          - "Эксплорация и бандиты": 10-recsys/13-exploration-and-bandits.md
+          - "Рекомендации в продакшене": 10-recsys/14-recsys-in-production.md
+          - "Онлайн-оценка рекомендаций": 10-recsys/15-recsys-online-evaluation.md
+  - Часть VII. Обобщение:
+      - ML System Design:
+          - 11-system-design/index.md
+          - "Как проходить ML System Design": 11-system-design/01-framework.md
+          - "Кейс: лента рекомендаций": 11-system-design/02-case-feed-ranking.md
+          - "Кейс: поиск и ранжирование": 11-system-design/03-case-search.md
+          - "Кейс: антифрод": 11-system-design/04-case-fraud-detection.md
+          - "Кейс: ассистент с RAG": 11-system-design/05-case-rag-assistant.md
+          - "Кейс: персонализация в реальном времени": 11-system-design/06-case-realtime-recsys.md
+          - "Кейс: отток и удержание": 11-system-design/07-case-churn-uplift.md
+          - "Кейс: предсказание CTR в рекламе": 11-system-design/08-case-ads-ctr.md
+  - Тренажёр:
+      - Практика кода:
+          - 12-coding/index.md
+          - "Python, который спрашивают": 12-coding/01-python-for-mle.md
+          - "NumPy и pandas на скорость": 12-coding/02-numpy-pandas.md
+          - "Реализуем ML руками": 12-coding/03-ml-from-scratch.md
+          - "Алгоритмы для MLE-собеса": 12-coding/04-algorithms.md
+          - "SQL: тренировка": 12-coding/05-sql-drills.md
+          - "PyTorch: тренировка": 12-coding/06-pytorch-drills.md
+          - "Тесты и качество кода в ML": 12-coding/07-testing-and-code-quality.md
+  - Приложения:
+      - CV, звук, мультимодальность:
+          - 13-optional/index.md
+          - "Computer Vision: необходимый минимум": 13-optional/01-computer-vision.md
+          - "Звук и речь: необходимый минимум": 13-optional/02-audio-and-speech.md
+          - "Мультимодальность": 13-optional/03-multimodal.md
+      - Карьера:
+          - 14-career/index.md
+          - "Процесс найма изнутри": 14-career/01-interview-process.md
+          - "Поведенческая секция": 14-career/02-behavioral.md
+          - "Рост и переговоры": 14-career/03-growth-and-negotiation.md
 # <<< конец сгенерированной навигации

@@ -26,6 +26,109 @@ H1_RE = re.compile(r"^#\s+(.+)$", re.MULTILINE)
 PURPOSE_RE = re.compile(r">\s*\*\*Зачем эта глава\.\*\*\s*(.+?)(?:\n>\s*\n|\n\n)", re.DOTALL)
 LEVEL_RE = re.compile(r"\*\*Уровень:\*\*\s*(.+)")
 
+# Части книги. Пятнадцать разделов подряд — это список, а не книга: читатель не видит,
+# зачем он сейчас читает именно это и что будет уметь через сто страниц. Части задают
+# сюжет: язык -> ядро -> представления -> доказательства -> инженерия -> сборка -> обобщение.
+# Порядок разделов внутри части = порядок каталогов, менять его надо через renumber_section.
+PARTS: list[dict] = [
+    {
+        "title": "Перед началом",
+        "sections": ["00-start"],
+        "lead": "Как устроена книга, как её читать, чтобы знание осталось, и что вообще "
+                "спрашивают на собеседовании MLE. Двадцать минут здесь экономят недели дальше.",
+    },
+    {
+        "title": "Часть I. Язык",
+        "sections": ["01-math"],
+        "lead": "Всё, что дальше, формулируется на языке линейной алгебры, вероятности "
+                "и оптимизации. Здесь мы берём из математики ровно тот минимум, который "
+                "реально используется в работе и на собеседовании, — и берём его с выводами, "
+                "чтобы потом не пришлось верить формулам на слово.",
+        "after": "вы читаете формулу функции потерь и видите в ней смысл, а не набор значков.",
+    },
+    {
+        "title": "Часть II. Ядро",
+        "sections": ["02-classic-ml"],
+        "lead": "Здесь живёт профессия. Что значит «модель обучилась», почему это вообще "
+                "работает на новых данных, чем измерять качество и на чём измерять, "
+                "как устроены линейные модели, деревья и бустинг — и как всё это ломается. "
+                "Порядок внутри части не случаен: сначала чем мерить, потом на чём мерить, "
+                "и только потом модели.",
+        "after": "вы решаете табличную задачу целиком: от постановки до честной оценки — "
+                 "и понимаете, где именно у вас утечка.",
+    },
+    {
+        "title": "Часть III. Представления",
+        "sections": ["03-deep-learning", "04-nlp", "05-llm"],
+        "lead": "Классический ML требует, чтобы признаки составил человек. Как только данные "
+                "перестают быть таблицей — текст, последовательность, картинка, — это "
+                "перестаёт работать, и признаки приходится учить. Отсюда одна сквозная линия "
+                "на три раздела: **представление** — от эмбеддинга слова до механизма внимания "
+                "и большой языковой модели. Это не три разные темы, а одна, разобранная "
+                "с нарастающей сложностью.",
+        "after": "вы понимаете, откуда в модели берутся векторы, почему внимание вытеснило "
+                 "рекуррентность и что именно происходит внутри LLM на каждом шаге.",
+    },
+    {
+        "title": "Часть IV. Доказательства",
+        "sections": ["06-ab-testing"],
+        "lead": "Офлайн-метрика выросла. Значит ли это, что стало лучше? Почти всегда нет — "
+                "и это самая дорогая ошибка в отрасли. Часть отвечает на вопрос, как доказать "
+                "пользу изменения на живых пользователях и не обмануть себя по дороге. "
+                "Она стоит здесь, а не в конце, потому что дальше без неё нельзя: выкатка, "
+                "рекомендации и проектная секция все опираются на умение измерять эффект.",
+        "after": "вы проектируете эксперимент, считаете его размер и объясняете, почему "
+                 "нельзя подглядывать.",
+    },
+    {
+        "title": "Часть V. Инженерия",
+        "sections": ["07-mlops", "08-big-data", "09-monitoring"],
+        "lead": "Модель, которая живёт в ноутбуке, не приносит пользы. Здесь она доезжает "
+                "до пользователя и начинает жить: воспроизводимость, признаки, сервинг, "
+                "данные в масштабе, наблюдаемость и то, что происходит с качеством через "
+                "полгода после выката.",
+        "after": "вы отвечаете не только «какая модель», но и «как она попадёт в прод, "
+                 "сколько будет стоить и как вы узнаете, что она сломалась».",
+    },
+    {
+        "title": "Часть VI. Первая полная система",
+        "sections": ["10-recsys"],
+        "lead": "Рекомендации — самый полный домен в ML: здесь одновременно нужны метрики "
+                "и валидация из части II, эмбеддинги и трансформеры из части III, "
+                "A/B из части IV и весь прод из части V. Поэтому раздел стоит именно тут: "
+                "раньше его читать нечем. Это первая сборка всего, что вы знаете, "
+                "в одну работающую систему.",
+        "after": "вы проектируете рекомендательную систему целиком — от кандидатов "
+                 "до онлайн-оценки — и знаете, где она деградирует.",
+    },
+    {
+        "title": "Часть VII. Обобщение",
+        "sections": ["11-system-design"],
+        "lead": "То же самое, но на любом домене. Каркас ответа на проектной секции "
+                "и семь полных разборов: лента, поиск, антифрод, RAG-ассистент, "
+                "realtime-персонализация, отток, реклама.",
+        "after": "вы проходите секцию ML System Design и ведёте проектное обсуждение "
+                 "на работе.",
+    },
+    {
+        "title": "Тренажёр",
+        "sections": ["12-coding"],
+        "lead": "Не глава в очереди, а зал, куда заходят по мере надобности. "
+                "Если голова понимает, а руки не пишут — вам сюда, и можно в любой момент.",
+    },
+    {
+        "title": "Приложения",
+        "sections": ["13-optional", "14-career"],
+        "lead": "Смежные модальности для не-профильного инженера и то, что происходит "
+                "вокруг найма и роста.",
+    },
+]
+
+
+def part_of(slug: str) -> dict | None:
+    return next((p for p in PARTS if slug in p["sections"]), None)
+
+
 SECTION_TITLES = {
     "00-start": ("Старт", "Как пользоваться хендбуком, треки обучения и карта собеседования."),
     "01-math": ("Математика", "Линейная алгебра, вероятность, статистика и оптимизация — только то, что реально нужно инженеру."),
@@ -114,15 +217,45 @@ def collect() -> dict[str, list[Chapter]]:
     return sections
 
 
-def write_section_index(slug: str, chapters: list[Chapter]) -> None:
+def write_section_index(slug: str, chapters: list[Chapter],
+                        sections: dict[str, list[Chapter]]) -> None:
+    """Витрина раздела с соединительной тканью: откуда вы пришли и куда идёте.
+
+    Голая таблица глав ничего не говорит о том, зачем читатель здесь оказался.
+    Поэтому сверху — место раздела в книге и то, что к этому моменту уже освоено,
+    снизу — переход к следующему разделу.
+    """
     title, description = SECTION_TITLES[slug]
-    lines = [
-        f"# {title}",
-        "",
-        f"> {description}",
-        "",
-        f"**Глав в разделе:** {len(chapters)}",
-        "",
+    part = part_of(slug)
+    order = list(sections)
+    index = order.index(slug)
+
+    lines = [f"# {title}", "", f"> {description}", ""]
+
+    if part:
+        siblings = [s for s in part["sections"] if s in sections]
+        place = (f"**{part['title']}**"
+                 + (f", раздел {siblings.index(slug) + 1} из {len(siblings)}"
+                    if len(siblings) > 1 else ""))
+        lines += [f"{place} · глав в разделе: {len(chapters)}", ""]
+        lines += [part["lead"], ""]
+        if part.get("after"):
+            lines += [f"**После этой части:** {part['after']}", ""]
+    else:
+        lines += [f"**Глав в разделе:** {len(chapters)}", ""]
+
+    # Что читатель уже прошёл — не абстрактно, а конкретной ссылкой назад.
+    if index > 0:
+        prev_slug = order[index - 1]
+        prev_title, _ = SECTION_TITLES[prev_slug]
+        lines += [
+            f"Перед этим разделом идёт **[{prev_title}]({relative_section(slug, prev_slug)})** — "
+            f"если вы пришли сюда сразу, загляните в строку «Предварительно нужно» "
+            f"в шапке первой главы.",
+            "",
+        ]
+
+    lines += [
         "## Карта раздела",
         "",
         "| # | Глава | Уровень | О чём |",
@@ -132,51 +265,80 @@ def write_section_index(slug: str, chapters: list[Chapter]) -> None:
         purpose = chapter.purpose or "—"
         level = chapter.level or "—"
         lines.append(f"| {chapter.number} | [{chapter.title}]({chapter.filename}) | {level} | {purpose} |")
-    lines += [
-        "",
-        "## Порядок чтения",
-        "",
-        "Главы упорядочены: каждая опирается на предыдущие. Если идёте не по порядку — "
-        "смотрите строку «Предварительно нужно» в шапке главы.",
-        "",
-        "---",
-        "",
-        "🏠 [Оглавление хендбука](../index.md)",
-        "",
-    ]
+
+    lines += ["", "---", ""]
+    nav = []
+    if index > 0:
+        prev_slug = order[index - 1]
+        nav.append(f"⬅️ [{SECTION_TITLES[prev_slug][0]}]({relative_section(slug, prev_slug)})")
+    nav.append("🏠 [Оглавление книги](../index.md)")
+    if index + 1 < len(order):
+        next_slug = order[index + 1]
+        nav.append(f"➡️ [{SECTION_TITLES[next_slug][0]}]({relative_section(slug, next_slug)})")
+    lines += [" | ".join(nav), ""]
+
     (DOCS / slug / "index.md").write_text("\n".join(lines), encoding="utf-8")
 
 
+def relative_section(source_slug: str, target_slug: str) -> str:
+    return f"../{target_slug}/index.md"
+
+
 def write_root_index(sections: dict[str, list[Chapter]]) -> None:
+    """Оглавление как сюжет книги, а не как выгрузка ста двадцати пяти строк.
+
+    Читатель должен с первого экрана понять, куда его ведут и зачем, поэтому части
+    идут с рассказом «что даёт» и «что вы умеете после», а перечень глав — уже под ним.
+    """
     total = sum(len(v) for v in sections.values())
     lines = [
         "# Оглавление",
         "",
-        "> Полная карта хендбука. Если вы здесь впервые — начните с "
-        "[«Как пользоваться хендбуком»](00-start/01-how-to-use.md) "
-        "и [треков обучения](00-start/02-tracks.md).",
+        "> Это книга, а не сборник статей: части идут в том порядке, в котором их нужно "
+        "читать, и каждая опирается на предыдущие. Пройдёте подряд — на выходе будете знать "
+        "то, что спрашивают с middle+ MLE.",
         "",
-        f"**Разделов:** {len(sections)} · **глав:** {total}",
+        f"**Частей:** {len(PARTS)} · **разделов:** {len(sections)} · **глав:** {total}",
+        "",
+        "Первый раз здесь — [как пользоваться книгой](00-start/01-how-to-use.md). "
+        "Если времени мало и нужен срез под конкретную задачу — "
+        "[короткие маршруты](00-start/02-tracks.md).",
         "",
         "---",
         "",
     ]
-    for slug, chapters in sections.items():
-        title, description = SECTION_TITLES[slug]
-        number = slug.split("-")[0]
+
+    for part in PARTS:
+        present = [s for s in part["sections"] if s in sections]
+        if not present:
+            continue
+        chapters_in_part = sum(len(sections[s]) for s in present)
         lines += [
-            f"## {number} · [{title}]({slug}/index.md)",
+            f"## {part['title']}",
             "",
-            description,
+            f"{part['lead']}",
             "",
         ]
-        for chapter in chapters:
-            purpose = f" — {chapter.purpose}" if chapter.purpose else ""
-            lines.append(f"- [{chapter.title}]({slug}/{chapter.filename}){purpose}")
+        if part.get("after"):
+            lines += [f"**После этой части:** {part['after']}", ""]
+        lines += [f"*Глав: {chapters_in_part}*", ""]
+
+        for slug in present:
+            title, description = SECTION_TITLES[slug]
+            number = slug.split("-")[0]
+            lines += [
+                f"### {number} · [{title}]({slug}/index.md)",
+                "",
+                description,
+                "",
+            ]
+            for chapter in sections[slug]:
+                lines.append(f"- [{chapter.title}]({slug}/{chapter.filename})")
+            lines.append("")
+        lines.append("---")
         lines.append("")
+
     lines += [
-        "---",
-        "",
         "🏠 [К README репозитория](../README.md)",
         "",
     ]
@@ -233,6 +395,25 @@ NAV_END = "# <<< конец сгенерированной навигации"
 
 
 def render_nav(sections: dict[str, list[Chapter]]) -> str:
+    """Навигация сайта повторяет части книги: боковое меню — это её содержание."""
+    lines = [NAV_START, "nav:", "  - Оглавление: index.md"]
+    for part in PARTS:
+        present = [s for s in part["sections"] if s in sections]
+        if not present:
+            continue
+        lines.append(f"  - {part['title']}:")
+        for slug in present:
+            title, _ = SECTION_TITLES[slug]
+            lines.append(f"      - {title}:")
+            lines.append(f"          - {slug}/index.md")
+            for chapter in sections[slug]:
+                safe_title = chapter.title.replace('"', "'")
+                lines.append(f'          - "{safe_title}": {slug}/{chapter.filename}')
+    lines.append(NAV_END)
+    return "\n".join(lines)
+
+
+def render_nav_flat(sections: dict[str, list[Chapter]]) -> str:
     lines = [NAV_START, "nav:", "  - Оглавление: index.md"]
     for slug, chapters in sections.items():
         title, _ = SECTION_TITLES[slug]
@@ -318,7 +499,7 @@ def main() -> int:
         return 1
     write_footers(sections)
     for slug, chapters in sections.items():
-        write_section_index(slug, chapters)
+        write_section_index(slug, chapters, sections)
     write_root_index(sections)
     write_mkdocs_nav(sections)
     update_readme_badges(sections)
