@@ -130,7 +130,7 @@ def part_of(slug: str) -> dict | None:
 
 
 SECTION_TITLES = {
-    "00-start": ("Старт", "Как пользоваться хендбуком, треки обучения и карта собеседования."),
+    "00-start": ("Старт", "Как устроена книга, как её читать, что спрашивают на собеседовании и как учить, чтобы осталось."),
     "01-math": ("Математика", "Линейная алгебра, вероятность, статистика и оптимизация — только то, что реально нужно инженеру."),
     "02-classic-ml": ("Классический ML", "Ядро профессии: от постановки задачи обучения до бустинга, валидации и работы с признаками."),
     "03-deep-learning": ("Deep Learning", "Как на самом деле обучается сеть — от вывода backprop до трансформера и масштабирования."),
@@ -472,17 +472,18 @@ def update_readme_badges(sections: dict[str, list[Chapter]]) -> None:
 
     def fix_section_count(match: re.Match[str]) -> str:
         nonlocal fixed
-        slug_prefix, tail, claimed = match.group(1), match.group(2), int(match.group(3))
-        slug = next((s for s in sections if s.startswith(slug_prefix)), None)
-        if slug is None:
+        head, slug, mid, claimed = (match.group(1), match.group(2),
+                                    match.group(3), int(match.group(4)))
+        if slug not in sections:
             return match.group(0)
         real = len(sections[slug])
         if real != claimed:
             fixed += 1
-        return f"{slug_prefix}{tail}{real} глав"
+        return f"{head}{slug}{mid}{real}"
 
+    # Карта в README перечисляет разделы ссылками вида [Название](docs/07-mlops/index.md) — 12.
     text = re.sub(
-        r"(\d\d)( · [^\]]+\]\([^)]+\)\*\* — )(\d+) глав",
+        r"(\]\(docs/)(\d\d-[a-z-]+)(/index\.md\) — )(\d+)",
         fix_section_count,
         text,
     )
