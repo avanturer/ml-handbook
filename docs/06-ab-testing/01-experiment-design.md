@@ -1287,4 +1287,4 @@ $\sigma$ (для непрерывной), относительный MDE, $\alph
 
 ---
 
-⬅️ [Переобучение моделей](../09-monitoring/07-retraining.md) | 🏠 [Оглавление](../index.md) | ➡️ [Статистические критерии на практике](02-statistical-criteria.md)
+⬅️ [LLM в продакшене](../05-llm/11-llm-in-production.md) | 🏠 [Оглавление](../index.md) | ➡️ [Статистические критерии на практике](02-statistical-criteria.md)

@@ -6,7 +6,7 @@
 > и разбор того, чем ответ middle отличается от ответа middle+.
 
 **Уровень:** 🎯 middle → 🧠 middle+
-**Предварительно нужно:** [метрики](../02-classic-ml/04-metrics.md), [валидация](../02-classic-ml/13-validation-and-leakage.md), [сервинг](../07-mlops/05-serving-architectures.md), [мониторинг](../09-monitoring/01-what-to-monitor.md), [A/B-тесты](../06-ab-testing/01-experiment-design.md)
+**Предварительно нужно:** [метрики](../02-classic-ml/04-metrics.md), [валидация](../02-classic-ml/05-validation-and-leakage.md), [сервинг](../07-mlops/05-serving-architectures.md), [мониторинг](../09-monitoring/01-what-to-monitor.md), [A/B-тесты](../06-ab-testing/01-experiment-design.md)
 **Как проработать:** чтение + упражнения
 
 ---
@@ -918,4 +918,4 @@ in-batch negatives и сэмплирование по популярности �
 
 ---
 
-🏠 [Оглавление](../index.md) | ➡️ [Кейс: лента рекомендаций](02-case-feed-ranking.md)
+⬅️ [Онлайн-оценка рекомендаций](../10-recsys/15-recsys-online-evaluation.md) | 🏠 [Оглавление](../index.md) | ➡️ [Кейс: лента рекомендаций](02-case-feed-ranking.md)

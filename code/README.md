@@ -24,7 +24,7 @@ pytest code/tests/test_metrics.py::test_roc_auc_with_ties -vv
 | Файл | Что реализуете | Норматив | Теория |
 |---|---|---|---|
 | `exercises/metrics.py` | confusion matrix, precision/recall/F1, ROC-AUC, Average Precision, DCG, NDCG | 55 мин | [метрики](../docs/02-classic-ml/04-metrics.md), [метрики рекомендаций](../docs/10-recsys/02-metrics-offline.md) |
-| `exercises/models.py` | линейная регрессия, логистическая регрессия, KMeans, kNN | 55 мин | [линейные модели](../docs/02-classic-ml/02-linear-models.md), [кластеризация](../docs/02-classic-ml/10-clustering.md) |
+| `exercises/models.py` | линейная регрессия, логистическая регрессия, KMeans, kNN | 55 мин | [линейные модели](../docs/02-classic-ml/02-linear-models.md), [кластеризация](../docs/02-classic-ml/11-clustering.md) |
 | `exercises/attention.py` | устойчивый softmax, scaled dot-product attention, причинная маска, multi-head | 35 мин | [внимание и трансформер](../docs/03-deep-learning/04-attention-and-transformer.md) |
 
 Нормативы — ориентир по времени на live-coding. На первом заходе будет дольше;

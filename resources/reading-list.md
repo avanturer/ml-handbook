@@ -128,7 +128,7 @@
 - [Manning C., Raghavan P., Schütze H. «Introduction to Information Retrieval»](https://nlp.stanford.edu/IR-book/) — глава 8 «Evaluation in information retrieval»: MAP, MRR, NDCG, устройство асессорской разметки и пулинг. Первоисточник для всего раздела 8.
 - **Järvelin K., Kekäläinen J. «Cumulated Gain-Based Evaluation of IR Techniques» (2002), ACM TOIS 20(4)** — статья, в которой введён DCG/NDCG. Читать ради обоснования выбора логарифмического дисконта: это не единственный возможный выбор, и авторы объясняют, какой моделью поведения пользователя он мотивирован.
 
-### [Решающие деревья](../docs/02-classic-ml/05-decision-trees.md)
+### [Решающие деревья](../docs/02-classic-ml/06-decision-trees.md)
 
 - **Breiman, Friedman, Olshen, Stone. «Classification and Regression Trees» (CART), 1984** — первоисточник. Читать ради двух вещей, которых нет нигде больше в таком объёме: суррогатные сплиты с мерой предсказательной связи и полный разбор cost-complexity pruning с доказательством вложенности поддеревьев.
 - **Hastie, Tibshirani, Friedman. «The Elements of Statistical Learning», гл. 9.2** — самое аккуратное короткое изложение: критерии, пример «400/400» из раздела 3.5, обсуждение категориальных признаков и нестабильности. 15 страниц, читаются за вечер.
@@ -138,7 +138,7 @@
 - [Документация scikit-learn: Permutation feature importance](https://scikit-learn.org/stable/modules/permutation_importance.html) — короткий текст с честным разбором того, где permutation importance тоже ломается (коррелированные признаки). Читать сразу после раздела 8 этой главы.
 - [Открытый курс ODS (mlcourse.ai)](https://mlcourse.ai/book/index.html), тема 3 — русскоязычное изложение деревьев и kNN с кодом и визуализациями разделяющих поверхностей; хорошо заходит как второй проход для тех, кому не хватает картинок.
 
-### [Бэггинг и случайный лес](../docs/02-classic-ml/06-bagging-random-forest.md)
+### [Бэггинг и случайный лес](../docs/02-classic-ml/07-bagging-random-forest.md)
 
 - [Breiman L. «Random Forests», Machine Learning 45(1), 2001](https://link.springer.com/article/10.1023/A:1010933404324) — первоисточник. Читать ради двух вещей: теоремы о сходимости ошибки обобщения при $B\to\infty$ (это и есть строгий ответ на «переобучается ли лес от числа деревьев») и оценки обобщающей способности через «силу» деревьев и их корреляцию — прямой формальный аналог формулы из [§4](#4-дисперсия-среднего-коррелированных-величин).
 - **Breiman L. «Bagging Predictors», Machine Learning 24(2), 1996** — работа, где бэггинг и появился. Главное в ней — раздел про нестабильность: там прямо сказано, для каких базовых моделей бэггинг бесполезен и почему.
@@ -148,7 +148,7 @@
 - [Документация scikit-learn: Ensemble methods](https://scikit-learn.org/stable/modules/ensemble.html) — разделы про `RandomForest`, `ExtraTrees` и `Bagging`: точная семантика всех параметров и практические заметки о том, что sklearn делает не так, как в оригинальных статьях (в частности, усреднение вероятностей вместо голосования большинством).
 - [Открытый курс ODS (mlcourse.ai)](https://mlcourse.ai/book/index.html), тема 5 — русскоязычный разбор бэггинга и случайного леса с визуализациями и кодом; хороший второй проход после этой главы.
 
-### [Градиентный бустинг](../docs/02-classic-ml/07-gradient-boosting.md)
+### [Градиентный бустинг](../docs/02-classic-ml/08-gradient-boosting.md)
 
 - [Friedman J. «Greedy Function Approximation: A Gradient Boosting Machine» (2001)](https://jerryfriedman.su.domains/ftp/trebst.pdf) — первоисточник. Читать ради разделов с выводом общей схемы и с частными случаями функций потерь; там же — обоснование shrinkage.
 - [Friedman J. «Stochastic Gradient Boosting» (1999)](https://jerryfriedman.su.domains/ftp/stobst.pdf) — короткая работа про сабсэмплинг: откуда взялся `subsample` и сколько он реально даёт.
@@ -157,7 +157,7 @@
 - [Документация LightGBM: Parameters Tuning](https://lightgbm.readthedocs.io/en/latest/Parameters-Tuning.html) — практический разбор, какие параметры на что влияют; полезно как чек-лист перед тюнингом.
 - [Разбор бустинга в открытом курсе ODS (mlcourse.ai), тема 10](https://mlcourse.ai/book/topic10/topic10_gradient_boosting.html) — русскоязычное изложение с кодом; хорошо заходит как второй проход после этой главы.
 
-### [XGBoost, LightGBM, CatBoost](../docs/02-classic-ml/08-boosting-in-practice.md)
+### [XGBoost, LightGBM, CatBoost](../docs/02-classic-ml/09-boosting-in-practice.md)
 
 - [Chen T., Guestrin C. «XGBoost: A Scalable Tree Boosting System» (2016)](https://arxiv.org/abs/1603.02754) — раздел 3 содержит ровно то, что разобрано в [§2](#2-xgboost-поиск-сплита-в-масштабе): приближённый алгоритм, weighted quantile sketch с доказательством и sparsity-aware split finding. Раздел 4 — про блоки, кэш и out-of-core; полезен, если вас спрашивают про инженерию, а не только про математику.
 - **Ke G. et al. «LightGBM: A Highly Efficient Gradient Boosting Decision Tree», NeurIPS 2017** — оригинальная статья с выводом оценки Gain для GOSS и с формулировкой EFB как задачи раскраски графа. Доступна в открытых материалах конференции NeurIPS 2017; ищите по названию.
@@ -174,7 +174,7 @@
 - [Akiba T. et al. «Optuna: A Next-generation Hyperparameter Optimization Framework» (2019)](https://arxiv.org/abs/1907.10902) и [документация Optuna](https://optuna.readthedocs.io/) — define-by-run как архитектурное решение, устройство сэмплеров и прунеров. В документации смотрите разделы про `TPESampler` (параметры `multivariate`, `constant_liar`) и про распределённый запуск через общий storage.
 - [Grinsztajn L., Oyallon E., Varoquaux G. «Why do tree-based models still outperform deep learning on typical tabular data?» (2022)](https://arxiv.org/abs/2207.08815) — аккуратный бенчмарк с разбором причин: неровные функции, нерелевантные признаки, отсутствие инвариантности к вращению. Полезно, когда на собеседовании спрашивают «а почему не нейросеть».
 
-### [SVM, kNN и наивный Байес](../docs/02-classic-ml/09-svm-knn-bayes.md)
+### [SVM, kNN и наивный Байес](../docs/02-classic-ml/10-svm-knn-bayes.md)
 
 - [Cortes C., Vapnik V. «Support-Vector Networks» (1995)](https://link.springer.com/article/10.1007/BF00994018) — первоисточник soft-margin SVM. Читать ради постановки и разбора двойственной задачи; изложение на удивление доступное.
 - [Hsu C.-W., Chang C.-C., Lin C.-J. «A Practical Guide to Support Vector Classification»](https://www.csie.ntu.edu.tw/~cjlin/papers/guide/guide.pdf) — восемнадцать страниц от авторов LIBSVM: масштабирование, выбор ядра, сетка по $C$ и $\gamma$. Самый практичный текст про SVM, который существует.
@@ -187,7 +187,7 @@
 - [Документация scikit-learn: Nearest Neighbors](https://scikit-learn.org/stable/modules/neighbors.html) — разбор KD-tree/Ball-tree и границ их применимости по размерности.
 - [Malkov Yu., Yashunin D. «Efficient and robust approximate nearest neighbor search using HNSW graphs» (2016)](https://arxiv.org/abs/1603.09320) — то, чем на самом деле реализуют kNN в проде; читать после этой главы, если работаете с эмбеддингами.
 
-### [Кластеризация](../docs/02-classic-ml/10-clustering.md)
+### [Кластеризация](../docs/02-classic-ml/11-clustering.md)
 
 - [Arthur D., Vassilvitskii S. «k-means++: The Advantages of Careful Seeding» (2007)](https://theory.stanford.edu/~sergei/papers/kMeansPP-soda.pdf) — первоисточник $D^2$-семплирования с доказательством оценки $8(\ln K + 2)$. Читать ради самого доказательства: оно короткое и очень поучительное.
 - **Ester M., Kriegel H.-P., Sander J., Xu X. «A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise», KDD 1996** — оригинальная статья DBSCAN. Там же — исходное обоснование эвристики k-dist для выбора $\varepsilon$.
@@ -198,7 +198,7 @@
 - [Документация HDBSCAN: How HDBSCAN Works](https://hdbscan.readthedocs.io/en/latest/how_hdbscan_works.html) — пошаговый разбор с иллюстрациями: взаимная достижимость, MST, сжатое дерево, отбор по устойчивости. Самое понятное объяснение метода из существующих.
 - [Документация scikit-learn: Gaussian Mixture Models](https://scikit-learn.org/stable/modules/mixture.html) — про `covariance_type`, вырождение ковариаций и вариационный байесовский вариант (`BayesianGaussianMixture`), который умеет сам «выключать» лишние компоненты.
 
-### [Снижение размерности](../docs/02-classic-ml/11-dimensionality-reduction.md)
+### [Снижение размерности](../docs/02-classic-ml/12-dimensionality-reduction.md)
 
 - [van der Maaten L., Hinton G. «Visualizing Data using t-SNE», JMLR 2008](https://www.jmlr.org/papers/v9/vandermaaten08a.html) — первоисточник. Читать ради разделов 2–3: там вывод перплексии и объяснение, зачем в целевом пространстве понадобилось распределение Стьюдента (проблема скученности, crowding problem).
 - [Wattenberg M., Viégas F., Johnson I. «How to Use t-SNE Effectively», Distill 2016](https://distill.pub/2016/misread-tsne/) — интерактивная статья с живыми примерами того, как t-SNE врёт: размеры кластеров, расстояния, кластеры на шуме. Обязательна к прочтению перед тем, как показывать кому-либо t-SNE-картинку.
@@ -211,7 +211,7 @@
 - **Hastie, Tibshirani, Friedman. «The Elements of Statistical Learning», гл. 14.5–14.9** — PCA, PCA через SVD, нелинейные обобщения (кернел-PCA, локально-линейное вложение, ISOMAP) и многомерное шкалирование в едином изложении.
 - **Kobak D., Berens P. «The art of using t-SNE for single-cell transcriptomics», Nature Communications, 2019** — самая практичная работа про настройку t-SNE: инициализация, масштабирование learning rate под размер выборки, работа с миллионами точек.
 
-### [Дисбаланс классов и калибровка](../docs/02-classic-ml/12-imbalance-and-calibration.md)
+### [Дисбаланс классов и калибровка](../docs/02-classic-ml/13-imbalance-and-calibration.md)
 
 - [Chawla N. et al. «SMOTE: Synthetic Minority Over-sampling Technique» (2002), JAIR 16](https://arxiv.org/abs/1106.1813) — первоисточник. Читать ради точной формулировки алгоритма и, что важнее, ради условий экспериментов: станет видно, на каких данных метод проверяли и почему результаты не переносятся.
 - **Elor Y., Averbuch-Elor H. «To SMOTE, or not to SMOTE?» (2022)** — систематическое сравнение балансировки на десятках датасетов с сильными и слабыми моделями. Главный вывод: для сильных классификаторов после правильной настройки порога прирост исчезает. Лучший аргумент в споре «а давайте сделаем SMOTE».
@@ -222,7 +222,7 @@
 - [Guo C. et al. «On Calibration of Modern Neural Networks» (2017)](https://arxiv.org/abs/1706.04599) — про то же самое в мире нейросетей: почему современные сети систематически переуверены и почему temperature scaling с одним параметром часто достаточно. Читать перед тем, как калибровать выход нейросети.
 - [scikit-learn: Probability calibration](https://scikit-learn.org/stable/modules/calibration.html) — практический справочник: `CalibratedClassifierCV`, `calibration_curve`, схемы с out-of-fold и с замороженной моделью. Держать открытым при реализации.
 
-### [Валидация и утечки](../docs/02-classic-ml/13-validation-and-leakage.md)
+### [Валидация и утечки](../docs/02-classic-ml/05-validation-and-leakage.md)
 
 - [Документация sklearn: Cross-validation: evaluating estimator performance](https://scikit-learn.org/stable/modules/cross_validation.html) — полный список сплиттеров с картинками фолдов. Держите открытым при выборе схемы: там же разобраны `GroupKFold`, `StratifiedGroupKFold`, `TimeSeriesSplit` и предупреждения о i.i.d.
 - [Документация sklearn: Common pitfalls and recommended practices](https://scikit-learn.org/stable/common_pitfalls.html) — официальный разбор утечек через препроцессинг и правильного использования `random_state`. Короткая страница, которую стоит прочитать целиком перед первым продовым проектом.

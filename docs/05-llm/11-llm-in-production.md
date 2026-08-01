@@ -1859,4 +1859,4 @@ $\exp(\mu + \sigma^2/2)$ с выборочным средним. Затем по
 
 ---
 
-⬅️ [Безопасность и ограничители](10-llm-safety-and-guardrails.md) | 🏠 [Оглавление](../index.md) | ➡️ [Постановка задачи рекомендаций](../10-recsys/01-recsys-foundations.md)
+⬅️ [Безопасность и ограничители](10-llm-safety-and-guardrails.md) | 🏠 [Оглавление](../index.md) | ➡️ [Дизайн эксперимента](../06-ab-testing/01-experiment-design.md)

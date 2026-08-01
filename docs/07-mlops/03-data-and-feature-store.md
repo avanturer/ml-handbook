@@ -7,7 +7,7 @@
 > train/serve skew до того, как его поймает бизнес.
 
 **Уровень:** 🎯 middle → 🧠 middle+
-**Предварительно нужно:** [валидация и утечки](../02-classic-ml/13-validation-and-leakage.md), [работа с признаками](../02-classic-ml/14-feature-engineering.md), [жизненный цикл](01-ml-lifecycle.md)
+**Предварительно нужно:** [валидация и утечки](../02-classic-ml/05-validation-and-leakage.md), [работа с признаками](../02-classic-ml/14-feature-engineering.md), [жизненный цикл](01-ml-lifecycle.md)
 **Как проработать:** чтение + упражнения
 
 ---

@@ -89,22 +89,22 @@ flowchart TD
 2. [Линейная регрессия и регуляризация](../02-classic-ml/02-linear-models.md)
 3. [Логистическая регрессия](../02-classic-ml/03-logistic-regression.md)
 4. [Метрики качества](../02-classic-ml/04-metrics.md) ← **самая частая тема на собесах этого грейда**
-5. [Валидация и утечки](../02-classic-ml/13-validation-and-leakage.md) ← **вторая по частоте**
+5. [Валидация и утечки](../02-classic-ml/05-validation-and-leakage.md) ← **вторая по частоте**
 6. Подтянуть по ссылкам: [теория вероятностей](../01-math/02-probability.md), [статистика](../01-math/03-statistics.md)
 
 ### Этап 2 — деревья и ансамбли
-7. [Решающие деревья](../02-classic-ml/05-decision-trees.md)
-8. [Бэггинг и случайный лес](../02-classic-ml/06-bagging-random-forest.md)
-9. [Градиентный бустинг](../02-classic-ml/07-gradient-boosting.md) ← ключевая глава, не пропускать вывод
-10. [XGBoost, LightGBM, CatBoost](../02-classic-ml/08-boosting-in-practice.md)
-11. [Дисбаланс классов и калибровка](../02-classic-ml/12-imbalance-and-calibration.md)
+7. [Решающие деревья](../02-classic-ml/06-decision-trees.md)
+8. [Бэггинг и случайный лес](../02-classic-ml/07-bagging-random-forest.md)
+9. [Градиентный бустинг](../02-classic-ml/08-gradient-boosting.md) ← ключевая глава, не пропускать вывод
+10. [XGBoost, LightGBM, CatBoost](../02-classic-ml/09-boosting-in-practice.md)
+11. [Дисбаланс классов и калибровка](../02-classic-ml/13-imbalance-and-calibration.md)
 
 ### Этап 3 — работа с данными
 12. [Работа с признаками](../02-classic-ml/14-feature-engineering.md)
 13. [Интерпретируемость](../02-classic-ml/15-interpretability.md)
-14. [SVM, kNN и наивный Байес](../02-classic-ml/09-svm-knn-bayes.md)
-15. [Кластеризация](../02-classic-ml/10-clustering.md)
-16. [Снижение размерности](../02-classic-ml/11-dimensionality-reduction.md)
+14. [SVM, kNN и наивный Байес](../02-classic-ml/10-svm-knn-bayes.md)
+15. [Кластеризация](../02-classic-ml/11-clustering.md)
+16. [Снижение размерности](../02-classic-ml/12-dimensionality-reduction.md)
 
 ### Этап 4 — код и SQL
 17. [Python, который спрашивают](../12-coding/01-python-for-mle.md)
@@ -139,9 +139,9 @@ flowchart TD
 
 ### Этап 1 — закрыть глубину в классике
 Быстрый проход только по блокам 🧠 и «Подводные камни»:
-[бустинг](../02-classic-ml/07-gradient-boosting.md) → [библиотеки бустинга](../02-classic-ml/08-boosting-in-practice.md)
-→ [метрики](../02-classic-ml/04-metrics.md) → [калибровка](../02-classic-ml/12-imbalance-and-calibration.md)
-→ [валидация и утечки](../02-classic-ml/13-validation-and-leakage.md)
+[бустинг](../02-classic-ml/08-gradient-boosting.md) → [библиотеки бустинга](../02-classic-ml/09-boosting-in-practice.md)
+→ [метрики](../02-classic-ml/04-metrics.md) → [калибровка](../02-classic-ml/13-imbalance-and-calibration.md)
+→ [валидация и утечки](../02-classic-ml/05-validation-and-leakage.md)
 → [uplift и причинность](../02-classic-ml/17-uplift-and-causal.md)
 
 ### Этап 2 — продакшен
@@ -194,15 +194,15 @@ flowchart TD
 
 **Неделя 0 (2 вечера). Диагностика.**
 Пройдите блоки «Проверь себя» — только вопросы, без чтения глав — в: [метрики](../02-classic-ml/04-metrics.md),
-[валидация](../02-classic-ml/13-validation-and-leakage.md), [бустинг](../02-classic-ml/07-gradient-boosting.md),
+[валидация](../02-classic-ml/05-validation-and-leakage.md), [бустинг](../02-classic-ml/08-gradient-boosting.md),
 [внимание и трансформер](../03-deep-learning/04-attention-and-transformer.md),
 [сервинг](../07-mlops/05-serving-architectures.md), [дрифт](../09-monitoring/03-drift-detection.md),
 [дизайн эксперимента](../06-ab-testing/01-experiment-design.md).
 Выпишите всё, где ответили неуверенно. Это ваш план.
 
 **Недели 1–2. Ядро теории.** Дыры из диагностики + обязательный минимум:
-[метрики](../02-classic-ml/04-metrics.md), [валидация и утечки](../02-classic-ml/13-validation-and-leakage.md),
-[бустинг](../02-classic-ml/07-gradient-boosting.md), [калибровка](../02-classic-ml/12-imbalance-and-calibration.md),
+[метрики](../02-classic-ml/04-metrics.md), [валидация и утечки](../02-classic-ml/05-validation-and-leakage.md),
+[бустинг](../02-classic-ml/08-gradient-boosting.md), [калибровка](../02-classic-ml/13-imbalance-and-calibration.md),
 [статистика](../01-math/03-statistics.md).
 
 **Неделя 3. Код.** [Реализуем ML руками](../12-coding/03-ml-from-scratch.md) +
@@ -292,9 +292,9 @@ easy/medium, задачи с упором на хэш-таблицы, два у�
 регуляризация = априорное распределение, почему log-loss = максимум правдоподобия.
 
 **Блок 3 (2 недели). Ансамбли до дна.**
-[Деревья](../02-classic-ml/05-decision-trees.md) → [лес](../02-classic-ml/06-bagging-random-forest.md)
-→ [бустинг](../02-classic-ml/07-gradient-boosting.md) (полный вывод, включая формулу листа XGBoost)
-→ [библиотеки](../02-classic-ml/08-boosting-in-practice.md).
+[Деревья](../02-classic-ml/06-decision-trees.md) → [лес](../02-classic-ml/07-bagging-random-forest.md)
+→ [бустинг](../02-classic-ml/08-gradient-boosting.md) (полный вывод, включая формулу листа XGBoost)
+→ [библиотеки](../02-classic-ml/09-boosting-in-practice.md).
 
 **Блок 4 (2 недели). Нейросети до дна.**
 [Backprop](../03-deep-learning/01-neural-nets-and-backprop.md) → [динамика обучения](../03-deep-learning/02-training-dynamics.md)
@@ -328,7 +328,7 @@ attention с нуля и проверкой размерностей.
 Ваша сильная сторона — инженерия и системы. Дыра — ML-теория и метрики.
 
 Полностью [классический ML](../02-classic-ml/01-learning-theory.md) (главы 1–15) →
-[математика по пререквизитам](../01-math/03-statistics.md) → [валидация](../02-classic-ml/13-validation-and-leakage.md)
+[математика по пререквизитам](../01-math/03-statistics.md) → [валидация](../02-classic-ml/05-validation-and-leakage.md)
 → [метрики](../02-classic-ml/04-metrics.md) → [A/B-тесты](../06-ab-testing/01-experiment-design.md)
 → [нейросети](../03-deep-learning/01-neural-nets-and-backprop.md) →
 профильный раздел ([рекомендации](../10-recsys/01-recsys-foundations.md) или [LLM](../05-llm/01-llm-architecture.md)).
@@ -351,7 +351,7 @@ attention с нуля и проверкой размерностей.
 <summary><b>RecSys Engineer</b></summary>
 
 Обязательно: весь [раздел 06](../10-recsys/01-recsys-foundations.md) целиком;
-[метрики ранжирования](../02-classic-ml/04-metrics.md); [бустинг](../02-classic-ml/07-gradient-boosting.md);
+[метрики ранжирования](../02-classic-ml/04-metrics.md); [бустинг](../02-classic-ml/08-gradient-boosting.md);
 [A/B в рекомендациях](../10-recsys/15-recsys-online-evaluation.md) и [сложные схемы A/B](../06-ab-testing/05-complex-designs.md)
 (сетевые эффекты и каннибализация — любимая тема);
 [feature store](../07-mlops/03-data-and-feature-store.md); кейсы [лента](../11-system-design/02-case-feed-ranking.md)

@@ -7,7 +7,7 @@
 > FGSM руками и честно назвать цену защиты в качестве — потому что бесплатной защиты здесь нет.
 
 **Уровень:** 🎯 middle → 🧠 middle+
-**Предварительно нужно:** [нейросети и backprop](../03-deep-learning/01-neural-nets-and-backprop.md), [архитектуры сервинга](05-serving-architectures.md), [данные и feature store](03-data-and-feature-store.md), [дрифт данных](../09-monitoring/03-drift-detection.md)
+**Предварительно нужно:** [нейросети и backprop](../03-deep-learning/01-neural-nets-and-backprop.md), [архитектуры сервинга](05-serving-architectures.md), [данные и feature store](03-data-and-feature-store.md)
 **Как проработать:** чтение + реализация атаки + разбор модели угроз своего сервиса
 
 ---

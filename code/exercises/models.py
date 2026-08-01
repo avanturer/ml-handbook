@@ -10,7 +10,7 @@
     KNNClassifier         — 10 минут
 
 Теория: docs/02-classic-ml/02-linear-models.md, 03-logistic-regression.md,
-        10-clustering.md, 09-svm-knn-bayes.md
+        11-clustering.md, 10-svm-knn-bayes.md
 """
 
 from __future__ import annotations

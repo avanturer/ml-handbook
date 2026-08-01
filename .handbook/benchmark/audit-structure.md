@@ -99,7 +99,7 @@
 | `8. Практика` | 112 / 117 |
 | `9. Что читать дальше` | 117 / 117 |
 
-Стабилен только хвост. Середина главы — свободная форма: `07-gradient-boosting` идёт
+Стабилен только хвост. Середина главы — свободная форма: `08-gradient-boosting` идёт
 «Проблема → Аддитивная модель → Главная идея → Разбор двух случаев → Второй порядок →
 Регуляризация → Реализация», `03-drift-detection` — 17 нумерованных тематических разделов,
 `05-sql-drills` — «Блок A … Блок J».
@@ -254,7 +254,7 @@
 
 | Глава | Требует главу, которая идёт позже |
 |---|---|
-| `02-classic-ml/08-boosting-in-practice` | `02-classic-ml/13-validation-and-leakage` |
+| `02-classic-ml/09-boosting-in-practice` | `02-classic-ml/05-validation-and-leakage` |
 | `03-deep-learning/05-pytorch-in-practice` | `12-coding/01-python-for-mle` |
 | `05-llm/05-inference-and-serving` | `07-mlops/05-serving-architectures` |
 | `10-recsys/13-exploration-and-bandits` | `06-ab-testing/01-experiment-design` |
@@ -280,7 +280,7 @@ follow naturally from Chapter 10, and the chapters are probably best read in tha
    требуют раздела 10 — либо пройдите его раньше, либо читайте 13–15 после него»).
 2. Добавить в `make check` правило: forward-пререквизит внутри одного раздела — ошибка,
    между разделами — предупреждение с обязательной явной оговоркой в тексте главы.
-3. Перенести `02-classic-ml/13-validation-and-leakage` на позицию 05 (перед деревьями):
+3. Перенести `02-classic-ml/05-validation-and-leakage` на позицию 05 (перед деревьями):
    валидация — пререквизит для 4 глав раздела, а сама требует только 01, 04 и статистику.
    Треки её и так ставят пятой (`02-tracks.md`, трек 1, этап 1, пункт 5) — то есть
    рекомендованный порядок уже расходится с файловым.
@@ -296,7 +296,7 @@ follow naturally from Chapter 10, and the chapters are probably best read in tha
 ```
 02-classic-ml/15-interpretability .....  2 ссылки  (глава на 1198 строк)
 01-math/01-linear-algebra ..............  3
-02-classic-ml/11-dimensionality-reduction  3
+02-classic-ml/12-dimensionality-reduction  3
 02-classic-ml/18-anomaly-detection .....  4
 ...
 09-monitoring/07-retraining ............ 24
@@ -475,7 +475,7 @@ d2l — 98 % разделов), `CHANGELOG.md` по главам (отсутст
 - `04-nlp`: без схем `01-text-representation`, `02-embeddings`, `03-seq2seq-and-attention`;
 - главы, где схема несёт основную нагрузку, обходятся **одной**:
   `04-attention-and-transformer` (1021 строка → 1 диаграмма),
-  `07-gradient-boosting` (981 строка → 1 диаграмма).
+  `08-gradient-boosting` (981 строка → 1 диаграмма).
 
 **Почему это проблема.** «Сводный контракт главы» в `gold-standard-techniques.md` помечает
 «Иллюстрация на каждый смысловой блок, подпись-абзац» и «Панельные рисунки a/b/c»

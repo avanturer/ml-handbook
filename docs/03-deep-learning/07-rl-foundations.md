@@ -8,7 +8,7 @@
 > supervised-постановку.
 
 **Уровень:** 🎯 middle → 🧠 middle+
-**Предварительно нужно:** [вероятность](../01-math/02-probability.md), [оптимизация](../01-math/04-optimization.md), [как обучается сеть](02-training-dynamics.md), [эксплорация и бандиты](../10-recsys/13-exploration-and-bandits.md)
+**Предварительно нужно:** [вероятность](../01-math/02-probability.md), [оптимизация](../01-math/04-optimization.md), [как обучается сеть](02-training-dynamics.md)
 **Как проработать:** чтение + вывод REINFORCE руками + запуск табличного Q-learning
 
 ---
@@ -1111,4 +1111,4 @@ baseline в виде скользящего среднего отдачи.
 
 ---
 
-⬅️ [Масштабирование и эффективность](06-scaling-and-efficiency.md) | 🏠 [Оглавление](../index.md) | ➡️ [Генеративные модели](08-generative-models.md)
+⬅️ [Масштабирование обучения](06-scaling-and-efficiency.md) | 🏠 [Оглавление](../index.md) | ➡️ [Генеративные модели](08-generative-models.md)

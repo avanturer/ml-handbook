@@ -183,6 +183,51 @@ def write_root_index(sections: dict[str, list[Chapter]]) -> None:
     (DOCS / "index.md").write_text("\n".join(lines), encoding="utf-8")
 
 
+FOOTER_RE = re.compile(r"^(?:⬅️.*?\|\s*)?🏠 \[Оглавление\]\(\.\./index\.md\)(?:\s*\|\s*➡️.*)?$",
+                       re.MULTILINE)
+
+
+def write_footers(sections: dict[str, list[Chapter]]) -> None:
+    """Проставляет стрелки «назад / оглавление / вперёд» по каноническому порядку.
+
+    Подвал — это то, чем читатель пользуется, когда читает книгу подряд, и он же
+    первым разъезжается при любой перестановке глав: после переноса главы стрелки
+    начинают перепрыгивать через неё или вести назад через полкниги. Поэтому подвал
+    не правится руками, а собирается из фактического порядка файлов.
+    """
+    flat: list[Chapter] = []
+    for chapters in sections.values():
+        flat.extend(chapters)
+
+    changed = 0
+    for index, chapter in enumerate(flat):
+        parts = []
+        if index > 0:
+            prev = flat[index - 1]
+            parts.append(f"⬅️ [{prev.title}]({relative_link(chapter, prev)})")
+        parts.append("🏠 [Оглавление](../index.md)")
+        if index + 1 < len(flat):
+            nxt = flat[index + 1]
+            parts.append(f"➡️ [{nxt.title}]({relative_link(chapter, nxt)})")
+        footer = " | ".join(parts)
+
+        text = chapter.path.read_text(encoding="utf-8")
+        if not FOOTER_RE.search(text):
+            continue
+        new_text = FOOTER_RE.sub(lambda _m: footer, text, count=1)
+        if new_text != text:
+            chapter.path.write_text(new_text, encoding="utf-8")
+            changed += 1
+    print(f"Подвалы: пересобрано {changed} из {len(flat)}.")
+
+
+def relative_link(source: Chapter, target: Chapter) -> str:
+    """Ссылка из одной главы в другую: внутри раздела — имя файла, иначе через `../`."""
+    if source.path.parent == target.path.parent:
+        return target.filename
+    return f"../{target.path.parent.name}/{target.filename}"
+
+
 NAV_START = "# >>> nav: сгенерировано tools/build_nav.py — не редактировать вручную"
 NAV_END = "# <<< конец сгенерированной навигации"
 
@@ -271,6 +316,7 @@ def main() -> int:
     if not sections:
         print("Главы не найдены — нечего собирать.")
         return 1
+    write_footers(sections)
     for slug, chapters in sections.items():
         write_section_index(slug, chapters)
     write_root_index(sections)

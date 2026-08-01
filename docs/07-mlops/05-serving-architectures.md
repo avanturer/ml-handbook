@@ -7,7 +7,7 @@
 > число реплик под заданный RPS и почему автоскейлинг не спасает ML-сервис от всплеска трафика.
 
 **Уровень:** 🎯 middle → 🧠 middle+
-**Предварительно нужно:** [упаковка модели](04-model-packaging.md), [данные и feature store](03-data-and-feature-store.md), [Python для MLE (GIL, конкурентность)](../12-coding/01-python-for-mle.md)
+**Предварительно нужно:** [упаковка модели](04-model-packaging.md), [данные и feature store](03-data-and-feature-store.md)
 **Как проработать:** чтение + поднять сервис + нагрузочный тест
 
 ---

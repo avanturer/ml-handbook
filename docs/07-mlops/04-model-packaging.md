@@ -8,7 +8,7 @@
 > тридцать секунд, а не полдня.
 
 **Уровень:** 🎯 middle → 🧠 middle+
-**Предварительно нужно:** [воспроизводимость и трекинг](02-reproducibility-and-tracking.md), [данные и feature store](03-data-and-feature-store.md), [Python для MLE](../12-coding/01-python-for-mle.md)
+**Предварительно нужно:** [воспроизводимость и трекинг](02-reproducibility-and-tracking.md), [данные и feature store](03-data-and-feature-store.md)
 **Как проработать:** чтение + упражнения
 
 ---

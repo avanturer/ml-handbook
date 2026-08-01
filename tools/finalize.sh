@@ -21,6 +21,9 @@ python3 tools/check_manifest.py || fail=1
 step "3. Структура глав, внутренние ссылки, формулы"
 python3 tools/check_handbook.py || fail=1
 
+step "3a. Порядок: книга должна читаться подряд"
+python3 tools/check_order.py || fail=1
+
 step "4. Покрытие обязательных тем из чек-листа пробелов"
 python3 tools/check_coverage.py || fail=1
 

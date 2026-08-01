@@ -13,7 +13,7 @@
 **Предварительно нужно:** [дрифт данных](03-drift-detection.md),
 [что мониторить](01-what-to-monitor.md),
 [метрики качества](../02-classic-ml/04-metrics.md),
-[дисбаланс и калибровка](../02-classic-ml/12-imbalance-and-calibration.md)
+[дисбаланс и калибровка](../02-classic-ml/13-imbalance-and-calibration.md)
 **Как проработать:** чтение + собрать сегментный отчёт на своих данных
 
 ---

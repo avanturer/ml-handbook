@@ -6,8 +6,8 @@
 репозитории. Руками это гарантированный источник битых ссылок.
 
 Запуск:
-    python tools/renumber_chapter.py --dry-run 02-classic-ml 13-validation-and-leakage 5
-    python tools/renumber_chapter.py 02-classic-ml 13-validation-and-leakage 5
+    python tools/renumber_chapter.py --dry-run 02-classic-ml 05-validation-and-leakage 5
+    python tools/renumber_chapter.py 02-classic-ml 05-validation-and-leakage 5
 
 Третий аргумент — новый номер главы (позиция в разделе, начиная с 1).
 """

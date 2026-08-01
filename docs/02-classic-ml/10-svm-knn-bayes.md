@@ -564,7 +564,7 @@ kernel-SVM ушёл из продакшена: бустинг на тех же �
 > не решает задачу «внутри», а обучает поверх модели сигмоиду Платта на кросс-валидации — это
 > в 5+ раз дороже обучения и может противоречить `predict` в пограничных случаях. Если нужны
 > вероятности — берите логистическую регрессию или калибруйте явно
-> (см. [главу о калибровке](12-imbalance-and-calibration.md)).
+> (см. [главу о калибровке](13-imbalance-and-calibration.md)).
 
 ---
 
@@ -1024,7 +1024,7 @@ print("accuracy:", round(accuracy_score(test.target, clf.predict(test.data)), 3)
 Причина: `StandardScaler` или `SelectKBest` применён ко всей выборке до разбиения — статистики
 и выбор признаков видели валидационные объекты.
 Что делать: всё в `Pipeline`, кросс-валидация поверх пайплайна
-(см. [главу о валидации и утечках](13-validation-and-leakage.md)).
+(см. [главу о валидации и утечках](05-validation-and-leakage.md)).
 
 ---
 
@@ -1364,4 +1364,4 @@ $\tanh(\kappa u^\top v + c)$ имеет отрицательное собств�
 
 ---
 
-⬅️ [XGBoost, LightGBM, CatBoost](08-boosting-in-practice.md) | 🏠 [Оглавление](../index.md) | ➡️ [Кластеризация](10-clustering.md)
+⬅️ [XGBoost, LightGBM, CatBoost](09-boosting-in-practice.md) | 🏠 [Оглавление](../index.md) | ➡️ [Кластеризация](11-clustering.md)

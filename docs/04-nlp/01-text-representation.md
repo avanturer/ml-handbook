@@ -1018,7 +1018,7 @@ if __name__ == "__main__":
 Причина: `TfidfVectorizer.fit()` вызван на всём датасете до разбиения, и статистика df посчитана
 с учётом валидации.
 Что делать: `fit` только на train внутри `Pipeline`, как и любой другой препроцессор;
-см. [главу про утечки](../02-classic-ml/13-validation-and-leakage.md).
+см. [главу про утечки](../02-classic-ml/05-validation-and-leakage.md).
 
 **Числа и идентификаторы.**
 Симптом: модель путает 2019 и 2091, плохо считает.
@@ -1353,4 +1353,4 @@ fertility и chars-per-token на 200 текстах из вашего доме�
 
 ---
 
-⬅️ [Масштабирование обучения](../03-deep-learning/06-scaling-and-efficiency.md) | 🏠 [Оглавление](../index.md) | ➡️ [Эмбеддинги](02-embeddings.md)
+⬅️ [Генеративные модели](../03-deep-learning/08-generative-models.md) | 🏠 [Оглавление](../index.md) | ➡️ [Эмбеддинги](02-embeddings.md)

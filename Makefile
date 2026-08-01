@@ -21,6 +21,7 @@ diagrams:  ## Только схемы: отрендерить mermaid и убе�
 check-fast:  ## Быстрые проверки: состав, структура глав, внутренние ссылки, покрытие тем
 	$(PY) tools/check_manifest.py
 	$(PY) tools/check_handbook.py
+	$(PY) tools/check_order.py
 	$(PY) tools/check_coverage.py
 	$(PY) tools/check_math.py
 

@@ -971,7 +971,7 @@ pipe = ImbPipeline([
 ```
 
 Отдельно: подробный разбор того, почему oversampling часто вообще не нужен, —
-в [главе о дисбалансе](12-imbalance-and-calibration.md).
+в [главе о дисбалансе](13-imbalance-and-calibration.md).
 
 ### Лик 9. Лик через target encoding
 
@@ -1034,7 +1034,7 @@ pipe = Pipeline([("pre", pre), ("clf", HistGradientBoostingClassifier(random_sta
 внутри категорий и между ними.
 
 Альтернатива — CatBoost с ordered target statistics: он решает ту же задачу на уровне алгоритма
-(см. [главу о бустинге на практике](08-boosting-in-practice.md)).
+(см. [главу о бустинге на практике](09-boosting-in-practice.md)).
 
 ### Лик 10. Лик через глобальные агрегаты и нормализацию по группе
 
@@ -1884,4 +1884,4 @@ target encoding для высококардинальных, отбором пр
 
 ---
 
-⬅️ [Дисбаланс классов и калибровка](12-imbalance-and-calibration.md) | 🏠 [Оглавление](../index.md) | ➡️ [Работа с признаками](14-feature-engineering.md)
+⬅️ [Метрики качества](04-metrics.md) | 🏠 [Оглавление](../index.md) | ➡️ [Решающие деревья](06-decision-trees.md)

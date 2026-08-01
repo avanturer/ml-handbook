@@ -9,7 +9,7 @@
 > без человека — это способ уронить прод по расписанию.
 
 **Уровень:** 🎯 middle → 🧠 middle+
-**Предварительно нужно:** [воспроизводимость и трекинг](02-reproducibility-and-tracking.md), [упаковка модели](04-model-packaging.md), [Docker и Kubernetes](06-docker-and-k8s.md), [валидация и утечки](../02-classic-ml/13-validation-and-leakage.md)
+**Предварительно нужно:** [воспроизводимость и трекинг](02-reproducibility-and-tracking.md), [упаковка модели](04-model-packaging.md), [Docker и Kubernetes](06-docker-and-k8s.md), [валидация и утечки](../02-classic-ml/05-validation-and-leakage.md)
 **Как проработать:** чтение + собрать пайплайн на своём проекте
 
 ---
@@ -900,7 +900,7 @@ jobs:
 Что делать: тест point-in-time корректности как обязательный: для случайной выборки из 1000
 объектов пересобрать признаки «на дату события» отдельным медленным честным кодом и сравнить
 с тем, что выдаёт продовый пайплайн. Расхождение — блокирующая ошибка. Подробно —
-в главах [валидация и утечки](../02-classic-ml/13-validation-and-leakage.md) и
+в главах [валидация и утечки](../02-classic-ml/05-validation-and-leakage.md) и
 [feature store](03-data-and-feature-store.md).
 
 **Артефакт нельзя откатить.**

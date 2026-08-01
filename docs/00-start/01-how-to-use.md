@@ -193,9 +193,9 @@ flowchart TD
 который реально работает:
 
 ```markdown
-- [x] 02-classic-ml/07-gradient-boosting.md — прочитано 12.03, вывод XGBoost повторён на бумаге,
+- [x] 02-classic-ml/08-gradient-boosting.md — прочитано 12.03, вывод XGBoost повторён на бумаге,
       задачи 1-2 сделаны. Не понял до конца: почему min_child_weight — сумма гессианов. Вернуться.
-- [ ] 02-classic-ml/08-boosting-in-practice.md
+- [ ] 02-classic-ml/09-boosting-in-practice.md
 ```
 
 Три вещи в этой записи важны: дата (для интервальных повторений), что именно сделано
@@ -248,7 +248,7 @@ flowchart TD
 <summary><b>Материал устареет — что делать?</b></summary>
 
 Разделы [математики](../01-math/01-linear-algebra.md), [классического ML](../02-classic-ml/01-learning-theory.md),
-[A/B-тестов](../06-ab-testing/01-experiment-design.md) и [валидации](../02-classic-ml/13-validation-and-leakage.md)
+[A/B-тестов](../06-ab-testing/01-experiment-design.md) и [валидации](../02-classic-ml/05-validation-and-leakage.md)
 устаревают крайне медленно — там всё написанное будет верно и через десять лет.
 
 Быстро меняются [LLM](../05-llm/01-llm-architecture.md), [LLM в рекомендациях](../10-recsys/11-llm-recsys.md)

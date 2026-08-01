@@ -1476,4 +1476,4 @@ row group? колонка не в статистиках?), это и есть �
 
 ---
 
-⬅️ [Стоимость и ёмкость](../07-mlops/10-cost-and-capacity.md) | 🏠 [Оглавление](../index.md) | ➡️ [SQL для MLE](02-sql-for-mle.md)
+⬅️ [Безопасность ML-систем](../07-mlops/12-ml-security.md) | 🏠 [Оглавление](../index.md) | ➡️ [SQL для MLE](02-sql-for-mle.md)

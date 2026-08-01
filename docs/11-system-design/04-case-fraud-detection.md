@@ -8,7 +8,7 @@
 > ROC-AUC» — ответ, после которого секцию можно не продолжать.
 
 **Уровень:** 🎯 middle → 🧠 middle+
-**Предварительно нужно:** [каркас ответа](01-framework.md), [метрики качества](../02-classic-ml/04-metrics.md), [дисбаланс и калибровка](../02-classic-ml/12-imbalance-and-calibration.md), [валидация и утечки](../02-classic-ml/13-validation-and-leakage.md), [деградация модели](../09-monitoring/04-model-degradation.md)
+**Предварительно нужно:** [каркас ответа](01-framework.md), [метрики качества](../02-classic-ml/04-metrics.md), [дисбаланс и калибровка](../02-classic-ml/13-imbalance-and-calibration.md), [валидация и утечки](../02-classic-ml/05-validation-and-leakage.md), [деградация модели](../09-monitoring/04-model-degradation.md)
 **Как проработать:** чтение + прогон кейса вслух с таймером
 
 ---
@@ -480,7 +480,7 @@ $$
 
 где $p_s$ — вероятность, которую выдаёт модель, обученная на прореженной выборке,
 $\beta \in (0,1]$ — доля сохранённых негативов, $p$ — вероятность на исходном распределении.
-Подробности и вывод — в главе [дисбаланс и калибровка](../02-classic-ml/12-imbalance-and-calibration.md).
+Подробности и вывод — в главе [дисбаланс и калибровка](../02-classic-ml/13-imbalance-and-calibration.md).
 
 ---
 
@@ -1050,8 +1050,8 @@ $p = \beta p_s / (\beta p_s - p_s + 1)$ восстанавливает веро�
   системы порождает петлю, здесь особенно уместны.
 - **Chip Huyen. «Designing Machine Learning Systems» (O'Reilly, 2022)** — главы про
   degenerate feedback loops и про мониторинг закрывают шаги 3 и 7 этого кейса.
-- Для внутренней математики: [дисбаланс и калибровка](../02-classic-ml/12-imbalance-and-calibration.md),
-  [валидация и утечки](../02-classic-ml/13-validation-and-leakage.md),
+- Для внутренней математики: [дисбаланс и калибровка](../02-classic-ml/13-imbalance-and-calibration.md),
+  [валидация и утечки](../02-classic-ml/05-validation-and-leakage.md),
   [интерпретируемость](../02-classic-ml/15-interpretability.md),
   [деградация модели](../09-monitoring/04-model-degradation.md).
 

@@ -7,7 +7,7 @@
 > так, чтобы через полгода чужой запуск можно было повторить за час, а не за неделю.
 
 **Уровень:** 🎯 middle → 🧠 middle+
-**Предварительно нужно:** [жизненный цикл](01-ml-lifecycle.md), [валидация и утечки](../02-classic-ml/13-validation-and-leakage.md), [PyTorch на практике](../03-deep-learning/05-pytorch-in-practice.md)
+**Предварительно нужно:** [жизненный цикл](01-ml-lifecycle.md), [валидация и утечки](../02-classic-ml/05-validation-and-leakage.md), [PyTorch на практике](../03-deep-learning/05-pytorch-in-practice.md)
 **Как проработать:** чтение + упражнения
 
 ---
@@ -846,7 +846,7 @@ python -m proj.train --config-path . --config-name config.resolved
 Симптом: офлайн-метрика отличная, в проде хуже на 5–7 п.п.
 Причина: `StandardScaler`/`TargetEncoder`/отбор признаков обучены **до** разбиения на фолды.
 Что делать: препроцессинг внутри `Pipeline`, фит только на train-части фолда;
-проверка — [валидация и утечки](../02-classic-ml/13-validation-and-leakage.md).
+проверка — [валидация и утечки](../02-classic-ml/05-validation-and-leakage.md).
 
 **Трекер превратился в свалку.**
 Симптом: 3000 запусков, найти нужный невозможно.

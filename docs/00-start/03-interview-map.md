@@ -314,8 +314,8 @@ flowchart LR
 | **Код: ML с нуля** | [ML руками](../12-coding/03-ml-from-scratch.md), [NumPy и pandas](../12-coding/02-numpy-pandas.md), [PyTorch-тренировка](../12-coding/06-pytorch-drills.md) | высокий |
 | **Код: SQL** | [SQL для MLE](../08-big-data/02-sql-for-mle.md), [SQL-тренировка](../12-coding/05-sql-drills.md) | высокий |
 | **ML-теория: ядро** | [теория обучения](../02-classic-ml/01-learning-theory.md), [линейные модели](../02-classic-ml/02-linear-models.md), [логрег](../02-classic-ml/03-logistic-regression.md), [метрики](../02-classic-ml/04-metrics.md) | критический |
-| **ML-теория: ансамбли** | [деревья](../02-classic-ml/05-decision-trees.md), [лес](../02-classic-ml/06-bagging-random-forest.md), [бустинг](../02-classic-ml/07-gradient-boosting.md), [библиотеки](../02-classic-ml/08-boosting-in-practice.md) | критический |
-| **ML-теория: данные** | [валидация и утечки](../02-classic-ml/13-validation-and-leakage.md), [признаки](../02-classic-ml/14-feature-engineering.md), [дисбаланс](../02-classic-ml/12-imbalance-and-calibration.md) | критический |
+| **ML-теория: ансамбли** | [деревья](../02-classic-ml/06-decision-trees.md), [лес](../02-classic-ml/07-bagging-random-forest.md), [бустинг](../02-classic-ml/08-gradient-boosting.md), [библиотеки](../02-classic-ml/09-boosting-in-practice.md) | критический |
+| **ML-теория: данные** | [валидация и утечки](../02-classic-ml/05-validation-and-leakage.md), [признаки](../02-classic-ml/14-feature-engineering.md), [дисбаланс](../02-classic-ml/13-imbalance-and-calibration.md) | критический |
 | **ML-теория: математика** | [статистика](../01-math/03-statistics.md), [оптимизация](../01-math/04-optimization.md), [вероятность](../01-math/02-probability.md) | средний |
 | **Deep Learning** | [backprop](../03-deep-learning/01-neural-nets-and-backprop.md), [динамика обучения](../03-deep-learning/02-training-dynamics.md), [трансформер](../03-deep-learning/04-attention-and-transformer.md) | высокий |
 | **NLP / LLM** | разделы [04](../04-nlp/01-text-representation.md) и [05](../05-llm/01-llm-architecture.md) | по профилю |

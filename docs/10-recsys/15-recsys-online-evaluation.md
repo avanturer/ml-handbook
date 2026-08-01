@@ -956,4 +956,4 @@ sign agreement и $\tau$ Кендалла, постройте регрессию
 
 ---
 
-⬅️ [Рекомендации в продакшене](14-recsys-in-production.md) | 🏠 [Оглавление](../index.md) | ➡️ [Жизненный цикл ML-системы](../07-mlops/01-ml-lifecycle.md)
+⬅️ [Рекомендации в продакшене](14-recsys-in-production.md) | 🏠 [Оглавление](../index.md) | ➡️ [Как проходить ML System Design](../11-system-design/01-framework.md)

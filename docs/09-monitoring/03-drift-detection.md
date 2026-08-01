@@ -12,7 +12,7 @@
 **Предварительно нужно:** [что мониторить в ML-системе](01-what-to-monitor.md),
 [качество данных](02-data-quality.md), [статистика и вывод](../01-math/03-statistics.md),
 [теория информации](../01-math/05-information-theory.md),
-[валидация и утечки](../02-classic-ml/13-validation-and-leakage.md)
+[валидация и утечки](../02-classic-ml/05-validation-and-leakage.md)
 **Как проработать:** чтение + реализовать PSI и детектор + прогнать на своих данных
 
 ---
@@ -810,7 +810,7 @@ $$
 (на отложенной части) **ROC-AUC будет около 0.5**. Чем выше AUC — тем сильнее дрифт.
 
 Это тот же приём, что **adversarial validation** из соревнований, где им ловят расхождение
-train и test (см. [валидацию и утечки](../02-classic-ml/13-validation-and-leakage.md)).
+train и test (см. [валидацию и утечки](../02-classic-ml/05-validation-and-leakage.md)).
 В литературе он известен как classifier two-sample test.
 
 ```python
